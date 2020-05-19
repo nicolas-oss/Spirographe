@@ -10403,15 +10403,15 @@ LineRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.2085939, g: 1, b: 0.0141509175, a: 1}
-      key1: {r: 0.19215688, g: 0.3019608, b: 0.47450984, a: 1}
+      key0: {r: 1, g: 0.9833671, b: 0.015686274, a: 1}
+      key1: {r: 1, g: 0, b: 0.14930153, a: 1}
       key2: {r: 0.005874723, g: 1, b: 0.94534194, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
       key5: {r: 0, g: 0, b: 0, a: 0}
       key6: {r: 0, g: 0, b: 0, a: 0}
       key7: {r: 0, g: 0, b: 0, a: 0}
-      ctime0: 386
+      ctime0: 0
       ctime1: 65535
       ctime2: 65535
       ctime3: 0
@@ -19817,7 +19817,7 @@ MonoBehaviour:
   OndeCrayonX: 0
   OndeCrayonY: 0
   A1: 0
-  V1: 0
+  V1: 0.1
   P1: 0
   HauteurDisque: 0.1
   DureeAnimation: 20

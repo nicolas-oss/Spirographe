@@ -376,7 +376,7 @@ public class Calculs_Rayons : MonoBehaviour
 				//AxeB.transform.Rotate(0.0f,(360.0f/NombrePoints)*(R1/R2)*facteur,0.0f, Space.Self);
 				//t=k/NombrePoints;			
 				//PointLine = R1*Cercle(t);
-				AxeC.transform.Translate(Onde()*Vector3.up);
+				//AxeC.transform.Translate(Onde()*Vector3.up);
 				lineRenderer.SetPosition(k+IndexFormule,AxeC.transform.position);
 				//Debug.Log("k="+k+"p="+AxeC.transform.position+"r="+AxeC.transform.localEulerAngles);
 			}
