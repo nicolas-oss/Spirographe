@@ -9,6 +9,8 @@ Build/
 /[Bb]uilds/
 Logs/
 /[Uu]ser[Ss]ettings/
+Library\ScriptAssemblies
+Library\StateCache
 
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
