@@ -68,32 +68,32 @@ public class Calculs_Rayons : MonoBehaviour
 		AnimatorAxe2 = AxeRotation2.GetComponent<Animator>();
 		
 		//LineRenderer
-		LineRenderer lineRenderer = SelectedLine.AddComponent<LineRenderer>();
-		lineRenderer.material = new Material(Shader.Find("Sprites/Default"));
+		LineRenderer lineRenderer = SelectedLine.GetComponent<LineRenderer>();
+		//lineRenderer.material = new Material(Shader.Find("Sprites/Default"));
 		
 		// A simple 2 color gradient with a fixed alpha of 1.0f.
-        float alpha = 1.0f;
+        /*float alpha = 1.0f;
         Gradient gradient = new Gradient();
         gradient.SetKeys(
             new GradientColorKey[] { new GradientColorKey(c1, 0.0f), new GradientColorKey(c2, 1.0f) },
             new GradientAlphaKey[] { new GradientAlphaKey(alpha, 0.0f), new GradientAlphaKey(alpha, 1.0f) }
         );
-        lineRenderer.colorGradient = gradient;
+        lineRenderer.colorGradient = gradient;*/
 		lineRenderer.widthMultiplier = widthOfLineRenderer;
 		
 		//Calcul Rayons et initialisation lineRenderer
 		//AjusteRayonDisque1();
 		//AjusteRayonDisque2();
-		AjusteDureeAnims();
-		ResetCurrentLineRenderer();
-		JoueAnim();
+		//AjusteDureeAnims();
+		//ResetCurrentLineRenderer();
+		//JoueAnim();
 		Time.fixedDeltaTime=0.02f;
     }
 
     void Update()
     { 
 	  //Calcul points
-		LineRenderer lineRenderer = SelectedLine.GetComponent<LineRenderer>();
+		//LineRenderer lineRenderer = SelectedLine.GetComponent<LineRenderer>();
 		
 		//RayonPrincipal=RayonMaximal-RayonDisque2;
 		//var SpiroTemp = Instantiate(SpiroFormule);
