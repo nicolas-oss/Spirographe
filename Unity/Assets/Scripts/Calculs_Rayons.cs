@@ -6,7 +6,8 @@ using System;
 
 public class Calculs_Rayons : MonoBehaviour
 {
-    public GameObject Root,DisquePrincipal,DisqueSecondaire,Rayon_1,Rayon_2,PositionInitialeAxe1,PositionInitialeAxe2,AxeRotation1,AxeRotation2,Crayon,SelectedLine,SpiroFormule; //CurrentLine,
+    public GameObject Root,DisquePrincipal,DisqueSecondaire,Rayon_1,Rayon_2,PositionInitialeAxe1,PositionInitialeAxe2,AxeRotation1,AxeRotation2,Crayon;
+	public SpiroFormule SelectedLine;//,SpiroFormule; //CurrentLine,
 	public float EchelleGlobale;
 	public float RayonMaximal;
 	public float RayonDisque2;
@@ -14,7 +15,7 @@ public class Calculs_Rayons : MonoBehaviour
 	public float Rayon3;
 	public bool RotationAxeB;
 	public float CrayonX,CrayonY;
-	public float FacteurTransmission1,FacteurTransmission2;
+	public float FacteurTransmission2;
 
 	public bool OndeR1,OndeR2,OndeR3,OndeCrayonX,OndeCrayonY;
 	public float A1,V1,P1;
@@ -196,7 +197,7 @@ public class Calculs_Rayons : MonoBehaviour
 			{
 				LineToActivate = NbChildren-1;
 			}
-			SelectedLine=GameObject.Find(GameObject.Find("ListSpiro").transform.GetChild(NbChildren-1).gameObject.GetComponent<Text>().text);
+			SelectedLine=GameObject.Find(GameObject.Find("ListSpiro").transform.GetChild(NbChildren-1).gameObject.GetComponent<Text>().text).GetComponent<SpiroFormule>();
 			Destroy(GameObject.Find(NameLine.text));
 			Destroy(TextNameLineToDelete);
 			NewTextNameLine = GameObject.Find("ListSpiro").transform.GetChild(LineToActivate).gameObject;
@@ -219,7 +220,7 @@ public class Calculs_Rayons : MonoBehaviour
 		NameLine = TextNameLine.GetComponent<Text>();
 		PreviousLine.GetComponent<Text>().color = unselected;
 		TextNameLine.GetComponent<Text>().color = selected;
-		SelectedLine = GameObject.Find(NameLine.text);
+		SelectedLine = GameObject.Find(NameLine.text).GetComponent<SpiroFormule>();
 		PreviousLine = TextNameLine;
 		StopAnim();
 	}
@@ -270,7 +271,7 @@ public class Calculs_Rayons : MonoBehaviour
 	public void AjusteDureeAnims()
 	{
 		AnimatorAxe1.SetFloat("DureeRotationPrincipale",1.0f/DureeAnimation);
-		AnimatorAxe2.SetFloat("DureeRotationSecondaire",1.0f/(DureeAnimation*RayonDisque2/(RayonMaximal*FacteurTransmission1)));
+		AnimatorAxe2.SetFloat("DureeRotationSecondaire",1.0f/(DureeAnimation*RayonDisque2/(RayonMaximal*SelectedLine.FacteurTransmission1)));
 	}
 	
 	public void SliderRayonDisque1()
@@ -292,7 +293,7 @@ public class Calculs_Rayons : MonoBehaviour
 	
 	public void SliderTransmission()
 	{
-		FacteurTransmission1 = GameObject.Find("SliderFacteurTransmission").GetComponent <Slider> ().value;
+		SelectedLine.FacteurTransmission1 = GameObject.Find("SliderFacteurTransmission").GetComponent <Slider> ().value;
 		AjusteDureeAnims();
 		ResetCurrentLineRenderer();
 		JoueAnim();
@@ -319,13 +320,14 @@ public class Calculs_Rayons : MonoBehaviour
 		return coordonnees;
 	}
 	
-	public void Spirographe(GameObject Line,GameObject Centre,float R1,float R2,float R3, float CX, float CY, float facteur1, float facteur2, int NombrePoints)
+	public void Spirographe(SpiroFormule Line,GameObject Centre,float R1,float R2,float R3, float CX, float CY, float facteur1, float facteur2, int NombrePoints)
 	{
 		if (R1==0 || R2==0 || R3==0) {return;}
 		float ratio;
 		int k,l,NbTour;
 		int NbTourMax=100;
 		LineRenderer lineRenderer = Line.GetComponent<LineRenderer>();
+		Debug.Log(lineRenderer);
 		lineRenderer.widthMultiplier = widthOfLineRenderer;
 		Vector3 PointLine,RotationNulle,DeplacementNul;
 	
@@ -389,6 +391,6 @@ public class Calculs_Rayons : MonoBehaviour
 	
 	public void FixedUpdate()
 	{
-		Spirographe(SelectedLine, Root, RayonMaximal, RayonDisque2, Rayon3,CrayonX+Convert.ToInt32(OndeCrayonX)*Onde(),CrayonY+Convert.ToInt32(OndeCrayonY)*Onde(),FacteurTransmission1, FacteurTransmission2, lengthOfLineRenderer);	
+		Spirographe(SelectedLine, Root, RayonMaximal, RayonDisque2, Rayon3,CrayonX+Convert.ToInt32(OndeCrayonX)*Onde(),CrayonY+Convert.ToInt32(OndeCrayonY)*Onde(),SelectedLine.FacteurTransmission1, FacteurTransmission2, lengthOfLineRenderer);	
 	}
 }

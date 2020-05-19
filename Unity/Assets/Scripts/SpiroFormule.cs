@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class SpiroFormule : MonoBehaviour
 {
-    public bool Duplication,Animate,Fondu;
+    public float FacteurTransmission1;
+	public bool Duplication,Animate,Fondu;
 	public float FacteurAttenuationFondu,FacteurScaleAnimation;
 	public float IntervalDuplication,DureeVie;
 	bool Attends;
