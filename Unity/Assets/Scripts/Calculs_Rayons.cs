@@ -342,16 +342,17 @@ public class Calculs_Rayons : MonoBehaviour
 		CentreRotation.transform.localEulerAngles=RotationNulle;
 		
 		AxeA.transform.localPosition = DeplacementNul;
-		AxeA.transform.Translate(EchelleGlobale*(R1-R2)*Vector3.forward,Space.Self);
+		AxeA.transform.Translate(EchelleGlobale*(R1-R2+Convert.ToInt32(OndeR1)*OndeSinus())*Vector3.forward,Space.Self);
 		AxeA.transform.localEulerAngles=RotationNulle;
 		
 		AxeB.transform.localPosition = DeplacementNul;
 		AxeB.transform.localEulerAngles=RotationNulle;
-		AxeB.transform.Translate(EchelleGlobale*(R2-R3)*Vector3.forward,Space.Self);
+		AxeB.transform.Translate(EchelleGlobale*(R2-R3+Convert.ToInt32(OndeR2)*OndeCosinus())*Vector3.forward,Space.Self);
+		AxeB.transform.Translate(EchelleGlobale*(R2-R3+Convert.ToInt32(OndeR2)*OndeCosinus())*Vector3.forward,Space.Self);
 		
 		AxeC.transform.localPosition = DeplacementNul;
 		AxeC.transform.localEulerAngles=RotationNulle;
-		AxeC.transform.Translate(EchelleGlobale*(CX*Vector3.left+CY*Vector3.forward),Space.Self);
+		AxeC.transform.Translate((EchelleGlobale+Convert.ToInt32(OndeR3)*Onde())*(CX*Vector3.left+CY*Vector3.forward),Space.Self);
 	
 		lineRenderer.positionCount = NombrePoints+IndexFormule;
 		
@@ -388,6 +389,6 @@ public class Calculs_Rayons : MonoBehaviour
 	
 	public void FixedUpdate()
 	{
-		Spirographe(SelectedLine, Root, RayonMaximal+Convert.ToInt32(OndeR1)*Onde(), RayonDisque2+OndeCosinus()+Convert.ToInt32(OndeR2)*Onde(), Rayon3+OndeSinus()+Convert.ToInt32(OndeR3)*Onde(),CrayonX+Convert.ToInt32(OndeCrayonX)*Onde(),CrayonY+Convert.ToInt32(OndeCrayonY)*Onde(),FacteurTransmission1, FacteurTransmission2, lengthOfLineRenderer);	
+		Spirographe(SelectedLine, Root, RayonMaximal, RayonDisque2, Rayon3,CrayonX+Convert.ToInt32(OndeCrayonX)*Onde(),CrayonY+Convert.ToInt32(OndeCrayonY)*Onde(),FacteurTransmission1, FacteurTransmission2, lengthOfLineRenderer);	
 	}
 }
