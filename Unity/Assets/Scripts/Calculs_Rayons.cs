@@ -8,7 +8,7 @@ public class Calculs_Rayons : MonoBehaviour
 {
     public GameObject Root,DisquePrincipal,DisqueSecondaire,Rayon_1,Rayon_2,PositionInitialeAxe1,PositionInitialeAxe2,AxeRotation1,AxeRotation2,Crayon;
 	public SpiroFormule SelectedLine;//,SpiroFormule; //CurrentLine,
-	public float EchelleGlobale;
+	public float Echelle;
 	public float RayonMaximal;
 	public float RayonDisque2;
 	float RayonPrincipal;
@@ -344,17 +344,17 @@ public class Calculs_Rayons : MonoBehaviour
 		CentreRotation.transform.localEulerAngles=RotationNulle;
 		
 		AxeA.transform.localPosition = DeplacementNul;
-		AxeA.transform.Translate(EchelleGlobale*(R1-R2+Convert.ToInt32(OndeR1)*OndeSinus())*Vector3.forward,Space.Self);
+		AxeA.transform.Translate(Echelle*(R1-R2+Convert.ToInt32(OndeR1)*OndeSinus())*Vector3.forward,Space.Self);
 		AxeA.transform.localEulerAngles=RotationNulle;
 		
 		AxeB.transform.localPosition = DeplacementNul;
 		AxeB.transform.localEulerAngles=RotationNulle;
-		AxeB.transform.Translate(EchelleGlobale*(R2-R3+Convert.ToInt32(OndeR2)*OndeCosinus())*Vector3.forward,Space.Self);
-		AxeB.transform.Translate(EchelleGlobale*(R2-R3+Convert.ToInt32(OndeR2)*OndeCosinus())*Vector3.forward,Space.Self);
+		AxeB.transform.Translate(Echelle*(R2-R3+Convert.ToInt32(OndeR2)*OndeCosinus())*Vector3.forward,Space.Self);
+		AxeB.transform.Translate(Echelle*(R2-R3+Convert.ToInt32(OndeR2)*OndeCosinus())*Vector3.forward,Space.Self);
 		
 		AxeC.transform.localPosition = DeplacementNul;
 		AxeC.transform.localEulerAngles=RotationNulle;
-		AxeC.transform.Translate((EchelleGlobale+Convert.ToInt32(OndeR3)*Onde())*(CX*Vector3.left+CY*Vector3.forward),Space.Self);
+		AxeC.transform.Translate((Echelle+Convert.ToInt32(OndeR3)*Onde())*(CX*Vector3.left+CY*Vector3.forward),Space.Self);
 	
 		lineRenderer.positionCount = NombrePoints+IndexFormule;
 		
