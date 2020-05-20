@@ -327,7 +327,7 @@ public class Calculs_Rayons : MonoBehaviour
 		int k,l,NbTour;
 		int NbTourMax=100;
 		LineRenderer lineRenderer = Line.GetComponent<LineRenderer>();
-		Debug.Log(lineRenderer);
+		//Debug.Log(lineRenderer);
 		lineRenderer.widthMultiplier = widthOfLineRenderer;
 		Vector3 PointLine,RotationNulle,DeplacementNul;
 	
