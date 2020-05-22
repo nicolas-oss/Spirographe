@@ -9,6 +9,8 @@ public class Interface : MonoBehaviour
     public Color UnselectedColor,SelectedColor;
 	
 	public UnityEvent MainEvent;
+	public GameObject ButtonDisque1,ButtonDisque2,ButtonDisque3;
+	//public GameObject PreviousSelectedButton;
 	
     void Start()
     {
@@ -32,16 +34,32 @@ public class Interface : MonoBehaviour
 	public void SelectButton(GameObject PressedButton)
 	{
 		DeselectAllButton();
-		var MyButton=PressedButton.GetComponent<Button>();
-		var colors = MyButton.colors;
-        colors.normalColor = SelectedColor;
-        MyButton.colors = colors;
-		Debug.Log("Ayé");
+		SetColorActive(PressedButton);
+		if (PressedButton==ButtonDisque1)
+		{
+				Debug.Log("ButtonDisque1");
+		}
 	}
 	
 	public void DeselectAllButton()
 	{
-		
+		GameObject[] AllButtons;
+		AllButtons = GameObject.FindGameObjectsWithTag("Button");
+		foreach(GameObject InspectedButton in AllButtons)
+		{
+			var InspectedMyButton=InspectedButton.GetComponent<Button>();
+			var InspectedColors = InspectedMyButton.colors;
+			InspectedColors.normalColor = UnselectedColor;
+			InspectedMyButton.colors = InspectedColors;
+		}
+	}
+	
+	public void SetColorActive(GameObject PressedButton)
+	{
+		var MyButton=PressedButton.GetComponent<Button>();
+		var colors = MyButton.colors;
+        colors.normalColor = SelectedColor;
+        MyButton.colors = colors;
 	}
 	
 	public void EventR1()
