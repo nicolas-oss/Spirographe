@@ -34,6 +34,8 @@ public class Interface : MonoBehaviour
         }
     }
 	
+	/////////////////////////////////////////////// Select Button //////////////////////////////////////////////////////
+	
 	public void SelectButton(GameObject PressedButton)
 	{
 		DeselectAllButton();
@@ -83,6 +85,8 @@ public class Interface : MonoBehaviour
 		if (ActiveButton==ButtonDisque3) {PanelOptionButtonDisque3.active=true;}
 		if (ActiveButton==ButtonCrayon) {PanelOptionButtonCrayonX.active=true; PanelOptionButtonCrayonY.active=true;}
 	}
+	
+	////////////////////////////////////////////////////////////////////////////  Events  ///////////////////////////////////////////////////////////////
 	
 	public void EventR1()
 	{
