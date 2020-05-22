@@ -271,7 +271,7 @@ public class Calculs_Rayons : MonoBehaviour
 	public void AjusteDureeAnims()
 	{
 		AnimatorAxe1.SetFloat("DureeRotationPrincipale",1.0f/DureeAnimation);
-		AnimatorAxe2.SetFloat("DureeRotationSecondaire",1.0f/(DureeAnimation*RayonDisque2/(RayonMaximal*SelectedLine.FacteurTransmission1)));
+		//AnimatorAxe2.SetFloat("DureeRotationSecondaire",1.0f/(DureeAnimation*RayonDisque2/(RayonMaximal*SelectedLine.FacteurTransmission1)));
 	}
 	
 	public void SliderRayonDisque1()
@@ -293,7 +293,7 @@ public class Calculs_Rayons : MonoBehaviour
 	
 	public void SliderTransmission()
 	{
-		SelectedLine.FacteurTransmission1 = GameObject.Find("SliderFacteurTransmission").GetComponent <Slider> ().value;
+		SelectedLine.facteur1 = GameObject.Find("SliderFacteurTransmission").GetComponent <Slider> ().value;
 		AjusteDureeAnims();
 		ResetCurrentLineRenderer();
 		JoueAnim();
@@ -389,8 +389,8 @@ public class Calculs_Rayons : MonoBehaviour
 			{IndexFormule=0;}
 	}
 	
-	public void FixedUpdate()
+	/*public void FixedUpdate()
 	{
 		Spirographe(SelectedLine, Root, RayonMaximal, RayonDisque2, Rayon3,CrayonX+Convert.ToInt32(OndeCrayonX)*Onde(),CrayonY+Convert.ToInt32(OndeCrayonY)*Onde(),SelectedLine.FacteurTransmission1, FacteurTransmission2, lengthOfLineRenderer);	
-	}
+	}*/
 }

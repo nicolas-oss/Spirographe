@@ -22307,7 +22307,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9221efe04e8a2f24fa3e69e1c9c8c98e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FacteurTransmission1: 10
+  Centre: {fileID: 1376697942}
+  R1: 10
+  R2: 6
+  R3: 1
+  CX: 0.25
+  CY: 0
+  facteur1: 1
+  facteur2: 1
+  RotationAxeB: 1
+  NombrePoints: 1000
+  A1: 1
+  A2: 1
+  A3: 1
+  AX: 1
+  AY: 1
+  V1: 0.1
+  V2: 0.1
+  V3: 0.1
+  VX: 0.1
+  VY: 0.1
+  P1: 0
+  P2: 0
+  P3: 0
+  PX: 0
+  PY: 0
+  OndeR1: 0
+  OndeR2: 0
+  OndeR3: 0
+  OndeCX: 0
+  OndeCY: 0
+  delta: 0.01
+  NombreDeTour: 5
+  NombreDeTourMaximum: 100
+  Automatique: 1
+  IndexFormule: 0
+  widthOfLineRenderer: 0.1
+  Echelle: 1
   Duplication: 0
   Animate: 0
   Fondu: 1
