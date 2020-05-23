@@ -11,7 +11,7 @@ public class Interface : MonoBehaviour
 	
 	public Color UnselectedColor,SelectedColor;
 	
-	public UnityEvent MainEvent;
+	public UnityEvent MainDragEvent,FirstDragEvent;
 	public GameObject ButtonEchelle,ButtonRotation,ButtonDisque1,ButtonDisque2,ButtonDisque3,ButtonCrayon;
 	public GameObject PanelOptionButtonEchelle,PanelOptionButtonRotation,PanelOptionButtonDisque1,PanelOptionButtonDisque2,PanelOptionButtonDisque3,PanelOptionButtonCrayonX,PanelOptionButtonCrayonY;
 	public GameObject Surface;
@@ -19,23 +19,25 @@ public class Interface : MonoBehaviour
 	public Vector3 DeltaMousePos;
 	GameObject ActiveButton;
 	//public GameObject PreviousSelectedButton;
+	public float CurrentEchelle,CurrentRotation;
 	
     void Start()
     {
 		//Création évenement principal et ajout listener
-		if (MainEvent == null) 
+		if (MainDragEvent == null) 
 		{
-			MainEvent = new UnityEvent();
+			MainDragEvent = new UnityEvent();
 		}
-		MainEvent.AddListener(CliqueSurfaceDeTravail);
+		if (FirstDragEvent == null) 
+		{
+			FirstDragEvent = new UnityEvent();
+		}
+		FirstDragEvent.AddListener(CliqueSurfaceDeTravail);
+		MainDragEvent.AddListener(CliqueSurfaceDeTravail);
     }
 
     void Update()
     {
-        if (Input.anyKeyDown && MainEvent != null)
-        {
-            //MainEvent.Invoke();
-        }
     }
 	
 	public void RefreshPanelOptionEchelle()
@@ -98,9 +100,10 @@ public class Interface : MonoBehaviour
 	
 	public void SetActiveEvent()
 	{
-		MainEvent.RemoveAllListeners();
-		if (ActiveButton==ButtonEchelle) {MainEvent.AddListener(AjusteEchelleWithDrag);}
-		if (ActiveButton==ButtonRotation) {PanelOptionButtonRotation.active=true;}
+		MainDragEvent.RemoveAllListeners();
+		FirstDragEvent.RemoveAllListeners();
+		if (ActiveButton==ButtonEchelle) {FirstDragEvent.AddListener(BeginAjusteEchelleWithDrag); MainDragEvent.AddListener(AjusteEchelleWithDrag);}
+		if (ActiveButton==ButtonRotation) {FirstDragEvent.AddListener(BeginAjusteRotationWithDrag); MainDragEvent.AddListener(AjusteRotationWithDrag);}
 		if (ActiveButton==ButtonDisque1) {PanelOptionButtonDisque1.active=true;}
 		if (ActiveButton==ButtonDisque2) {PanelOptionButtonDisque2.active=true;}
 		if (ActiveButton==ButtonDisque3) {PanelOptionButtonDisque3.active=true;}
@@ -124,10 +127,25 @@ public class Interface : MonoBehaviour
 		Debug.Log(DeltaMousePos);
 	}
 	
+	public void BeginAjusteEchelleWithDrag()
+	{
+		CurrentEchelle = SelectedLine.Echelle;
+	}
+	
 	public void AjusteEchelleWithDrag()
 	{
-		float Echelle;
-		Echelle = SelectedLine.Echelle;
-		SelectedLine.Echelle = DeltaMousePos.x/100.0f;
+		SelectedLine.Echelle = CurrentEchelle + DeltaMousePos.x/100.0f;
+		InputEchelle.GetComponent<InputField>().text = SelectedLine.Echelle.ToString();
+	}
+	
+	public void BeginAjusteRotationWithDrag()
+	{
+		CurrentRotation = SelectedLine.Rotation;
+	}
+	
+	public void AjusteRotationWithDrag()
+	{
+		SelectedLine.Rotation = CurrentRotation + DeltaMousePos.x/10.0f;
+		InputRotation.GetComponent<InputField>().text = SelectedLine.Rotation.ToString();
 	}
 }

@@ -16,7 +16,6 @@ public class ButtonInterface : MonoBehaviour
 	
 	void TaskOnClick()
 	{
-		Debug.Log("Button Interface");
 		Interface.GetComponent<Interface>().SelectButton(gameObject);
 	}
 }

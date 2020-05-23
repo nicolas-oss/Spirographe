@@ -13,6 +13,7 @@ public class ClicPanelSurface : MonoBehaviour
 	{
 		MousePosInitiale = Input.mousePosition;
 		Debug.Log("Init POs = "+MousePosInitiale);
+		Interface.GetComponent<Interface>().FirstDragEvent.Invoke();
 	}
 	
 	public void DragMouse()
@@ -20,6 +21,6 @@ public class ClicPanelSurface : MonoBehaviour
         CurrentMousePos = Input.mousePosition;
 		DeltaMousePos = CurrentMousePos-MousePosInitiale;
 		Interface.GetComponent<Interface>().DeltaMousePos=DeltaMousePos;
-		Interface.GetComponent<Interface>().MainEvent.Invoke();
+		Interface.GetComponent<Interface>().MainDragEvent.Invoke();
     }
 }

@@ -23,7 +23,9 @@ public class SpiroFormule : MonoBehaviour
 	
 	public float widthOfLineRenderer;
 	
-	public float Echelle;
+	public float Echelle,Rotation;
+	public bool AnimRotation;
+	public float VitesseRotation,OffsetRotation;
 	
 	public bool Duplication,Animate,Fondu;
 	public float FacteurAttenuationFondu,FacteurScaleAnimation;
@@ -58,7 +60,7 @@ public class SpiroFormule : MonoBehaviour
 
     void Update()
     {
-        Spirographe();
+        if (Master) Spirographe();
 		
 		if ((Master) && (Duplication) && !(Attends))
 		{
@@ -110,6 +112,8 @@ public class SpiroFormule : MonoBehaviour
 	
 	public void Spirographe()
 	{
+		var y = transform.eulerAngles.y;
+		y=Rotation;
 		if (R1==0 || R2==0 || R3==0) {return;}
 		float ratio;
 		int k,l,NbTour;
@@ -127,6 +131,9 @@ public class SpiroFormule : MonoBehaviour
 		RotationNulle.y = 0.0f;
 		RotationNulle.z = 0.0f;
 		DeplacementNul=RotationNulle;
+		
+		transform.localEulerAngles=RotationNulle;
+		transform.Rotate(0.0f,Rotation+VitesseRotation*Time.time*Convert.ToInt32(AnimRotation)+OffsetRotation,0.0f);
 		
 		CentreRotation.transform.position=Centre.transform.position;
 		CentreRotation.transform.localEulerAngles=RotationNulle;
