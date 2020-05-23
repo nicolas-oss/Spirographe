@@ -3,15 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
 
 public class Interface : MonoBehaviour
 {
-    public Color UnselectedColor,SelectedColor;
+    public SpiroFormule SelectedLine;
+	
+	public Color UnselectedColor,SelectedColor;
 	
 	public UnityEvent MainEvent;
 	public GameObject ButtonEchelle,ButtonRotation,ButtonDisque1,ButtonDisque2,ButtonDisque3,ButtonCrayon;
 	public GameObject PanelOptionButtonEchelle,PanelOptionButtonRotation,PanelOptionButtonDisque1,PanelOptionButtonDisque2,PanelOptionButtonDisque3,PanelOptionButtonCrayonX,PanelOptionButtonCrayonY;
 	public GameObject Surface;
+	public GameObject InputEchelle,InputRotation;
 	GameObject ActiveButton;
 	//public GameObject PreviousSelectedButton;
 	
@@ -22,17 +26,21 @@ public class Interface : MonoBehaviour
 		{
 			MainEvent = new UnityEvent();
 		}
-		MainEvent.AddListener(CliqueSurfaceDeTravail);
+		//MainEvent.AddListener(CliqueSurfaceDeTravail);
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.anyKeyDown && MainEvent != null)
         {
-            MainEvent.Invoke();
+            //MainEvent.Invoke();
         }
     }
+	
+	public void RefreshPanelOptionEchelle()
+	{
+		//InputEchelle.GetComponent<InputField>().value = SelectedLine.Echelle;
+	}
 	
 	/////////////////////////////////////////////// Select Button //////////////////////////////////////////////////////
 	
@@ -43,6 +51,7 @@ public class Interface : MonoBehaviour
 		SetColorActive(PressedButton);
 		ActiveButton = PressedButton;
 		ShowCurrentOptionPanel();
+		//SetActiveEvent();
 	}
 	
 	public void DeselectAllButton()
@@ -86,7 +95,17 @@ public class Interface : MonoBehaviour
 		if (ActiveButton==ButtonCrayon) {PanelOptionButtonCrayonX.active=true; PanelOptionButtonCrayonY.active=true;}
 	}
 	
-	////////////////////////////////////////////////////////////////////////////  Events  ///////////////////////////////////////////////////////////////
+	public void SetActiveEvent()
+	{
+		if (ActiveButton==ButtonEchelle) {PanelOptionButtonEchelle.active=true;}
+		if (ActiveButton==ButtonRotation) {PanelOptionButtonRotation.active=true;}
+		if (ActiveButton==ButtonDisque1) {PanelOptionButtonDisque1.active=true;}
+		if (ActiveButton==ButtonDisque2) {PanelOptionButtonDisque2.active=true;}
+		if (ActiveButton==ButtonDisque3) {PanelOptionButtonDisque3.active=true;}
+		if (ActiveButton==ButtonCrayon) {PanelOptionButtonCrayonX.active=true; PanelOptionButtonCrayonY.active=true;}
+	}
+	
+	////////////////////////////////////////////////////////////////////////////  Events  ////////////////////////////////
 	
 	public void EventR1()
 	{

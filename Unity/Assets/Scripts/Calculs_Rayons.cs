@@ -59,10 +59,10 @@ public class Calculs_Rayons : MonoBehaviour
 	// Start is called before the first frame update
     public void Start()
     {
-        AxeA = new GameObject();
+        /*AxeA = new GameObject();
 		AxeB = new GameObject();
 		AxeC = new GameObject();
-		CentreRotation = new GameObject();
+		CentreRotation = new GameObject();*/
 		
 		//GetAnimators
 		AnimatorAxe1 = AxeRotation1.GetComponent<Animator>();
