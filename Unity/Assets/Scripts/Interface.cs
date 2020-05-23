@@ -146,6 +146,6 @@ public class Interface : MonoBehaviour
 	public void AjusteRotationWithDrag()
 	{
 		SelectedLine.Rotation = CurrentRotation + DeltaMousePos.x/10.0f;
-		//InputRotation.GetComponent<InputField>().text = SelectedLine.Rotation.ToString();
+		InputRotation.GetComponent<InputField>().text = SelectedLine.Rotation.ToString();
 	}
 }
