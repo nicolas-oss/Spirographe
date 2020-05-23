@@ -11,17 +11,18 @@ public class ToggleAnimRotation : MonoBehaviour
     {
 		bool Check = GetComponent<Toggle>().isOn;
 		Interface.GetComponent<Interface>().SelectedLine.AnimRotation = Check;
+		float RotationInitiale = Interface.GetComponent<Interface>().SelectedLine.Rotation;
 		float Vitesse = Interface.GetComponent<Interface>().SelectedLine.VitesseRotation;
-		float OffsetRotation = Interface.GetComponent<Interface>().SelectedLine.OffsetRotation;
+		//float OffsetRotation = Interface.GetComponent<Interface>().SelectedLine.OffsetRotation;
 		float Offset;
 		if (Check)
 		{
-			Offset = (-1.0f)*Vitesse*Time.time;
+			Offset = RotationInitiale-Vitesse*Time.time;
 		}
 		else
 		{
-			Offset = Vitesse*Time.time;
+			Offset = 0.0f;
 		}
-		Interface.GetComponent<Interface>().SelectedLine.OffsetRotation = Offset+OffsetRotation;
+		Interface.GetComponent<Interface>().SelectedLine.OffsetRotation = Offset;
     }
 }
