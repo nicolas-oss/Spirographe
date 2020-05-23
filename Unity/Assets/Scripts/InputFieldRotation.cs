@@ -14,6 +14,14 @@ public class InputFieldRotation : MonoBehaviour
         se.AddListener(AjusteRotation);
         input.onEndEdit = se;
     }
+	
+	void Update()
+	{
+		if (Interface.GetComponent<Interface>().SelectedLine.AnimRotation)
+		{
+			GetComponent<InputField>().text = Interface.GetComponent<Interface>().SelectedLine.Rotation.ToString();
+		}
+	}
 
     public void AjusteRotation(string arg)
     {

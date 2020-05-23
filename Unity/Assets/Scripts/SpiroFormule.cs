@@ -112,8 +112,6 @@ public class SpiroFormule : MonoBehaviour
 	
 	public void Spirographe()
 	{
-		var y = transform.eulerAngles.y;
-		y=Rotation;
 		if (R1==0 || R2==0 || R3==0) {return;}
 		float ratio;
 		int k,l,NbTour;
@@ -133,7 +131,9 @@ public class SpiroFormule : MonoBehaviour
 		DeplacementNul=RotationNulle;
 		
 		transform.localEulerAngles=RotationNulle;
-		transform.Rotate(0.0f,Rotation+VitesseRotation*Time.time*Convert.ToInt32(AnimRotation)+OffsetRotation,0.0f);
+		Rotation+=(VitesseRotation*Time.time+OffsetRotation)*Convert.ToInt32(AnimRotation);
+		Rotation%=360.0f;
+		transform.Rotate(0.0f,Rotation,0.0f);
 		
 		CentreRotation.transform.position=Centre.transform.position;
 		CentreRotation.transform.localEulerAngles=RotationNulle;
