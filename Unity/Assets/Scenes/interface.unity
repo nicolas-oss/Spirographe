@@ -21649,6 +21649,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2076c98b116e4a84f8f0950b28fbc3b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Interface: {fileID: 1666113119}
   CurrentMousePos: {x: 0, y: 0, z: 0}
   MousePosInitiale: {x: 0, y: 0, z: 0}
   DeltaMousePos: {x: 0, y: 0, z: 0}
@@ -37036,6 +37037,7 @@ MonoBehaviour:
   Surface: {fileID: 553267351}
   InputEchelle: {fileID: 1414948704}
   InputRotation: {fileID: 0}
+  DeltaMousePos: {x: 0, y: 0, z: 0}
 --- !u!4 &1666113121
 Transform:
   m_ObjectHideFlags: 0

@@ -16,6 +16,7 @@ public class Interface : MonoBehaviour
 	public GameObject PanelOptionButtonEchelle,PanelOptionButtonRotation,PanelOptionButtonDisque1,PanelOptionButtonDisque2,PanelOptionButtonDisque3,PanelOptionButtonCrayonX,PanelOptionButtonCrayonY;
 	public GameObject Surface;
 	public GameObject InputEchelle,InputRotation;
+	public Vector3 DeltaMousePos;
 	GameObject ActiveButton;
 	//public GameObject PreviousSelectedButton;
 	
@@ -26,7 +27,7 @@ public class Interface : MonoBehaviour
 		{
 			MainEvent = new UnityEvent();
 		}
-		//MainEvent.AddListener(CliqueSurfaceDeTravail);
+		MainEvent.AddListener(CliqueSurfaceDeTravail);
     }
 
     void Update()
@@ -51,7 +52,7 @@ public class Interface : MonoBehaviour
 		SetColorActive(PressedButton);
 		ActiveButton = PressedButton;
 		ShowCurrentOptionPanel();
-		//SetActiveEvent();
+		SetActiveEvent();
 	}
 	
 	public void DeselectAllButton()
@@ -97,7 +98,8 @@ public class Interface : MonoBehaviour
 	
 	public void SetActiveEvent()
 	{
-		if (ActiveButton==ButtonEchelle) {PanelOptionButtonEchelle.active=true;}
+		MainEvent.RemoveAllListeners();
+		if (ActiveButton==ButtonEchelle) {MainEvent.AddListener(AjusteEchelleWithDrag);}
 		if (ActiveButton==ButtonRotation) {PanelOptionButtonRotation.active=true;}
 		if (ActiveButton==ButtonDisque1) {PanelOptionButtonDisque1.active=true;}
 		if (ActiveButton==ButtonDisque2) {PanelOptionButtonDisque2.active=true;}
@@ -119,13 +121,13 @@ public class Interface : MonoBehaviour
 	
 	public void CliqueSurfaceDeTravail()
 	{
-		RaycastHit  hit;
-		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-		if (Physics.Raycast(ray, out hit)) 
-		{
-			Debug.Log(hit.transform.name);
-        }
-		if (ActiveButton == ButtonDisque1) {}
+		Debug.Log(DeltaMousePos);
+	}
+	
+	public void AjusteEchelleWithDrag()
+	{
+		float Echelle;
+		Echelle = SelectedLine.Echelle;
+		SelectedLine.Echelle = DeltaMousePos.x/100.0f;
 	}
 }

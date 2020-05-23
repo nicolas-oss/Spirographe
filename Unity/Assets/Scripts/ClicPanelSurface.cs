@@ -6,7 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class ClicPanelSurface : MonoBehaviour
 {
-    public Vector3 CurrentMousePos,MousePosInitiale,DeltaMousePos;
+    public GameObject Interface;
+	public Vector3 CurrentMousePos,MousePosInitiale,DeltaMousePos;
 
 	public void BeginDrag()
 	{
@@ -18,6 +19,7 @@ public class ClicPanelSurface : MonoBehaviour
     {
         CurrentMousePos = Input.mousePosition;
 		DeltaMousePos = CurrentMousePos-MousePosInitiale;
-		Debug.Log("Delta = "+DeltaMousePos);
+		Interface.GetComponent<Interface>().DeltaMousePos=DeltaMousePos;
+		Interface.GetComponent<Interface>().MainEvent.Invoke();
     }
 }
