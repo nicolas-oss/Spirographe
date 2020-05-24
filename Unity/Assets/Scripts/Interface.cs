@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
+using System;
 
 public class Interface : MonoBehaviour
 {
@@ -15,11 +16,11 @@ public class Interface : MonoBehaviour
 	public GameObject ButtonEchelle,ButtonRotation,ButtonDisque1,ButtonDisque2,ButtonDisque3,ButtonCrayon;
 	public GameObject PanelOptionButtonEchelle,PanelOptionButtonRotation,PanelOptionButtonDisque1,PanelOptionButtonDisque2,PanelOptionButtonDisque3,PanelOptionButtonCrayonX,PanelOptionButtonCrayonY;
 	public GameObject Surface;
-	public GameObject InputEchelle,InputRotation;
+	public GameObject InputEchelle,InputRotation,InputR1,InputR2,InputR3,InputCX,InputCY;
 	public Vector3 DeltaMousePos;
 	GameObject ActiveButton;
 	//public GameObject PreviousSelectedButton;
-	public float CurrentEchelle,CurrentRotation;
+	public float CurrentEchelle,CurrentRotation,CurrentSizeDisque1,CurrentSizeDisque2,CurrentSizeDisque3;
 	
     void Start()
     {
@@ -104,9 +105,9 @@ public class Interface : MonoBehaviour
 		FirstDragEvent.RemoveAllListeners();
 		if (ActiveButton==ButtonEchelle) {FirstDragEvent.AddListener(BeginAjusteEchelleWithDrag); MainDragEvent.AddListener(AjusteEchelleWithDrag);}
 		if (ActiveButton==ButtonRotation) {FirstDragEvent.AddListener(BeginAjusteRotationWithDrag); MainDragEvent.AddListener(AjusteRotationWithDrag);}
-		if (ActiveButton==ButtonDisque1) {PanelOptionButtonDisque1.active=true;}
-		if (ActiveButton==ButtonDisque2) {PanelOptionButtonDisque2.active=true;}
-		if (ActiveButton==ButtonDisque3) {PanelOptionButtonDisque3.active=true;}
+		if (ActiveButton==ButtonDisque1) {FirstDragEvent.AddListener(BeginAjusteDisque1WithDrag); MainDragEvent.AddListener(AjusteDisque1WithDrag);}
+		if (ActiveButton==ButtonDisque2) {FirstDragEvent.AddListener(BeginAjusteDisque2WithDrag); MainDragEvent.AddListener(AjusteDisque2WithDrag);}
+		if (ActiveButton==ButtonDisque3) {FirstDragEvent.AddListener(BeginAjusteDisque3WithDrag); MainDragEvent.AddListener(AjusteDisque3WithDrag);}
 		if (ActiveButton==ButtonCrayon) {PanelOptionButtonCrayonX.active=true; PanelOptionButtonCrayonY.active=true;}
 	}
 	
@@ -147,5 +148,38 @@ public class Interface : MonoBehaviour
 	{
 		SelectedLine.Rotation = CurrentRotation + DeltaMousePos.x/10.0f;
 		InputRotation.GetComponent<InputField>().text = SelectedLine.Rotation.ToString();
+	}
+	
+	public void BeginAjusteDisque1WithDrag()
+	{
+		CurrentSizeDisque1 = SelectedLine.R1;
+	}
+	
+	public void AjusteDisque1WithDrag()
+	{
+		SelectedLine.R1 = (float)Math.Floor(10.0f*(CurrentSizeDisque1 + DeltaMousePos.x/100.0f))/10.0f;
+		InputR1.GetComponent<InputField>().text = SelectedLine.R1.ToString();
+	}
+	
+	public void BeginAjusteDisque2WithDrag()
+	{
+		CurrentSizeDisque2 = SelectedLine.R2;
+	}
+	
+	public void AjusteDisque2WithDrag()
+	{
+		SelectedLine.R2 = (float)Math.Floor(10.0f*(CurrentSizeDisque2 + DeltaMousePos.x/100.0f))/10.0f;
+		InputR2.GetComponent<InputField>().text = SelectedLine.R2.ToString();
+	}
+		
+	public void BeginAjusteDisque3WithDrag()
+	{
+		CurrentSizeDisque3 = SelectedLine.R3;
+	}
+	
+	public void AjusteDisque3WithDrag()
+	{
+		SelectedLine.R3 = (float)Math.Floor(10.0f*(CurrentSizeDisque3 + DeltaMousePos.x/100.0f))/10.0f;
+		InputR3.GetComponent<InputField>().text = SelectedLine.R3.ToString();
 	}
 }
