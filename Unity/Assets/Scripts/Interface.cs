@@ -20,7 +20,7 @@ public class Interface : MonoBehaviour
 	public Vector3 DeltaMousePos;
 	GameObject ActiveButton;
 	//public GameObject PreviousSelectedButton;
-	public float CurrentEchelle,CurrentRotation,CurrentSizeDisque1,CurrentSizeDisque2,CurrentSizeDisque3;
+	public float CurrentEchelle,CurrentRotation,CurrentSizeDisque1,CurrentSizeDisque2,CurrentSizeDisque3,CurrentSizeCX,CurrentSizeCY;
 	
     void Start()
     {
@@ -108,7 +108,7 @@ public class Interface : MonoBehaviour
 		if (ActiveButton==ButtonDisque1) {FirstDragEvent.AddListener(BeginAjusteDisque1WithDrag); MainDragEvent.AddListener(AjusteDisque1WithDrag);}
 		if (ActiveButton==ButtonDisque2) {FirstDragEvent.AddListener(BeginAjusteDisque2WithDrag); MainDragEvent.AddListener(AjusteDisque2WithDrag);}
 		if (ActiveButton==ButtonDisque3) {FirstDragEvent.AddListener(BeginAjusteDisque3WithDrag); MainDragEvent.AddListener(AjusteDisque3WithDrag);}
-		if (ActiveButton==ButtonCrayon) {PanelOptionButtonCrayonX.active=true; PanelOptionButtonCrayonY.active=true;}
+		if (ActiveButton==ButtonCrayon) {FirstDragEvent.AddListener(BeginAjusteCXYWithDrag); MainDragEvent.AddListener(AjusteCXYWithDrag);}
 	}
 	
 	////////////////////////////////////////////////////////////////////////////  Events  ////////////////////////////////
@@ -181,5 +181,30 @@ public class Interface : MonoBehaviour
 	{
 		SelectedLine.R3 = (float)Math.Floor(10.0f*(CurrentSizeDisque3 + DeltaMousePos.x/100.0f))/10.0f;
 		InputR3.GetComponent<InputField>().text = SelectedLine.R3.ToString();
+	}
+		
+	public void BeginAjusteCXYWithDrag()
+	{
+		CurrentSizeCX = SelectedLine.CX;
+		CurrentSizeCY = SelectedLine.CY;
+	}
+	
+	public void AjusteCXYWithDrag()
+	{
+		SelectedLine.CX = (float)Math.Floor(10.0f*(CurrentSizeCX + DeltaMousePos.x/100.0f))/10.0f;
+		SelectedLine.CY = (float)Math.Floor(10.0f*(CurrentSizeCY + DeltaMousePos.x/100.0f))/10.0f;
+		InputCX.GetComponent<InputField>().text = SelectedLine.CX.ToString();
+		InputCY.GetComponent<InputField>().text = SelectedLine.CY.ToString();
+	}
+			
+	public void BeginAjusteCYWithDrag()
+	{
+		CurrentSizeCY = SelectedLine.CY;
+	}
+	
+	public void AjusteCYWithDrag()
+	{
+		
+		
 	}
 }
