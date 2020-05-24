@@ -192,7 +192,7 @@ public class Interface : MonoBehaviour
 	public void AjusteCXYWithDrag()
 	{
 		SelectedLine.CX = (float)Math.Floor(10.0f*(CurrentSizeCX + DeltaMousePos.x/100.0f))/10.0f;
-		SelectedLine.CY = (float)Math.Floor(10.0f*(CurrentSizeCY + DeltaMousePos.x/100.0f))/10.0f;
+		SelectedLine.CY = (float)Math.Floor(10.0f*(CurrentSizeCY + DeltaMousePos.y/100.0f))/10.0f;
 		InputCX.GetComponent<InputField>().text = SelectedLine.CX.ToString();
 		InputCY.GetComponent<InputField>().text = SelectedLine.CY.ToString();
 	}
