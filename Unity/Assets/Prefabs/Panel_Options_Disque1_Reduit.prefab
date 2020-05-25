@@ -91,7 +91,7 @@ GameObject:
   - component: {fileID: 8530143868510222640}
   m_Layer: 5
   m_Name: Panel_Options_Disque1_Reduit
-  m_TagString: PanelOption
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

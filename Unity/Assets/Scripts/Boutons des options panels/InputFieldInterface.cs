@@ -13,6 +13,8 @@ public class InputFieldInterface : MonoBehaviour
 	SpiroFormule SelectedLine;
 	public float FacteurDiv = 100.0f;
 	public string InputID;
+	public bool Clamp;
+	public float Precision;
 	InputField MainInputField;
 	
 	void Start()
@@ -86,6 +88,7 @@ public class InputFieldInterface : MonoBehaviour
 	public void AjusteWithDrag()
 	{
 		ValeurSortie = ValeurInitiale + Interface.GetComponent<Interface>().DeltaMousePos.x/FacteurDiv;
+		if (Clamp) {ValeurSortie=(float)Math.Floor((ValeurSortie/Precision))*Precision;}
 		GetComponent<InputField>().text = ValeurSortie.ToString();
 		SelectedLine.GetType().GetField(InputID).SetValue(SelectedLine,ValeurSortie);
 		Debug.Log(SelectedLine.GetType().GetField(InputID).GetValue(SelectedLine));

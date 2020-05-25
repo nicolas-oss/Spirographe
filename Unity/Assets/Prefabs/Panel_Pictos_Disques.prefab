@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3756558639756494085}
   - component: {fileID: 3756558639756494084}
   m_Layer: 5
-  m_Name: Panel_Pictos_Disque1
+  m_Name: Panel_Pictos_Disques
   m_TagString: PanelOption
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

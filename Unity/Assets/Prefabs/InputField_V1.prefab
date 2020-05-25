@@ -90,9 +90,7 @@ GameObject:
   - component: {fileID: 8181562354503767095}
   - component: {fileID: 8181562354503767092}
   - component: {fileID: 8181562354503767093}
-  - component: {fileID: 8181562354503767094}
   - component: {fileID: 8181562354503767088}
-  - component: {fileID: 8181562354503767089}
   m_Layer: 5
   m_Name: InputField_V1
   m_TagString: Untagged
@@ -211,7 +209,7 @@ MonoBehaviour:
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8181562354503767094}
+      - m_Target: {fileID: 0}
         m_MethodName: AjusteVitesseOnde1
         m_Mode: 5
         m_Arguments:
@@ -243,19 +241,6 @@ MonoBehaviour:
   m_CaretBlinkRate: 0.85
   m_CaretWidth: 1
   m_ReadOnly: 0
---- !u!114 &8181562354503767094
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8181562354503767083}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d002c87ffcbcb243833e48cfe0e44aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Interface: {fileID: 0}
 --- !u!114 &8181562354503767088
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -271,34 +256,6 @@ MonoBehaviour:
   Interface: {fileID: 0}
   FacteurDiv: 10000
   InputID: V1
---- !u!114 &8181562354503767089
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8181562354503767083}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 9
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 8181562354503767088}
-          m_MethodName: SetActiveEvent
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!1 &8181562354791397439
 GameObject:
   m_ObjectHideFlags: 0
