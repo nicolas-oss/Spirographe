@@ -83,10 +83,10 @@ public class Interface : MonoBehaviour
 	
 	public void SetColorActive(GameObject PressedButton)
 	{
-		var MyButton=PressedButton.GetComponent<Button>();
+		/*var MyButton=PressedButton.GetComponent<Button>();
 		var colors = MyButton.colors;
         colors.normalColor = SelectedColor;
-        MyButton.colors = colors;
+        MyButton.colors = colors;*/
 	}
 	
 	public void ShowCurrentOptionPanel()

@@ -134,7 +134,7 @@ public class SpiroFormule : MonoBehaviour
 		//Rotation=Rotation+((VitesseRotation*Time.time)+OffsetRotation)*Convert.ToInt32(AnimRotation);
 		if (AnimRotation) {Rotation=(VitesseRotation*Time.time)+OffsetRotation;}
 		Rotation%=360.0f;
-		Debug.Log("V="+VitesseRotation+" Offset="+OffsetRotation+" bool="+Convert.ToInt32(AnimRotation));
+		//Debug.Log("V="+VitesseRotation+" Offset="+OffsetRotation+" bool="+Convert.ToInt32(AnimRotation));
 		transform.Rotate(0.0f,Rotation,0.0f);
 		
 		CentreRotation.transform.position=Centre.transform.position;
