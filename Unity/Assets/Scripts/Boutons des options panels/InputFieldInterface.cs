@@ -19,6 +19,7 @@ public class InputFieldInterface : MonoBehaviour
 	{
 		SelectedLine = Interface.GetComponent<Interface>().SelectedLine;
 		MainInputField=gameObject.GetComponent<InputField>();
+		MainInputField.onEndEdit.AddListener(delegate {AjusteWithEnter(); });
 		MainInputField.onEndEdit.AddListener(delegate {SetActiveEvent(); });
 	}
 	
@@ -79,7 +80,7 @@ public class InputFieldInterface : MonoBehaviour
 	
 	public void BeginAjusteWithDrag()
 	{
-		ValeurInitiale = ValeurSortie; 
+		ValeurInitiale = (float)SelectedLine.GetType().GetField(InputID).GetValue(SelectedLine); 
 	}
 	
 	public void AjusteWithDrag()
@@ -116,5 +117,11 @@ public class InputFieldInterface : MonoBehaviour
 			case "X1": SelectedLine.facteur1 = (float)Math.Floor(10.0f*(ValeurSortie/100.0f))/10.0f; break;
 			case "X2": SelectedLine.facteur2 = (float)Math.Floor(10.0f*(ValeurSortie/100.0f))/10.0f; break;
 		}*/
+	}
+	
+	public void AjusteWithEnter()
+	{
+		ValeurSortie = float.Parse(GetComponent<InputField>().text);
+		SelectedLine.GetType().GetField(InputID).SetValue(SelectedLine,ValeurSortie);
 	}
 }

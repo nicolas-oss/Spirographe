@@ -9,7 +9,7 @@ public class InputFieldAmplitudeOnde1 : MonoBehaviour
 
     public void AjusteAmplitudeOnde1(string arg)
     {
-		var NouvelleAmplitudeOnde1 = float.Parse(GetComponent<InputField>().text);
-		Interface.GetComponent<Interface>().SelectedLine.A1 = NouvelleAmplitudeOnde1;
+		//var NouvelleValeur = float.Parse(GetComponent<InputField>().text);
+		//Interface.GetComponent<Interface>().SelectedLine.A1 = NouvelleAmplitudeOnde1;
     }
 }
