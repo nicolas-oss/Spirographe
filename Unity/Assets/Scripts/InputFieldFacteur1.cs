@@ -10,6 +10,6 @@ public class InputFieldFacteur1 : MonoBehaviour
     public void AjusteFacteur1(string arg)
     {
 		var NouveauFacteur1 = float.Parse(GetComponent<InputField>().text);
-		Interface.GetComponent<Interface>().SelectedLine.V3 = NouveauFacteur1;
+		Interface.GetComponent<Interface>().SelectedLine.facteur1 = NouveauFacteur1;
     }
 }

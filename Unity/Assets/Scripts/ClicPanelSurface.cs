@@ -12,7 +12,7 @@ public class ClicPanelSurface : MonoBehaviour
 	public void BeginDrag()
 	{
 		MousePosInitiale = Input.mousePosition;
-		Debug.Log("Init POs = "+MousePosInitiale);
+		//Debug.Log("Init POs = "+MousePosInitiale);
 		Interface.GetComponent<Interface>().FirstDragEvent.Invoke();
 	}
 	

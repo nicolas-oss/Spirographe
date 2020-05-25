@@ -9354,7 +9354,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Interface: {fileID: 1666113119}
   FacteurDiv: 100
-  InputID: X1
+  InputID: facteur1
 --- !u!114 &673274582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23645,7 +23645,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Interface: {fileID: 1666113119}
   FacteurDiv: 100
-  InputID: X2
+  InputID: facteur2
 --- !u!114 &1574238350
 MonoBehaviour:
   m_ObjectHideFlags: 0

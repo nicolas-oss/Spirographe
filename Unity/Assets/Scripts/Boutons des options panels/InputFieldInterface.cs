@@ -27,7 +27,7 @@ public class InputFieldInterface : MonoBehaviour
 		SetActiveEvent();
 	}
 	
-	void onMouseDOwn()
+	void onMouseDown()
 	{
 		SetActiveEvent();
 	}
@@ -45,7 +45,9 @@ public class InputFieldInterface : MonoBehaviour
 		Interface.GetComponent<Interface>().FirstDragEvent.RemoveAllListeners();
 		Interface.GetComponent<Interface>().FirstDragEvent.AddListener(BeginAjusteWithDrag);
 		Interface.GetComponent<Interface>().MainDragEvent.AddListener(AjusteWithDrag);
-		switch (InputID)
+		SelectedLine.GetType().GetField(InputID).GetValue(SelectedLine);
+		Debug.Log(SelectedLine.GetType().GetField(InputID).GetValue(SelectedLine));
+		/*switch (InputID)
 		{
 			case "A1": ValeurSortie = SelectedLine.GetComponent<SpiroFormule>().A1; break;
 			case "V1": ValeurSortie = SelectedLine.V1; break;
@@ -72,7 +74,7 @@ public class InputFieldInterface : MonoBehaviour
 			case "CY": ValeurSortie = SelectedLine.CY; break;
 			case "X1": ValeurSortie = SelectedLine.facteur1; break;
 			case "X2": ValeurSortie = SelectedLine.facteur2; break;
-		}
+		}*/
 	}
 	
 	public void BeginAjusteWithDrag()
@@ -84,7 +86,9 @@ public class InputFieldInterface : MonoBehaviour
 	{
 		ValeurSortie = ValeurInitiale + Interface.GetComponent<Interface>().DeltaMousePos.x/FacteurDiv;
 		GetComponent<InputField>().text = ValeurSortie.ToString();
-		switch (InputID)
+		SelectedLine.GetType().GetField(InputID).SetValue(SelectedLine,ValeurSortie);
+		Debug.Log(SelectedLine.GetType().GetField(InputID).GetValue(SelectedLine));
+		/*switch (InputID)
 		{
 			case "A1": SelectedLine.A1 = ValeurSortie; break;
 			case "V1": SelectedLine.V1 = ValeurSortie; break;
@@ -111,6 +115,6 @@ public class InputFieldInterface : MonoBehaviour
 			case "CY": SelectedLine.CY = (float)Math.Floor(10.0f*(ValeurSortie/100.0f))/10.0f; break;
 			case "X1": SelectedLine.facteur1 = (float)Math.Floor(10.0f*(ValeurSortie/100.0f))/10.0f; break;
 			case "X2": SelectedLine.facteur2 = (float)Math.Floor(10.0f*(ValeurSortie/100.0f))/10.0f; break;
-		}
+		}*/
 	}
 }

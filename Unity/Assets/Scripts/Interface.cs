@@ -13,8 +13,8 @@ public class Interface : MonoBehaviour
 	public Color UnselectedColor,SelectedColor;
 	
 	public UnityEvent MainDragEvent,FirstDragEvent;
-	public GameObject ButtonEchelle,ButtonRotation,ButtonDisque1,ButtonDisque2,ButtonDisque3,ButtonCrayon,ButtonDuplication;
-	public GameObject PanelOptionButtonEchelle,PanelOptionButtonRotation,PanelOptionButtonDisque1,PanelOptionButtonDisque2,PanelOptionButtonDisque3,PanelOptionButtonCrayonX,PanelOptionButtonCrayonY,PanelOptionButtonDuplication;
+	public GameObject ButtonEchelle,ButtonRotation,ButtonDisque1,ButtonTousDisques,ButtonDisque2,ButtonDisque3,ButtonCrayon,ButtonDuplication;
+	public GameObject PanelOptionButtonEchelle,PanelOptionButtonRotation,PanelOptionButtonTousDisques,PanelOptionButtonDisque1,PanelOptionButtonDisque2,PanelOptionButtonDisque3,PanelOptionButtonCrayonX,PanelOptionButtonCrayonY,PanelOptionButtonDuplication;
 	public GameObject Surface;
 	public GameObject InputEchelle,InputRotation,InputR1,InputR2,InputR3,InputCX,InputCY;
 	public Vector3 DeltaMousePos;
@@ -83,16 +83,17 @@ public class Interface : MonoBehaviour
 	
 	public void SetColorActive(GameObject PressedButton)
 	{
-		/*var MyButton=PressedButton.GetComponent<Button>();
+		var MyButton=PressedButton.GetComponent<Button>();
 		var colors = MyButton.colors;
         colors.normalColor = SelectedColor;
-        MyButton.colors = colors;*/
+        MyButton.colors = colors;
 	}
 	
 	public void ShowCurrentOptionPanel()
 	{
 		if (ActiveButton==ButtonEchelle) {PanelOptionButtonEchelle.active=true;}
 		if (ActiveButton==ButtonRotation) {PanelOptionButtonRotation.active=true;}
+		if (ActiveButton==ButtonTousDisques) {PanelOptionButtonTousDisques.active=true;}
 		if (ActiveButton==ButtonDisque1) {PanelOptionButtonDisque1.active=true;}
 		if (ActiveButton==ButtonDisque2) {PanelOptionButtonDisque2.active=true;}
 		if (ActiveButton==ButtonDisque3) {PanelOptionButtonDisque3.active=true;}
