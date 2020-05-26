@@ -6091,7 +6091,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 25650d5fb87503f4a894abc0c0b07e04, type: 2}
+  - {fileID: 2100000, guid: 95c7caeb637e69743af3476c140a32a8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -10386,14 +10386,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da47feefd0ea723478ebb9a06fff563c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FileName: 
   Interface: {fileID: 1666113119}
-  facteurZoom: 15
   OffsetX: 320
   OffsetY: 250
+  LargeurSVG: 400
   SelectedLine: {fileID: 0}
   HeaderFileName: Header.svg
   FooterFileName: Footer.svg
+  Xmin: 0
+  Xmax: 0
+  Ymin: 0
+  Ymax: 0
+  XCurr: 0
+  YCurr: 0
 --- !u!1 &1398369372
 GameObject:
   m_ObjectHideFlags: 0
