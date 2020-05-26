@@ -29,10 +29,9 @@ public class InputFieldInterface : MonoBehaviour
 		MainInputField=gameObject.GetComponent<InputField>();
 		MainInputField.onEndEdit.AddListener(delegate {AjusteWithEnter(); });
 		MainInputField.onEndEdit.AddListener(delegate {SetActiveEvent(); });
-		Debug.Log("Start");
 	}
 	
-	void onPointerClick()
+	/*void onPointerClick()
 	{
 		SetActiveEvent();
 	}
@@ -46,7 +45,7 @@ public class InputFieldInterface : MonoBehaviour
 	{
 		//Interface.GetComponent<Interface>().SelectButton(gameObject);
 		SetActiveEvent();
-	}
+	}*/
 
 	public void SetActiveEvent()
 	{
