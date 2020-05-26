@@ -17,12 +17,19 @@ public class InputFieldInterface : MonoBehaviour
 	public float Precision;
 	InputField MainInputField;
 	
+	public void InitFromTextBouton()
+	{
+		Start();
+		SetActiveEvent();
+	}
+	
 	void Start()
 	{
 		SelectedLine = Interface.GetComponent<Interface>().SelectedLine;
 		MainInputField=gameObject.GetComponent<InputField>();
 		MainInputField.onEndEdit.AddListener(delegate {AjusteWithEnter(); });
 		MainInputField.onEndEdit.AddListener(delegate {SetActiveEvent(); });
+		Debug.Log("Start");
 	}
 	
 	void onPointerClick()
@@ -49,7 +56,7 @@ public class InputFieldInterface : MonoBehaviour
 		Interface.GetComponent<Interface>().FirstDragEvent.AddListener(BeginAjusteWithDrag);
 		Interface.GetComponent<Interface>().MainDragEvent.AddListener(AjusteWithDrag);
 		SelectedLine.GetType().GetField(InputID).GetValue(SelectedLine);
-		Debug.Log(SelectedLine.GetType().GetField(InputID).GetValue(SelectedLine));
+		//Debug.Log(SelectedLine.GetType().GetField(InputID).GetValue(SelectedLine));
 		/*switch (InputID)
 		{
 			case "A1": ValeurSortie = SelectedLine.GetComponent<SpiroFormule>().A1; break;

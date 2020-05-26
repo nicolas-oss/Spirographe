@@ -19,10 +19,18 @@ public class ToggleInterface : MonoBehaviour
         m_Toggle.onValueChanged.AddListener(delegate {ToggleValueChanged();});
 	}
 
-    public void ToggleValueChanged()
+    public void ClicFormTextBouton()
+	{
+		bool Check = GetComponent<Toggle>().isOn;	
+		Check=!Check;
+		GetComponent<Toggle>().isOn=Check;
+		ToggleValueChanged();
+		Debug.Log(Check);
+	}
+	
+	public void ToggleValueChanged()
     {
 		bool Check = GetComponent<Toggle>().isOn;
-		Interface.GetComponent<Interface>().SelectedLine.Animate = Check;
 		SelectedLine.GetType().GetField(InputID).SetValue(SelectedLine,Check);
     }
 }
