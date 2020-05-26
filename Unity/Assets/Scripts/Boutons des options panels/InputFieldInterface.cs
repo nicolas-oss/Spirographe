@@ -91,7 +91,7 @@ public class InputFieldInterface : MonoBehaviour
 		if (Clamp) {ValeurSortie=(float)Math.Floor((ValeurSortie/Precision))*Precision;}
 		GetComponent<InputField>().text = ValeurSortie.ToString();
 		SelectedLine.GetType().GetField(InputID).SetValue(SelectedLine,ValeurSortie);
-		Debug.Log(SelectedLine.GetType().GetField(InputID).GetValue(SelectedLine));
+		//Debug.Log(SelectedLine.GetType().GetField(InputID).GetValue(SelectedLine));
 		/*switch (InputID)
 		{
 			case "A1": SelectedLine.A1 = ValeurSortie; break;

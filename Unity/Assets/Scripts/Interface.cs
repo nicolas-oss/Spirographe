@@ -14,7 +14,7 @@ public class Interface : MonoBehaviour
 	
 	public UnityEvent MainDragEvent,FirstDragEvent;
 	public GameObject ButtonEchelle,ButtonRotation,ButtonDisque1,ButtonTousDisques,ButtonDisque2,ButtonDisque3,ButtonCrayon,ButtonDuplication;
-	public GameObject PanelOptionButtonEchelle,PanelOptionButtonRotation,PanelOptionButtonTousDisques,PanelOptionButtonDisque1,PanelOptionButtonDisque2,PanelOptionButtonDisque3,PanelOptionButtonCrayonX,PanelOptionButtonCrayonY,PanelOptionButtonDuplication;
+	public GameObject PanelOptionButtonEchelle,PanelOptionButtonRotation,PanelOptionButtonTousDisques,PanelOptionButtonDisque1,PanelOptionButtonDisque2,PanelOptionButtonDisque3,PanelOptionButtonCrayon,PanelOptionNombreDeTours,PanelOptionButtonDuplication;
 	public GameObject Surface;
 	public GameObject InputEchelle,InputRotation,InputR1,InputR2,InputR3,InputCX,InputCY;
 	public Vector3 DeltaMousePos;
@@ -97,8 +97,8 @@ public class Interface : MonoBehaviour
 		if (ActiveButton==ButtonDisque1) {PanelOptionButtonDisque1.active=true;}
 		if (ActiveButton==ButtonDisque2) {PanelOptionButtonDisque2.active=true;}
 		if (ActiveButton==ButtonDisque3) {PanelOptionButtonDisque3.active=true;}
-		if (ActiveButton==ButtonCrayon) {PanelOptionButtonCrayonX.active=true; PanelOptionButtonCrayonY.active=true;}
-		if (ActiveButton==ButtonDuplication) {PanelOptionButtonDuplication.active=true;}
+		if (ActiveButton==ButtonCrayon) {PanelOptionButtonCrayon.active=true;}
+		if (ActiveButton==ButtonDuplication) {PanelOptionButtonDuplication.active=true; PanelOptionNombreDeTours.active=true;}
 	}
 	
 	public void SetActiveEvent()

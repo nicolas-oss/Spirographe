@@ -34,7 +34,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 284, y: -8.4035}
+  m_AnchoredPosition: {x: 306, y: -8.4035}
   m_SizeDelta: {x: 170.75244, y: 17.626492}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &8530143867814846460
@@ -103,7 +103,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8530143868510222642}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -136,7 +136,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8530143868510222642}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -290,6 +290,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8530143868510222643}
     m_Modifications:
+    - target: {fileID: 6565922630519725344, guid: 5b7f46b680c920848b14263c9e967ea3,
+        type: 3}
+      propertyPath: Clamp
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6565922630519725344, guid: 5b7f46b680c920848b14263c9e967ea3,
+        type: 3}
+      propertyPath: Precision
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 6565922630519725370, guid: 5b7f46b680c920848b14263c9e967ea3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -525,6 +535,16 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 5246116705337649982, guid: 76091d56870434f43984bc54c1cc132f,
+        type: 3}
+      propertyPath: Clamp
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5246116705337649982, guid: 76091d56870434f43984bc54c1cc132f,
+        type: 3}
+      propertyPath: Precision
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 76091d56870434f43984bc54c1cc132f, type: 3}
 --- !u!224 &8530143866999070922 stripped
@@ -649,6 +669,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1343559087563456507, guid: 93fee1ade69454b4eb24ff3a12ed292d,
+        type: 3}
+      propertyPath: Precision
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93fee1ade69454b4eb24ff3a12ed292d, type: 3}

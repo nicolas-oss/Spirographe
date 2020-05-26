@@ -9,7 +9,7 @@ public class SpiroFormule : MonoBehaviour
 	public GameObject Centre;
 	public float R1,R2,R3,CX,CY,facteur1,facteur2;
 	public bool RotationAxeB;
-	public int NombrePoints;
+	public float NombrePoints;
 	
 	//Parametres animation ondes cercles + crayon
 	public float A1,A2,A3,AX,AY,V1,V2,V3,VX,VY,P1,P2,P3,PX,PY;
@@ -17,7 +17,7 @@ public class SpiroFormule : MonoBehaviour
 	
 	//Nombre de tours
 	public float delta;
-	public int NombreDeTour,NombreDeTourMaximum;
+	public float NombreDeTour,NombreDeTourMaximum;
 	public bool Automatique;
 	public int IndexFormule;
 	
@@ -114,8 +114,8 @@ public class SpiroFormule : MonoBehaviour
 	{
 		if (R1==0 || R2==0 || R3==0) {return;}
 		float ratio;
-		int k,l,NbTour;
-		int NbTourMax=100;
+		int k,l,NbPtsReel;
+		float NbTour;
 		LineRenderer lineRenderer = GetComponent<LineRenderer>();
 		//Debug.Log(lineRenderer);
 		lineRenderer.widthMultiplier = widthOfLineRenderer;
@@ -152,21 +152,26 @@ public class SpiroFormule : MonoBehaviour
 		AxeC.transform.localEulerAngles=RotationNulle;
 		AxeC.transform.Translate((Echelle+Convert.ToInt32(OndeR3)*Onde(A3,V3,P3))*((CX+Convert.ToInt32(OndeCX)*Onde(AX,VX,PX))*Vector3.left+(CY+Convert.ToInt32(OndeCY)*Onde(AY,VY,PY))*Vector3.forward),Space.Self);
 	
-		lineRenderer.positionCount = NombrePoints;
+		lineRenderer.positionCount = (int)NombrePoints+1;
 		
-		NbTour=1;
-		for (l=1;l<NbTourMax;l++)
+		if (!(Automatique)) {NbTour=NombreDeTour;}
+		else
 		{
-			NbTour=l;
-			ratio=(R1/(R2));
-			if (((l*ratio-Mathf.Floor(l*ratio)) < delta) || ((NbTour==NombreDeTour) && !(Automatique)))
+			NbTour=1;
+			ratio=(R1/(R2))*facteur1;
+			for (l=1;l<NombreDeTourMaximum;l++)
 			{
-				break;
+				NbTour=l;	
+				if (((l*ratio-Mathf.Floor(l*ratio)) < delta) || (NbTour==NombreDeTourMaximum))
+				{
+					break;
+				}
 			}
 		}
-
-		for (k=0;k<NombrePoints;k++)
+	
+		for (k=0;k<NombrePoints+1;k++)
 			{
+				lineRenderer.SetPosition(k,AxeC.transform.position);
 				CentreRotation.transform.Rotate(0.0f,(360.0f/(NombrePoints/NbTour)),0.0f,Space.Self);
 				AxeA.transform.Rotate(0.0f,(-360.0f/(NombrePoints/NbTour)*(R1/R2))*facteur1,0.0f, Space.Self);
 				if (RotationAxeB) {AxeB.transform.Rotate(0.0f,(-360.0f/(NombrePoints/NbTour)*(R2/R3))*facteur2,0.0f, Space.Self);}
