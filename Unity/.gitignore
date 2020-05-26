@@ -5,3 +5,7 @@ screenshots
 screenshots/*.*
 Spiro
 Spiro/*.*
+SVG
+SVG/*.*
+sources/
+sources/*.*
