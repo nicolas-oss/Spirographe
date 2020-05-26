@@ -115,16 +115,6 @@ public class Interface : MonoBehaviour
 	
 	////////////////////////////////////////////////////////////////////////////  Events  ////////////////////////////////
 	
-	public void EventR1()
-	{
-		Debug.Log("EventR1");
-	}
-	
-	public void EventR2()
-	{
-		Debug.Log("EventR2");
-	}
-	
 	public void CliqueSurfaceDeTravail()
 	{
 		Debug.Log(DeltaMousePos);
