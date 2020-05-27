@@ -24,17 +24,6 @@ public class Interface : MonoBehaviour
 	
     void Start()
     {
-		/*//Création évenement principal et ajout listener
-		if (MainDragEvent == null) 
-		{
-			MainDragEvent = new UnityEvent();
-		}
-		if (FirstDragEvent == null) 
-		{
-			FirstDragEvent = new UnityEvent();
-		}
-		FirstDragEvent.AddListener(CliqueSurfaceDeTravail);
-		MainDragEvent.AddListener(CliqueSurfaceDeTravail);*/
     }
 
     void Update()
