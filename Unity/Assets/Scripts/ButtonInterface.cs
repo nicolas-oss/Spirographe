@@ -17,15 +17,14 @@ public class ButtonInterface : MonoBehaviour
 	
 	void TaskOnClick()
 	{
-		SelectButton(gameObject);
+		SelectButton();
 	}
 	
-	public void SelectButton(GameObject PressedButton)
+	public void SelectButton()
 	{
 		DeselectAllButton();
 		HideAllOptionPanels();
 		SetColorActive();
-		//ActiveButton = PressedButton;
 		ShowCurrentOptionPanel();
 		SetActiveEvent();
 	}
