@@ -242,11 +242,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 015d49861a07ddf4faa81e0b625ce1c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Interface: {fileID: 0}
   FacteurDiv: 100
   InputID: CX
   Clamp: 1
   Precision: 0.1
+  CurrentMousePos: {x: 0, y: 0, z: 0}
+  MousePosInitiale: {x: 0, y: 0, z: 0}
+  DeltaMousePos: {x: 0, y: 0, z: 0}
 --- !u!1 &6460617597276813405
 GameObject:
   m_ObjectHideFlags: 0
@@ -257,7 +259,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6460617597276813402}
   - component: {fileID: 6460617597276813403}
-  - component: {fileID: 6460617597276813400}
+  - component: {fileID: 8294942363832033384}
   m_Layer: 0
   m_Name: ToggleAnimation_CrayonX
   m_TagString: Untagged
@@ -282,8 +284,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 101.45674, y: 14.074951}
-  m_SizeDelta: {x: 92.16939, y: 20}
+  m_AnchoredPosition: {x: 66.562, y: 14.074951}
+  m_SizeDelta: {x: 22.380737, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &6460617597276813403
 MonoBehaviour:
@@ -330,20 +332,9 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6460617597276813400}
-        m_MethodName: ToggleCX
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_IsOn: 0
---- !u!114 &6460617597276813400
+--- !u!114 &8294942363832033384
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -352,10 +343,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6460617597276813405}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5869c3357c5aef24d8e2b5f3cfb6085a, type: 3}
+  m_Script: {fileID: 11500000, guid: 167547d6a6a08194db19a3813829e1cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Interface: {fileID: 0}
+  InputID: OndeCX
 --- !u!1 &6460617597427875865
 GameObject:
   m_ObjectHideFlags: 0
@@ -754,11 +745,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 015d49861a07ddf4faa81e0b625ce1c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Interface: {fileID: 0}
   FacteurDiv: 5
   InputID: PX
   Clamp: 1
   Precision: 1
+  CurrentMousePos: {x: 0, y: 0, z: 0}
+  MousePosInitiale: {x: 0, y: 0, z: 0}
+  DeltaMousePos: {x: 0, y: 0, z: 0}
 --- !u!1 &6460617597561817901
 GameObject:
   m_ObjectHideFlags: 0
@@ -1311,11 +1304,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 015d49861a07ddf4faa81e0b625ce1c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Interface: {fileID: 0}
   FacteurDiv: 10000
   InputID: VX
   Clamp: 0
   Precision: 0
+  CurrentMousePos: {x: 0, y: 0, z: 0}
+  MousePosInitiale: {x: 0, y: 0, z: 0}
+  DeltaMousePos: {x: 0, y: 0, z: 0}
 --- !u!1 &6460617598264408843
 GameObject:
   m_ObjectHideFlags: 0
@@ -1711,8 +1706,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 015d49861a07ddf4faa81e0b625ce1c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Interface: {fileID: 0}
   FacteurDiv: 100
   InputID: AX
   Clamp: 0
   Precision: 0.1
+  CurrentMousePos: {x: 0, y: 0, z: 0}
+  MousePosInitiale: {x: 0, y: 0, z: 0}
+  DeltaMousePos: {x: 0, y: 0, z: 0}

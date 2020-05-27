@@ -620,11 +620,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 015d49861a07ddf4faa81e0b625ce1c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Interface: {fileID: 0}
   FacteurDiv: 100
   InputID: facteur1
   Clamp: 1
   Precision: 0.1
+  CurrentMousePos: {x: 0, y: 0, z: 0}
+  MousePosInitiale: {x: 0, y: 0, z: 0}
+  DeltaMousePos: {x: 0, y: 0, z: 0}
 --- !u!1 &5318503080856559565
 GameObject:
   m_ObjectHideFlags: 0
@@ -1100,11 +1102,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 015d49861a07ddf4faa81e0b625ce1c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Interface: {fileID: 0}
   FacteurDiv: 5
   InputID: P2
   Clamp: 1
   Precision: 1
+  CurrentMousePos: {x: 0, y: 0, z: 0}
+  MousePosInitiale: {x: 0, y: 0, z: 0}
+  DeltaMousePos: {x: 0, y: 0, z: 0}
 --- !u!1 &5318503081562944355
 GameObject:
   m_ObjectHideFlags: 0
@@ -1350,11 +1354,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 015d49861a07ddf4faa81e0b625ce1c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Interface: {fileID: 0}
   FacteurDiv: 100
   InputID: R2
   Clamp: 1
   Precision: 0.1
+  CurrentMousePos: {x: 0, y: 0, z: 0}
+  MousePosInitiale: {x: 0, y: 0, z: 0}
+  DeltaMousePos: {x: 0, y: 0, z: 0}
 --- !u!1 &5318503081887154904
 GameObject:
   m_ObjectHideFlags: 0
@@ -1521,7 +1527,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5318503082097373086}
   - component: {fileID: 5318503082097373085}
-  - component: {fileID: 5318503082097373084}
+  - component: {fileID: 1755397991412747683}
   m_Layer: 0
   m_Name: ToggleAnimation_Rayon2
   m_TagString: Untagged
@@ -1547,8 +1553,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -39.71599, y: 0.65911865}
-  m_SizeDelta: {x: 92.16939, y: 20}
+  m_AnchoredPosition: {x: -74.61, y: 0.65911865}
+  m_SizeDelta: {x: 22.380737, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &5318503082097373085
 MonoBehaviour:
@@ -1596,7 +1602,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5318503082097373084}
+      - m_Target: {fileID: 0}
         m_MethodName: ToggleAR2
         m_Mode: 1
         m_Arguments:
@@ -1608,7 +1614,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   m_IsOn: 0
---- !u!114 &5318503082097373084
+--- !u!114 &1755397991412747683
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1617,10 +1623,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5318503082097373087}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 022cd8d6aec4ff440bb3f916c504949d, type: 3}
+  m_Script: {fileID: 11500000, guid: 167547d6a6a08194db19a3813829e1cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Interface: {fileID: 0}
+  InputID: OndeR2
 --- !u!1 &5318503082306677979
 GameObject:
   m_ObjectHideFlags: 0
@@ -1866,11 +1872,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 015d49861a07ddf4faa81e0b625ce1c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Interface: {fileID: 0}
   FacteurDiv: 10000
   InputID: V2
   Clamp: 0
   Precision: 0
+  CurrentMousePos: {x: 0, y: 0, z: 0}
+  MousePosInitiale: {x: 0, y: 0, z: 0}
+  DeltaMousePos: {x: 0, y: 0, z: 0}
 --- !u!1 &5318503082467677601
 GameObject:
   m_ObjectHideFlags: 0
@@ -2038,8 +2046,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 015d49861a07ddf4faa81e0b625ce1c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Interface: {fileID: 0}
   FacteurDiv: 100
   InputID: A2
   Clamp: 0
   Precision: 0.1
+  CurrentMousePos: {x: 0, y: 0, z: 0}
+  MousePosInitiale: {x: 0, y: 0, z: 0}
+  DeltaMousePos: {x: 0, y: 0, z: 0}

@@ -78,6 +78,19 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Disque 1
+--- !u!114 &6833958750002709811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8530143868413918432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 167547d6a6a08194db19a3813829e1cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InputID: OndeR1
 --- !u!1 &8530143868510222642
 GameObject:
   m_ObjectHideFlags: 0
@@ -800,8 +813,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: ToggleAnimationR1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 131717826273000293, guid: 54b343889a159334ca28e77154a3291c,
+        type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 131717826273000292, guid: 54b343889a159334ca28e77154a3291c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 54b343889a159334ca28e77154a3291c, type: 3}
+--- !u!1 &8530143868413918432 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 131717826273000291, guid: 54b343889a159334ca28e77154a3291c,
+    type: 3}
+  m_PrefabInstance: {fileID: 8625198185068824451}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &8530143868413918433 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 131717826273000290, guid: 54b343889a159334ca28e77154a3291c,

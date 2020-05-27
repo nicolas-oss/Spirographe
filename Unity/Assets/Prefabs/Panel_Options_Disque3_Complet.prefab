@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 2044958532147565864}
   - component: {fileID: 2044958532147565866}
   - component: {fileID: 2044958532147565867}
+  - component: {fileID: 2044958531000603928}
+  - component: {fileID: 2044958531000603929}
   m_Layer: 5
   m_Name: Panel_Options_Disque3_Complet
   m_TagString: PanelOption
@@ -25,7 +27,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2044958532147565865}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -78,6 +80,35 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2044958531000603928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2044958532147565865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
+--- !u!114 &2044958531000603929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2044958532147565865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8380f4e9525b32845831d48cd0a0a33b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CurrentMousePos: {x: 0, y: 0, z: 0}
+  MousePosInitiale: {x: 0, y: 0, z: 0}
+  DeltaMousePos: {x: 0, y: 0, z: 0}
+  InitialePos: {x: 0, y: 0, z: 0}
 --- !u!1 &2044958532721471573
 GameObject:
   m_ObjectHideFlags: 0
@@ -156,6 +187,19 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Disque 3
+--- !u!114 &1031096998587719350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3842760156268173950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 167547d6a6a08194db19a3813829e1cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InputID: RotationAxeB
 --- !u!1 &5028657252879035715
 GameObject:
   m_ObjectHideFlags: 0
@@ -241,6 +285,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2044958532147565864}
     m_Modifications:
+    - target: {fileID: 2044958531887600828, guid: 090347678f83f584a95a118f693193a6,
+        type: 3}
+      propertyPath: Precision
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2044958531905512142, guid: 090347678f83f584a95a118f693193a6,
+        type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2044958532147565864, guid: 090347678f83f584a95a118f693193a6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -356,11 +410,18 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2044958531905512241, guid: 090347678f83f584a95a118f693193a6, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 090347678f83f584a95a118f693193a6, type: 3}
 --- !u!224 &3842760157566938522 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2044958532147565864, guid: 090347678f83f584a95a118f693193a6,
+    type: 3}
+  m_PrefabInstance: {fileID: 2969311362238544050}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3842760156268173950 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2044958531905512140, guid: 090347678f83f584a95a118f693193a6,
     type: 3}
   m_PrefabInstance: {fileID: 2969311362238544050}
   m_PrefabAsset: {fileID: 0}
@@ -444,7 +505,7 @@ PrefabInstance:
     - target: {fileID: 3756558639756494107, guid: c227ab568a60e6e4690ad0da8b9c1229,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 281.952
+      value: 303.24515
       objectReference: {fileID: 0}
     - target: {fileID: 3756558639756494107, guid: c227ab568a60e6e4690ad0da8b9c1229,
         type: 3}

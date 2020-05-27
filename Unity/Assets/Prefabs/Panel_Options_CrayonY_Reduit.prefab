@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8797670505759023766}
   - component: {fileID: 8797670505759023765}
-  - component: {fileID: 8797670505759023764}
+  - component: {fileID: 8394354873781637377}
   m_Layer: 0
   m_Name: ToggleAnimation_CrayonY
   m_TagString: Untagged
@@ -35,8 +35,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 101.35515, y: 14.074951}
-  m_SizeDelta: {x: 92.16939, y: 20}
+  m_AnchoredPosition: {x: 66.461, y: 14.074951}
+  m_SizeDelta: {x: 22.380737, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &8797670505759023765
 MonoBehaviour:
@@ -83,20 +83,9 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8797670505759023764}
-        m_MethodName: ToggleCY
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_IsOn: 0
---- !u!114 &8797670505759023764
+--- !u!114 &8394354873781637377
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -105,10 +94,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 8797670505759023767}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3fdc9d45eaf0af44a2d62df3bc23262, type: 3}
+  m_Script: {fileID: 11500000, guid: 167547d6a6a08194db19a3813829e1cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Interface: {fileID: 0}
+  InputID: OndeCY
 --- !u!1 &8797670505818343332
 GameObject:
   m_ObjectHideFlags: 0
@@ -121,7 +110,7 @@ GameObject:
   - component: {fileID: 8797670505818343385}
   - component: {fileID: 8797670505818343386}
   m_Layer: 5
-  m_Name: TextOptionCrayonX
+  m_Name: TextOptionCrayonY
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -199,10 +188,7 @@ GameObject:
   - component: {fileID: 8797670505874198530}
   - component: {fileID: 8797670505874198531}
   - component: {fileID: 8797670505874198540}
-  - component: {fileID: 8797670505874198529}
-  - component: {fileID: 8797670505874198534}
   - component: {fileID: 8797670505874198535}
-  - component: {fileID: 8797670505874198528}
   m_Layer: 5
   m_Name: InputField_CrayonY
   m_TagString: Untagged
@@ -321,7 +307,7 @@ MonoBehaviour:
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8797670505874198529}
+      - m_Target: {fileID: 0}
         m_MethodName: AjusteCY
         m_Mode: 0
         m_Arguments:
@@ -342,32 +328,6 @@ MonoBehaviour:
   m_CaretBlinkRate: 0.85
   m_CaretWidth: 1
   m_ReadOnly: 0
---- !u!114 &8797670505874198529
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8797670505874198542}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09c023cd4577b40419d8122c36b9fde7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Interface: {fileID: 0}
---- !u!114 &8797670505874198534
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8797670505874198542}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates: []
 --- !u!114 &8797670505874198535
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -380,24 +340,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 015d49861a07ddf4faa81e0b625ce1c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Interface: {fileID: 0}
   FacteurDiv: 100
   InputID: CY
   Clamp: 1
   Precision: 0.1
---- !u!114 &8797670505874198528
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8797670505874198542}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates: []
+  CurrentMousePos: {x: 0, y: 0, z: 0}
+  MousePosInitiale: {x: 0, y: 0, z: 0}
+  DeltaMousePos: {x: 0, y: 0, z: 0}
 --- !u!1 &8797670505959542267
 GameObject:
   m_ObjectHideFlags: 0
@@ -410,10 +359,7 @@ GameObject:
   - component: {fileID: 8797670505959542271}
   - component: {fileID: 8797670505959542264}
   - component: {fileID: 8797670505959542265}
-  - component: {fileID: 8797670505959542270}
-  - component: {fileID: 8797670505959542259}
   - component: {fileID: 8797670505959542268}
-  - component: {fileID: 8797670505959542269}
   m_Layer: 5
   m_Name: InputField_VY
   m_TagString: Untagged
@@ -532,7 +478,7 @@ MonoBehaviour:
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8797670505959542270}
+      - m_Target: {fileID: 0}
         m_MethodName: AjusteVitesseOndeCY
         m_Mode: 5
         m_Arguments:
@@ -553,32 +499,6 @@ MonoBehaviour:
   m_CaretBlinkRate: 0.85
   m_CaretWidth: 1
   m_ReadOnly: 0
---- !u!114 &8797670505959542270
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8797670505959542267}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0454ca04ebf18194ba03b914d61276a1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Interface: {fileID: 0}
---- !u!114 &8797670505959542259
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8797670505959542267}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates: []
 --- !u!114 &8797670505959542268
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -591,24 +511,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 015d49861a07ddf4faa81e0b625ce1c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Interface: {fileID: 0}
   FacteurDiv: 10000
   InputID: VY
   Clamp: 0
   Precision: 0
---- !u!114 &8797670505959542269
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8797670505959542267}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates: []
+  CurrentMousePos: {x: 0, y: 0, z: 0}
+  MousePosInitiale: {x: 0, y: 0, z: 0}
+  DeltaMousePos: {x: 0, y: 0, z: 0}
 --- !u!1 &8797670505966053613
 GameObject:
   m_ObjectHideFlags: 0
@@ -777,10 +686,7 @@ GameObject:
   - component: {fileID: 8797670506441878134}
   - component: {fileID: 8797670506441878135}
   - component: {fileID: 8797670506441878128}
-  - component: {fileID: 8797670506441878133}
-  - component: {fileID: 8797670506441878122}
   - component: {fileID: 8797670506441878123}
-  - component: {fileID: 8797670506441878132}
   m_Layer: 5
   m_Name: InputField_PY
   m_TagString: Untagged
@@ -899,7 +805,7 @@ MonoBehaviour:
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8797670506441878133}
+      - m_Target: {fileID: 0}
         m_MethodName: AjustePhaseOndeCY
         m_Mode: 5
         m_Arguments:
@@ -920,32 +826,6 @@ MonoBehaviour:
   m_CaretBlinkRate: 0.85
   m_CaretWidth: 1
   m_ReadOnly: 0
---- !u!114 &8797670506441878133
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8797670506441878130}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3456e34110b6624da0b5777a78e1a12, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Interface: {fileID: 0}
---- !u!114 &8797670506441878122
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8797670506441878130}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates: []
 --- !u!114 &8797670506441878123
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -958,24 +838,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 015d49861a07ddf4faa81e0b625ce1c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Interface: {fileID: 0}
   FacteurDiv: 5
   InputID: PY
   Clamp: 1
   Precision: 1
---- !u!114 &8797670506441878132
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8797670506441878130}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates: []
+  CurrentMousePos: {x: 0, y: 0, z: 0}
+  MousePosInitiale: {x: 0, y: 0, z: 0}
+  DeltaMousePos: {x: 0, y: 0, z: 0}
 --- !u!1 &8797670506541368232
 GameObject:
   m_ObjectHideFlags: 0
@@ -1607,10 +1476,7 @@ GameObject:
   - component: {fileID: 8797670507641443432}
   - component: {fileID: 8797670507641443433}
   - component: {fileID: 8797670507641443434}
-  - component: {fileID: 8797670507641443439}
-  - component: {fileID: 8797670507641443436}
   - component: {fileID: 8797670507641443437}
-  - component: {fileID: 8797670507641443438}
   m_Layer: 5
   m_Name: InputField_AY
   m_TagString: Untagged
@@ -1729,7 +1595,7 @@ MonoBehaviour:
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8797670507641443439}
+      - m_Target: {fileID: 0}
         m_MethodName: AjusteAmplitudeOndeCY
         m_Mode: 5
         m_Arguments:
@@ -1750,32 +1616,6 @@ MonoBehaviour:
   m_CaretBlinkRate: 0.85
   m_CaretWidth: 1
   m_ReadOnly: 0
---- !u!114 &8797670507641443439
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8797670507641443444}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3effc12ad1d913c429e16e1e8ef1de18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Interface: {fileID: 0}
---- !u!114 &8797670507641443436
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8797670507641443444}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates: []
 --- !u!114 &8797670507641443437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1788,24 +1628,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 015d49861a07ddf4faa81e0b625ce1c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Interface: {fileID: 0}
   FacteurDiv: 100
   InputID: AY
   Clamp: 0
   Precision: 0.1
---- !u!114 &8797670507641443438
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8797670507641443444}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates: []
+  CurrentMousePos: {x: 0, y: 0, z: 0}
+  MousePosInitiale: {x: 0, y: 0, z: 0}
+  DeltaMousePos: {x: 0, y: 0, z: 0}
 --- !u!1 &8797670507748291336
 GameObject:
   m_ObjectHideFlags: 0

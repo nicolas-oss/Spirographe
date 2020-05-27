@@ -5,21 +5,25 @@ using UnityEngine.UI;
 
 public class ToggleInterface : MonoBehaviour
 {
-    public GameObject Interface;
+    GameObject ActiveObjectInScene;
 	SpiroFormule SelectedLine;
 	Toggle m_Toggle;
 	public string InputID;
 	
 	void Start()
 	{
-		SelectedLine = Interface.GetComponent<Interface>().SelectedLine;
-		//Fetch the Toggle GameObject
+		GetActiveLine();
         m_Toggle = GetComponent<Toggle>();
-        //Add listener for when the state of the Toggle changes, to take action
         m_Toggle.onValueChanged.AddListener(delegate {ToggleValueChanged();});
 	}
 
-    public void ClicFormTextBouton()
+    public void GetActiveLine()
+	{
+		ActiveObjectInScene = GameObject.FindWithTag("Selected");
+		SelectedLine = ActiveObjectInScene.GetComponent<SpiroFormule>();
+	}
+	
+	public void ClicFormTextBouton()
 	{
 		bool Check = GetComponent<Toggle>().isOn;	
 		Check=!Check;
@@ -30,6 +34,7 @@ public class ToggleInterface : MonoBehaviour
 	
 	public void ToggleValueChanged()
     {
+		GetActiveLine();
 		bool Check = GetComponent<Toggle>().isOn;
 		SelectedLine.GetType().GetField(InputID).SetValue(SelectedLine,Check);
     }
