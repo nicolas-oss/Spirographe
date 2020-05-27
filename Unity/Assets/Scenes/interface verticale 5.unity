@@ -439,6 +439,7 @@ GameObject:
   - component: {fileID: 201876474}
   - component: {fileID: 201876475}
   - component: {fileID: 201876476}
+  - component: {fileID: 201876477}
   m_Layer: 0
   m_Name: ToggleAnimationRotation
   m_TagString: Untagged
@@ -537,6 +538,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Interface: {fileID: 1666113119}
+--- !u!114 &201876477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 201876473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 167547d6a6a08194db19a3813829e1cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Interface: {fileID: 0}
+  InputID: 
 --- !u!1 &221150107
 GameObject:
   m_ObjectHideFlags: 0
@@ -2199,12 +2214,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 401617885}
   m_CullTransparentMesh: 0
---- !u!1 &405602606 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6460617597228022864, guid: 7cd88372b70d35a4682793f562485828,
-    type: 3}
-  m_PrefabInstance: {fileID: 6460617597091380606}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &407668657
 GameObject:
   m_ObjectHideFlags: 0
@@ -7023,10 +7032,7 @@ GameObject:
   - component: {fileID: 1121001738}
   - component: {fileID: 1121001737}
   - component: {fileID: 1121001736}
-  - component: {fileID: 1121001739}
-  - component: {fileID: 1121001742}
   - component: {fileID: 1121001741}
-  - component: {fileID: 1121001740}
   m_Layer: 5
   m_Name: InputFieldRotation
   m_TagString: Untagged
@@ -7155,32 +7161,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1121001734}
   m_CullTransparentMesh: 0
---- !u!114 &1121001739
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1121001734}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee1c7ab29c362a84cb7de044f6c99e57, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Interface: {fileID: 1666113119}
---- !u!114 &1121001740
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1121001734}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates: []
 --- !u!114 &1121001741
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7193,26 +7173,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 015d49861a07ddf4faa81e0b625ce1c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FacteurDiv: 100
+  FacteurDiv: 5
   InputID: Rotation
-  Clamp: 0
-  Precision: 0
+  Clamp: 1
+  Precision: 0.1
   CurrentMousePos: {x: 0, y: 0, z: 0}
   MousePosInitiale: {x: 0, y: 0, z: 0}
   DeltaMousePos: {x: 0, y: 0, z: 0}
---- !u!114 &1121001742
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1121001734}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates: []
 --- !u!1 &1132115052
 GameObject:
   m_ObjectHideFlags: 0
@@ -7300,12 +7267,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1149610901 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8797670505874198542, guid: 94a57ccd26d91a44f8bbb051edeacd1e,
-    type: 3}
-  m_PrefabInstance: {fileID: 8797670507007032219}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1150987461
 GameObject:
   m_ObjectHideFlags: 0
@@ -12034,7 +11995,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1666113121}
-  - component: {fileID: 1666113120}
   m_Layer: 0
   m_Name: Interface
   m_TagString: Untagged
@@ -12042,60 +12002,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1666113120
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1666113119}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71928b52f2206504eba97a3585493039, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SelectedLine: {fileID: 981810386}
-  UnselectedColor: {r: 0.25, g: 0.25, b: 0.25, a: 1}
-  SelectedColor: {r: 0, g: 0.30280232, b: 1, a: 1}
-  MainDragEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  FirstDragEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  ButtonEchelle: {fileID: 1997613205}
-  ButtonRotation: {fileID: 278846436}
-  ButtonDisque1: {fileID: 772524808}
-  ButtonTousDisques: {fileID: 1788605593}
-  ButtonDisque2: {fileID: 410804413}
-  ButtonDisque3: {fileID: 1398369372}
-  ButtonCrayon: {fileID: 1410591852}
-  ButtonDuplication: {fileID: 400349158}
-  PanelOptionButtonEchelle: {fileID: 242948175}
-  PanelOptionButtonRotation: {fileID: 1580274802}
-  PanelOptionButtonTousDisques: {fileID: 1875653416}
-  PanelOptionButtonDisque1: {fileID: 8530143867866768049}
-  PanelOptionButtonDisque2: {fileID: 5318503080778821032}
-  PanelOptionButtonDisque3: {fileID: 2044958531000603927}
-  PanelOptionButtonCrayon: {fileID: 397362355134465583}
-  PanelOptionNombreDeTours: {fileID: 255887857}
-  PanelOptionButtonDuplication: {fileID: 1286120083}
-  Surface: {fileID: 553267351}
-  InputEchelle: {fileID: 1414948704}
-  InputRotation: {fileID: 1121001734}
-  InputR1: {fileID: 0}
-  InputR2: {fileID: 0}
-  InputR3: {fileID: 0}
-  InputCX: {fileID: 405602606}
-  InputCY: {fileID: 1149610901}
-  DeltaMousePos: {x: 0, y: 0, z: 0}
-  CurrentEchelle: 0
-  CurrentRotation: 0
-  CurrentSizeDisque1: 0
-  CurrentSizeDisque2: 0
-  CurrentSizeDisque3: 0
-  CurrentSizeCX: 0
-  CurrentSizeCY: 0
 --- !u!4 &1666113121
 Transform:
   m_ObjectHideFlags: 0
