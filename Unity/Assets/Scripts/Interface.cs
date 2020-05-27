@@ -24,7 +24,7 @@ public class Interface : MonoBehaviour
 	
     void Start()
     {
-		//Création évenement principal et ajout listener
+		/*//Création évenement principal et ajout listener
 		if (MainDragEvent == null) 
 		{
 			MainDragEvent = new UnityEvent();
@@ -34,7 +34,7 @@ public class Interface : MonoBehaviour
 			FirstDragEvent = new UnityEvent();
 		}
 		FirstDragEvent.AddListener(CliqueSurfaceDeTravail);
-		MainDragEvent.AddListener(CliqueSurfaceDeTravail);
+		MainDragEvent.AddListener(CliqueSurfaceDeTravail);*/
     }
 
     void Update()
@@ -115,10 +115,10 @@ public class Interface : MonoBehaviour
 	
 	////////////////////////////////////////////////////////////////////////////  Events  ////////////////////////////////
 	
-	public void CliqueSurfaceDeTravail()
+	/*public void CliqueSurfaceDeTravail()
 	{
 		Debug.Log(DeltaMousePos);
-	}
+	}*/
 	
 	public void BeginAjusteEchelleWithDrag()
 	{

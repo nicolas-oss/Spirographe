@@ -590,11 +590,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 015d49861a07ddf4faa81e0b625ce1c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Interface: {fileID: 1666113119}
   FacteurDiv: 2
   InputID: NombrePoints
   Clamp: 1
   Precision: 1
+  CurrentMousePos: {x: 0, y: 0, z: 0}
+  MousePosInitiale: {x: 0, y: 0, z: 0}
+  DeltaMousePos: {x: 0, y: 0, z: 0}
 --- !u!114 &221150110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3715,7 +3717,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Interface: {fileID: 1666113119}
-  Root: {fileID: 907229160}
+  Root: {fileID: 981810383}
 --- !u!1 &553267351
 GameObject:
   m_ObjectHideFlags: 0
@@ -6039,6 +6041,17 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 936115185}
+          m_MethodName: 
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: 
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!114 &936115191
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6051,10 +6064,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2076c98b116e4a84f8f0950b28fbc3b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Interface: {fileID: 1666113119}
-  CurrentMousePos: {x: 0, y: 0, z: 0}
-  MousePosInitiale: {x: 0, y: 0, z: 0}
-  DeltaMousePos: {x: 0, y: 0, z: 0}
 --- !u!1 &981810383
 GameObject:
   m_ObjectHideFlags: 0
@@ -6068,7 +6077,7 @@ GameObject:
   - component: {fileID: 981810386}
   m_Layer: 0
   m_Name: SpiroFormule
-  m_TagString: Untagged
+  m_TagString: Selected
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7088,11 +7097,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 015d49861a07ddf4faa81e0b625ce1c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Interface: {fileID: 1666113119}
   FacteurDiv: 100
   InputID: Rotation
   Clamp: 0
   Precision: 0
+  CurrentMousePos: {x: 0, y: 0, z: 0}
+  MousePosInitiale: {x: 0, y: 0, z: 0}
+  DeltaMousePos: {x: 0, y: 0, z: 0}
 --- !u!114 &1121001742
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7595,11 +7606,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 015d49861a07ddf4faa81e0b625ce1c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Interface: {fileID: 1666113119}
   FacteurDiv: 1000
   InputID: IntervalDuplication
   Clamp: 0
   Precision: 0
+  CurrentMousePos: {x: 0, y: 0, z: 0}
+  MousePosInitiale: {x: 0, y: 0, z: 0}
+  DeltaMousePos: {x: 0, y: 0, z: 0}
 --- !u!114 &1199569753
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7978,11 +7991,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 015d49861a07ddf4faa81e0b625ce1c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Interface: {fileID: 1666113119}
   FacteurDiv: 100
   InputID: NombreDeTourMaximum
   Clamp: 1
   Precision: 0.1
+  CurrentMousePos: {x: 0, y: 0, z: 0}
+  MousePosInitiale: {x: 0, y: 0, z: 0}
+  DeltaMousePos: {x: 0, y: 0, z: 0}
 --- !u!114 &1209637403
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8422,11 +8437,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 015d49861a07ddf4faa81e0b625ce1c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Interface: {fileID: 1666113119}
   FacteurDiv: 1000
   InputID: FacteurScaleAnimation
   Clamp: 0
   Precision: 0
+  CurrentMousePos: {x: 0, y: 0, z: 0}
+  MousePosInitiale: {x: 0, y: 0, z: 0}
+  DeltaMousePos: {x: 0, y: 0, z: 0}
 --- !u!114 &1240815434
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10025,11 +10042,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 015d49861a07ddf4faa81e0b625ce1c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Interface: {fileID: 1666113119}
   FacteurDiv: 100
   InputID: NombreDeTour
   Clamp: 1
   Precision: 0.1
+  CurrentMousePos: {x: 0, y: 0, z: 0}
+  MousePosInitiale: {x: 0, y: 0, z: 0}
+  DeltaMousePos: {x: 0, y: 0, z: 0}
 --- !u!114 &1356364594
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10387,8 +10406,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Interface: {fileID: 1666113119}
-  OffsetX: 320
-  OffsetY: 250
+  OffsetX: 0
+  OffsetY: 0
   LargeurSVG: 400
   SelectedLine: {fileID: 0}
   HeaderFileName: Header.svg
@@ -10814,7 +10833,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1414948704}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71fcf70e1bd69dd4bafa8aa5d5393183, type: 3}
   m_Name: 
@@ -10845,11 +10864,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 015d49861a07ddf4faa81e0b625ce1c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Interface: {fileID: 1666113119}
   FacteurDiv: 100
   InputID: Echelle
   Clamp: 0
   Precision: 0
+  CurrentMousePos: {x: 0, y: 0, z: 0}
+  MousePosInitiale: {x: 0, y: 0, z: 0}
+  DeltaMousePos: {x: 0, y: 0, z: 0}
 --- !u!114 &1414948712
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12347,11 +12368,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 015d49861a07ddf4faa81e0b625ce1c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Interface: {fileID: 1666113119}
   FacteurDiv: 1000
   InputID: FacteurAttenuationFondu
   Clamp: 0
   Precision: 0
+  CurrentMousePos: {x: 0, y: 0, z: 0}
+  MousePosInitiale: {x: 0, y: 0, z: 0}
+  DeltaMousePos: {x: 0, y: 0, z: 0}
 --- !u!1 &1786848392
 GameObject:
   m_ObjectHideFlags: 0
@@ -13148,11 +13171,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 015d49861a07ddf4faa81e0b625ce1c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Interface: {fileID: 1666113119}
   FacteurDiv: 2
   InputID: VitesseRotation
   Clamp: 0
   Precision: 0
+  CurrentMousePos: {x: 0, y: 0, z: 0}
+  MousePosInitiale: {x: 0, y: 0, z: 0}
+  DeltaMousePos: {x: 0, y: 0, z: 0}
 --- !u!114 &1871922026
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14598,11 +14623,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 015d49861a07ddf4faa81e0b625ce1c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Interface: {fileID: 1666113119}
   FacteurDiv: 1000
   InputID: DureeVie
   Clamp: 0
   Precision: 0
+  CurrentMousePos: {x: 0, y: 0, z: 0}
+  MousePosInitiale: {x: 0, y: 0, z: 0}
+  DeltaMousePos: {x: 0, y: 0, z: 0}
 --- !u!114 &2113967528
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15913,11 +15940,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 015d49861a07ddf4faa81e0b625ce1c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Interface: {fileID: 1666113119}
   FacteurDiv: 10000
   InputID: V1
   Clamp: 0
   Precision: 0
+  CurrentMousePos: {x: 0, y: 0, z: 0}
+  MousePosInitiale: {x: 0, y: 0, z: 0}
+  DeltaMousePos: {x: 0, y: 0, z: 0}
 --- !u!222 &6215510382682471068
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -16306,11 +16335,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 015d49861a07ddf4faa81e0b625ce1c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Interface: {fileID: 1666113119}
   FacteurDiv: 5
   InputID: P1
   Clamp: 0
   Precision: 0
+  CurrentMousePos: {x: 0, y: 0, z: 0}
+  MousePosInitiale: {x: 0, y: 0, z: 0}
+  DeltaMousePos: {x: 0, y: 0, z: 0}
 --- !u!114 &6215510383025421532
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16444,11 +16475,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 015d49861a07ddf4faa81e0b625ce1c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Interface: {fileID: 1666113119}
   FacteurDiv: 100
   InputID: A1
   Clamp: 0
   Precision: 0
+  CurrentMousePos: {x: 0, y: 0, z: 0}
+  MousePosInitiale: {x: 0, y: 0, z: 0}
+  DeltaMousePos: {x: 0, y: 0, z: 0}
 --- !u!114 &6215510383098073614
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16643,11 +16676,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 015d49861a07ddf4faa81e0b625ce1c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Interface: {fileID: 1666113119}
   FacteurDiv: 100
   InputID: R1
   Clamp: 1
   Precision: 0.1
+  CurrentMousePos: {x: 0, y: 0, z: 0}
+  MousePosInitiale: {x: 0, y: 0, z: 0}
+  DeltaMousePos: {x: 0, y: 0, z: 0}
 --- !u!222 &6215510383167250524
 CanvasRenderer:
   m_ObjectHideFlags: 0

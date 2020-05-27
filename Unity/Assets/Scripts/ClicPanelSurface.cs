@@ -3,24 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class ClicPanelSurface : MonoBehaviour
 {
-    public GameObject Interface;
-	public Vector3 CurrentMousePos,MousePosInitiale,DeltaMousePos;
+	public delegate void BeginDragEvent();
+	public delegate void DragEvent();
+	public delegate void EndEvent();
+    public static event BeginDragEvent FirstDragEvent;
+	public static event DragEvent MainDragEvent;
+	public static event EndEvent EndDragEvent;
 
 	public void BeginDrag()
 	{
-		MousePosInitiale = Input.mousePosition;
-		//Debug.Log("Init POs = "+MousePosInitiale);
-		Interface.GetComponent<Interface>().FirstDragEvent.Invoke();
+		if(FirstDragEvent != null) FirstDragEvent();
 	}
 	
 	public void DragMouse()
     {
-        CurrentMousePos = Input.mousePosition;
-		DeltaMousePos = CurrentMousePos-MousePosInitiale;
-		Interface.GetComponent<Interface>().DeltaMousePos=DeltaMousePos;
-		Interface.GetComponent<Interface>().MainDragEvent.Invoke();
+		if(MainDragEvent != null) MainDragEvent();
     }
+	
+	public static void DestroyEvent()
+	{
+		FirstDragEvent=null;
+		MainDragEvent=null;
+	}
 }
