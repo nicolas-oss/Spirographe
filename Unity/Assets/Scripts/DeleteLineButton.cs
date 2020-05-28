@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 
-public class DeleteLineButton : MonoBehaviour
+public class DeleteLineButton : Spirographe
 {
 	public SpiroFormule SelectedLine;
 	public Color selected = Color.black;
@@ -14,8 +14,8 @@ public class DeleteLineButton : MonoBehaviour
 	
 	public void GetActiveLine()
 	{
-		ActiveObjectInScene = GameObject.FindWithTag("Selected");
-		SelectedLine = ActiveObjectInScene.GetComponent<SpiroFormule>();
+		ActiveObjectInScene = GetActiveObject();
+		SelectedLine = GetActiveSpiroFormule();
 	}
 	
 	public void DeleteLine(GameObject TextNameLineToDelete)

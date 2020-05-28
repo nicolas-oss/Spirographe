@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 
-public class NewLineButton : MonoBehaviour
+public class NewLineButton : Spirographe
 {
 	public SpiroFormule SelectedLine;//,SpiroFormule; //CurrentLine,
 	public Color selected = Color.black;
@@ -16,9 +16,8 @@ public class NewLineButton : MonoBehaviour
 
 	public void GetActiveLine()
 	{
-		ActiveObjectInScene = GameObject.FindWithTag("Selected");
-		SelectedLine = ActiveObjectInScene.GetComponent<SpiroFormule>();
-		Debug.Log(ActiveObjectInScene.name.ToString());
+		ActiveObjectInScene = GetActiveObject();
+		SelectedLine = GetActiveSpiroFormule();
 	}
 	
 	public void GetActiveTextLine() //recherche de la ligne active en scannant les enfants du GameObject contenant toutes les lignes
