@@ -6,10 +6,10 @@ using UnityEngine.Events;
 using System;
 using System.Collections;
 
-public class InputFieldInterface : Spirographe
+public class InputFieldTableauInterface : Spirographe
 {
     //public GameObject Interface;
-	float ValeurInitiale,ValeurSortie;
+	float ValeurInitiale,ValeurSortie,Value;
 	//public GameObject InputFieldToRefresh;
 	GameObject ActiveObjectInScene;
 	SpiroFormule SelectedLine;
@@ -42,6 +42,16 @@ public class InputFieldInterface : Spirographe
 	
 	public void SetActiveEvent()
 	{
+		/*SelectedLine = Interface.GetComponent<Interface>().SelectedLine;
+		Interface.GetComponent<Interface>().MainDragEvent.RemoveAllListeners();
+		Interface.GetComponent<Interface>().FirstDragEvent.RemoveAllListeners();
+		Interface.GetComponent<Interface>().FirstDragEvent.AddListener(BeginAjusteWithDrag);
+		Interface.GetComponent<Interface>().MainDragEvent.AddListener(AjusteWithDrag);
+		SelectedLine.GetType().GetField(InputID).GetValue(SelectedLine);*/
+		/*If (ClicPanelSurface.FirstDragEvent != null))
+		{
+			Debug.Log("Non Vide");
+		}*/
 		ClicPanelSurface.DestroyEvent();	
 		ClicPanelSurface.FirstDragEvent += BeginAjusteWithDrag;
 		ClicPanelSurface.MainDragEvent += AjusteWithDrag;	
@@ -67,6 +77,14 @@ public class InputFieldInterface : Spirographe
 	public void AjusteWithEnter()
 	{
 		ValeurSortie = float.Parse(GetComponent<InputField>().text);
+		Debug.Log(InputID);
 		SelectedLine.GetType().GetField(InputID).SetValue(SelectedLine,ValeurSortie);
+	}
+	
+	public void RefreshContent()
+	{
+		GetActiveLine();
+		Value=(float)SelectedLine.GetType().GetField(InputID).GetValue(SelectedLine);
+		GetComponent<InputField>().text = Value.ToString();
 	}
 }

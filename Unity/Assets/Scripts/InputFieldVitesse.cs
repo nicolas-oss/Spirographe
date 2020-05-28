@@ -6,13 +6,13 @@ using UnityEngine.Events;
 using System;
 using System.Collections;
 
-public class InputFieldInterface : Spirographe
+public class InputFieldVitesse : Spirographe
 {
-    //public GameObject Interface;
-	float ValeurInitiale,ValeurSortie;
-	//public GameObject InputFieldToRefresh;
+    public int index;
+	float ValeurInitiale,ValeurSortie,Value;
 	GameObject ActiveObjectInScene;
 	SpiroFormule SelectedLine;
+	public SpiroParametrable SelectedSpiroParam;
 	public float FacteurDiv = 100.0f;
 	public string InputID;
 	public bool Clamp;
@@ -38,10 +38,22 @@ public class InputFieldInterface : Spirographe
 	{
 		ActiveObjectInScene = GetActiveObject();
 		SelectedLine = GetActiveSpiroFormule();
+		Debug.Log(ActiveObjectInScene.name);
+		SelectedSpiroParam=GetActiveObject().GetComponent<SpiroParametrable>();
 	}
 	
 	public void SetActiveEvent()
 	{
+		/*SelectedLine = Interface.GetComponent<Interface>().SelectedLine;
+		Interface.GetComponent<Interface>().MainDragEvent.RemoveAllListeners();
+		Interface.GetComponent<Interface>().FirstDragEvent.RemoveAllListeners();
+		Interface.GetComponent<Interface>().FirstDragEvent.AddListener(BeginAjusteWithDrag);
+		Interface.GetComponent<Interface>().MainDragEvent.AddListener(AjusteWithDrag);
+		SelectedLine.GetType().GetField(InputID).GetValue(SelectedLine);*/
+		/*If (ClicPanelSurface.FirstDragEvent != null))
+		{
+			Debug.Log("Non Vide");
+		}*/
 		ClicPanelSurface.DestroyEvent();	
 		ClicPanelSurface.FirstDragEvent += BeginAjusteWithDrag;
 		ClicPanelSurface.MainDragEvent += AjusteWithDrag;	
@@ -50,7 +62,7 @@ public class InputFieldInterface : Spirographe
 	public void BeginAjusteWithDrag()
 	{
 		GetActiveLine();
-		ValeurInitiale = (float)SelectedLine.GetType().GetField(InputID).GetValue(SelectedLine);
+		ValeurInitiale = SelectedSpiroParam.VV[index];
 		MousePosInitiale = Input.mousePosition;
 	}
 	
@@ -61,12 +73,19 @@ public class InputFieldInterface : Spirographe
 		ValeurSortie = ValeurInitiale + DeltaMousePos.x/FacteurDiv;
 		if (Clamp) {ValeurSortie=(float)Math.Floor((ValeurSortie/Precision))*Precision;}
 		GetComponent<InputField>().text = ValeurSortie.ToString();
-		SelectedLine.GetType().GetField(InputID).SetValue(SelectedLine,ValeurSortie);
+		SelectedSpiroParam.VV[index]=ValeurSortie;
 	}
 	
 	public void AjusteWithEnter()
 	{
 		ValeurSortie = float.Parse(GetComponent<InputField>().text);
-		SelectedLine.GetType().GetField(InputID).SetValue(SelectedLine,ValeurSortie);
+		SelectedSpiroParam.VV[index]=ValeurSortie;
+	}
+	
+	public void RefreshContent()
+	{
+		GetActiveLine();
+		Value=(float)SelectedSpiroParam.VV[index];
+		GetComponent<InputField>().text = Value.ToString();
 	}
 }

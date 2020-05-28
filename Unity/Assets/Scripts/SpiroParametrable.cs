@@ -10,11 +10,26 @@ public class SpiroParametrable : Spirographe
 	public GameObject Centre;
 	public float NombrePoints;
 	
+	//public int[] test;
+	public int[] test = new int[100];
+	
 	//Parametres cercles
-	public float[] R,A,V,P,facteur;
-	public bool[] OndeR;
-	public bool[] RotationAxe;
-	public GameObject[] Axe;
+	public float[] RR = new float[100];
+	public float[] R = new float[100];
+	public float[] A = new float[100];
+	public float[] AA = new float[100];
+	public float[] V = new float[100];
+	public float[] VV = new float[100];
+	public float[] P = new float[100];
+	public float[] PP = new float[100];
+	public float[] facteur = new float[100];
+	public float[] facteurT = new float[100];
+	public bool[] OndeR = new bool[100];
+	public bool[] OndeRayon = new bool[100];
+	public bool[] RotationAxe = new bool[100];
+	public bool[] RotAxe = new bool[100];
+	public GameObject[] Axe = new GameObject[100];
+	public GameObject[] CentreRayon = new GameObject[100];
 	
 	//paramètres crayon
 	public float AX,AY,VX,VY,PX,PY;
@@ -46,10 +61,20 @@ public class SpiroParametrable : Spirographe
 	Vector3 RotationNulle,DeplacementNul;
 	GameObject[] CentreDisque;
 	
-    void Start()
+    public void InitValues()
+	{
+		for (int k=0;k<100;k++)
+		{
+			RR[k]=20.0f-k*(15.0f/100.0f);
+			facteurT[k]=1.0f;
+		}
+	}
+	
+	void Start()
     {	
+		InitValues();
 		Attends=false;
-		if (!(Master))
+		/*if (!(Master))
 		{
 			Gradient gradient = new Gradient();
 			gradient.SetKeys(new GradientColorKey[] { new GradientColorKey(c1, 0.0f), new GradientColorKey(c2, 1.0f)}, new GradientAlphaKey[] { new GradientAlphaKey(alpha, 0.0f), new GradientAlphaKey(alpha, 1.0f) });
@@ -57,13 +82,25 @@ public class SpiroParametrable : Spirographe
 		}
 		scaleChange.x = FacteurAttenuationFondu;
 		scaleChange.y = FacteurAttenuationFondu;
-		scaleChange.z = FacteurAttenuationFondu;
+		scaleChange.z = FacteurAttenuationFondu;*/
 		
 		RotationNulle.x = 0.0f;
 		RotationNulle.y = 0.0f;
 		RotationNulle.z = 0.0f;
 		DeplacementNul=RotationNulle;
     }
+	
+	/*public void InitSize()
+	{
+		R=new float[profondeur];
+		A=new float[profondeur];
+		V=new float[profondeur];
+		P=new float[profondeur];
+		facteur=new float[profondeur];
+		OndeR=new bool[profondeur];
+		RotAxe=new bool[profondeur];
+		Axe=new GameObject[];
+	}*/
 
     void Update()
     {
@@ -110,9 +147,9 @@ public class SpiroParametrable : Spirographe
 	
 	//Ondes
 	
-	public float Onde(float A, float V, float P)
+	public float Onde(float AO, float VO, float PO)
 	{
-		return A*Mathf.Sin(V*Time.frameCount+P);
+		return AO*Mathf.Sin(VO*Time.frameCount+PO);
 	}
 	
 	//Spirographe
@@ -120,36 +157,33 @@ public class SpiroParametrable : Spirographe
 	public void Spirographe()
 	{
 		int m;
-		for (m=0;m<profondeur-1;m++) 
+		/*for (m=0;m<profondeur-1;m++) 
 		{
-			if (R[m]!=0) break;
+			if (RR[m]!=0) break;
 		}
-		if (m==profondeur-1) return;
+		if (m==profondeur-1) return;*/
 		
 		float ratio;
 		int k,l,NbPtsReel;
 		float NbTour;
 		LineRenderer lineRenderer = GetComponent<LineRenderer>();
-		//Debug.Log(lineRenderer);
 		lineRenderer.widthMultiplier = widthOfLineRenderer;
 		
-		Axe[0].transform.position=Centre.transform.position;
-		Axe[0].transform.localEulerAngles=RotationNulle;
+		CentreRayon[0].transform.position=Centre.transform.position;
+		CentreRayon[0].transform.localEulerAngles=RotationNulle;
 		
-		for (m=1;m<profondeur-1;m++)
+		for (m=1;m<profondeur-2;m++)
 		{
-			Axe[m].transform.SetParent(Axe[m-1].transform);
-			Axe[m].transform.localEulerAngles=RotationNulle;
-			Axe[m].transform.localPosition = DeplacementNul;
-			Axe[m].transform.Translate(Echelle*(R[m]-R[m+1]+Convert.ToInt32(OndeR[m])*Onde(A[m],V[m],P[m]))*Vector3.forward,Space.Self);
-			Axe[m].transform.localEulerAngles=RotationNulle;
+			CentreRayon[m].transform.SetParent(CentreRayon[m-1].transform);
+			CentreRayon[m].transform.localEulerAngles=RotationNulle;
+			CentreRayon[m].transform.localPosition = DeplacementNul;
+			CentreRayon[m].transform.Translate(Echelle*(RR[m-1]-RR[m]+Convert.ToInt32(OndeRayon[m])*Onde(AA[m],VV[m],PP[m]))*Vector3.forward,Space.Self);
+			CentreRayon[m].transform.localEulerAngles=RotationNulle;
 		}
 		
 		transform.localEulerAngles=RotationNulle;
-		//Rotation=Rotation+((VitesseRotation*Time.time)+OffsetRotation)*Convert.ToInt32(AnimRotation);
 		if (AnimRotation) {Rotation=(VitesseRotation*Time.time)+OffsetRotation;}
 		Rotation%=360.0f;
-		//Debug.Log("V="+VitesseRotation+" Offset="+OffsetRotation+" bool="+Convert.ToInt32(AnimRotation));
 		transform.Rotate(0.0f,Rotation,0.0f);
 	
 		lineRenderer.positionCount = (int)NombrePoints+1;
@@ -158,7 +192,7 @@ public class SpiroParametrable : Spirographe
 		else
 		{
 			NbTour=1;
-			ratio=(R[0]/(R[1]))*facteur[0];
+			ratio=(RR[0]/(RR[1]))*facteurT[0];
 			for (l=1;l<NombreDeTourMaximum;l++)
 			{
 				NbTour=l;	
@@ -171,11 +205,11 @@ public class SpiroParametrable : Spirographe
 	
 		for (k=0;k<NombrePoints+1;k++)
 			{
-				lineRenderer.SetPosition(k,Axe[profondeur-1].transform.position);
-				Axe[0].transform.Rotate(0.0f,(360.0f/(NombrePoints/NbTour)),0.0f,Space.Self);
-				for (m=2;m<profondeur-1;m++)
+				lineRenderer.SetPosition(k,CentreRayon[profondeur-1].transform.position);
+				CentreRayon[0].transform.Rotate(0.0f,(360.0f/(NombrePoints/NbTour)),0.0f,Space.Self);
+				for (m=0;m<profondeur-1;m++)
 				{
-					if (RotationAxe[m]) Axe[m].transform.Rotate(0.0f,(-360.0f/(NombrePoints/NbTour)*(R[m]/R[m+1]))*facteur[m],0.0f, Space.Self);
+					if (RotAxe[m]) Axe[m].transform.Rotate(0.0f,(-360.0f/(NombrePoints/NbTour)*(RR[m]/RR[m+1]))*facteurT[m],0.0f, Space.Self);
 				}
 				lineRenderer.SetPosition(k,Axe[profondeur-1].transform.position);
 			}
