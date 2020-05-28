@@ -4917,7 +4917,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 307.66693, y: 0}
+  m_SizeDelta: {x: 317.2557, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &643651127
 MonoBehaviour:
@@ -7029,7 +7029,7 @@ PrefabInstance:
     - target: {fileID: 3756558640167451066, guid: c227ab568a60e6e4690ad0da8b9c1229,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 100.8
+      value: 115.8
       objectReference: {fileID: 0}
     - target: {fileID: 3756558640167451067, guid: c227ab568a60e6e4690ad0da8b9c1229,
         type: 3}
@@ -7039,7 +7039,7 @@ PrefabInstance:
     - target: {fileID: 3756558640316871568, guid: c227ab568a60e6e4690ad0da8b9c1229,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 146.9
+      value: 161.9
       objectReference: {fileID: 0}
     - target: {fileID: 3756558640316871569, guid: c227ab568a60e6e4690ad0da8b9c1229,
         type: 3}
@@ -7054,7 +7054,7 @@ PrefabInstance:
     - target: {fileID: 3756558640348299194, guid: c227ab568a60e6e4690ad0da8b9c1229,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 196.9
+      value: 211.9
       objectReference: {fileID: 0}
     - target: {fileID: 3756558640348299194, guid: c227ab568a60e6e4690ad0da8b9c1229,
         type: 3}
@@ -7064,12 +7064,12 @@ PrefabInstance:
     - target: {fileID: 3756558640607458629, guid: c227ab568a60e6e4690ad0da8b9c1229,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 244.6
+      value: 260
       objectReference: {fileID: 0}
     - target: {fileID: 3756558641041171222, guid: c227ab568a60e6e4690ad0da8b9c1229,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 63.4
+      value: 78.4
       objectReference: {fileID: 0}
     - target: {fileID: 3756558641041171222, guid: c227ab568a60e6e4690ad0da8b9c1229,
         type: 3}
@@ -7097,7 +7097,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 914459789}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
   m_Name: 
@@ -16899,8 +16899,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 158.62785, y: 0}
+  m_SizeDelta: {x: 317.2557, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1986148337
 MonoBehaviour:
@@ -23280,7 +23280,7 @@ GameObject:
   - component: {fileID: 6919360437639493907}
   - component: {fileID: 6919360437639493906}
   - component: {fileID: 7910087477639435021}
-  - component: {fileID: 6919360437639493905}
+  - component: {fileID: 6919360437639493908}
   m_Layer: 0
   m_Name: ToggleActivation
   m_TagString: Untagged
@@ -23288,20 +23288,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &6919360437639493905
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6919360437639493904}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1736992f69db5443a20c3c13a70f64b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  index: 0
-  SelectedSpiroParam: {fileID: 1283168858}
 --- !u!114 &6919360437639493906
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23369,6 +23355,20 @@ RectTransform:
   m_AnchoredPosition: {x: 292.6433, y: -10}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &6919360437639493908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6919360437639493904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9da22eb7f7eae004ebaba7d78490a9f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  index: 0
+  SelectedSpiroParam: {fileID: 1283168858}
 --- !u!114 &7910087477639435021
 MonoBehaviour:
   m_ObjectHideFlags: 0
