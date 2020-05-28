@@ -38,7 +38,6 @@ public class InputFieldAmplitude : Spirographe
 	{
 		ActiveObjectInScene = GetActiveObject();
 		SelectedLine = GetActiveSpiroFormule();
-		Debug.Log(ActiveObjectInScene.name);
 		SelectedSpiroParam=GetActiveObject().GetComponent<SpiroParametrable>();
 	}
 	

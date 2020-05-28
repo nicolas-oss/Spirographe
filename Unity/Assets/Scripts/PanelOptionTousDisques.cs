@@ -45,8 +45,9 @@ public class PanelOptionTousDisques : Spirographe
 			IFP.GetComponent<InputField>().GetComponent<InputFieldPhase>().RefreshContent();
 			IFF.GetComponent<InputField>().GetComponent<InputFieldFacteur>().index=i;
 			IFF.GetComponent<InputField>().GetComponent<InputFieldFacteur>().RefreshContent();
-			ToggleActiveDisque.GetComponent<Toggle>().GetComponent<ToggleAnimRayon>().index=i;
-			ToggleAnimation.GetComponent<Toggle>().GetComponent<ToggleRotAxe>().index=i;
+			//Debug.Log(ToggleActiveDisque.name);//GetComponent<Toggle>().GetComponent<ToggleAnimRayon>().index.ToString);
+			/*ToggleActiveDisque.GetComponent<Toggle>().GetComponent<ToggleAnimRayon>().index=i;
+			ToggleAnimation.GetComponent<Toggle>().GetComponent<ToggleRotAxe>().index=i;*/
 			GameObject NewLine=Instantiate(LigneSpiro);
 			NewLine.name="Ligne"+(i).ToString();
 			NewLine.SetActive(true);

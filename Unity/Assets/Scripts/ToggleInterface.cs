@@ -29,7 +29,6 @@ public class ToggleInterface : Spirographe
 		Check=!Check;
 		GetComponent<Toggle>().isOn=Check;
 		ToggleValueChanged();
-		Debug.Log(Check);
 	}
 	
 	public void ToggleValueChanged()

@@ -25,7 +25,7 @@ public class InputFieldProfondeur : Spirographe
 	public void AjusteWithEnter()
 	{
 		ValeurProfondeur = int.Parse(GetComponent<InputField>().text);
-		Debug.Log(ValeurProfondeur.ToString());
+		//Debug.Log(ValeurProfondeur.ToString());
 		SelectedLine.profondeur=ValeurProfondeur;
 		PanelTD.GetComponent<PanelOptionTousDisques>().BuildPanel();
 	}

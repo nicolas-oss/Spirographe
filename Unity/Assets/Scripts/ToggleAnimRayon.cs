@@ -22,7 +22,7 @@ public class ToggleAnimRayon : Spirographe
 	{
 		ActiveObjectInScene = GetActiveObject();
 		SelectedLine = GetActiveSpiroFormule();
-		Debug.Log(ActiveObjectInScene.name);
+		//Debug.Log(ActiveObjectInScene.name);
 		SelectedSpiroParam=GetActiveObject().GetComponent<SpiroParametrable>();
 	}
 	

@@ -10499,7 +10499,6 @@ MonoBehaviour:
   profondeur: 5
   Centre: {fileID: 301765733}
   NombrePoints: 1000
-  test: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   RR:
   - 0
   - 0
@@ -10601,8 +10600,6 @@ MonoBehaviour:
   - 0
   - 0
   - 0
-  R: []
-  A: []
   AA:
   - 0
   - 0
@@ -10704,7 +10701,6 @@ MonoBehaviour:
   - 0
   - 0
   - 0
-  V: []
   VV:
   - 0
   - 0
@@ -10806,7 +10802,6 @@ MonoBehaviour:
   - 0
   - 0
   - 0
-  P: []
   PP:
   - 0
   - 0
@@ -10908,7 +10903,6 @@ MonoBehaviour:
   - 0
   - 0
   - 0
-  facteur: []
   facteurT:
   - 0
   - 0
@@ -11010,9 +11004,7 @@ MonoBehaviour:
   - 0
   - 0
   - 0
-  OndeR: 
   OndeRayon: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-  RotationAxe: 
   RotAxe: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   Axe: []
   CentreRayon:
@@ -11116,6 +11108,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  AxeToInstatiate: {fileID: 1240455747371429784, guid: 9b5bce03c601a5947a55deee0dbd169d,
+    type: 3}
   AX: 0
   AY: 0
   VX: 0
@@ -11739,6 +11733,7 @@ GameObject:
   - component: {fileID: 1296304773}
   - component: {fileID: 1296304777}
   - component: {fileID: 1296304778}
+  - component: {fileID: 1296304779}
   m_Layer: 5
   m_Name: Panel_Options_TousDisques_parametrable
   m_TagString: PanelOption
@@ -11764,7 +11759,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 59.5, y: -43.6}
+  m_AnchoredPosition: {x: 45.003, y: -7.7196}
   m_SizeDelta: {x: 0, y: 20}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1296304773
@@ -11882,6 +11877,22 @@ MonoBehaviour:
   ToggleActiveDisque: {fileID: 6919360437639493904}
   ToggleAnimation: {fileID: 2805530410821064252}
   PanelLignes: {fileID: 1986148335}
+--- !u!114 &1296304779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1296304771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8380f4e9525b32845831d48cd0a0a33b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CurrentMousePos: {x: 0, y: 0, z: 0}
+  MousePosInitiale: {x: 0, y: 0, z: 0}
+  DeltaMousePos: {x: 0, y: 0, z: 0}
+  InitialePos: {x: 0, y: 0, z: 0}
 --- !u!1 &1297800669
 GameObject:
   m_ObjectHideFlags: 0
@@ -18427,7 +18438,6 @@ GameObject:
   - component: {fileID: 2805530409755183712}
   - component: {fileID: 2805530409755183711}
   - component: {fileID: 2805530409755183710}
-  - component: {fileID: 2805530409755183715}
   - component: {fileID: 2805530409755183713}
   m_Layer: 5
   m_Name: InputField_P
@@ -18575,25 +18585,6 @@ MonoBehaviour:
   InputID: 
   Clamp: 0
   Precision: 0
-  CurrentMousePos: {x: 0, y: 0, z: 0}
-  MousePosInitiale: {x: 0, y: 0, z: 0}
-  DeltaMousePos: {x: 0, y: 0, z: 0}
---- !u!114 &2805530409755183715
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2805530409755183708}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 015d49861a07ddf4faa81e0b625ce1c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  FacteurDiv: 5
-  InputID: P
-  Clamp: 1
-  Precision: 1
   CurrentMousePos: {x: 0, y: 0, z: 0}
   MousePosInitiale: {x: 0, y: 0, z: 0}
   DeltaMousePos: {x: 0, y: 0, z: 0}
@@ -18917,7 +18908,6 @@ GameObject:
   - component: {fileID: 2805530409945454802}
   - component: {fileID: 2805530409945454801}
   - component: {fileID: 2805530409945454800}
-  - component: {fileID: 2805530409945454805}
   - component: {fileID: 2805530409945454803}
   m_Layer: 5
   m_Name: InputField_Transmission
@@ -19065,25 +19055,6 @@ MonoBehaviour:
   InputID: 
   Clamp: 0
   Precision: 0
-  CurrentMousePos: {x: 0, y: 0, z: 0}
-  MousePosInitiale: {x: 0, y: 0, z: 0}
-  DeltaMousePos: {x: 0, y: 0, z: 0}
---- !u!114 &2805530409945454805
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2805530409945454798}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 015d49861a07ddf4faa81e0b625ce1c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  FacteurDiv: 100
-  InputID: facteur
-  Clamp: 1
-  Precision: 0.1
   CurrentMousePos: {x: 0, y: 0, z: 0}
   MousePosInitiale: {x: 0, y: 0, z: 0}
   DeltaMousePos: {x: 0, y: 0, z: 0}
@@ -19515,7 +19486,6 @@ GameObject:
   - component: {fileID: 2805530410459474950}
   - component: {fileID: 2805530410459474949}
   - component: {fileID: 2805530410459474948}
-  - component: {fileID: 2805530410459474953}
   - component: {fileID: 2805530410459474951}
   m_Layer: 5
   m_Name: InputField_A
@@ -19666,25 +19636,6 @@ MonoBehaviour:
   CurrentMousePos: {x: 0, y: 0, z: 0}
   MousePosInitiale: {x: 0, y: 0, z: 0}
   DeltaMousePos: {x: 0, y: 0, z: 0}
---- !u!114 &2805530410459474953
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2805530410459474946}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 015d49861a07ddf4faa81e0b625ce1c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  FacteurDiv: 100
-  InputID: A
-  Clamp: 0
-  Precision: 0.1
-  CurrentMousePos: {x: 0, y: 0, z: 0}
-  MousePosInitiale: {x: 0, y: 0, z: 0}
-  DeltaMousePos: {x: 0, y: 0, z: 0}
 --- !u!1 &2805530410528009590
 GameObject:
   m_ObjectHideFlags: 0
@@ -19697,7 +19648,6 @@ GameObject:
   - component: {fileID: 2805530410528009594}
   - component: {fileID: 2805530410528009593}
   - component: {fileID: 2805530410528009592}
-  - component: {fileID: 2805530410528009597}
   - component: {fileID: 2805530410528009595}
   m_Layer: 5
   m_Name: InputField_V
@@ -19848,25 +19798,6 @@ MonoBehaviour:
   CurrentMousePos: {x: 0, y: 0, z: 0}
   MousePosInitiale: {x: 0, y: 0, z: 0}
   DeltaMousePos: {x: 0, y: 0, z: 0}
---- !u!114 &2805530410528009597
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2805530410528009590}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 015d49861a07ddf4faa81e0b625ce1c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  FacteurDiv: 10000
-  InputID: V
-  Clamp: 0
-  Precision: 0
-  CurrentMousePos: {x: 0, y: 0, z: 0}
-  MousePosInitiale: {x: 0, y: 0, z: 0}
-  DeltaMousePos: {x: 0, y: 0, z: 0}
 --- !u!1 &2805530410821064252
 GameObject:
   m_ObjectHideFlags: 0
@@ -19877,7 +19808,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2805530410821064253}
   - component: {fileID: 2805530410821064254}
-  - component: {fileID: 8609840668105716736}
   - component: {fileID: 2805530410821064255}
   m_Layer: 0
   m_Name: ToggleAnimation_Rayon
@@ -20214,7 +20144,6 @@ GameObject:
   - component: {fileID: 2805530411424273175}
   - component: {fileID: 2805530411424273174}
   - component: {fileID: 2805530411424273173}
-  - component: {fileID: 2805530411424273178}
   - component: {fileID: 2805530411424273176}
   m_Layer: 5
   m_Name: InputField_Rayon
@@ -20362,25 +20291,6 @@ MonoBehaviour:
   InputID: 
   Clamp: 0
   Precision: 0
-  CurrentMousePos: {x: 0, y: 0, z: 0}
-  MousePosInitiale: {x: 0, y: 0, z: 0}
-  DeltaMousePos: {x: 0, y: 0, z: 0}
---- !u!114 &2805530411424273178
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2805530411424273171}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 015d49861a07ddf4faa81e0b625ce1c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  FacteurDiv: 100
-  InputID: R
-  Clamp: 1
-  Precision: 0.1
   CurrentMousePos: {x: 0, y: 0, z: 0}
   MousePosInitiale: {x: 0, y: 0, z: 0}
   DeltaMousePos: {x: 0, y: 0, z: 0}
@@ -23279,7 +23189,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6919360437639493907}
   - component: {fileID: 6919360437639493906}
-  - component: {fileID: 7910087477639435021}
   - component: {fileID: 6919360437639493908}
   m_Layer: 0
   m_Name: ToggleActivation
@@ -23369,19 +23278,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: 0
   SelectedSpiroParam: {fileID: 1283168858}
---- !u!114 &7910087477639435021
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6919360437639493904}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 167547d6a6a08194db19a3813829e1cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  InputID: RotationAxe
 --- !u!224 &8530143867244824354 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8530143868510222643, guid: 3a711b5beb6a08b44983795b1184fe94,
@@ -23574,19 +23470,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8530143868530672762}
   m_CullTransparentMesh: 0
---- !u!114 &8609840668105716736
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2805530410821064252}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 167547d6a6a08194db19a3813829e1cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  InputID: OndeR
 --- !u!1001 &8797670507007032219
 PrefabInstance:
   m_ObjectHideFlags: 0
