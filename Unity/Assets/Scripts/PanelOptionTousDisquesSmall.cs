@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PanelOptionTousDisques : Spirographe
+public class PanelOptionTousDisquesSmall : Spirographe
 {
     public GameObject LigneSpiro,TextNumeroDisque,IFR,IFA,IFV,IFP,IFF,ToggleActiveDisque,ToggleAnimation,PanelLignes;
 	SpiroFormule SelectedLine;
@@ -28,12 +28,12 @@ public class PanelOptionTousDisques : Spirographe
 			TextNumeroDisque.GetComponent<Text>().text=(i+1).ToString();
 			IFR.GetComponent<InputField>().GetComponent<InputFieldRayon>().index=i;
 			IFR.GetComponent<InputField>().GetComponent<InputFieldRayon>().RefreshContent();
-			IFA.GetComponent<InputField>().GetComponent<InputFieldAmplitude>().index=i;
+			/*IFA.GetComponent<InputField>().GetComponent<InputFieldAmplitude>().index=i;
 			IFA.GetComponent<InputField>().GetComponent<InputFieldAmplitude>().RefreshContent();
 			IFV.GetComponent<InputField>().GetComponent<InputFieldVitesse>().index=i;
 			IFV.GetComponent<InputField>().GetComponent<InputFieldVitesse>().RefreshContent();
 			IFP.GetComponent<InputField>().GetComponent<InputFieldPhase>().index=i;
-			IFP.GetComponent<InputField>().GetComponent<InputFieldPhase>().RefreshContent();
+			IFP.GetComponent<InputField>().GetComponent<InputFieldPhase>().RefreshContent();*/
 			IFF.GetComponent<InputField>().GetComponent<InputFieldFacteur>().index=i;
 			IFF.GetComponent<InputField>().GetComponent<InputFieldFacteur>().RefreshContent();
 			//Debug.Log(ToggleActiveDisque.name);//GetComponent<Toggle>().GetComponent<ToggleAnimRayon>().index.ToString);
@@ -44,5 +44,13 @@ public class PanelOptionTousDisques : Spirographe
 			NewLine.SetActive(true);
 			NewLine.transform.SetParent(PanelLignes.transform,false);
 		}
+		GetComponent<RectTransform>().ForceUpdateRectTransforms();
+
+	}
+	
+	public void LateUpdate()
+	{
+		transform.parent.GetComponent<RectTransform>().ForceUpdateRectTransforms();
+		transform.Translate(Vector3.up); //force refresh		
 	}
 }

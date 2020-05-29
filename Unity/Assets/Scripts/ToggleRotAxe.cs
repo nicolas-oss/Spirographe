@@ -9,7 +9,6 @@ public class ToggleRotAxe : Spirographe
 	GameObject ActiveObjectInScene;
 	SpiroFormule SelectedLine;
 	Toggle m_Toggle;
-	public SpiroParametrable SelectedSpiroParam;
 	
 	void Start()
 	{
@@ -22,14 +21,12 @@ public class ToggleRotAxe : Spirographe
 	{
 		ActiveObjectInScene = GetActiveObject();
 		SelectedLine = GetActiveSpiroFormule();
-		//SDebug.Log(ActiveObjectInScene.name);
-		SelectedSpiroParam=GetActiveObject().GetComponent<SpiroParametrable>();
 	}
 	
 	public void ToggleValueChanged()
     {
 		GetActiveLine();
 		bool Check = GetComponent<Toggle>().isOn;
-		SelectedSpiroParam.RotAxe[index]=Check;
+		SelectedLine.RotAxe[index]=Check;
 	}
 }

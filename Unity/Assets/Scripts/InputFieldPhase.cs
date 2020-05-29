@@ -12,7 +12,6 @@ public class InputFieldPhase : Spirographe
 	float ValeurInitiale,ValeurSortie,Value;
 	GameObject ActiveObjectInScene;
 	SpiroFormule SelectedLine;
-	public SpiroParametrable SelectedSpiroParam;
 	public float FacteurDiv = 100.0f;
 	public string InputID;
 	public bool Clamp;
@@ -38,8 +37,6 @@ public class InputFieldPhase : Spirographe
 	{
 		ActiveObjectInScene = GetActiveObject();
 		SelectedLine = GetActiveSpiroFormule();
-		//Debug.Log(ActiveObjectInScene.name);
-		SelectedSpiroParam=GetActiveObject().GetComponent<SpiroParametrable>();
 	}
 	
 	public void SetActiveEvent()
@@ -52,7 +49,7 @@ public class InputFieldPhase : Spirographe
 	public void BeginAjusteWithDrag()
 	{
 		GetActiveLine();
-		ValeurInitiale = SelectedSpiroParam.PP[index];
+		ValeurInitiale = SelectedLine.PP[index];
 		MousePosInitiale = Input.mousePosition;
 	}
 	
@@ -63,19 +60,19 @@ public class InputFieldPhase : Spirographe
 		ValeurSortie = ValeurInitiale + DeltaMousePos.x/FacteurDiv;
 		if (Clamp) {ValeurSortie=(float)Math.Floor((ValeurSortie/Precision))*Precision;}
 		GetComponent<InputField>().text = ValeurSortie.ToString();
-		SelectedSpiroParam.PP[index]=ValeurSortie;
+		SelectedLine.PP[index]=ValeurSortie;
 	}
 	
 	public void AjusteWithEnter()
 	{
 		ValeurSortie = float.Parse(GetComponent<InputField>().text);
-		SelectedSpiroParam.PP[index]=ValeurSortie;
+		SelectedLine.PP[index]=ValeurSortie;
 	}
 	
 	public void RefreshContent()
 	{
 		GetActiveLine();
-		Value=(float)SelectedSpiroParam.PP[index];
+		Value=(float)SelectedLine.PP[index];
 		GetComponent<InputField>().text = Value.ToString();
 	}
 }

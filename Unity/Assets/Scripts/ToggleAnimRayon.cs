@@ -9,7 +9,6 @@ public class ToggleAnimRayon : Spirographe
 	GameObject ActiveObjectInScene;
 	SpiroFormule SelectedLine;
 	Toggle m_Toggle;
-	public SpiroParametrable SelectedSpiroParam;
 	
 	void Start()
 	{
@@ -22,14 +21,12 @@ public class ToggleAnimRayon : Spirographe
 	{
 		ActiveObjectInScene = GetActiveObject();
 		SelectedLine = GetActiveSpiroFormule();
-		//Debug.Log(ActiveObjectInScene.name);
-		SelectedSpiroParam=GetActiveObject().GetComponent<SpiroParametrable>();
 	}
 	
 	public void ToggleValueChanged()
     {
 		GetActiveLine();
 		bool Check = GetComponent<Toggle>().isOn;
-		SelectedSpiroParam.OndeRayon[index]=Check;
+		SelectedLine.OndeRayon[index]=Check;
 	}
 }

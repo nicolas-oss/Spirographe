@@ -23,6 +23,7 @@ public class Draggable : MonoBehaviour
         //Add the trigger entry
         trigger.triggers.Add(entry1);
 		trigger.triggers.Add(entry2);
+		//GetComponent<RectTransform>().ForceUpdateRectTransforms();
     }
 
 	public void onBeginDrag()

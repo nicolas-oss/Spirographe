@@ -5,21 +5,32 @@ using System;
 
 public class SpiroFormule : MonoBehaviour
 {
-    //Parametres entree ancienne fonction Spirographe
+    //Parametres globaux
+	public int profondeur;
 	public GameObject Centre;
-	public float R1,R2,R3,CX,CY,facteur1,facteur2;
-	public bool RotationAxeB;
 	public float NombrePoints;
 	
-	//Parametres animation ondes cercles + crayon
-	public float A1,A2,A3,AX,AY,V1,V2,V3,VX,VY,P1,P2,P3,PX,PY;
-	public bool OndeR1,OndeR2,OndeR3,OndeCX,OndeCY;
+	//Parametres cercles
+	public float[] RR = new float[100];
+	public float[] AA = new float[100];
+	public float[] VV = new float[100];
+	public float[] PP = new float[100];
+	public float[] facteurT = new float[100];
+	public bool[] OndeRayon = new bool[100];
+	public bool[] RotAxe = new bool[100];
+	public GameObject[] Axe = new GameObject[100];
+	public GameObject[] CentreRayon = new GameObject[100];
+	public GameObject AxeToInstatiate;
+	
+	//paramètres crayon
+	public float AX,AY,VX,VY,PX,PY;
+	public bool OndeCX,OndeCY;
+	public float CX,CY;
 	
 	//Nombre de tours
 	public float delta;
 	public float NombreDeTour,NombreDeTourMaximum;
 	public bool Automatique;
-	public int IndexFormule;
 	
 	public float widthOfLineRenderer;
 	
@@ -37,10 +48,24 @@ public class SpiroFormule : MonoBehaviour
 	float alpha = 1.0f;
 	Vector3 scaleChange;
 	
-	GameObject AxeA,AxeB,AxeC,CentreRotation;
+	Vector3 RotationNulle,DeplacementNul;
+	GameObject[] CentreDisque;
 	
-    void Start()
+    public void InitValues()
+	{
+		for (int k=0;k<25;k++)
+		{
+			RR[k]=20.0f-k*(15.0f/100.0f);
+			facteurT[k]=1.0f;
+			RotAxe[k]=true;
+			GameObject go = Instantiate(AxeToInstatiate);
+			CentreRayon[k]=go;
+		}
+	}
+	
+	void Start()
     {	
+		InitValues();
 		Attends=false;
 		if (!(Master))
 		{
@@ -52,11 +77,23 @@ public class SpiroFormule : MonoBehaviour
 		scaleChange.y = FacteurAttenuationFondu;
 		scaleChange.z = FacteurAttenuationFondu;
 		
-		AxeA = new GameObject();
-		AxeB = new GameObject();
-		AxeC = new GameObject();
-		CentreRotation = new GameObject();
+		RotationNulle.x = 0.0f;
+		RotationNulle.y = 0.0f;
+		RotationNulle.z = 0.0f;
+		DeplacementNul=RotationNulle;
     }
+	
+	/*public void InitSize()
+	{
+		R=new float[profondeur];
+		A=new float[profondeur];
+		V=new float[profondeur];
+		P=new float[profondeur];
+		facteur=new float[profondeur];
+		OndeR=new bool[profondeur];
+		RotAxe=new bool[profondeur];
+		Axe=new GameObject[];
+	}*/
 
     void Update()
     {
@@ -103,54 +140,44 @@ public class SpiroFormule : MonoBehaviour
 	
 	//Ondes
 	
-	public float Onde(float A, float V, float P)
+	public float Onde(float AO, float VO, float PO)
 	{
-		return A*Mathf.Sin(V*Time.frameCount+P);
+		return AO*Mathf.Sin(VO*Time.frameCount+PO);
 	}
 	
 	//Spirographe
 	
 	public void Spirographe()
 	{
-		if (R1==0 || R2==0 || R3==0) {return;}
+		int m;
+		/*for (m=0;m<profondeur-1;m++) 
+		{
+			if (RR[m]!=0) break;
+		}
+		if (m==profondeur-1) return;*/
+		
 		float ratio;
 		int k,l,NbPtsReel;
 		float NbTour;
 		LineRenderer lineRenderer = GetComponent<LineRenderer>();
-		//Debug.Log(lineRenderer);
 		lineRenderer.widthMultiplier = widthOfLineRenderer;
-		Vector3 PointLine,RotationNulle,DeplacementNul;
-	
-		AxeC.transform.SetParent(AxeB.transform);
-		AxeB.transform.SetParent(AxeA.transform);
-		AxeA.transform.SetParent(CentreRotation.transform);
-
-		RotationNulle.x = 0.0f;
-		RotationNulle.y = 0.0f;
-		RotationNulle.z = 0.0f;
-		DeplacementNul=RotationNulle;
+		
+		CentreRayon[0].transform.position=Centre.transform.position;
+		CentreRayon[0].transform.localEulerAngles=RotationNulle;
+		
+		for (m=1;m<profondeur;m++)
+		{
+			CentreRayon[m].transform.SetParent(CentreRayon[m-1].transform);
+			CentreRayon[m].transform.localEulerAngles=RotationNulle;
+			CentreRayon[m].transform.localPosition = DeplacementNul;
+			CentreRayon[m].transform.Translate(Echelle*(RR[m-1]-RR[m]+Convert.ToInt32(OndeRayon[m])*Onde(AA[m],VV[m],PP[m]))*Vector3.forward,Space.Self);
+			CentreRayon[m].transform.localEulerAngles=RotationNulle;
+		}
 		
 		transform.localEulerAngles=RotationNulle;
-		//Rotation=Rotation+((VitesseRotation*Time.time)+OffsetRotation)*Convert.ToInt32(AnimRotation);
 		if (AnimRotation) {Rotation=(VitesseRotation*Time.time)+OffsetRotation;}
 		Rotation%=360.0f;
-		//Debug.Log("V="+VitesseRotation+" Offset="+OffsetRotation+" bool="+Convert.ToInt32(AnimRotation));
 		transform.Rotate(0.0f,Rotation,0.0f);
-		
-		CentreRotation.transform.position=Centre.transform.position;
-		CentreRotation.transform.localEulerAngles=RotationNulle;
-		
-		AxeA.transform.localPosition = DeplacementNul;
-		AxeA.transform.Translate(Echelle*(R1-R2+Convert.ToInt32(OndeR1)*Onde(A1,V1,P1))*Vector3.forward,Space.Self);
-		AxeA.transform.localEulerAngles=RotationNulle;
-		
-		AxeB.transform.localPosition = DeplacementNul;
-		AxeB.transform.localEulerAngles=RotationNulle;
-		AxeB.transform.Translate(Echelle*(R2-R3+Convert.ToInt32(OndeR2)*Onde(A2,V2,P2))*Vector3.forward,Space.Self);
-		
-		AxeC.transform.localPosition = DeplacementNul;
-		AxeC.transform.localEulerAngles=RotationNulle;
-		AxeC.transform.Translate((Echelle+Convert.ToInt32(OndeR3)*Onde(A3,V3,P3))*((CX+Convert.ToInt32(OndeCX)*Onde(AX,VX,PX))*Vector3.left+(CY+Convert.ToInt32(OndeCY)*Onde(AY,VY,PY))*Vector3.forward),Space.Self);
 	
 		lineRenderer.positionCount = (int)NombrePoints+1;
 		
@@ -158,7 +185,7 @@ public class SpiroFormule : MonoBehaviour
 		else
 		{
 			NbTour=1;
-			ratio=(R1/(R2))*facteur1;
+			ratio=(RR[0]/(RR[1]))*facteurT[0];
 			for (l=1;l<NombreDeTourMaximum;l++)
 			{
 				NbTour=l;	
@@ -171,11 +198,13 @@ public class SpiroFormule : MonoBehaviour
 	
 		for (k=0;k<NombrePoints+1;k++)
 			{
-				lineRenderer.SetPosition(k,AxeC.transform.position);
-				CentreRotation.transform.Rotate(0.0f,(360.0f/(NombrePoints/NbTour)),0.0f,Space.Self);
-				AxeA.transform.Rotate(0.0f,(-360.0f/(NombrePoints/NbTour)*(R1/R2))*facteur1,0.0f, Space.Self);
-				if (RotationAxeB) {AxeB.transform.Rotate(0.0f,(-360.0f/(NombrePoints/NbTour)*(R2/R3))*facteur2,0.0f, Space.Self);}
-				lineRenderer.SetPosition(k,AxeC.transform.position);
+				lineRenderer.SetPosition(k,CentreRayon[profondeur-1].transform.position);
+				CentreRayon[0].transform.Rotate(0.0f,(360.0f/(NombrePoints/NbTour)),0.0f,Space.Self);
+				for (m=1;m<profondeur-1;m++)
+				{
+					if (RotAxe[m]) CentreRayon[m].transform.Rotate(0.0f,-(360.0f/(NombrePoints/NbTour)*(RR[m-1]/RR[m]))*facteurT[m],0.0f, Space.Self);
+				}
+				lineRenderer.SetPosition(k,CentreRayon[profondeur-1].transform.position);
 			}
 	}
 }

@@ -6,7 +6,7 @@ using UnityEngine.Events;
 using System;
 using System.Collections;
 
-public class InputFieldProfondeur : Spirographe
+public class InputFieldProfondeurSmall : Spirographe
 {
 	int ValeurProfondeur;
 	SpiroFormule SelectedLine;
@@ -26,7 +26,7 @@ public class InputFieldProfondeur : Spirographe
 		ValeurProfondeur = int.Parse(GetComponent<InputField>().text);
 		Debug.Log(SelectedLine.profondeur.ToString());
 		SelectedLine.GetComponent<SpiroFormule>().profondeur=ValeurProfondeur;
-		PanelTD.GetComponent<PanelOptionTousDisques>().BuildPanel();
+		PanelTD.GetComponent<PanelOptionTousDisquesSmall>().BuildPanel();
 	}
 	
 	/*public void RefreshContent()
