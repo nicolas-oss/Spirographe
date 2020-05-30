@@ -47,5 +47,6 @@ public class SelectButton : Spirographe
 		ActiveObjectInScene = GameObject.Find(NameLine.text);
 		ActiveObjectInScene.tag="Selected";
 		PreviousTextLine = TextNameLine;
+		RefreshInputField();
 	}
 }

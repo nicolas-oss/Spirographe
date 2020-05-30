@@ -31,6 +31,8 @@ public class InputFieldRayon : Spirographe
 		MainInputField=gameObject.GetComponent<InputField>();
 		MainInputField.onEndEdit.AddListener(delegate {AjusteWithEnter(); });
 		MainInputField.onEndEdit.AddListener(delegate {SetActiveEvent(); });
+		//MainInputField.onEndEdit.AddListener(delegate {RefreshInputField(); });
+		Spirographe.onRefreshInputField += RefreshContent;  //on souscrit à l'event onRefreshInputField
 	}
 
 	public void GetActiveLine()

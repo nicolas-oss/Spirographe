@@ -4,6 +4,26 @@ using UnityEngine;
 
 public class Spirographe : MonoBehaviour
 {
+	public delegate void RefreshInputFieldEvent();  //signature de l'event refreshIF
+	public delegate void DestroyEventInputFieldEvent();
+    public static event RefreshInputFieldEvent onRefreshInputField ; //declaration de l'event suivant la signature précédente
+	public static event DestroyEventInputFieldEvent onDestroyRefreshInputFieldEvent;
+
+	///////////////////////////////////////////Refresh Event////////////////////////////////////////////////
+	
+	public void RefreshInputField()
+	{
+		if (onRefreshInputField != null) onRefreshInputField();
+		Debug.Log("Refreshing");
+	}
+	
+	public void DestroyEventInputField()
+	{
+		if(onDestroyRefreshInputFieldEvent != null) onDestroyRefreshInputFieldEvent();
+	}
+	
+	/////////////////////////////////////////GetActiveObject functions//////////////////////////////////////
+	
 	public GameObject GetActiveObject()
 	{
 		return GameObject.FindWithTag("Selected");

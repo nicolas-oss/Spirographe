@@ -31,6 +31,7 @@ public class InputFieldVitesse : Spirographe
 		MainInputField=gameObject.GetComponent<InputField>();
 		MainInputField.onEndEdit.AddListener(delegate {AjusteWithEnter(); });
 		MainInputField.onEndEdit.AddListener(delegate {SetActiveEvent(); });
+		Spirographe.onRefreshInputField += RefreshContent;  //on souscrit à l'event onRefreshInputField
 	}
 
 	public void GetActiveLine()

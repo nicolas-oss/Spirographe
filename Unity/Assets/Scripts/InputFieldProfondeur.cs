@@ -18,6 +18,7 @@ public class InputFieldProfondeur : Spirographe
 	{		
 		MainInputField=gameObject.GetComponent<InputField>();
 		MainInputField.onEndEdit.AddListener(delegate {AjusteWithEnter(); });
+		Spirographe.onRefreshInputField += RefreshContent;  //on souscrit à l'event onRefreshInputField
 	}
 	
 	public void AjusteWithEnter()
@@ -29,10 +30,11 @@ public class InputFieldProfondeur : Spirographe
 		PanelTD.GetComponent<PanelOptionTousDisques>().BuildPanel();
 	}
 	
-	/*public void RefreshContent()
+	public void RefreshContent()
 	{
-		GetActiveLine();
+		float Value;
+		SelectedLine=GetActiveSpiroFormule();
 		Value=(float)SelectedLine.GetType().GetField(InputID).GetValue(SelectedLine);
 		GetComponent<InputField>().text = Value.ToString();
-	}*/
+	}
 }

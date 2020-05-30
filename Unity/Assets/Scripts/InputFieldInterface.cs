@@ -30,6 +30,7 @@ public class InputFieldInterface : Spirographe
 		MainInputField=gameObject.GetComponent<InputField>();
 		MainInputField.onEndEdit.AddListener(delegate {AjusteWithEnter(); });
 		MainInputField.onEndEdit.AddListener(delegate {SetActiveEvent(); });
+		Spirographe.onRefreshInputField += RefreshContent; //on souscrit à l'event onRefreshInputField
 	}
 
 	public void GetActiveLine()
@@ -42,8 +43,8 @@ public class InputFieldInterface : Spirographe
 	{
 		//Debug.Log("Event Activated");
 		ClicPanelSurface.DestroyEvent();	
-		ClicPanelSurface.FirstDragEvent += BeginAjusteWithDrag;
-		ClicPanelSurface.MainDragEvent += AjusteWithDrag;	
+		ClicPanelSurface.FirstDragEvent += BeginAjusteWithDrag; //on souscrit à l'event BeginAjusteWithDrag
+		ClicPanelSurface.MainDragEvent += AjusteWithDrag;		//on souscrit à l'event AjusteWithDrag
 	}
 	
 	public void BeginAjusteWithDrag()
@@ -68,5 +69,13 @@ public class InputFieldInterface : Spirographe
 	{
 		ValeurSortie = float.Parse(GetComponent<InputField>().text);
 		SelectedLine.GetType().GetField(InputID).SetValue(SelectedLine,ValeurSortie);
+	}
+	
+	public void RefreshContent()
+	{
+		float ValeurCourante;
+		GetActiveLine();
+		ValeurCourante = (float)SelectedLine.GetType().GetField(InputID).GetValue(SelectedLine); 	//on lit la valeur courante de l'inputID
+		GetComponent<InputField>().text = ValeurCourante.ToString(); 								//on l'écrit dans le champ text de l'IF
 	}
 }
