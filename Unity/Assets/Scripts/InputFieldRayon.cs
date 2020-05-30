@@ -65,6 +65,7 @@ public class InputFieldRayon : Spirographe
 	
 	public void AjusteWithEnter()
 	{
+		GetActiveLine();
 		ValeurSortie = float.Parse(GetComponent<InputField>().text);
 		SelectedLine.RR[index]=ValeurSortie;
 	}

@@ -8,9 +8,7 @@ using System.Collections;
 
 public class InputFieldInterface : Spirographe
 {
-    //public GameObject Interface;
 	float ValeurInitiale,ValeurSortie;
-	//public GameObject InputFieldToRefresh;
 	GameObject ActiveObjectInScene;
 	SpiroFormule SelectedLine;
 	public float FacteurDiv = 100.0f;
@@ -42,6 +40,7 @@ public class InputFieldInterface : Spirographe
 	
 	public void SetActiveEvent()
 	{
+		//Debug.Log("Event Activated");
 		ClicPanelSurface.DestroyEvent();	
 		ClicPanelSurface.FirstDragEvent += BeginAjusteWithDrag;
 		ClicPanelSurface.MainDragEvent += AjusteWithDrag;	
@@ -56,6 +55,7 @@ public class InputFieldInterface : Spirographe
 	
 	public void AjusteWithDrag()
 	{
+		Debug.Log("Dragging");
 		CurrentMousePos = Input.mousePosition;
 		DeltaMousePos = CurrentMousePos-MousePosInitiale;
 		ValeurSortie = ValeurInitiale + DeltaMousePos.x/FacteurDiv;

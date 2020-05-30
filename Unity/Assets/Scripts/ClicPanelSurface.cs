@@ -22,6 +22,7 @@ public class ClicPanelSurface : MonoBehaviour
 	public void DragMouse()
     {
 		if(MainDragEvent != null) MainDragEvent();
+		Debug.Log("Dragging");
     }
 	
 	public static void DestroyEvent()
