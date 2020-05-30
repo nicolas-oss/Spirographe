@@ -65,7 +65,7 @@ public class SpiroFormule : MonoBehaviour
 	
 	void Start()
     {	
-		InitValues();
+		if (RR[0]==0) InitValues();
 		Attends=false;
 		if (!(Master))
 		{

@@ -31,7 +31,7 @@ public class ExportSVG : Spirographe
 
     public void Export()
     {
-				Debug.Log(HeaderFileName);
+		//Debug.Log(HeaderFileName);
 		FileName=ExportFileName();
 		AddToFile(HeaderFileName);
 		File.AppendAllText(FileName, "<polyline class=\"spiro\" points=\"");
@@ -102,8 +102,8 @@ public class ExportSVG : Spirographe
 			YCurr=allPos[i].z;
 			A=(XCurr-Xmin)*facteurZoom;
 			B=(Ymax-YCurr)*facteurZoom;
-			X=(Mathf.Floor(A)).ToString();
-			Y=(Mathf.Floor(B)).ToString();	
+			X=((Mathf.Floor(A+0.5f))).ToString();
+			Y=((Mathf.Floor(B+0.5f))).ToString();	
 			lineSVG+=X+","+Y+" ";
 		}
 		return lineSVG;

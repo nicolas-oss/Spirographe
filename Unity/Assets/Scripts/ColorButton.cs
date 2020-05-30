@@ -40,6 +40,5 @@ public class ColorButton : Spirographe
 		ColorUtility.TryParseHtmlString(PickedColorString, out newCol);
 		SelectedLine.GetType().GetField(InputID).SetValue(SelectedLine,newCol);
 		ColorFieldToRefresh.GetComponent<Image>().color=newCol;
-		Debug.Log(newCol.ToString());
 	}
 }
