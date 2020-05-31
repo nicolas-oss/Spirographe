@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class SpiroFormule : MonoBehaviour
+public class SpiroFormule : Spirographe
 {
     //Parametres globaux
 	public int profondeur;
@@ -45,27 +45,20 @@ public class SpiroFormule : MonoBehaviour
 	bool Master=true;
 	public Color c1 = Color.yellow;
     public Color c2 = Color.red;
+	public bool isInitialised=false;
 	float alpha = 1.0f;
 	Vector3 scaleChange;
 	
 	Vector3 RotationNulle,DeplacementNul;
 	GameObject[] CentreDisque;
 	
-    public void InitValues()
-	{
-		for (int k=0;k<25;k++)
-		{
-			RR[k]=20.0f-k*(15.0f/100.0f);
-			facteurT[k]=1.0f;
-			RotAxe[k]=true;
-			GameObject go = Instantiate(AxeToInstatiate);
-			CentreRayon[k]=go;
-		}
-	}
-	
 	void Start()
     {	
-		if (RR[0]==0) InitValues();
+		if (!isInitialised) 
+		{
+			InitValues();
+			RefreshInputField();
+		}
 		Attends=false;
 		if (!(Master))
 		{
@@ -81,6 +74,7 @@ public class SpiroFormule : MonoBehaviour
 		RotationNulle.y = 0.0f;
 		RotationNulle.z = 0.0f;
 		DeplacementNul=RotationNulle;
+		isInitialised=true;
     }
 	
 	/*public void InitSize()
@@ -108,6 +102,21 @@ public class SpiroFormule : MonoBehaviour
 			GestionClone();
 		}
     }
+		
+    public void InitValues()
+	{
+		for (int k=0;k<25;k++)
+		{
+			RR[k]=20.0f-k*(15.0f/100.0f);
+			facteurT[k]=1.0f;
+			RotAxe[k]=true;
+			GameObject go = Instantiate(AxeToInstatiate);
+			CentreRayon[k]=go;
+		}
+		profondeur=2;
+		RR[0]=10.0f;
+		RR[1]=6.0f;
+	}
 	
 	//Duplication
 

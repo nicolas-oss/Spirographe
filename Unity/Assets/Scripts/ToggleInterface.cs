@@ -15,6 +15,7 @@ public class ToggleInterface : Spirographe
 		GetActiveLine();
         m_Toggle = GetComponent<Toggle>();
         m_Toggle.onValueChanged.AddListener(delegate {ToggleValueChanged();});
+		Spirographe.onRefreshInputField += RefreshContent;
 	}
 
     public void GetActiveLine()
@@ -37,4 +38,12 @@ public class ToggleInterface : Spirographe
 		bool Check = GetComponent<Toggle>().isOn;
 		SelectedLine.GetType().GetField(InputID).SetValue(SelectedLine,Check);
     }
+	
+	public void RefreshContent()
+	{
+		bool Check;
+		GetActiveLine();
+		Check = (bool)SelectedLine.GetType().GetField(InputID).GetValue(SelectedLine);
+		GetComponent<Toggle>().isOn = Check;
+	}
 }

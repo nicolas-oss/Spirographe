@@ -32,6 +32,11 @@ public class InputFieldInterface : Spirographe
 		MainInputField.onEndEdit.AddListener(delegate {SetActiveEvent(); });
 		Spirographe.onRefreshInputField += RefreshContent; //on souscrit à l'event onRefreshInputField
 	}
+	
+	public void UnsubscribeRefreshEvent()
+	{
+		Spirographe.onDestroyRefreshInputFieldEvent -= RefreshContent;
+	}
 
 	public void GetActiveLine()
 	{

@@ -19,12 +19,6 @@ public class InputFieldRayon : Spirographe
 	public Vector3 CurrentMousePos,MousePosInitiale,DeltaMousePos;
 	InputField MainInputField;
 	
-	public void InitFromTextBouton()
-	{
-		Start();
-		SetActiveEvent();
-	}
-	
 	void Start()
 	{
 		GetActiveLine();
@@ -34,7 +28,18 @@ public class InputFieldRayon : Spirographe
 		//MainInputField.onEndEdit.AddListener(delegate {RefreshInputField(); });
 		Spirographe.onRefreshInputField += RefreshContent;  //on souscrit à l'event onRefreshInputField
 	}
+	
+	public void UnsubscribeRefreshEvent()
+	{
+		Spirographe.onDestroyRefreshInputFieldEvent -= RefreshContent;
+	}
 
+	public void InitFromTextBouton()
+	{
+		Start();
+		SetActiveEvent();
+	}
+	
 	public void GetActiveLine()
 	{
 		ActiveObjectInScene = GetActiveObject();

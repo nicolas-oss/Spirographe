@@ -13,8 +13,8 @@ public class Spirographe : MonoBehaviour
 	
 	public void RefreshInputField()
 	{
+		Debug.Log("Calling Refresh");
 		if (onRefreshInputField != null) onRefreshInputField();
-		Debug.Log("Refreshing");
 	}
 	
 	public void DestroyEventInputField()

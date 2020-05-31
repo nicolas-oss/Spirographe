@@ -25,11 +25,9 @@ public class NewLineButton : Spirographe
 		PreviousTextLine=RootList.transform.GetChild(0).gameObject;
 		for (int j=0; j<RootList.transform.childCount; j++)
 		{
-			Debug.Log(j.ToString());
 			if (RootList.transform.GetChild(j).GetComponent<Text>().color == selected)
 			{
 				PreviousTextLine=RootList.transform.GetChild(j).gameObject;
-				Debug.Log(PreviousTextLine.name.ToString());
 				break;
 			}
 		}
@@ -42,7 +40,7 @@ public class NewLineButton : Spirographe
 		
 		GetActiveLine();
 		NewLine = Instantiate(ActiveObjectInScene);
-		NewLine.tag="untagged";
+		NewLine.tag="Untagged";
 		GetActiveTextLine();
 		NewLineName = Instantiate(PreviousTextLine);
 		LineCount++;
