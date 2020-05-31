@@ -26,7 +26,8 @@ public class InputFieldRayon : Spirographe
 		MainInputField.onEndEdit.AddListener(delegate {AjusteWithEnter(); });
 		MainInputField.onEndEdit.AddListener(delegate {SetActiveEvent(); });
 		//MainInputField.onEndEdit.AddListener(delegate {RefreshInputField(); });
-		Spirographe.onRefreshInputField += RefreshContent;  //on souscrit à l'event onRefreshInputField
+		Spirographe.onRefreshInputField += RefreshContent;  //on souscrit à l'event onRefreshInputField /////MAIS IL FAUDRA LES DETRUIRE
+		Spirographe.onRefreshInputFieldPanelDisques += RefreshContent;
 	}
 	
 	public void UnsubscribeRefreshEvent()
@@ -68,6 +69,7 @@ public class InputFieldRayon : Spirographe
 		if (Clamp) {ValeurSortie=(float)Math.Floor((ValeurSortie/Precision))*Precision;}
 		GetComponent<InputField>().text = ValeurSortie.ToString();
 		SelectedLine.RR[index]=ValeurSortie;
+		RefreshInputFieldPanelDisques();
 	}
 	
 	public void AjusteWithEnter()
@@ -75,6 +77,7 @@ public class InputFieldRayon : Spirographe
 		GetActiveLine();
 		ValeurSortie = float.Parse(GetComponent<InputField>().text);
 		SelectedLine.RR[index]=ValeurSortie;
+		RefreshInputFieldPanelDisques();
 	}
 	
 	public void RefreshContent()

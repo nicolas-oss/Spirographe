@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class PanelOptionTousDisquesSmall : Spirographe
 {
-    public GameObject LigneSpiro,TextNumeroDisque,IFR,IFA,IFV,IFP,IFF,ToggleActiveDisque,ToggleAnimation,PanelLignes;
+    public GameObject LigneSpiro,TextNumeroDisque,IFR,IFA,IFV,IFP,IFF,ToggleActiveDisque,ToggleAnimation,PanelLignes,PanelOptionTousDisques;
 	SpiroFormule SelectedLine;
 	GameObject SpiroParametrableActive;
 	
@@ -16,10 +16,9 @@ public class PanelOptionTousDisquesSmall : Spirographe
 	
 	void ResetPanel()
 	{
-		Debug.Log("ResetPanel");
-		GameObject LigneEnCours,IFREnCours,IFFEnCours;
+		//Debug.Log("ResetPanel");
+		//GameObject LigneEnCours,IFREnCours,IFFEnCours;
 		foreach (Transform child in PanelLignes.transform)
-		
 		//while (PanelLignes.transform.childCount>1)
 		{
 			/*LigneEnCours = PanelLignes.transform.GetChild(0).gameObject;
@@ -29,7 +28,7 @@ public class PanelOptionTousDisquesSmall : Spirographe
 			IFFEnCours.GetComponent<InputFieldFacteur>().UnsubscribeRefreshEvent();
 			Debug.Log("Event unSubscribed");*/
 			Destroy(child.gameObject);
-			Debug.Log("Line Destroyed");
+			//Debug.Log("Line Destroyed");
 		}
 	}
 	
@@ -88,6 +87,7 @@ public class PanelOptionTousDisquesSmall : Spirographe
 			NewLine.name="Ligne"+(i).ToString();
 			NewLine.SetActive(true);
 			NewLine.transform.SetParent(PanelLignes.transform,false);
+			PanelOptionTousDisques.GetComponent<PanelOptionTousDisques>().BuildPanel();  //refresh panel tous disques too
 	}
 	
 	public void DeleteLine()
@@ -97,9 +97,10 @@ public class PanelOptionTousDisquesSmall : Spirographe
 		if (SelectedLine.profondeur>2) 
 		{
 			SelectedLine.profondeur--;
-			LastLine = PanelLignes.transform.GetChild(transform.childCount - 1).gameObject;
+			LastLine = PanelLignes.transform.GetChild(SelectedLine.profondeur).gameObject;
 			Destroy(LastLine);
 		}
+		PanelOptionTousDisques.GetComponent<PanelOptionTousDisques>().BuildPanel(); //refresh panel tous disques too
 	}
 	
 	public void LateUpdate()

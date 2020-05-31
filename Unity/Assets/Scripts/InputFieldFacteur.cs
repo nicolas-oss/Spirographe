@@ -26,6 +26,7 @@ public class InputFieldFacteur : Spirographe
 		MainInputField.onEndEdit.AddListener(delegate {AjusteWithEnter(); });
 		MainInputField.onEndEdit.AddListener(delegate {SetActiveEvent(); });
 		Spirographe.onRefreshInputField += RefreshContent;  //on souscrit à l'event onRefreshInputField
+		Spirographe.onRefreshInputFieldPanelDisques += RefreshContent;
 	}
 
 	public void UnsubscribeRefreshEvent()
@@ -77,12 +78,14 @@ public class InputFieldFacteur : Spirographe
 		if (Clamp) {ValeurSortie=(float)Math.Floor((ValeurSortie/Precision))*Precision;}
 		GetComponent<InputField>().text = ValeurSortie.ToString();
 		SelectedLine.facteurT[index]=ValeurSortie;
+		RefreshInputFieldPanelDisques();
 	}
 	
 	public void AjusteWithEnter()
 	{
 		ValeurSortie = float.Parse(GetComponent<InputField>().text);
 		SelectedLine.facteurT[index]=ValeurSortie;
+		RefreshInputFieldPanelDisques();
 	}
 	
 	public void RefreshContent()

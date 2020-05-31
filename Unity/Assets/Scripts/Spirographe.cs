@@ -6,7 +6,9 @@ public class Spirographe : MonoBehaviour
 {
 	public delegate void RefreshInputFieldEvent();  //signature de l'event refreshIF
 	public delegate void DestroyEventInputFieldEvent();
-    public static event RefreshInputFieldEvent onRefreshInputField ; //declaration de l'event suivant la signature précédente
+	public delegate void RefreshInputFieldPanelDisquesEvent();
+    public static event RefreshInputFieldEvent onRefreshInputField; //declaration de l'event suivant la signature précédente
+	public static event RefreshInputFieldPanelDisquesEvent onRefreshInputFieldPanelDisques;
 	public static event DestroyEventInputFieldEvent onDestroyRefreshInputFieldEvent;
 
 	///////////////////////////////////////////Refresh Event////////////////////////////////////////////////
@@ -15,6 +17,12 @@ public class Spirographe : MonoBehaviour
 	{
 		Debug.Log("Calling Refresh");
 		if (onRefreshInputField != null) onRefreshInputField();
+	}
+	
+	public void RefreshInputFieldPanelDisques()
+	{
+		Debug.Log("Calling Refresh Panel Disques");
+		if (onRefreshInputFieldPanelDisques != null) onRefreshInputFieldPanelDisques();
 	}
 	
 	public void DestroyEventInputField()
