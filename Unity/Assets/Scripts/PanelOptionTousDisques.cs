@@ -11,7 +11,8 @@ public class PanelOptionTousDisques : Spirographe
 	
 	void Start()
 	{
-		Spirographe.onRefreshInputField += BuildPanel;
+		Spirographe.onInitialisation += BuildPanel;
+		Spirographe.onRefreshInputField += RefreshPanel;
 	}
 	
 	void ResetPanel()
@@ -23,7 +24,7 @@ public class PanelOptionTousDisques : Spirographe
 		}
 	}
 	
-	public void BuildPanel()
+	/*public void BuildPanel()
 	{
 		ResetPanel();
 		SpiroParametrableActive=GetActiveObject();
@@ -46,11 +47,63 @@ public class PanelOptionTousDisques : Spirographe
 			//Debug.Log(ToggleActiveDisque.name);//GetComponent<Toggle>().GetComponent<ToggleAnimRayon>().index.ToString);
 			/*ToggleActiveDisque.GetComponent<Toggle>().GetComponent<ToggleAnimRayon>().index=i;
 			ToggleAnimation.GetComponent<Toggle>().GetComponent<ToggleRotAxe>().index=i;*/
-			GameObject NewLine=Instantiate(LigneSpiro);
+			/*GameObject NewLine=Instantiate(LigneSpiro);
 			NewLine.name="Ligne"+(i).ToString();
 			NewLine.SetActive(true);
 			NewLine.transform.SetParent(PanelLignes.transform,false);
 		}
+	}*/
+	
+	public void BuildPanel()
+	{
+		Debug.Log("beginning Building Panel big");
+		GameObject LineCurr;
+		SpiroParametrableActive=GetActiveObject();
+		SelectedLine=GetActiveSpiroFormule();
+		int profondeur = SelectedLine.profondeur;
+		int NbLignesCrees = PanelLignes.transform.childCount;
+		Debug.Log("NbLignesCrees="+NbLignesCrees.ToString());
+		Debug.Log("profondeur="+profondeur.ToString());
+		for (int i=0;i<profondeur;i++)
+		{
+			if (i<NbLignesCrees)
+			{
+				LineCurr = PanelLignes.transform.GetChild(i).gameObject;
+				LineCurr.SetActive(true);
+				Debug.Log("Ligne affichée");
+			}
+			else
+			{
+				TextNumeroDisque.GetComponent<Text>().text=(i+1).ToString();
+				InitField(ref IFR,i);
+				InitField(ref IFA,i);
+				InitField(ref IFV,i);
+				InitField(ref IFP,i);
+				InitField(ref IFF,i);
+				/*IFR.GetComponent<InputFieldPanelDisques>().index=i;
+				IFR.GetComponent<InputFieldPanelDisques>().RefreshContent();
+				IFR.GetComponent<InputFieldPanelDisques>().Start();
+				/*IFF.GetComponent<InputFieldPanelDisques>().index=i;
+				IFF.GetComponent<InputFieldPanelDisques>().RefreshContent();
+				IFF.GetComponent<InputFieldPanelDisques>().Start();
+			//Debug.Log(ToggleActiveDisque.name);//GetComponent<Toggle>().GetComponent<ToggleAnimRayon>().index.ToString);
+			/*ToggleActiveDisque.GetComponent<Toggle>().GetComponent<ToggleAnimRayon>().index=i;
+			ToggleAnimation.GetComponent<Toggle>().GetComponent<ToggleRotAxe>().index=i;*/
+				GameObject NewLine=Instantiate(LigneSpiro);
+				NewLine.name="Ligne"+(i).ToString();
+				NewLine.SetActive(true);
+				NewLine.transform.SetParent(PanelLignes.transform,false);
+				Debug.Log("Ligne Panel big copiée");
+			}
+		}
+		Debug.Log("Builded Panel big");
+	}
+
+	public void InitField(ref GameObject IFX,int n)
+	{
+		IFX.GetComponent<InputFieldPanelDisques>().index=n;
+		IFX.GetComponent<InputFieldPanelDisques>().RefreshContent();
+		IFX.GetComponent<InputFieldPanelDisques>().Start();
 	}
 	
 	public void RefreshPanel()
@@ -61,7 +114,6 @@ public class PanelOptionTousDisques : Spirographe
         foreach (InputFieldRayon IF in ZOB)
 		{
             IF.gameObject.GetComponent<InputFieldRayon>().RefreshContent();
-			//ZOB.RefreshContent();
 		}
     }
 		
