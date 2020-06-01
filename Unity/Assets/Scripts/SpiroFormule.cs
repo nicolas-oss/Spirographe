@@ -58,7 +58,7 @@ public class SpiroFormule : Spirographe
 		{
 			InitValues();
 			Initialisation();
-			RefreshInputField();
+			//RefreshInputField();
 		}
 		Attends=false;
 		if (!(Master))

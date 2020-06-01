@@ -8,10 +8,12 @@ public class Spirographe : MonoBehaviour
 	public delegate void DestroyEventInputFieldEvent();
 	public delegate void RefreshInputFieldPanelDisquesEvent();
 	public delegate void InitialisationEvent();
+	public delegate void SelectionLineEvent();
     public static event RefreshInputFieldEvent onRefreshInputField; //declaration de l'event suivant la signature précédente
 	public static event RefreshInputFieldPanelDisquesEvent onRefreshInputFieldPanelDisques;
 	public static event DestroyEventInputFieldEvent onDestroyRefreshInputFieldEvent;
 	public static event InitialisationEvent onInitialisation;
+	public static event SelectionLineEvent onSelectionLine;
 
 	///////////////////////////////////////////Refresh Event////////////////////////////////////////////////
 	
@@ -37,6 +39,14 @@ public class Spirographe : MonoBehaviour
 	{
 		Debug.Log("Calling event Initialisation");
 		if(onInitialisation != null) onInitialisation();
+		//onRefreshInputField();
+		//onRefreshInputFieldPanelDisques();
+	}
+	
+	public void SelectionLine()
+	{
+		Debug.Log("Calling event SelectionLine");
+		if(onSelectionLine != null) onSelectionLine();
 	}
 	
 	/////////////////////////////////////////GetActiveObject functions//////////////////////////////////////

@@ -16,7 +16,7 @@ public class SelectButton : Spirographe
 	
 	void Start()
 	{
-		//Spirographe.onInitialisation += SelectLine;		
+		Spirographe.onSelectionLine += SelectLine;		
 	}
 	
 	public void GetActiveLine()
