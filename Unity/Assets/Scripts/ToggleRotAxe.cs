@@ -15,6 +15,8 @@ public class ToggleRotAxe : Spirographe
 		GetActiveLine();
         m_Toggle = GetComponent<Toggle>();
         m_Toggle.onValueChanged.AddListener(delegate {ToggleValueChanged();});
+		Spirographe.onRefreshInputField += RefreshContent;
+		Spirographe.onRefreshInputFieldPanelDisques += RefreshContent;
 	}
 
     public void GetActiveLine()
@@ -28,5 +30,14 @@ public class ToggleRotAxe : Spirographe
 		GetActiveLine();
 		bool Check = GetComponent<Toggle>().isOn;
 		SelectedLine.RotAxe[index]=Check;
+		RefreshInputFieldPanelDisques();
+	}
+	
+	public void RefreshContent()
+	{
+		bool Check;
+		GetActiveLine();
+		Check = SelectedLine.RotAxe[index];
+		GetComponent<Toggle>().isOn = Check;
 	}
 }

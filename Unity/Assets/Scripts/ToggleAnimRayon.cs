@@ -15,6 +15,8 @@ public class ToggleAnimRayon : Spirographe
 		GetActiveLine();
         m_Toggle = GetComponent<Toggle>();
         m_Toggle.onValueChanged.AddListener(delegate {ToggleValueChanged();});
+		Spirographe.onRefreshInputField += RefreshContent;
+		Spirographe.onRefreshInputFieldPanelDisques += RefreshContent;
 	}
 
     public void GetActiveLine()
@@ -28,5 +30,14 @@ public class ToggleAnimRayon : Spirographe
 		GetActiveLine();
 		bool Check = GetComponent<Toggle>().isOn;
 		SelectedLine.OndeRayon[index]=Check;
+		RefreshInputFieldPanelDisques();
+	}
+	
+	public void RefreshContent()
+	{
+		bool Check;
+		GetActiveLine();
+		Check = SelectedLine.OndeRayon[index];
+		GetComponent<Toggle>().isOn = Check;
 	}
 }

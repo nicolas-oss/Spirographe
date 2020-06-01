@@ -68,6 +68,8 @@ public class PanelOptionTousDisquesSmall : Spirographe
 				IFF.GetComponent<InputFieldPanelDisques>().index=i;
 				IFF.GetComponent<InputFieldPanelDisques>().RefreshContent();
 				IFF.GetComponent<InputFieldPanelDisques>().Start();
+				ToggleActiveDisque.GetComponent<ToggleRotAxe>().index=i;
+				ToggleActiveDisque.GetComponent<ToggleRotAxe>().RefreshContent();
 				GameObject NewLine=Instantiate(LigneSpiro);
 				NewLine.name="Ligne"+(i).ToString();
 				NewLine.SetActive(true);

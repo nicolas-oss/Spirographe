@@ -80,6 +80,10 @@ public class PanelOptionTousDisques : Spirographe
 				InitField(ref IFV,i);
 				InitField(ref IFP,i);
 				InitField(ref IFF,i);
+				ToggleAnimation.GetComponent<ToggleAnimRayon>().index=i;
+				ToggleAnimation.GetComponent<ToggleAnimRayon>().RefreshContent();
+				ToggleActiveDisque.GetComponent<ToggleRotAxe>().index=i;
+				ToggleActiveDisque.GetComponent<ToggleRotAxe>().RefreshContent();
 				GameObject NewLine=Instantiate(LigneSpiro);
 				NewLine.name="Ligne"+(i).ToString();
 				NewLine.SetActive(true);
@@ -88,7 +92,7 @@ public class PanelOptionTousDisques : Spirographe
 			}
 		}
 		Debug.Log("Builded Panel big");
-		//reste à cacher les lignes restantes éventuelles :
+		//Reste à cacher les lignes restantes éventuelles :
 		if (profondeur<=NbLignesCrees)
 		{
 			for (int i= profondeur;i<NbLignesCrees;i++)
