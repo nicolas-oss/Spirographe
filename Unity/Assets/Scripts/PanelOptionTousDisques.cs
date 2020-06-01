@@ -80,15 +80,6 @@ public class PanelOptionTousDisques : Spirographe
 				InitField(ref IFV,i);
 				InitField(ref IFP,i);
 				InitField(ref IFF,i);
-				/*IFR.GetComponent<InputFieldPanelDisques>().index=i;
-				IFR.GetComponent<InputFieldPanelDisques>().RefreshContent();
-				IFR.GetComponent<InputFieldPanelDisques>().Start();
-				/*IFF.GetComponent<InputFieldPanelDisques>().index=i;
-				IFF.GetComponent<InputFieldPanelDisques>().RefreshContent();
-				IFF.GetComponent<InputFieldPanelDisques>().Start();
-			//Debug.Log(ToggleActiveDisque.name);//GetComponent<Toggle>().GetComponent<ToggleAnimRayon>().index.ToString);
-			/*ToggleActiveDisque.GetComponent<Toggle>().GetComponent<ToggleAnimRayon>().index=i;
-			ToggleAnimation.GetComponent<Toggle>().GetComponent<ToggleRotAxe>().index=i;*/
 				GameObject NewLine=Instantiate(LigneSpiro);
 				NewLine.name="Ligne"+(i).ToString();
 				NewLine.SetActive(true);
@@ -97,6 +88,8 @@ public class PanelOptionTousDisques : Spirographe
 			}
 		}
 		Debug.Log("Builded Panel big");
+		//reste à cacher la ligne restantes éventuelle :
+		if (profondeur<=NbLignesCrees) PanelLignes.transform.GetChild(SelectedLine.profondeur).gameObject.SetActive(false);
 	}
 
 	public void InitField(ref GameObject IFX,int n)
@@ -116,32 +109,4 @@ public class PanelOptionTousDisques : Spirographe
             IF.gameObject.GetComponent<InputFieldRayon>().RefreshContent();
 		}
     }
-		
-		
-		
-		/*SpiroParametrableActive=GetActiveObject();
-		SelectedLine=GetActiveSpiroFormule();
-		
-		
-		
-		
-		int profondeur = SelectedLine.profondeur;
-		for (int i=0;i<profondeur;i++)
-		{
-			//TextNumeroDisque.GetComponent<Text>().text=(i+1).ToString();
-			IFR.GetComponent<InputField>().GetComponent<InputFieldRayon>().index=i;
-			IFR.GetComponent<InputField>().GetComponent<InputFieldRayon>().RefreshContent();
-			IFA.GetComponent<InputField>().GetComponent<InputFieldAmplitude>().index=i;
-			IFA.GetComponent<InputField>().GetComponent<InputFieldAmplitude>().RefreshContent();
-			IFV.GetComponent<InputField>().GetComponent<InputFieldVitesse>().index=i;
-			IFV.GetComponent<InputField>().GetComponent<InputFieldVitesse>().RefreshContent();
-			IFP.GetComponent<InputField>().GetComponent<InputFieldPhase>().index=i;
-			IFP.GetComponent<InputField>().GetComponent<InputFieldPhase>().RefreshContent();
-			IFF.GetComponent<InputField>().GetComponent<InputFieldFacteur>().index=i;
-			IFF.GetComponent<InputField>().GetComponent<InputFieldFacteur>().RefreshContent();
-			GameObject NewLine=Instantiate(LigneSpiro);
-			NewLine.name="Ligne"+(i).ToString();
-			NewLine.SetActive(true);
-			NewLine.transform.SetParent(PanelLignes.transform,false);
-		}*/
 }

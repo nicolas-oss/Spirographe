@@ -65,18 +65,9 @@ public class PanelOptionTousDisquesSmall : Spirographe
 				IFR.GetComponent<InputFieldPanelDisques>().index=i;
 				IFR.GetComponent<InputFieldPanelDisques>().RefreshContent();
 				IFR.GetComponent<InputFieldPanelDisques>().Start();
-			/*IFA.GetComponent<InputField>().GetComponent<InputFieldAmplitude>().index=i;
-			IFA.GetComponent<InputField>().GetComponent<InputFieldAmplitude>().RefreshContent();
-			IFV.GetComponent<InputField>().GetComponent<InputFieldVitesse>().index=i;
-			IFV.GetComponent<InputField>().GetComponent<InputFieldVitesse>().RefreshContent();
-			IFP.GetComponent<InputField>().GetComponent<InputFieldPhase>().index=i;
-			IFP.GetComponent<InputField>().GetComponent<InputFieldPhase>().RefreshContent();*/
 				IFF.GetComponent<InputFieldPanelDisques>().index=i;
 				IFF.GetComponent<InputFieldPanelDisques>().RefreshContent();
 				IFF.GetComponent<InputFieldPanelDisques>().Start();
-			//Debug.Log(ToggleActiveDisque.name);//GetComponent<Toggle>().GetComponent<ToggleAnimRayon>().index.ToString);
-			/*ToggleActiveDisque.GetComponent<Toggle>().GetComponent<ToggleAnimRayon>().index=i;
-			ToggleAnimation.GetComponent<Toggle>().GetComponent<ToggleRotAxe>().index=i;*/
 				GameObject NewLine=Instantiate(LigneSpiro);
 				NewLine.name="Ligne"+(i).ToString();
 				NewLine.SetActive(true);
@@ -116,13 +107,13 @@ public class PanelOptionTousDisquesSmall : Spirographe
 			NewLine.name="Ligne"+(i).ToString();
 			NewLine.SetActive(true);
 			NewLine.transform.SetParent(PanelLignes.transform,false);
-			//PanelOptionTousDisques.GetComponent<PanelOptionTousDisques>().BuildPanel();  //refresh panel tous disques too
 		}
 		else
 		{
 			PanelLignes.transform.GetChild(i).gameObject.SetActive(true);
 		}
 		RefreshPanel();
+		PanelOptionTousDisques.GetComponent<PanelOptionTousDisques>().BuildPanel();  //refresh panel tous disques too
 	}
 	
 	public void DeleteLine()
@@ -138,7 +129,7 @@ public class PanelOptionTousDisquesSmall : Spirographe
 			LastLine.SetActive(false);
 		}
 		RefreshPanel();
-		//PanelOptionTousDisques.GetComponent<PanelOptionTousDisques>().BuildPanel(); //refresh panel tous disques too
+		PanelOptionTousDisques.GetComponent<PanelOptionTousDisques>().BuildPanel(); //refresh panel tous disques too
 	}
 	
 	public void RefreshPanel()
