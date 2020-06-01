@@ -12,7 +12,7 @@ public class PanelOptionTousDisques : Spirographe
 	void Start()
 	{
 		Spirographe.onInitialisation += BuildPanel;
-		Spirographe.onRefreshInputField += RefreshPanel;
+		Spirographe.onRefreshInputField += BuildPanel;
 	}
 	
 	void ResetPanel()
@@ -88,8 +88,14 @@ public class PanelOptionTousDisques : Spirographe
 			}
 		}
 		Debug.Log("Builded Panel big");
-		//reste à cacher la ligne restantes éventuelle :
-		if (profondeur<=NbLignesCrees) PanelLignes.transform.GetChild(SelectedLine.profondeur).gameObject.SetActive(false);
+		//reste à cacher les lignes restantes éventuelles :
+		if (profondeur<=NbLignesCrees)
+		{
+			for (int i= profondeur;i<NbLignesCrees;i++)
+			{
+				PanelLignes.transform.GetChild(i).gameObject.SetActive(false);
+			}
+		}
 	}
 
 	public void InitField(ref GameObject IFX,int n)

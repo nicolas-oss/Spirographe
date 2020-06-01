@@ -77,7 +77,7 @@ public class PanelOptionTousDisquesSmall : Spirographe
 		//RefreshInputField();
 		GetComponent<RectTransform>().ForceUpdateRectTransforms();
 		Debug.Log("Building Panel small");
-		//SelectionLine();  //une fois le panel buildé on rend active la SpiroFormule de la scene
+		SelectionLine();  //une fois le panel buildé on rend active la SpiroFormule de la scene
 	}
 	
 	public void AddLine()
@@ -92,17 +92,8 @@ public class PanelOptionTousDisquesSmall : Spirographe
 		{
 			IFR.GetComponent<InputField>().GetComponent<InputFieldPanelDisques>().index=i;
 			IFR.GetComponent<InputField>().GetComponent<InputFieldPanelDisques>().RefreshContent();
-			/*IFA.GetComponent<InputField>().GetComponent<InputFieldAmplitude>().index=i;
-			IFA.GetComponent<InputField>().GetComponent<InputFieldAmplitude>().RefreshContent();
-			IFV.GetComponent<InputField>().GetComponent<InputFieldVitesse>().index=i;
-			IFV.GetComponent<InputField>().GetComponent<InputFieldVitesse>().RefreshContent();
-			IFP.GetComponent<InputField>().GetComponent<InputFieldPhase>().index=i;
-			IFP.GetComponent<InputField>().GetComponent<InputFieldPhase>().RefreshContent();*/
 			IFF.GetComponent<InputField>().GetComponent<InputFieldPanelDisques>().index=i;
 			IFF.GetComponent<InputField>().GetComponent<InputFieldPanelDisques>().RefreshContent();
-			//Debug.Log(ToggleActiveDisque.name);//GetComponent<Toggle>().GetComponent<ToggleAnimRayon>().index.ToString);
-			/*ToggleActiveDisque.GetComponent<Toggle>().GetComponent<ToggleAnimRayon>().index=i;
-			ToggleAnimation.GetComponent<Toggle>().GetComponent<ToggleRotAxe>().index=i;*/
 			GameObject NewLine=Instantiate(LigneSpiro);
 			NewLine.name="Ligne"+(i).ToString();
 			NewLine.SetActive(true);
@@ -124,8 +115,6 @@ public class PanelOptionTousDisquesSmall : Spirographe
 		{
 			SelectedLine.profondeur--;
 			LastLine = PanelLignes.transform.GetChild(SelectedLine.profondeur).gameObject;
-			//RemoveEventsFromLine(LastLine);
-			//Destroy(LastLine);
 			LastLine.SetActive(false);
 		}
 		RefreshPanel();
