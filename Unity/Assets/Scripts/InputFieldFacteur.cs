@@ -23,6 +23,7 @@ public class InputFieldFacteur : Spirographe
 	{
 		GetActiveLine();
 		MainInputField=gameObject.GetComponent<InputField>();
+		MainInputField.onEndEdit.RemoveAllListeners();
 		MainInputField.onEndEdit.AddListener(delegate {AjusteWithEnter(); });
 		MainInputField.onEndEdit.AddListener(delegate {SetActiveEvent(); });
 		Spirographe.onRefreshInputField += RefreshContent;  //on souscrit à l'event onRefreshInputField
@@ -31,7 +32,11 @@ public class InputFieldFacteur : Spirographe
 
 	public void UnsubscribeRefreshEvent()
 	{
-		Spirographe.onDestroyRefreshInputFieldEvent -= RefreshContent;
+		Spirographe.onRefreshInputFieldPanelDisques -= RefreshContent;
+		Spirographe.onRefreshInputField -= RefreshContent;
+		Debug.Log("Event Refresh IFF unSubscribed");
+		ClicPanelSurface.FirstDragEvent -= BeginAjusteWithDrag;
+		ClicPanelSurface.MainDragEvent -= AjusteWithDrag;
 	}
 
 	public void InitFromTextBouton()

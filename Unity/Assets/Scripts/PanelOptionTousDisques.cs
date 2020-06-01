@@ -19,7 +19,7 @@ public class PanelOptionTousDisques : Spirographe
 		foreach (Transform child in PanelLignes.transform)
 		{
 			Destroy(child.gameObject);
-			Debug.Log("Line Destroyed");
+			Debug.Log("Line big panel Destroyed");
 		}
 	}
 	
@@ -34,6 +34,7 @@ public class PanelOptionTousDisques : Spirographe
 			TextNumeroDisque.GetComponent<Text>().text=(i+1).ToString();
 			IFR.GetComponent<InputField>().GetComponent<InputFieldRayon>().index=i;
 			IFR.GetComponent<InputField>().GetComponent<InputFieldRayon>().RefreshContent();
+			IFR.GetComponent<InputField>().GetComponent<InputFieldRayon>().Start();
 			IFA.GetComponent<InputField>().GetComponent<InputFieldAmplitude>().index=i;
 			IFA.GetComponent<InputField>().GetComponent<InputFieldAmplitude>().RefreshContent();
 			IFV.GetComponent<InputField>().GetComponent<InputFieldVitesse>().index=i;

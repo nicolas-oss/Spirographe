@@ -17,13 +17,7 @@ public class InputFieldInterface : Spirographe
 	public float Precision;
 	public Vector3 CurrentMousePos,MousePosInitiale,DeltaMousePos;
 	InputField MainInputField;
-	
-	public void InitFromTextBouton()
-	{
-		Start();
-		SetActiveEvent();
-	}
-	
+		
 	void Start()
 	{
 		GetActiveLine();
@@ -32,6 +26,13 @@ public class InputFieldInterface : Spirographe
 		MainInputField.onEndEdit.AddListener(delegate {SetActiveEvent(); });
 		Spirographe.onRefreshInputField += RefreshContent; //on souscrit à l'event onRefreshInputField
 	}
+	
+	public void InitFromTextBouton()
+	{
+		Start();
+		SetActiveEvent();
+	}
+
 	
 	public void UnsubscribeRefreshEvent()
 	{
@@ -61,7 +62,7 @@ public class InputFieldInterface : Spirographe
 	
 	public void AjusteWithDrag()
 	{
-		Debug.Log("Dragging");
+		//Debug.Log("Dragging");
 		CurrentMousePos = Input.mousePosition;
 		DeltaMousePos = CurrentMousePos-MousePosInitiale;
 		ValeurSortie = ValeurInitiale + DeltaMousePos.x/FacteurDiv;

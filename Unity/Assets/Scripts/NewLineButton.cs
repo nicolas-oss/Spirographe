@@ -36,7 +36,7 @@ public class NewLineButton : Spirographe
 	public void NewLineRenderer()
 	{
 		bool Visibility;
-		GameObject BoutonDelete;
+		//GameObject BoutonDelete;
 		
 		GetActiveLine();
 		NewLine = Instantiate(ActiveObjectInScene);

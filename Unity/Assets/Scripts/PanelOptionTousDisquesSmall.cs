@@ -14,9 +14,19 @@ public class PanelOptionTousDisquesSmall : Spirographe
 		Spirographe.onRefreshInputField += BuildPanel;
 	}
 	
+	public void RemoveEventsFromLine(GameObject LigneEnCours)
+	{
+		GameObject IFREnCours,IFFEnCours;
+		//LigneEnCours = PanelLignes.transform.GetChild(0).gameObject;
+			IFREnCours =  LigneEnCours.transform.Find(IFR.name).gameObject;
+			IFFEnCours =  LigneEnCours.transform.Find(IFF.name).gameObject;
+			IFREnCours.GetComponent<InputFieldRayon>().UnsubscribeRefreshEvent();
+			IFFEnCours.GetComponent<InputFieldFacteur>().UnsubscribeRefreshEvent();
+			Debug.Log("Line small panel destroyed - Events unSubscribed");
+	}
+	
 	void ResetPanel()
 	{
-		//Debug.Log("ResetPanel");
 		//GameObject LigneEnCours,IFREnCours,IFFEnCours;
 		foreach (Transform child in PanelLignes.transform)
 		//while (PanelLignes.transform.childCount>1)
@@ -27,6 +37,7 @@ public class PanelOptionTousDisquesSmall : Spirographe
 			IFREnCours.GetComponent<InputFieldRayon>().UnsubscribeRefreshEvent();
 			IFFEnCours.GetComponent<InputFieldFacteur>().UnsubscribeRefreshEvent();
 			Debug.Log("Event unSubscribed");*/
+			//RemoveEventsFromLine(child.gameObject);
 			Destroy(child.gameObject);
 			//Debug.Log("Line Destroyed");
 		}
@@ -43,6 +54,7 @@ public class PanelOptionTousDisquesSmall : Spirographe
 			TextNumeroDisque.GetComponent<Text>().text=(i+1).ToString();
 			IFR.GetComponent<InputField>().GetComponent<InputFieldRayon>().index=i;
 			IFR.GetComponent<InputField>().GetComponent<InputFieldRayon>().RefreshContent();
+			IFR.GetComponent<InputField>().GetComponent<InputFieldRayon>().Start();
 			/*IFA.GetComponent<InputField>().GetComponent<InputFieldAmplitude>().index=i;
 			IFA.GetComponent<InputField>().GetComponent<InputFieldAmplitude>().RefreshContent();
 			IFV.GetComponent<InputField>().GetComponent<InputFieldVitesse>().index=i;
@@ -51,6 +63,7 @@ public class PanelOptionTousDisquesSmall : Spirographe
 			IFP.GetComponent<InputField>().GetComponent<InputFieldPhase>().RefreshContent();*/
 			IFF.GetComponent<InputField>().GetComponent<InputFieldFacteur>().index=i;
 			IFF.GetComponent<InputField>().GetComponent<InputFieldFacteur>().RefreshContent();
+			//IFF.GetComponent<InputField>().GetComponent<InputFieldRayon>().Start();
 			//Debug.Log(ToggleActiveDisque.name);//GetComponent<Toggle>().GetComponent<ToggleAnimRayon>().index.ToString);
 			/*ToggleActiveDisque.GetComponent<Toggle>().GetComponent<ToggleAnimRayon>().index=i;
 			ToggleAnimation.GetComponent<Toggle>().GetComponent<ToggleRotAxe>().index=i;*/
@@ -87,7 +100,7 @@ public class PanelOptionTousDisquesSmall : Spirographe
 			NewLine.name="Ligne"+(i).ToString();
 			NewLine.SetActive(true);
 			NewLine.transform.SetParent(PanelLignes.transform,false);
-			PanelOptionTousDisques.GetComponent<PanelOptionTousDisques>().BuildPanel();  //refresh panel tous disques too
+			//PanelOptionTousDisques.GetComponent<PanelOptionTousDisques>().BuildPanel();  //refresh panel tous disques too
 	}
 	
 	public void DeleteLine()
@@ -98,9 +111,10 @@ public class PanelOptionTousDisquesSmall : Spirographe
 		{
 			SelectedLine.profondeur--;
 			LastLine = PanelLignes.transform.GetChild(SelectedLine.profondeur).gameObject;
+			RemoveEventsFromLine(LastLine);
 			Destroy(LastLine);
 		}
-		PanelOptionTousDisques.GetComponent<PanelOptionTousDisques>().BuildPanel(); //refresh panel tous disques too
+		//PanelOptionTousDisques.GetComponent<PanelOptionTousDisques>().BuildPanel(); //refresh panel tous disques too
 	}
 	
 	public void LateUpdate()

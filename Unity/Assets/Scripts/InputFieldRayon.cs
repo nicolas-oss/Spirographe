@@ -19,10 +19,11 @@ public class InputFieldRayon : Spirographe
 	public Vector3 CurrentMousePos,MousePosInitiale,DeltaMousePos;
 	InputField MainInputField;
 	
-	void Start()
+	public void Start()
 	{
 		GetActiveLine();
 		MainInputField=gameObject.GetComponent<InputField>();
+		MainInputField.onEndEdit.RemoveAllListeners();
 		MainInputField.onEndEdit.AddListener(delegate {AjusteWithEnter(); });
 		MainInputField.onEndEdit.AddListener(delegate {SetActiveEvent(); });
 		//MainInputField.onEndEdit.AddListener(delegate {RefreshInputField(); });
@@ -30,9 +31,27 @@ public class InputFieldRayon : Spirographe
 		Spirographe.onRefreshInputFieldPanelDisques += RefreshContent;
 	}
 	
+	void onDestroy()
+	{
+		Debug.Log("IFR destroyed");
+		//UnsubscribeRefreshEvent();
+		//MainInputField=gameObject.GetComponent<InputField>();
+		//MainInputField.onEndEdit.RemoveAllListeners();
+		//MainInputField.onEndEdit.AddListener(delegate {SetActiveEvent(); });
+	}
+	
+	public void SubscribeRefreshEvent()
+	{
+		Spirographe.onRefreshInputFieldPanelDisques += RefreshContent;
+	}
+	
 	public void UnsubscribeRefreshEvent()
 	{
-		Spirographe.onDestroyRefreshInputFieldEvent -= RefreshContent;
+		Spirographe.onRefreshInputFieldPanelDisques -= RefreshContent;
+		Spirographe.onRefreshInputField -= RefreshContent;
+		Debug.Log("Event Refresh IFR unSubscribed");
+		ClicPanelSurface.FirstDragEvent -= BeginAjusteWithDrag;
+		ClicPanelSurface.MainDragEvent -= AjusteWithDrag;
 	}
 
 	public void InitFromTextBouton()
@@ -51,7 +70,8 @@ public class InputFieldRayon : Spirographe
 	{
 		ClicPanelSurface.DestroyEvent();	
 		ClicPanelSurface.FirstDragEvent += BeginAjusteWithDrag;
-		ClicPanelSurface.MainDragEvent += AjusteWithDrag;	
+		ClicPanelSurface.MainDragEvent += AjusteWithDrag;
+		Debug.Log("Event Set");
 	}
 	
 	public void BeginAjusteWithDrag()
@@ -69,7 +89,8 @@ public class InputFieldRayon : Spirographe
 		if (Clamp) {ValeurSortie=(float)Math.Floor((ValeurSortie/Precision))*Precision;}
 		GetComponent<InputField>().text = ValeurSortie.ToString();
 		SelectedLine.RR[index]=ValeurSortie;
-		RefreshInputFieldPanelDisques();
+		RefreshInputFieldPanelDisques(); // on rafraichi les autres champs IFR
+		Debug.Log("ok");
 	}
 	
 	public void AjusteWithEnter()

@@ -27,6 +27,7 @@ public class Spirographe : MonoBehaviour
 	
 	public void DestroyEventInputField()
 	{
+		Debug.Log("Destroy");
 		if(onDestroyRefreshInputFieldEvent != null) onDestroyRefreshInputFieldEvent();
 	}
 	
