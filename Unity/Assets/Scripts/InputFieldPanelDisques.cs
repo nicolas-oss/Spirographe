@@ -6,31 +6,37 @@ using UnityEngine.Events;
 using System;
 using System.Collections;
 
-public class InputFieldRayon : Spirographe
+public class InputFieldPanelDisques : Spirographe
 {
-    public int index;
-	float ValeurIn,ValeurOut,Value;
 	GameObject ActiveObjectInScene;
 	SpiroFormule SelectedLine;
 	public float FacteurDiv = 100.0f;
-	public string InputID;
 	public bool Clamp;
 	public float Precision;
 	public Vector3 CurrentMousePos,MousePosInitiale,DeltaMousePos;
 	InputField MainInputField;
 	
+	public int index;
+	public string inputID;
+	public float ValeurIn,ValeurOut;
+
+	
 	public void Start()
 	{
 		GetActiveLine();
 		MainInputField=gameObject.GetComponent<InputField>();
-		MainInputField.onEndEdit.RemoveAllListeners();
 		MainInputField.onEndEdit.AddListener(delegate {AjusteWithEnter(); });
 		MainInputField.onEndEdit.AddListener(delegate {SetActiveEvent(); });
-		//MainInputField.onEndEdit.AddListener(delegate {RefreshInputField(); });
-		Spirographe.onRefreshInputField += RefreshContent;  //on souscrit à l'event onRefreshInputField /////MAIS IL FAUDRA LES DETRUIRE
+		Spirographe.onRefreshInputField += RefreshContent; //on souscrit à l'event onRefreshInputField
 		Spirographe.onRefreshInputFieldPanelDisques += RefreshContent;
 	}
 	
+	public void GetActiveLine()
+	{
+		ActiveObjectInScene = GetActiveObject();
+		SelectedLine = GetActiveSpiroFormule();
+	}
+
 	void onDestroy()
 	{
 		Debug.Log("IFR destroyed");
@@ -38,6 +44,14 @@ public class InputFieldRayon : Spirographe
 		//MainInputField=gameObject.GetComponent<InputField>();
 		//MainInputField.onEndEdit.RemoveAllListeners();
 		//MainInputField.onEndEdit.AddListener(delegate {SetActiveEvent(); });
+	}
+	
+		public void SetActiveEvent()
+	{
+		//Debug.Log("Event Activated");
+		ClicPanelSurface.DestroyEvent();	
+		ClicPanelSurface.FirstDragEvent += BeginAjusteWithDrag; //on souscrit à l'event BeginAjusteWithDrag
+		ClicPanelSurface.MainDragEvent += AjusteWithDrag;		//on souscrit à l'event AjusteWithDrag
 	}
 	
 	public void SubscribeRefreshEvent()
@@ -60,24 +74,10 @@ public class InputFieldRayon : Spirographe
 		SetActiveEvent();
 	}
 	
-	public void GetActiveLine()
-	{
-		ActiveObjectInScene = GetActiveObject();
-		SelectedLine = GetActiveSpiroFormule();
-	}
-	
-	public void SetActiveEvent()
-	{
-		ClicPanelSurface.DestroyEvent();	
-		ClicPanelSurface.FirstDragEvent += BeginAjusteWithDrag;
-		ClicPanelSurface.MainDragEvent += AjusteWithDrag;
-		Debug.Log("Event Set");
-	}
-	
 	public void BeginAjusteWithDrag()
 	{
 		GetActiveLine();
-		ValeurIn = SelectedLine.RR[index];
+		ValeurIn = LectureValeur(); //SelectedLine.RR[index];
 		MousePosInitiale = Input.mousePosition;
 	}
 	
@@ -88,23 +88,50 @@ public class InputFieldRayon : Spirographe
 		ValeurOut = ValeurIn + DeltaMousePos.x/FacteurDiv;
 		if (Clamp) {ValeurOut=(float)Math.Floor((ValeurOut/Precision))*Precision;}
 		GetComponent<InputField>().text = ValeurOut.ToString();
-		SelectedLine.RR[index]=ValeurOut;
+		EcritureValeur(ValeurOut);
 		RefreshInputFieldPanelDisques(); // on rafraichi les autres champs IFR
-		Debug.Log("ok");
+		//Debug.Log("ok");
 	}
 	
 	public void AjusteWithEnter()
 	{
 		GetActiveLine();
 		ValeurOut = float.Parse(GetComponent<InputField>().text);
-		SelectedLine.RR[index]=ValeurOut;
-		RefreshInputFieldPanelDisques();
+		EcritureValeur(ValeurOut);
+		RefreshInputFieldPanelDisques(); // on rafraichi les autres champs IFR
+	}
+	
+	void EcritureValeur(float ValeurOut)
+	{
+		switch (inputID)
+		{
+			case  "RR" : SelectedLine.RR[index]=ValeurOut; break;
+			case  "AA" : SelectedLine.AA[index]=ValeurOut; break;
+			case  "VV" : SelectedLine.VV[index]=ValeurOut; break;
+			case  "PP" : SelectedLine.PP[index]=ValeurOut; break;
+			case  "facteurT" : SelectedLine.facteurT[index]=ValeurOut; break;
+		}
+	}
+	
+	public float LectureValeur()
+	{
+		float Valeur=0.0f;
+		switch (inputID)
+		{
+			case  "RR" : Valeur=SelectedLine.RR[index]; break;
+			case  "AA" : Valeur=SelectedLine.AA[index]; break;
+			case  "VV" : Valeur=SelectedLine.VV[index]; break;
+			case  "PP" : Valeur=SelectedLine.PP[index]; break;
+			case  "facteurT" : Valeur=SelectedLine.facteurT[index]; break;
+		}
+		return Valeur;
 	}
 	
 	public void RefreshContent()
 	{
+		float Value;
 		GetActiveLine();
-		Value=(float)SelectedLine.RR[index];
+		Value=LectureValeur();
 		GetComponent<InputField>().text = Value.ToString();
 	}
 }

@@ -5,7 +5,9 @@ using UnityEngine;
 public class testClassB : testClassA
 {
     // Start is called before the first frame update
-    void Start()
+    public int variableB;
+	
+	void Start()
     {
        fonctionA(); 
     }

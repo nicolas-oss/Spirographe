@@ -9,7 +9,7 @@ using System.Collections;
 public class InputFieldAmplitude : Spirographe
 {
     public int index;
-	float ValeurInitiale,ValeurSortie,Value;
+	float ValeurIn,ValeurOut,Value;
 	GameObject ActiveObjectInScene;
 	SpiroFormule SelectedLine;
 	public float FacteurDiv = 100.0f;
@@ -50,7 +50,7 @@ public class InputFieldAmplitude : Spirographe
 	public void BeginAjusteWithDrag()
 	{
 		GetActiveLine();
-		ValeurInitiale = SelectedLine.AA[index];
+		ValeurIn = SelectedLine.AA[index];
 		MousePosInitiale = Input.mousePosition;
 	}
 	
@@ -58,16 +58,16 @@ public class InputFieldAmplitude : Spirographe
 	{
 		CurrentMousePos = Input.mousePosition;
 		DeltaMousePos = CurrentMousePos-MousePosInitiale;
-		ValeurSortie = ValeurInitiale + DeltaMousePos.x/FacteurDiv;
-		if (Clamp) {ValeurSortie=(float)Math.Floor((ValeurSortie/Precision))*Precision;}
-		GetComponent<InputField>().text = ValeurSortie.ToString();
-		SelectedLine.AA[index]=ValeurSortie;
+		ValeurOut = ValeurIn + DeltaMousePos.x/FacteurDiv;
+		if (Clamp) {ValeurOut=(float)Math.Floor((ValeurOut/Precision))*Precision;}
+		GetComponent<InputField>().text = ValeurOut.ToString();
+		SelectedLine.AA[index]=ValeurOut;
 	}
 	
 	public void AjusteWithEnter()
 	{
-		ValeurSortie = float.Parse(GetComponent<InputField>().text);
-		SelectedLine.AA[index]=ValeurSortie;
+		ValeurOut = float.Parse(GetComponent<InputField>().text);
+		SelectedLine.AA[index]=ValeurOut;
 	}
 	
 	public void RefreshContent()

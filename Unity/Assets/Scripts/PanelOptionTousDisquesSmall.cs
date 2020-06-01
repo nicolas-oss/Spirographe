@@ -20,8 +20,8 @@ public class PanelOptionTousDisquesSmall : Spirographe
 		//LigneEnCours = PanelLignes.transform.GetChild(0).gameObject;
 			IFREnCours =  LigneEnCours.transform.Find(IFR.name).gameObject;
 			IFFEnCours =  LigneEnCours.transform.Find(IFF.name).gameObject;
-			IFREnCours.GetComponent<InputFieldRayon>().UnsubscribeRefreshEvent();
-			IFFEnCours.GetComponent<InputFieldFacteur>().UnsubscribeRefreshEvent();
+			IFREnCours.GetComponent<InputFieldPanelDisques>().UnsubscribeRefreshEvent();
+			IFFEnCours.GetComponent<InputFieldPanelDisques>().UnsubscribeRefreshEvent();
 			Debug.Log("Line small panel destroyed - Events unSubscribed");
 	}
 	
@@ -52,18 +52,18 @@ public class PanelOptionTousDisquesSmall : Spirographe
 		for (int i=0;i<profondeur;i++)
 		{
 			TextNumeroDisque.GetComponent<Text>().text=(i+1).ToString();
-			IFR.GetComponent<InputField>().GetComponent<InputFieldRayon>().index=i;
-			IFR.GetComponent<InputField>().GetComponent<InputFieldRayon>().RefreshContent();
-			IFR.GetComponent<InputField>().GetComponent<InputFieldRayon>().Start();
+			IFR.GetComponent<InputFieldPanelDisques>().index=i;
+			IFR.GetComponent<InputFieldPanelDisques>().RefreshContent();
+			IFR.GetComponent<InputFieldPanelDisques>().Start();
 			/*IFA.GetComponent<InputField>().GetComponent<InputFieldAmplitude>().index=i;
 			IFA.GetComponent<InputField>().GetComponent<InputFieldAmplitude>().RefreshContent();
 			IFV.GetComponent<InputField>().GetComponent<InputFieldVitesse>().index=i;
 			IFV.GetComponent<InputField>().GetComponent<InputFieldVitesse>().RefreshContent();
 			IFP.GetComponent<InputField>().GetComponent<InputFieldPhase>().index=i;
 			IFP.GetComponent<InputField>().GetComponent<InputFieldPhase>().RefreshContent();*/
-			IFF.GetComponent<InputField>().GetComponent<InputFieldFacteur>().index=i;
-			IFF.GetComponent<InputField>().GetComponent<InputFieldFacteur>().RefreshContent();
-			//IFF.GetComponent<InputField>().GetComponent<InputFieldRayon>().Start();
+			IFF.GetComponent<InputFieldPanelDisques>().index=i;
+			IFF.GetComponent<InputFieldPanelDisques>().RefreshContent();
+			IFF.GetComponent<InputFieldPanelDisques>().Start();
 			//Debug.Log(ToggleActiveDisque.name);//GetComponent<Toggle>().GetComponent<ToggleAnimRayon>().index.ToString);
 			/*ToggleActiveDisque.GetComponent<Toggle>().GetComponent<ToggleAnimRayon>().index=i;
 			ToggleAnimation.GetComponent<Toggle>().GetComponent<ToggleRotAxe>().index=i;*/
@@ -83,16 +83,16 @@ public class PanelOptionTousDisquesSmall : Spirographe
 		SelectedLine.profondeur++;
 		i=SelectedLine.profondeur-1; //avant dernière ligne avant le crayon
 		TextNumeroDisque.GetComponent<Text>().text=(i+1).ToString();
-			IFR.GetComponent<InputField>().GetComponent<InputFieldRayon>().index=i;
-			IFR.GetComponent<InputField>().GetComponent<InputFieldRayon>().RefreshContent();
+			IFR.GetComponent<InputField>().GetComponent<InputFieldPanelDisques>().index=i;
+			IFR.GetComponent<InputField>().GetComponent<InputFieldPanelDisques>().RefreshContent();
 			/*IFA.GetComponent<InputField>().GetComponent<InputFieldAmplitude>().index=i;
 			IFA.GetComponent<InputField>().GetComponent<InputFieldAmplitude>().RefreshContent();
 			IFV.GetComponent<InputField>().GetComponent<InputFieldVitesse>().index=i;
 			IFV.GetComponent<InputField>().GetComponent<InputFieldVitesse>().RefreshContent();
 			IFP.GetComponent<InputField>().GetComponent<InputFieldPhase>().index=i;
 			IFP.GetComponent<InputField>().GetComponent<InputFieldPhase>().RefreshContent();*/
-			IFF.GetComponent<InputField>().GetComponent<InputFieldFacteur>().index=i;
-			IFF.GetComponent<InputField>().GetComponent<InputFieldFacteur>().RefreshContent();
+			IFF.GetComponent<InputField>().GetComponent<InputFieldPanelDisques>().index=i;
+			IFF.GetComponent<InputField>().GetComponent<InputFieldPanelDisques>().RefreshContent();
 			//Debug.Log(ToggleActiveDisque.name);//GetComponent<Toggle>().GetComponent<ToggleAnimRayon>().index.ToString);
 			/*ToggleActiveDisque.GetComponent<Toggle>().GetComponent<ToggleAnimRayon>().index=i;
 			ToggleAnimation.GetComponent<Toggle>().GetComponent<ToggleRotAxe>().index=i;*/
