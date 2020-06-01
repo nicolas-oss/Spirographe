@@ -49,7 +49,7 @@ public class PanelOptionTousDisquesSmall : Spirographe
 	
 	public void BuildPanel()
 	{
-		GameObject LineCurr;
+		GameObject LineCurr; // = PanelLignes.transform.GetChild(1).gameObject;
 		//ResetPanel();
 		SpiroParametrableActive=GetActiveObject();
 		SelectedLine=GetActiveSpiroFormule();
@@ -145,11 +145,12 @@ public class PanelOptionTousDisquesSmall : Spirographe
 	
 	public void RefreshPanel()
 	{
+		SelectedLine=GetActiveSpiroFormule();
 		InputFieldPanelDisques[] ZOB;	
         ZOB = PanelLignes.GetComponentsInChildren<InputFieldPanelDisques>(); //Get all InputFieldPanelDisques in PanelLignes
         foreach (InputFieldPanelDisques IF in ZOB)
 		{
-            IF.gameObject.GetComponent<InputFieldRayon>().RefreshContent();  //RefreshContent of all InputFieldPanelDisques in PanelLignes
+            IF.gameObject.GetComponent<InputFieldPanelDisques>().RefreshContent();  //RefreshContent of all InputFieldPanelDisques in PanelLignes
 		}
 		int profondeur = SelectedLine.profondeur;
 		int NbLignesCrees = PanelLignes.transform.childCount;

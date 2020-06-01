@@ -14,6 +14,11 @@ public class SelectButton : Spirographe
 	public Text NameLine;
 	public GameObject PreviousTextLine;
 	
+	void Start()
+	{
+		//Spirographe.onInitialisation += SelectLine;		
+	}
+	
 	public void GetActiveLine()
 	{
 		ActiveObjectInScene = GetActiveObject();
