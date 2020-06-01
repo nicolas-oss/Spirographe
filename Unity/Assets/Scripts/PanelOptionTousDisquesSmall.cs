@@ -11,7 +11,11 @@ public class PanelOptionTousDisquesSmall : Spirographe
 	
 	void Start()
 	{
-		Spirographe.onRefreshInputField += BuildPanel;
+		/*AddLine();  //création des 3 premières lignes
+		AddLine();
+		AddLine();*/
+		Spirographe.onInitialisation += BuildPanel;
+		Spirographe.onRefreshInputField += RefreshPanel;
 	}
 	
 	public void RemoveEventsFromLine(GameObject LigneEnCours)
@@ -45,33 +49,44 @@ public class PanelOptionTousDisquesSmall : Spirographe
 	
 	public void BuildPanel()
 	{
-		ResetPanel();
+		GameObject LineCurr;
+		//ResetPanel();
 		SpiroParametrableActive=GetActiveObject();
 		SelectedLine=GetActiveSpiroFormule();
 		int profondeur = SelectedLine.profondeur;
+		int NbLignesCrees = PanelLignes.transform.childCount;
 		for (int i=0;i<profondeur;i++)
 		{
-			TextNumeroDisque.GetComponent<Text>().text=(i+1).ToString();
-			IFR.GetComponent<InputFieldPanelDisques>().index=i;
-			IFR.GetComponent<InputFieldPanelDisques>().RefreshContent();
-			IFR.GetComponent<InputFieldPanelDisques>().Start();
+			if (i<NbLignesCrees)
+			{
+				LineCurr = PanelLignes.transform.GetChild(i).gameObject;
+				LineCurr.SetActive(true);
+			}
+			else
+			{
+				TextNumeroDisque.GetComponent<Text>().text=(i+1).ToString();
+				IFR.GetComponent<InputFieldPanelDisques>().index=i;
+				IFR.GetComponent<InputFieldPanelDisques>().RefreshContent();
+				IFR.GetComponent<InputFieldPanelDisques>().Start();
 			/*IFA.GetComponent<InputField>().GetComponent<InputFieldAmplitude>().index=i;
 			IFA.GetComponent<InputField>().GetComponent<InputFieldAmplitude>().RefreshContent();
 			IFV.GetComponent<InputField>().GetComponent<InputFieldVitesse>().index=i;
 			IFV.GetComponent<InputField>().GetComponent<InputFieldVitesse>().RefreshContent();
 			IFP.GetComponent<InputField>().GetComponent<InputFieldPhase>().index=i;
 			IFP.GetComponent<InputField>().GetComponent<InputFieldPhase>().RefreshContent();*/
-			IFF.GetComponent<InputFieldPanelDisques>().index=i;
-			IFF.GetComponent<InputFieldPanelDisques>().RefreshContent();
-			IFF.GetComponent<InputFieldPanelDisques>().Start();
+				IFF.GetComponent<InputFieldPanelDisques>().index=i;
+				IFF.GetComponent<InputFieldPanelDisques>().RefreshContent();
+				IFF.GetComponent<InputFieldPanelDisques>().Start();
 			//Debug.Log(ToggleActiveDisque.name);//GetComponent<Toggle>().GetComponent<ToggleAnimRayon>().index.ToString);
 			/*ToggleActiveDisque.GetComponent<Toggle>().GetComponent<ToggleAnimRayon>().index=i;
 			ToggleAnimation.GetComponent<Toggle>().GetComponent<ToggleRotAxe>().index=i;*/
-			GameObject NewLine=Instantiate(LigneSpiro);
-			NewLine.name="Ligne"+(i).ToString();
-			NewLine.SetActive(true);
-			NewLine.transform.SetParent(PanelLignes.transform,false);
+				GameObject NewLine=Instantiate(LigneSpiro);
+				NewLine.name="Ligne"+(i).ToString();
+				NewLine.SetActive(true);
+				NewLine.transform.SetParent(PanelLignes.transform,false);
+			}
 		}
+		//RefreshInputField();
 		GetComponent<RectTransform>().ForceUpdateRectTransforms();
 		Debug.Log("Building Panel");
 	}
@@ -83,6 +98,9 @@ public class PanelOptionTousDisquesSmall : Spirographe
 		SelectedLine.profondeur++;
 		i=SelectedLine.profondeur-1; //avant dernière ligne avant le crayon
 		TextNumeroDisque.GetComponent<Text>().text=(i+1).ToString();
+		int NbLignesCrees = PanelLignes.transform.childCount;
+		if (NbLignesCrees<SelectedLine.profondeur)
+		{
 			IFR.GetComponent<InputField>().GetComponent<InputFieldPanelDisques>().index=i;
 			IFR.GetComponent<InputField>().GetComponent<InputFieldPanelDisques>().RefreshContent();
 			/*IFA.GetComponent<InputField>().GetComponent<InputFieldAmplitude>().index=i;
@@ -101,21 +119,54 @@ public class PanelOptionTousDisquesSmall : Spirographe
 			NewLine.SetActive(true);
 			NewLine.transform.SetParent(PanelLignes.transform,false);
 			//PanelOptionTousDisques.GetComponent<PanelOptionTousDisques>().BuildPanel();  //refresh panel tous disques too
+		}
+		else
+		{
+			PanelLignes.transform.GetChild(i).gameObject.SetActive(true);
+		}
+		RefreshPanel();
 	}
 	
 	public void DeleteLine()
 	{
 		GameObject LastLine;
 		SelectedLine=GetActiveSpiroFormule();
-		if (SelectedLine.profondeur>2) 
+		if (SelectedLine.profondeur>3) 
 		{
 			SelectedLine.profondeur--;
 			LastLine = PanelLignes.transform.GetChild(SelectedLine.profondeur).gameObject;
-			RemoveEventsFromLine(LastLine);
-			Destroy(LastLine);
+			//RemoveEventsFromLine(LastLine);
+			//Destroy(LastLine);
+			LastLine.SetActive(false);
 		}
+		RefreshPanel();
 		//PanelOptionTousDisques.GetComponent<PanelOptionTousDisques>().BuildPanel(); //refresh panel tous disques too
 	}
+	
+	public void RefreshPanel()
+	{
+		InputFieldPanelDisques[] ZOB;	
+        ZOB = PanelLignes.GetComponentsInChildren<InputFieldPanelDisques>(); //Get all InputFieldPanelDisques in PanelLignes
+        foreach (InputFieldPanelDisques IF in ZOB)
+		{
+            IF.gameObject.GetComponent<InputFieldRayon>().RefreshContent();  //RefreshContent of all InputFieldPanelDisques in PanelLignes
+		}
+		int profondeur = SelectedLine.profondeur;
+		int NbLignesCrees = PanelLignes.transform.childCount;
+		GameObject LineCurr=PanelLignes.transform.GetChild(0).gameObject;
+		for (int i=0;i<NbLignesCrees;i++)									 // on n'affiche que les lignes d'indice inférieur à profondeur
+		{
+			LineCurr = PanelLignes.transform.GetChild(i).gameObject;
+			if (i<profondeur)
+			{
+				LineCurr.SetActive(true);
+			}
+			else
+			{
+				LineCurr.SetActive(false);
+			}
+		}
+    }
 	
 	public void LateUpdate()
 	{

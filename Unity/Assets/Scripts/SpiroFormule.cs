@@ -57,6 +57,7 @@ public class SpiroFormule : Spirographe
 		if (!isInitialised) 
 		{
 			InitValues();
+			Initialisation();
 			RefreshInputField();
 		}
 		Attends=false;
@@ -109,13 +110,17 @@ public class SpiroFormule : Spirographe
 		{
 			RR[k]=20.0f-k*(15.0f/100.0f);
 			facteurT[k]=1.0f;
+			AA[k]=1.0f;
+			VV[k]=0.01f;
+			PP[k]=0.0f;
 			RotAxe[k]=true;
 			GameObject go = Instantiate(AxeToInstatiate);
 			CentreRayon[k]=go;
 		}
-		profondeur=2;
+		profondeur=3;
 		RR[0]=10.0f;
 		RR[1]=6.0f;
+		RR[2]=1.0f;
 	}
 	
 	//Duplication

@@ -50,6 +50,7 @@ public class NewLineButton : Spirographe
 		NewLine.name = NameLine.text;
 		NewLineName.transform.Find("DeleteButton").gameObject.SetActive(true);
 		NewLineName.transform.Find("SelectButton").gameObject.GetComponent<SelectButton>().SelectLine();
+		RefreshInputField();
 	}
 }
 
