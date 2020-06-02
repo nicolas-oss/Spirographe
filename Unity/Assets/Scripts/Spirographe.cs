@@ -51,6 +51,8 @@ public class Spirographe : MonoBehaviour
 	
 	/////////////////////////////////////////GetActiveObject functions//////////////////////////////////////
 	
+	public static SpiroFormule SelectedLineG;
+	
 	public GameObject GetActiveObject()
 	{
 		return GameObject.FindWithTag("Selected");

@@ -28,17 +28,31 @@ public class ColorButton : Spirographe
         if (isPicking) ColorPicking();
     }
 	
-	public void BeginColorPicking()
+	public void ShowPanel()
 	{
-		isPicking=!isPicking;
+		ColorPickerPanel.gameObject.SetActive(true);
+	}
+	
+	public void BeginColorPicking()
+	{	
+		//ShowPanel();
 		SelectedLine=GetActiveSpiroFormule();
+		//if (!isPicking) 
+		ColorPickerPanel.GetComponent<ColorPicker>().CurrentColor=ColorFieldToRefresh.GetComponent<Image>().color;
+		isPicking=true;
+		//IFColorPicker.GetComponent<InputField>().text="#"+ColorUtility.ToHtmlStringRGBA(ColorFieldToRefresh.GetComponent<Image>().color);
 	}
 	
 	public void ColorPicking()
 	{
-		PickedColorString=IFColorPicker.GetComponent<InputField>().text;
+		/*PickedColorString=IFColorPicker.GetComponent<InputField>().text;
 		ColorUtility.TryParseHtmlString(PickedColorString, out newCol);
-		SelectedLine.GetType().GetField(InputID).SetValue(SelectedLine,newCol);
-		ColorFieldToRefresh.GetComponent<Image>().color=newCol;
+		SelectedLine.GetType().GetField(InputID).SetValue(SelectedLine,newCol);*/
+		ColorFieldToRefresh.GetComponent<Image>().color=ColorPickerPanel.GetComponent<ColorPicker>().CurrentColor;
+	}
+	
+	public void EndColorPicking()
+	{
+		isPicking=false;
 	}
 }

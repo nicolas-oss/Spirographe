@@ -12,4 +12,10 @@ public class title_panel_option : MonoBehaviour
 		activation=PanelOption.active;
 		PanelOption.SetActive(!activation);
 	}
+	
+	public void ShowPanel()
+		{
+		bool activation;
+		PanelOption.SetActive(true);
+	}
 }

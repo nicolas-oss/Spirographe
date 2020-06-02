@@ -8,17 +8,17 @@ using System.Collections;
 
 public class InputFieldInterface : Spirographe
 {
-	float ValeurInitiale,ValeurSortie;
+	public float ValeurInitialeIF,ValeurSortieIF;
 	GameObject ActiveObjectInScene;
-	SpiroFormule SelectedLine;
+	public static SpiroFormule SelectedLine;
 	public float FacteurDiv = 100.0f;
 	public string InputID;
 	public bool Clamp;
 	public float Precision;
 	public Vector3 CurrentMousePos,MousePosInitiale,DeltaMousePos;
-	InputField MainInputField;
+	public InputField MainInputField;
 		
-	void Start()
+	public void Start()
 	{
 		GetActiveLine();
 		MainInputField=gameObject.GetComponent<InputField>();
@@ -33,7 +33,6 @@ public class InputFieldInterface : Spirographe
 		SetActiveEvent();
 	}
 
-	
 	public void UnsubscribeRefreshEvent()
 	{
 		Spirographe.onDestroyRefreshInputFieldEvent -= RefreshContent;
@@ -56,7 +55,7 @@ public class InputFieldInterface : Spirographe
 	public void BeginAjusteWithDrag()
 	{
 		GetActiveLine();
-		ValeurInitiale = (float)SelectedLine.GetType().GetField(InputID).GetValue(SelectedLine);
+		ValeurInitialeIF = (float)SelectedLine.GetType().GetField(InputID).GetValue(SelectedLine);
 		MousePosInitiale = Input.mousePosition;
 	}
 	
@@ -65,16 +64,16 @@ public class InputFieldInterface : Spirographe
 		//Debug.Log("Dragging");
 		CurrentMousePos = Input.mousePosition;
 		DeltaMousePos = CurrentMousePos-MousePosInitiale;
-		ValeurSortie = ValeurInitiale + DeltaMousePos.x/FacteurDiv;
-		if (Clamp) {ValeurSortie=(float)Math.Floor((ValeurSortie/Precision))*Precision;}
-		GetComponent<InputField>().text = ValeurSortie.ToString();
-		SelectedLine.GetType().GetField(InputID).SetValue(SelectedLine,ValeurSortie);
+		ValeurSortieIF = ValeurInitialeIF + DeltaMousePos.x/FacteurDiv;
+		if (Clamp) {ValeurSortieIF=(float)Math.Floor((ValeurSortieIF/Precision))*Precision;}
+		GetComponent<InputField>().text = ValeurSortieIF.ToString();
+		SelectedLine.GetType().GetField(InputID).SetValue(SelectedLine,ValeurSortieIF);
 	}
 	
 	public void AjusteWithEnter()
 	{
-		ValeurSortie = float.Parse(GetComponent<InputField>().text);
-		SelectedLine.GetType().GetField(InputID).SetValue(SelectedLine,ValeurSortie);
+		ValeurSortieIF = float.Parse(GetComponent<InputField>().text);
+		SelectedLine.GetType().GetField(InputID).SetValue(SelectedLine,ValeurSortieIF);
 	}
 	
 	public void RefreshContent()

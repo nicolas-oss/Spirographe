@@ -21,7 +21,7 @@ public class SaveSpiro : MonoBehaviour
 		//SpiroToSave = Interface.GetComponent<Interface>().SelectedLine;
 		//Spiro = SpiroToSave.GameObject;
 		Name = SpiroName();
-		PrefabUtility.SaveAsPrefabAsset(Root, SpiroName());
+		PrefabUtility.SaveAsPrefabAsset(gameObject, SpiroName());
 		Debug.Log("Saved " + Name);
 	}
 }
