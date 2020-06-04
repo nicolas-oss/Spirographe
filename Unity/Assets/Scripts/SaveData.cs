@@ -22,9 +22,9 @@ public class SaveData
 		foreach (SpiroData data in spiroContainer.spiros)
 		{
 			GameController GClocal = new GameController();
-			GClocal.CreateSpiro(data);
-			OnLoaded();
+			GClocal.CreateSpiro(data,GameController.SpiroBasePath);
 		}
+		OnLoaded();
 	}
 	
 	public static void Save(string path, SpiroContainer spiros)

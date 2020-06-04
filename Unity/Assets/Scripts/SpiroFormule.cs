@@ -23,7 +23,7 @@ public class SpiroFormule : Spirographe
 	public bool[] RotAxe = new bool[TailleTableaux];
 	public GameObject[] Axe = new GameObject[TailleTableaux];
 	public GameObject[] CentreRayon = new GameObject[TailleTableaux];
-	public GameObject AxeToInstatiate;
+	//GameObject AxeToInstatiate;
 	public GameObject Centre;
 	
 	//paramètres crayon
@@ -127,7 +127,7 @@ public class SpiroFormule : Spirographe
 	
 	void OnEnable()
 	{
-		SaveData.OnLoaded += delegate{LoadData();};
+		//SaveData.OnLoaded += delegate{LoadData();};
 		SaveData.OnBeforeSave += delegate{StoreData();};
 		SaveData.OnBeforeSave += delegate{SaveData.AddSpiroData(data);};
 		Debug.Log("Save Event added");
@@ -135,7 +135,7 @@ public class SpiroFormule : Spirographe
 	
 	void OnDisable()
 	{
-		SaveData.OnLoaded -= delegate{LoadData();};
+		//SaveData.OnLoaded -= delegate{LoadData();};
 		SaveData.OnBeforeSave -= delegate{StoreData();};
 		SaveData.OnBeforeSave -= delegate{SaveData.AddSpiroData(data);};
 	}
@@ -144,17 +144,20 @@ public class SpiroFormule : Spirographe
     {	
 		//GameObject AxeToInstatiate = new GameObject();
 		//OnEnabled();
-		if (!isInitialised) 
-		{
-			InitValues();
+		//if (!isInitialised) 
+		//{
+			//InitValues();
 			//Initialisation();
-			for (int k=0;k<25;k++)
+			GameObject Centre = new GameObject();
+			GameObject AxeToInstatiate = new GameObject();
+			for (int k=0;k<TailleTableaux-1;k++)
 			{
 				GameObject go = Instantiate(AxeToInstatiate);
 				CentreRayon[k]=go;
 			}
 			//RefreshInputField();
-		}
+		//}
+		
 		Attends=false;
 		if (!(Master))
 		{
@@ -270,6 +273,7 @@ public class SpiroFormule : Spirographe
 		LineRenderer lineRenderer = GetComponent<LineRenderer>();
 		lineRenderer.widthMultiplier = widthOfLineRenderer;
 		
+		//GameObject Centre = new GameObject();
 		CentreRayon[0].transform.position=Centre.transform.position;
 		CentreRayon[0].transform.localEulerAngles=RotationNulle;
 		
