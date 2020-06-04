@@ -14,6 +14,10 @@ public static class Spirographe
 	public static event DestroyEventInputFieldEvent onDestroyRefreshInputFieldEvent;
 	public static event InitialisationEvent onInitialisation;
 	public static event SelectionLineEvent onSelectionLine;
+	
+	public static int LineCount;
+	public static SpiroFormule SelectedLine;
+	public static GameObject ActiveObjectInScene;
 
 	///////////////////////////////////////////Refresh Event////////////////////////////////////////////////
 	
@@ -43,15 +47,18 @@ public static class Spirographe
 		//onRefreshInputFieldPanelDisques();
 	}
 	
-	public static void SelectionLine()
+	public static void Selection()
 	{
 		Debug.Log("Calling event SelectionLine");
-		if(onSelectionLine != null) onSelectionLine();
+		if(onSelectionLine != null) 
+			{
+				SelectedLine = GetActiveSpiroFormule();
+				ActiveObjectInScene = GetActiveObject();
+				onSelectionLine();
+			}
 	}
 	
 	/////////////////////////////////////////GetActiveObject functions//////////////////////////////////////
-	
-	public static SpiroFormule SelectedLineG;
 	
 	public static GameObject GetActiveObject()
 	{

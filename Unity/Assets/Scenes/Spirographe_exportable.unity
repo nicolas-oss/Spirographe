@@ -3921,6 +3921,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: 0
+  ValeurIn: 0
+  ValeurOut: 0
+  Value: 0
+  ActiveObjectInScene: {fileID: 0}
+  SelectedLine: {fileID: 0}
   FacteurDiv: 100
   InputID: 
   Clamp: 0
@@ -3928,6 +3933,7 @@ MonoBehaviour:
   CurrentMousePos: {x: 0, y: 0, z: 0}
   MousePosInitiale: {x: 0, y: 0, z: 0}
   DeltaMousePos: {x: 0, y: 0, z: 0}
+  MainInputField: {fileID: 0}
 --- !u!114 &401892483
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15338,6 +15344,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: 0
+  ValeurIn: 0
+  ValeurOut: 0
+  Value: 0
+  ActiveObjectInScene: {fileID: 0}
+  SelectedLine: {fileID: 0}
   FacteurDiv: 100
   InputID: facteurT
   Clamp: 0
@@ -15345,6 +15356,7 @@ MonoBehaviour:
   CurrentMousePos: {x: 0, y: 0, z: 0}
   MousePosInitiale: {x: 0, y: 0, z: 0}
   DeltaMousePos: {x: 0, y: 0, z: 0}
+  MainInputField: {fileID: 0}
 --- !u!114 &1211339930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21019,7 +21031,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e6d868ebbe44d34589c0f1b25d7f316, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ValeurProfondeur: 0
+  SelectedLine: {fileID: 0}
   InputID: profondeur
+  MainInputField: {fileID: 0}
   PanelTD: {fileID: 1296304771}
 --- !u!1 &1632512766
 GameObject:
@@ -22140,7 +22155,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e6d868ebbe44d34589c0f1b25d7f316, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ValeurProfondeur: 0
+  SelectedLine: {fileID: 0}
   InputID: profondeur
+  MainInputField: {fileID: 0}
   PanelTD: {fileID: 564254758}
 --- !u!114 &1765471521
 MonoBehaviour:
@@ -22287,7 +22305,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0170fa6db276f8c43aa50b4322604195, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ValeurProfondeur: 0
+  SelectedLine: {fileID: 0}
   InputID: profondeur
+  MainInputField: {fileID: 0}
   PanelTD: {fileID: 564254758}
 --- !u!1 &1770260887
 GameObject:
@@ -22963,7 +22984,6 @@ MonoBehaviour:
   NewLineName: {fileID: 0}
   NewLine: {fileID: 0}
   SelectedLine: {fileID: 1283168859}
-  LineCount: 0
   RootList: {fileID: 906278670}
   BoutonSelectionPremiereLigne: {fileID: 342655208}
   SpiroFormuleToInstantiate: {fileID: 5592576165217751525, guid: d8711808271df72419bdfa46b1784723,
@@ -28790,6 +28810,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: 0
+  ValeurIn: 0
+  ValeurOut: 0
+  Value: 0
+  ActiveObjectInScene: {fileID: 0}
+  SelectedLine: {fileID: 0}
   FacteurDiv: 100
   InputID: 
   Clamp: 0
@@ -28797,6 +28822,7 @@ MonoBehaviour:
   CurrentMousePos: {x: 0, y: 0, z: 0}
   MousePosInitiale: {x: 0, y: 0, z: 0}
   DeltaMousePos: {x: 0, y: 0, z: 0}
+  MainInputField: {fileID: 0}
 --- !u!114 &2805530411424273177
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29810,7 +29836,7 @@ PrefabInstance:
     - target: {fileID: 5592576165217751525, guid: d8711808271df72419bdfa46b1784723,
         type: 3}
       propertyPath: m_Name
-      value: SpiroFormule
+      value: Spiro
       objectReference: {fileID: 0}
     - target: {fileID: 5592576165217751526, guid: d8711808271df72419bdfa46b1784723,
         type: 3}

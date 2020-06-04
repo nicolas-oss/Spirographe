@@ -52,7 +52,7 @@ public class SelectButton : MonoBehaviour
 		ActiveObjectInScene = GameObject.Find(NameLine.text);
 		ActiveObjectInScene.tag="Selected";
 		PreviousTextLine = TextNameLine;
-		//SelectionLine();
+		Spirographe.Selection(); //call Selection Event
 		Spirographe.RefreshInputField();
 	}
 }

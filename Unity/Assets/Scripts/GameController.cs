@@ -14,7 +14,7 @@ public class GameController : MonoBehaviour
 	Text NameLine;
 	public GameObject ActiveObjectInScene,PreviousTextLine,TextNameLine,NewLineName,NewLine;
 	public SpiroFormule SelectedLine;
-	public int LineCount;
+	//public int LineCount;
 	public GameObject RootList;
 	public SelectButton BoutonSelectionPremiereLigne;
 	public GameObject SpiroFormuleToInstantiate;
@@ -25,8 +25,9 @@ public class GameController : MonoBehaviour
       dataPath=Application.dataPath+"/Spiro/trytosave.xml";
 	  SpiroBasePath=Application.dataPath+"/Prefabs/SpiroFormule.prefab";
 	  BoutonSelectionPremiereLigne.SelectLine(); //on sélectionne la seule spiro de la scene
-	  Spirographe.Initialisation(); //Send Initialisation event (to build panels)
+	  Spirographe.Selection(); //Send Initialisation event (to build panels)
 	  GetActiveTextLine();
+	  Spirographe.LineCount=1; //on comence avec une ligne
     }
 	
 	void OnEnable()
@@ -71,10 +72,10 @@ public class GameController : MonoBehaviour
 	{
 		GetActiveTextLine();
 		NewLineName = Instantiate(PreviousTextLine);
-		LineCount++;
+		Spirographe.LineCount++;
 		NameLine = NewLineName.GetComponent<Text>();
 		NewLineName.transform.SetParent(PreviousTextLine.transform.parent,false);
-		NameLine.text = ("Spiro"+LineCount.ToString());
+		NameLine.text = ("Spiro"+Spirographe.LineCount.ToString());
 		NewLine.name = NameLine.text;
 		NewLineName.transform.Find("DeleteButton").gameObject.SetActive(true);
 		NewLineName.transform.Find("SelectButton").gameObject.GetComponent<SelectButton>().SelectLine();

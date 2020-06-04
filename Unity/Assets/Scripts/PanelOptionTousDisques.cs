@@ -11,7 +11,7 @@ public class PanelOptionTousDisques : MonoBehaviour
 	
 	void Start()
 	{
-		Spirographe.onInitialisation += BuildPanel;
+		Spirographe.onSelectionLine += BuildPanel;
 		//Spirographe.onRefreshInputField += BuildPanel;
 		//Spirographe.onRefreshInputFieldPanelDisques += RefreshPanel;
 		//Spirographe.onSelectionLine += BuildPanel;		//on souscrit à l'event onSelection

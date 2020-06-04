@@ -11,7 +11,7 @@ public class PanelOptionTousDisquesSmall : MonoBehaviour
 	
 	void Start()
 	{
-		Spirographe.onInitialisation += BuildPanel;
+		Spirographe.onSelectionLine += BuildPanel;
 		//Spirographe.onRefreshInputField += BuildPanel;
 		//Spirographe.onRefreshInputFieldPanelDisques += RefreshPanel;
 		//Spirographe.onSelectionLine += BuildPanel;		//on souscrit à l'event onSelection
@@ -91,7 +91,14 @@ public class PanelOptionTousDisquesSmall : MonoBehaviour
 		//RefreshInputField();
 		GetComponent<RectTransform>().ForceUpdateRectTransforms();
 		Debug.Log("Building Panel big");
-		//SelectionLine();  //une fois le panel buildé on rend active la SpiroFormule de la scene
+		//Reste à cacher les lignes restantes éventuelles :
+		if (profondeur<=NbLignesCrees)
+		{
+			for (int i= profondeur;i<NbLignesCrees;i++)
+			{
+				PanelLignes.transform.GetChild(i).gameObject.SetActive(false);
+			}
+		}
 	}
 	
 	public void AddLine()

@@ -21,8 +21,8 @@ public class SaveData
 		
 		foreach (SpiroData data in spiroContainer.spiros)
 		{
-			//GameController GClocal = new GameController();
-			GameController.CreateSpiro(data,GameController.SpiroBasePath);
+			GameController GClocal = new GameController();
+			GClocal.CreateSpiro(data,GameController.SpiroBasePath);
 		}
 		OnLoaded();
 	}
