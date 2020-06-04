@@ -10,7 +10,7 @@ public class InputFieldInterface : MonoBehaviour
 {
 	public float ValeurInitialeIF,ValeurSortieIF;
 	GameObject ActiveObjectInScene;
-	public static SpiroFormule SelectedLine;
+	//public static SpiroFormule Spirographe.SelectedLine;
 	public float FacteurDiv = 100.0f;
 	public string InputID;
 	public bool Clamp;
@@ -20,7 +20,6 @@ public class InputFieldInterface : MonoBehaviour
 		
 	public void Start()
 	{
-		GetActiveLine();
 		MainInputField=gameObject.GetComponent<InputField>();
 		MainInputField.onEndEdit.AddListener(delegate {AjusteWithEnter(); });
 		MainInputField.onEndEdit.AddListener(delegate {SetActiveEvent(); });
@@ -39,11 +38,11 @@ public class InputFieldInterface : MonoBehaviour
 		Spirographe.onDestroyRefreshInputFieldEvent -= RefreshContent;
 	}
 
-	public void GetActiveLine()
+	/*public void GetActiveLine()
 	{
 		ActiveObjectInScene = Spirographe.GetActiveObject();
 		SelectedLine = Spirographe.GetActiveSpiroFormule();
-	}
+	}*/
 	
 	public void SetActiveEvent()
 	{
@@ -55,8 +54,7 @@ public class InputFieldInterface : MonoBehaviour
 	
 	public void BeginAjusteWithDrag()
 	{
-		GetActiveLine();
-		ValeurInitialeIF = (float)SelectedLine.GetType().GetField(InputID).GetValue(SelectedLine);
+		ValeurInitialeIF = (float)Spirographe.SelectedLine.GetType().GetField(InputID).GetValue(Spirographe.SelectedLine);
 		MousePosInitiale = Input.mousePosition;
 	}
 	
@@ -68,20 +66,19 @@ public class InputFieldInterface : MonoBehaviour
 		ValeurSortieIF = ValeurInitialeIF + DeltaMousePos.x/FacteurDiv;
 		if (Clamp) {ValeurSortieIF=(float)Math.Floor((ValeurSortieIF/Precision))*Precision;}
 		GetComponent<InputField>().text = ValeurSortieIF.ToString();
-		SelectedLine.GetType().GetField(InputID).SetValue(SelectedLine,ValeurSortieIF);
+		Spirographe.SelectedLine.GetType().GetField(InputID).SetValue(Spirographe.SelectedLine,ValeurSortieIF);
 	}
 	
 	public void AjusteWithEnter()
 	{
 		ValeurSortieIF = float.Parse(GetComponent<InputField>().text);
-		SelectedLine.GetType().GetField(InputID).SetValue(SelectedLine,ValeurSortieIF);
+		Spirographe.SelectedLine.GetType().GetField(InputID).SetValue(Spirographe.SelectedLine,ValeurSortieIF);
 	}
 	
 	public void RefreshContent()
 	{
 		float ValeurCourante;
-		GetActiveLine();
-		ValeurCourante = (float)SelectedLine.GetType().GetField(InputID).GetValue(SelectedLine); 	//on lit la valeur courante de l'inputID
+		ValeurCourante = (float)Spirographe.SelectedLine.GetType().GetField(InputID).GetValue(Spirographe.SelectedLine); 	//on lit la valeur courante de l'inputID
 		GetComponent<InputField>().text = ValeurCourante.ToString(); 								//on l'écrit dans le champ text de l'IF
 	}
 }
