@@ -21,9 +21,10 @@ public class SpiroFormule : Spirographe
 	public float[] facteurT = new float[TailleTableaux];
 	public bool[] OndeRayon = new bool[TailleTableaux];
 	public bool[] RotAxe = new bool[TailleTableaux];
-	//public GameObject[] Axe = new GameObject[TailleTableaux];
+	public GameObject[] Axe = new GameObject[TailleTableaux];
 	public GameObject[] CentreRayon = new GameObject[TailleTableaux];
-	GameObject AxeToInstatiate;
+	public GameObject AxeToInstatiate;
+	public GameObject Centre;
 	
 	//paramètres crayon
 	//public float CX,CY;
@@ -51,7 +52,7 @@ public class SpiroFormule : Spirographe
 	Vector3 scaleChange;
 	
 	Vector3 RotationNulle,DeplacementNul;
-	GameObject[] CentreDisque;
+	//GameObject[] CentreDisque;
 	
 	public void StoreData()
 	{
@@ -141,7 +142,7 @@ public class SpiroFormule : Spirographe
 	
 	void Start()
     {	
-		GameObject AxeToInstatiate = new GameObject();
+		//GameObject AxeToInstatiate = new GameObject();
 		//OnEnabled();
 		if (!isInitialised) 
 		{
@@ -186,7 +187,8 @@ public class SpiroFormule : Spirographe
 
     void Update()
     {
-        if (Master) Spirographe();
+        //if (Master) 
+			Spirographe();
 		
 		if ((Master) && (Duplication) && !(Attends))
 		{
@@ -268,7 +270,7 @@ public class SpiroFormule : Spirographe
 		LineRenderer lineRenderer = GetComponent<LineRenderer>();
 		lineRenderer.widthMultiplier = widthOfLineRenderer;
 		
-		CentreRayon[0].transform.position=transform.position;
+		CentreRayon[0].transform.position=Centre.transform.position;
 		CentreRayon[0].transform.localEulerAngles=RotationNulle;
 		
 		for (m=1;m<profondeur;m++)
