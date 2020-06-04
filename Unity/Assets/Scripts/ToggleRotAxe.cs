@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ToggleRotAxe : Spirographe
+public class ToggleRotAxe : MonoBehaviour
 {
     public int index;
 	GameObject ActiveObjectInScene;
@@ -22,8 +22,8 @@ public class ToggleRotAxe : Spirographe
 
     public void GetActiveLine()
 	{
-		ActiveObjectInScene = GetActiveObject();
-		SelectedLine = GetActiveSpiroFormule();
+		ActiveObjectInScene = Spirographe.GetActiveObject();
+		SelectedLine = Spirographe.GetActiveSpiroFormule();
 	}
 	
 	public void ToggleValueChanged()
@@ -31,7 +31,7 @@ public class ToggleRotAxe : Spirographe
 		GetActiveLine();
 		bool Check = GetComponent<Toggle>().isOn;
 		SelectedLine.RotAxe[index]=Check;
-		RefreshInputFieldPanelDisques();
+		Spirographe.RefreshInputFieldPanelDisques();
 	}
 	
 	public void RefreshContent()

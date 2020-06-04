@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PanelOptionTousDisquesSmall : Spirographe
+public class PanelOptionTousDisquesSmall : MonoBehaviour
 {
     public GameObject LigneSpiro,TextNumeroDisque,IFR,IFA,IFV,IFP,IFF,ToggleActiveDisque,ToggleAnimation,PanelLignes,PanelOptionTousDisques;
 	SpiroFormule SelectedLine;
@@ -51,8 +51,8 @@ public class PanelOptionTousDisquesSmall : Spirographe
 	{
 		GameObject LineCurr; //
 		//ResetPanel();
-		SpiroParametrableActive=GetActiveObject();
-		SelectedLine=GetActiveSpiroFormule();
+		SpiroParametrableActive=Spirographe.GetActiveObject();
+		SelectedLine=Spirographe.GetActiveSpiroFormule();
 		int profondeur = SelectedLine.profondeur;
 		int NbLignesCrees = PanelLignes.transform.childCount;
 		for (int i=0;i<profondeur;i++)
@@ -97,7 +97,7 @@ public class PanelOptionTousDisquesSmall : Spirographe
 	public void AddLine()
 	{
 		int i;
-		SelectedLine=GetActiveSpiroFormule();
+		SelectedLine=Spirographe.GetActiveSpiroFormule();
 		SelectedLine.profondeur++;
 		i=SelectedLine.profondeur-1; //avant dernière ligne avant le crayon
 		TextNumeroDisque.GetComponent<Text>().text=(i+1).ToString();
@@ -136,7 +136,7 @@ public class PanelOptionTousDisquesSmall : Spirographe
 	public void DeleteLine()
 	{
 		GameObject LastLine;
-		SelectedLine=GetActiveSpiroFormule();
+		SelectedLine=Spirographe.GetActiveSpiroFormule();
 		if (SelectedLine.profondeur>3) 
 		{
 			SelectedLine.profondeur--;
@@ -151,7 +151,7 @@ public class PanelOptionTousDisquesSmall : Spirographe
 	
 	public void RefreshPanel()
 	{
-		SelectedLine=GetActiveSpiroFormule();
+		SelectedLine=Spirographe.GetActiveSpiroFormule();
 		InputFieldPanelDisques[] ZOB;	
         ZOB = PanelLignes.GetComponentsInChildren<InputFieldPanelDisques>(); //Get all InputFieldPanelDisques in PanelLignes
         foreach (InputFieldPanelDisques IF in ZOB)

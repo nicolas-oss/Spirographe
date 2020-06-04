@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spirographe : MonoBehaviour
+public static class Spirographe
 {
 	public delegate void RefreshInputFieldEvent();  //signature de l'event refreshIF
 	public delegate void DestroyEventInputFieldEvent();
@@ -17,25 +17,25 @@ public class Spirographe : MonoBehaviour
 
 	///////////////////////////////////////////Refresh Event////////////////////////////////////////////////
 	
-	public void RefreshInputField()
+	public static void RefreshInputField()
 	{
 		Debug.Log("Calling Refresh");
 		if (onRefreshInputField != null) onRefreshInputField();
 	}
 	
-	public void RefreshInputFieldPanelDisques()
+	public static void RefreshInputFieldPanelDisques()
 	{
 		Debug.Log("Calling Event Refresh Panel Disques");
 		if (onRefreshInputFieldPanelDisques != null) onRefreshInputFieldPanelDisques();
 	}
 	
-	public void DestroyEventInputField()
+	public static void DestroyEventInputField()
 	{
 		Debug.Log("Calling Event Destroy Event Input Field");
 		if(onDestroyRefreshInputFieldEvent != null) onDestroyRefreshInputFieldEvent();
 	}
 	
-	public void Initialisation()
+	public static void Initialisation()
 	{
 		Debug.Log("Calling event Initialisation");
 		if(onInitialisation != null) onInitialisation();
@@ -43,7 +43,7 @@ public class Spirographe : MonoBehaviour
 		//onRefreshInputFieldPanelDisques();
 	}
 	
-	public void SelectionLine()
+	public static void SelectionLine()
 	{
 		Debug.Log("Calling event SelectionLine");
 		if(onSelectionLine != null) onSelectionLine();
@@ -53,12 +53,12 @@ public class Spirographe : MonoBehaviour
 	
 	public static SpiroFormule SelectedLineG;
 	
-	public GameObject GetActiveObject()
+	public static GameObject GetActiveObject()
 	{
 		return GameObject.FindWithTag("Selected");
 	}
 	
-	public SpiroFormule GetActiveSpiroFormule()
+	public static SpiroFormule GetActiveSpiroFormule()
 	{
 		return GetActiveObject().GetComponent<SpiroFormule>();
 	}

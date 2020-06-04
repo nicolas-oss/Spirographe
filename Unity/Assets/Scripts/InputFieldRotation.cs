@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InputFieldRotation : Spirographe
+public class InputFieldRotation : MonoBehaviour
 {
     //public GameObject IFRot;
 	bool isRotating;
@@ -15,7 +15,7 @@ public class InputFieldRotation : Spirographe
     // Update is called once per frame
     void Update()
     {
-       isRotating=GetActiveSpiroFormule().AnimRotation;
+       isRotating=Spirographe.GetActiveSpiroFormule().AnimRotation;
 	   if (isRotating) GetComponent<InputFieldInterface>().RefreshContent();
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 
-public class ExportSVG : Spirographe
+public class ExportSVG : MonoBehaviour
 {
 	string FileName;
 	public GameObject Interface;
@@ -18,7 +18,7 @@ public class ExportSVG : Spirographe
 
     void Start()
     {
-        SelectedLine = GetActiveSpiroFormule();
+        SelectedLine = Spirographe.GetActiveSpiroFormule();
 		lineRenderer = SelectedLine.GetComponent<LineRenderer>();
 		HeaderFileName=string.Format("{0}/SVG/", Application.dataPath)+HeaderFileName;
 		FooterFileName=string.Format("{0}/SVG/", Application.dataPath)+FooterFileName;

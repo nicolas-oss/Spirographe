@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 
-public class SelectButton : Spirographe
+public class SelectButton : MonoBehaviour
 {
 	public SpiroFormule SelectedLine;
 	public GameObject ActiveObjectInScene;
@@ -21,8 +21,8 @@ public class SelectButton : Spirographe
 	
 	public void GetActiveLine()
 	{
-		ActiveObjectInScene = GetActiveObject();
-		SelectedLine = GetActiveSpiroFormule();
+		ActiveObjectInScene = Spirographe.GetActiveObject();
+		SelectedLine = Spirographe.GetActiveSpiroFormule();
 	}
 	
 	public void GetActiveTextLine() //recherche de la ligne active en scannant les enfants du GameObject contenant toutes les lignes
@@ -53,6 +53,6 @@ public class SelectButton : Spirographe
 		ActiveObjectInScene.tag="Selected";
 		PreviousTextLine = TextNameLine;
 		//SelectionLine();
-		RefreshInputField();
+		Spirographe.RefreshInputField();
 	}
 }

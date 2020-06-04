@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class SpiroFormule : Spirographe
+public class SpiroFormule : MonoBehaviour
 {
     public SpiroData data = new SpiroData();
 	

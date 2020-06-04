@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEditor;
 using UnityEngine.UI;
 
-public class ColorButton : Spirographe
+public class ColorButton : MonoBehaviour
 {
     public ColorPicker ColorPickerPanel;
 	public GameObject IFColorPicker;
@@ -36,7 +36,7 @@ public class ColorButton : Spirographe
 	public void BeginColorPicking()
 	{	
 		//ShowPanel();
-		SelectedLine=GetActiveSpiroFormule();
+		SelectedLine=Spirographe.GetActiveSpiroFormule();
 		//if (!isPicking) 
 		ColorPickerPanel.GetComponent<ColorPicker>().CurrentColor=ColorFieldToRefresh.GetComponent<Image>().color;
 		isPicking=true;

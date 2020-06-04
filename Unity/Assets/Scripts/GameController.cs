@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameController : Spirographe
+public class GameController : MonoBehaviour
 {
     string dataPath;
 	public static string SpiroBasePath;
@@ -25,7 +25,7 @@ public class GameController : Spirographe
       dataPath=Application.dataPath+"/Spiro/trytosave.xml";
 	  SpiroBasePath=Application.dataPath+"/Prefabs/SpiroFormule.prefab";
 	  BoutonSelectionPremiereLigne.SelectLine(); //on sélectionne la seule spiro de la scene
-	  Initialisation(); //Send Initialisation event (to build panels)
+	  Spirographe.Initialisation(); //Send Initialisation event (to build panels)
 	  GetActiveTextLine();
     }
 	
@@ -45,8 +45,8 @@ public class GameController : Spirographe
 	
 	public void GetActiveLine()
 	{
-		ActiveObjectInScene = GetActiveObject();
-		SelectedLine = GetActiveSpiroFormule();
+		ActiveObjectInScene = Spirographe.GetActiveObject();
+		SelectedLine = Spirographe.GetActiveSpiroFormule();
 	}
 	
 	public void GetActiveTextLine() //recherche de la ligne active en scannant les enfants du GameObject contenant toutes les lignes
@@ -74,7 +74,7 @@ public class GameController : Spirographe
 		LineCount++;
 		NameLine = NewLineName.GetComponent<Text>();
 		NewLineName.transform.SetParent(PreviousTextLine.transform.parent,false);
-		NameLine.text = ("SpiroFormule"+LineCount.ToString());
+		NameLine.text = ("Spiro"+LineCount.ToString());
 		NewLine.name = NameLine.text;
 		NewLineName.transform.Find("DeleteButton").gameObject.SetActive(true);
 		NewLineName.transform.Find("SelectButton").gameObject.GetComponent<SelectButton>().SelectLine();
@@ -91,7 +91,7 @@ public class GameController : Spirographe
 		NewLine.tag="Untagged";
 		GetActiveTextLine();
 		CreateTextLine();
-		RefreshInputField();
+		Spirographe.RefreshInputField();
 	}
 	
 	public static void NewSpiro()

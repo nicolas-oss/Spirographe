@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ToggleAnimRayon : Spirographe
+public class ToggleAnimRayon : MonoBehaviour
 {
     public int index;
 	GameObject ActiveObjectInScene;
@@ -21,8 +21,8 @@ public class ToggleAnimRayon : Spirographe
 
     public void GetActiveLine()
 	{
-		ActiveObjectInScene = GetActiveObject();
-		SelectedLine = GetActiveSpiroFormule();
+		ActiveObjectInScene = Spirographe.GetActiveObject();
+		SelectedLine = Spirographe.GetActiveSpiroFormule();
 	}
 	
 	public void ToggleValueChanged()
@@ -30,7 +30,7 @@ public class ToggleAnimRayon : Spirographe
 		GetActiveLine();
 		bool Check = GetComponent<Toggle>().isOn;
 		SelectedLine.OndeRayon[index]=Check;
-		RefreshInputFieldPanelDisques();
+		Spirographe.RefreshInputFieldPanelDisques();
 	}
 	
 	public void RefreshContent()

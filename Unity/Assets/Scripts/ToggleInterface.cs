@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ToggleInterface : Spirographe
+public class ToggleInterface : MonoBehaviour
 {
 	GameObject ActiveObjectInScene;
 	SpiroFormule SelectedLine;
@@ -22,8 +22,8 @@ public class ToggleInterface : Spirographe
 
     public void GetActiveLine()
 	{
-		ActiveObjectInScene = GetActiveObject();
-		SelectedLine = GetActiveSpiroFormule();
+		ActiveObjectInScene = Spirographe.GetActiveObject();
+		SelectedLine = Spirographe.GetActiveSpiroFormule();
 	}
 	
 	public void ClicFormTextBouton()

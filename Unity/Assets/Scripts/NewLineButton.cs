@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 
-public class NewLineButton : Spirographe
+public class NewLineButton : MonoBehaviour
 {
 	public SpiroFormule SelectedLine;//,SpiroFormule; //CurrentLine,
 	public Color selected = Color.black;
@@ -16,8 +16,8 @@ public class NewLineButton : Spirographe
 
 	public void GetActiveLine()
 	{
-		ActiveObjectInScene = GetActiveObject();
-		SelectedLine = GetActiveSpiroFormule();
+		ActiveObjectInScene = Spirographe.GetActiveObject();
+		SelectedLine = Spirographe.GetActiveSpiroFormule();
 	}
 	
 	public void GetActiveTextLine() //recherche de la ligne active en scannant les enfants du GameObject contenant toutes les lignes
@@ -50,7 +50,7 @@ public class NewLineButton : Spirographe
 		NewLine.name = NameLine.text;
 		NewLineName.transform.Find("DeleteButton").gameObject.SetActive(true);
 		NewLineName.transform.Find("SelectButton").gameObject.GetComponent<SelectButton>().SelectLine();
-		RefreshInputField();
+		Spirographe.RefreshInputField();
 	}
 }
 

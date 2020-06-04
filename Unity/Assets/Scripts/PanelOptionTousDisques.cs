@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PanelOptionTousDisques : Spirographe
+public class PanelOptionTousDisques : MonoBehaviour
 {
     public GameObject LigneSpiro,TextNumeroDisque,IFR,IFA,IFV,IFP,IFF,ToggleActiveDisque,ToggleAnimation,PanelLignes;
 	SpiroFormule SelectedLine;
@@ -60,8 +60,8 @@ public class PanelOptionTousDisques : Spirographe
 	{
 		Debug.Log("beginning Building Panel big");
 		GameObject LineCurr;
-		SpiroParametrableActive=GetActiveObject();
-		SelectedLine=GetActiveSpiroFormule();
+		SpiroParametrableActive=Spirographe.GetActiveObject();
+		SelectedLine=Spirographe.GetActiveSpiroFormule();
 		int profondeur = SelectedLine.profondeur;
 		int NbLignesCrees = PanelLignes.transform.childCount;
 		Debug.Log("NbLignesCrees="+NbLignesCrees.ToString());
@@ -113,12 +113,12 @@ public class PanelOptionTousDisques : Spirographe
 	
 	public void RefreshPanel()
 	{
-		InputFieldRayon[] ZOB;
+		InputField[] ZOB;
 		
-        ZOB = GetComponentsInChildren<InputFieldRayon>();
-        foreach (InputFieldRayon IF in ZOB)
+        ZOB = GetComponentsInChildren<InputField>();
+        foreach (InputField IF in ZOB)
 		{
-            IF.gameObject.GetComponent<InputFieldRayon>().RefreshContent();
+            IF.gameObject.GetComponent<InputFieldPanelDisques>().RefreshContent();
 		}
     }
 }

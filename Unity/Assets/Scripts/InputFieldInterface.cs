@@ -6,7 +6,7 @@ using UnityEngine.Events;
 using System;
 using System.Collections;
 
-public class InputFieldInterface : Spirographe
+public class InputFieldInterface : MonoBehaviour
 {
 	public float ValeurInitialeIF,ValeurSortieIF;
 	GameObject ActiveObjectInScene;
@@ -41,8 +41,8 @@ public class InputFieldInterface : Spirographe
 
 	public void GetActiveLine()
 	{
-		ActiveObjectInScene = GetActiveObject();
-		SelectedLine = GetActiveSpiroFormule();
+		ActiveObjectInScene = Spirographe.GetActiveObject();
+		SelectedLine = Spirographe.GetActiveSpiroFormule();
 	}
 	
 	public void SetActiveEvent()

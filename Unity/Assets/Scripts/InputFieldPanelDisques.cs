@@ -6,7 +6,7 @@ using UnityEngine.Events;
 using System;
 using System.Collections;
 
-public class InputFieldPanelDisques : Spirographe
+public class InputFieldPanelDisques : MonoBehaviour
 {
 	GameObject ActiveObjectInScene;
 	SpiroFormule SelectedLine;
@@ -33,8 +33,8 @@ public class InputFieldPanelDisques : Spirographe
 	
 	public void GetActiveLine()
 	{
-		ActiveObjectInScene = GetActiveObject();
-		SelectedLine = GetActiveSpiroFormule();
+		ActiveObjectInScene = Spirographe.GetActiveObject();
+		SelectedLine = Spirographe.GetActiveSpiroFormule();
 	}
 
 	void onDestroy()
@@ -89,7 +89,7 @@ public class InputFieldPanelDisques : Spirographe
 		if (Clamp) {ValeurOut=(float)Math.Floor((ValeurOut/Precision))*Precision;}
 		GetComponent<InputField>().text = ValeurOut.ToString();
 		EcritureValeur(ValeurOut);
-		RefreshInputFieldPanelDisques(); // on rafraichi les autres champs IFR
+		Spirographe.RefreshInputFieldPanelDisques(); // on rafraichi les autres champs IFR
 		//Debug.Log("ok");
 	}
 	
@@ -98,7 +98,7 @@ public class InputFieldPanelDisques : Spirographe
 		GetActiveLine();
 		ValeurOut = float.Parse(GetComponent<InputField>().text);
 		EcritureValeur(ValeurOut);
-		RefreshInputFieldPanelDisques(); // on rafraichi les autres champs IFR
+		Spirographe.RefreshInputFieldPanelDisques(); // on rafraichi les autres champs IFR
 	}
 	
 	void EcritureValeur(float ValeurOut)
