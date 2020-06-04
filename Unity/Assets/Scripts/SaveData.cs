@@ -16,10 +16,11 @@ public class SaveData
 	public static void Load(string path)
 	{
 		spiroContainer=LoadSpiros(path);
+		GameController gameController = new GameController();
 		
 		foreach (SpiroData data in spiroContainer.spiros)
 		{
-			GameController.CreateSpiro(data);
+			gameController.GetComponent<GameController>().CreateSpiro(data);
 			OnLoaded();
 		}
 	}

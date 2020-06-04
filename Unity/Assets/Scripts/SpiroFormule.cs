@@ -9,7 +9,7 @@ public class SpiroFormule : Spirographe
 	
 	//Parametres globaux
 	public int profondeur;
-	public GameObject Centre;
+	//public GameObject Centre;
 	public float NombrePoints;
 	
 	public static int TailleTableaux = 25;
@@ -21,14 +21,12 @@ public class SpiroFormule : Spirographe
 	public float[] facteurT = new float[TailleTableaux];
 	public bool[] OndeRayon = new bool[TailleTableaux];
 	public bool[] RotAxe = new bool[TailleTableaux];
-	public GameObject[] Axe = new GameObject[TailleTableaux];
+	//public GameObject[] Axe = new GameObject[TailleTableaux];
 	public GameObject[] CentreRayon = new GameObject[TailleTableaux];
-	public GameObject AxeToInstatiate;
+	GameObject AxeToInstatiate;
 	
 	//paramètres crayon
-	public float AX,AY,VX,VY,PX,PY;
-	public bool OndeCX,OndeCY;
-	public float CX,CY;
+	//public float CX,CY;
 	
 	//Nombre de tours
 	public float delta;
@@ -55,7 +53,7 @@ public class SpiroFormule : Spirographe
 	Vector3 RotationNulle,DeplacementNul;
 	GameObject[] CentreDisque;
 	
-	void StoreData()
+	public void StoreData()
 	{
 		data.profondeur=profondeur;
 		data.NombrePoints=NombrePoints;
@@ -91,7 +89,7 @@ public class SpiroFormule : Spirographe
 		Debug.Log("Values copied");
 	}
 	
-	void LoadData()
+	public void LoadData()
 	{
 		profondeur=data.profondeur;
 		NombrePoints=data.NombrePoints;
@@ -143,11 +141,12 @@ public class SpiroFormule : Spirographe
 	
 	void Start()
     {	
+		GameObject AxeToInstatiate = new GameObject();
 		//OnEnabled();
 		if (!isInitialised) 
 		{
 			InitValues();
-			Initialisation();
+			//Initialisation();
 			for (int k=0;k<25;k++)
 			{
 				GameObject go = Instantiate(AxeToInstatiate);
@@ -269,7 +268,7 @@ public class SpiroFormule : Spirographe
 		LineRenderer lineRenderer = GetComponent<LineRenderer>();
 		lineRenderer.widthMultiplier = widthOfLineRenderer;
 		
-		CentreRayon[0].transform.position=Centre.transform.position;
+		CentreRayon[0].transform.position=transform.position;
 		CentreRayon[0].transform.localEulerAngles=RotationNulle;
 		
 		for (m=1;m<profondeur;m++)

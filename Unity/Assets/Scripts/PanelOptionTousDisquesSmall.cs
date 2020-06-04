@@ -91,7 +91,7 @@ public class PanelOptionTousDisquesSmall : Spirographe
 		//RefreshInputField();
 		GetComponent<RectTransform>().ForceUpdateRectTransforms();
 		Debug.Log("Building Panel big");
-		SelectionLine();  //une fois le panel buildé on rend active la SpiroFormule de la scene
+		//SelectionLine();  //une fois le panel buildé on rend active la SpiroFormule de la scene
 	}
 	
 	public void AddLine()
