@@ -29301,7 +29301,6 @@ GameObject:
   - component: {fileID: 2805530409755183712}
   - component: {fileID: 2805530409755183711}
   - component: {fileID: 2805530409755183710}
-  - component: {fileID: 2805530409755183713}
   - component: {fileID: 2805530409755183714}
   m_Layer: 5
   m_Name: InputField_P
@@ -29431,26 +29430,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2805530409755183708}
   m_CullTransparentMesh: 0
---- !u!114 &2805530409755183713
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2805530409755183708}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2309fa1f0a495a4a92f538937e41939, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  index: 0
-  FacteurDiv: 100
-  InputID: 
-  Clamp: 0
-  Precision: 0
-  CurrentMousePos: {x: 0, y: 0, z: 0}
-  MousePosInitiale: {x: 0, y: 0, z: 0}
-  DeltaMousePos: {x: 0, y: 0, z: 0}
 --- !u!114 &2805530409755183714
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29793,7 +29772,6 @@ GameObject:
   - component: {fileID: 2805530409945454802}
   - component: {fileID: 2805530409945454801}
   - component: {fileID: 2805530409945454800}
-  - component: {fileID: 2805530409945454803}
   - component: {fileID: 2805530409945454804}
   m_Layer: 5
   m_Name: InputField_Transmission
@@ -29923,26 +29901,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2805530409945454798}
   m_CullTransparentMesh: 0
---- !u!114 &2805530409945454803
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2805530409945454798}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee990b54b03f3f8479ced5a272cb0ccd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  index: 0
-  FacteurDiv: 100
-  InputID: 
-  Clamp: 0
-  Precision: 0
-  CurrentMousePos: {x: 0, y: 0, z: 0}
-  MousePosInitiale: {x: 0, y: 0, z: 0}
-  DeltaMousePos: {x: 0, y: 0, z: 0}
 --- !u!114 &2805530409945454804
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30393,7 +30351,6 @@ GameObject:
   - component: {fileID: 2805530410459474950}
   - component: {fileID: 2805530410459474949}
   - component: {fileID: 2805530410459474948}
-  - component: {fileID: 2805530410459474951}
   - component: {fileID: 2805530410459474952}
   m_Layer: 5
   m_Name: InputField_A
@@ -30523,26 +30480,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2805530410459474946}
   m_CullTransparentMesh: 0
---- !u!114 &2805530410459474951
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2805530410459474946}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09f9971d5dd5bb0428b4e25c814bd2a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  index: 0
-  FacteurDiv: 100
-  InputID: 
-  Clamp: 0
-  Precision: 0
-  CurrentMousePos: {x: 0, y: 0, z: 0}
-  MousePosInitiale: {x: 0, y: 0, z: 0}
-  DeltaMousePos: {x: 0, y: 0, z: 0}
 --- !u!114 &2805530410459474952
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30577,7 +30514,6 @@ GameObject:
   - component: {fileID: 2805530410528009594}
   - component: {fileID: 2805530410528009593}
   - component: {fileID: 2805530410528009592}
-  - component: {fileID: 2805530410528009595}
   - component: {fileID: 2805530410528009596}
   m_Layer: 5
   m_Name: InputField_V
@@ -30707,26 +30643,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2805530410528009590}
   m_CullTransparentMesh: 0
---- !u!114 &2805530410528009595
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2805530410528009590}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: adf7ee83b0746834ea44e667a199eb6d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  index: 0
-  FacteurDiv: 100
-  InputID: 
-  Clamp: 0
-  Precision: 0
-  CurrentMousePos: {x: 0, y: 0, z: 0}
-  MousePosInitiale: {x: 0, y: 0, z: 0}
-  DeltaMousePos: {x: 0, y: 0, z: 0}
 --- !u!114 &2805530410528009596
 MonoBehaviour:
   m_ObjectHideFlags: 0

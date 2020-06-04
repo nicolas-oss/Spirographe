@@ -25,6 +25,7 @@ public class InputFieldInterface : Spirographe
 		MainInputField.onEndEdit.AddListener(delegate {AjusteWithEnter(); });
 		MainInputField.onEndEdit.AddListener(delegate {SetActiveEvent(); });
 		Spirographe.onRefreshInputField += RefreshContent; //on souscrit à l'event onRefreshInputField
+		//Spirographe.onSelectionLine += RefreshContent;		//on souscrit à l'event onSelection
 	}
 	
 	public void InitFromTextBouton()

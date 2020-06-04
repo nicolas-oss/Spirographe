@@ -17,6 +17,7 @@ public class ToggleRotAxe : Spirographe
         m_Toggle.onValueChanged.AddListener(delegate {ToggleValueChanged();});
 		Spirographe.onRefreshInputField += RefreshContent;
 		Spirographe.onRefreshInputFieldPanelDisques += RefreshContent;
+		//Spirographe.onSelectionLine += RefreshContent;
 	}
 
     public void GetActiveLine()

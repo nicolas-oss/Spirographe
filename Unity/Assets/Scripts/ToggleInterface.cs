@@ -16,6 +16,8 @@ public class ToggleInterface : Spirographe
         m_Toggle = GetComponent<Toggle>();
         m_Toggle.onValueChanged.AddListener(delegate {ToggleValueChanged();});
 		Spirographe.onRefreshInputField += RefreshContent;
+		Spirographe.onRefreshInputFieldPanelDisques += RefreshContent;
+		//Spirographe.onSelectionLine += RefreshContent;
 	}
 
     public void GetActiveLine()

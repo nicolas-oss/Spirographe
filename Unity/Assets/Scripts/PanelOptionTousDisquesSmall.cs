@@ -12,7 +12,10 @@ public class PanelOptionTousDisquesSmall : Spirographe
 	void Start()
 	{
 		Spirographe.onInitialisation += BuildPanel;
-		Spirographe.onRefreshInputField += RefreshPanel;
+		//Spirographe.onRefreshInputField += BuildPanel;
+		//Spirographe.onRefreshInputFieldPanelDisques += RefreshPanel;
+		//Spirographe.onSelectionLine += BuildPanel;		//on souscrit à l'event onSelection
+
 	}
 	
 	public void RemoveEventsFromLine(GameObject LigneEnCours)
@@ -77,6 +80,8 @@ public class PanelOptionTousDisquesSmall : Spirographe
 			//Debug.Log(ToggleActiveDisque.name);//GetComponent<Toggle>().GetComponent<ToggleAnimRayon>().index.ToString);
 			/*ToggleActiveDisque.GetComponent<Toggle>().GetComponent<ToggleAnimRayon>().index=i;
 			ToggleAnimation.GetComponent<Toggle>().GetComponent<ToggleRotAxe>().index=i;*/
+				ToggleActiveDisque.GetComponent<ToggleRotAxe>().index=i;
+				ToggleActiveDisque.GetComponent<ToggleRotAxe>().RefreshContent();
 				GameObject NewLine=Instantiate(LigneSpiro);
 				NewLine.name="Ligne"+(i).ToString();
 				NewLine.SetActive(true);
@@ -112,6 +117,8 @@ public class PanelOptionTousDisquesSmall : Spirographe
 			//Debug.Log(ToggleActiveDisque.name);//GetComponent<Toggle>().GetComponent<ToggleAnimRayon>().index.ToString);
 			/*ToggleActiveDisque.GetComponent<Toggle>().GetComponent<ToggleAnimRayon>().index=i;
 			ToggleAnimation.GetComponent<Toggle>().GetComponent<ToggleRotAxe>().index=i;*/
+			ToggleActiveDisque.GetComponent<ToggleRotAxe>().index=i;
+			ToggleActiveDisque.GetComponent<ToggleRotAxe>().RefreshContent();
 			GameObject NewLine=Instantiate(LigneSpiro);
 			NewLine.name="Ligne"+(i).ToString();
 			NewLine.SetActive(true);
@@ -123,8 +130,7 @@ public class PanelOptionTousDisquesSmall : Spirographe
 			PanelLignes.transform.GetChild(i).gameObject.SetActive(true);
 		}
 		RefreshPanel();
-		PanelOptionTousDisques.GetComponent<PanelOptionTousDisques>().RefreshPanel(); //refresh panel tous disques too
-
+		PanelOptionTousDisques.GetComponent<PanelOptionTousDisques>().BuildPanel(); //refresh panel tous disques too
 	}
 	
 	public void DeleteLine()
@@ -140,7 +146,7 @@ public class PanelOptionTousDisquesSmall : Spirographe
 			LastLine.SetActive(false);
 		}
 		RefreshPanel();
-		PanelOptionTousDisques.GetComponent<PanelOptionTousDisques>().RefreshPanel(); //refresh panel tous disques too
+		PanelOptionTousDisques.GetComponent<PanelOptionTousDisques>().BuildPanel(); //refresh panel tous disques too
 	}
 	
 	public void RefreshPanel()
