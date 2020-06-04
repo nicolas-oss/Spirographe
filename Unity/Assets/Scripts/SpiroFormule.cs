@@ -5,21 +5,24 @@ using System;
 
 public class SpiroFormule : Spirographe
 {
-    //Parametres globaux
+    public SpiroData data = new SpiroData();
+	
+	//Parametres globaux
 	public int profondeur;
 	public GameObject Centre;
 	public float NombrePoints;
 	
+	public static int TailleTableaux = 25;
 	//Parametres cercles
-	public float[] RR = new float[100];
-	public float[] AA = new float[100];
-	public float[] VV = new float[100];
-	public float[] PP = new float[100];
-	public float[] facteurT = new float[100];
-	public bool[] OndeRayon = new bool[100];
-	public bool[] RotAxe = new bool[100];
-	public GameObject[] Axe = new GameObject[100];
-	public GameObject[] CentreRayon = new GameObject[100];
+	public float[] RR = new float[TailleTableaux];
+	public float[] AA = new float[TailleTableaux];
+	public float[] VV = new float[TailleTableaux];
+	public float[] PP = new float[TailleTableaux];
+	public float[] facteurT = new float[TailleTableaux];
+	public bool[] OndeRayon = new bool[TailleTableaux];
+	public bool[] RotAxe = new bool[TailleTableaux];
+	public GameObject[] Axe = new GameObject[TailleTableaux];
+	public GameObject[] CentreRayon = new GameObject[TailleTableaux];
 	public GameObject AxeToInstatiate;
 	
 	//paramètres crayon
@@ -52,12 +55,104 @@ public class SpiroFormule : Spirographe
 	Vector3 RotationNulle,DeplacementNul;
 	GameObject[] CentreDisque;
 	
+	void StoreData()
+	{
+		data.profondeur=profondeur;
+		data.NombrePoints=NombrePoints;
+		data.delta=delta;
+		data.NombreDeTour=NombreDeTour;
+		data.NombreDeTourMaximum=NombreDeTourMaximum;
+		data.Automatique=Automatique;
+		data.widthOfLineRenderer=widthOfLineRenderer;
+		data.Echelle=Echelle;
+		data.Rotation=Rotation;
+		data.AnimRotation=AnimRotation;
+		data.VitesseRotation=VitesseRotation;
+		data.OffsetRotation=OffsetRotation;
+		data.Duplication=Duplication;
+		data.Animate=Animate;
+		data.Fondu=Fondu;
+		data.FacteurAttenuationFondu=FacteurAttenuationFondu;
+		data.FacteurScaleAnimation=FacteurScaleAnimation;
+		data.IntervalDuplication=IntervalDuplication;
+		data.DureeVie=DureeVie;
+		data.Master=Master;
+		data.isInitialised=isInitialised;
+		for (int i=0;i<profondeur;i++)
+		{
+			data.RR[i]=RR[i];
+			data.AA[i]=AA[i];
+			data.VV[i]=VV[i];
+			data.PP[i]=PP[i];
+			data.facteurT[i]=facteurT[i];
+			data.OndeRayon[i]=OndeRayon[i];
+			data.RotAxe[i]=RotAxe[i];
+		}
+		Debug.Log("Values copied");
+	}
+	
+	void LoadData()
+	{
+		profondeur=data.profondeur;
+		NombrePoints=data.NombrePoints;
+		delta=data.delta;
+		NombreDeTour=data.NombreDeTour;
+		NombreDeTourMaximum=data.NombreDeTourMaximum;
+		Automatique=data.Automatique;
+		widthOfLineRenderer=data.widthOfLineRenderer;
+		Echelle=data.Echelle;
+		Rotation=data.Rotation;
+		AnimRotation=data.AnimRotation;
+		VitesseRotation=data.VitesseRotation;
+		OffsetRotation=data.OffsetRotation;
+		Duplication=data.Duplication;
+		Animate=data.Animate;
+		Fondu=data.Fondu;
+		FacteurAttenuationFondu=data.FacteurAttenuationFondu;
+		FacteurScaleAnimation=data.FacteurScaleAnimation;
+		IntervalDuplication=data.IntervalDuplication;
+		DureeVie=data.DureeVie;
+		Master=data.Master;
+		isInitialised=data.isInitialised;
+		for (int i=0;i<TailleTableaux-1;i++)
+		{
+			RR[i]=data.RR[i];
+			AA[i]=data.AA[i];
+			VV[i]=data.VV[i];
+			PP[i]=data.PP[i];
+			facteurT[i]=data.facteurT[i];
+			OndeRayon[i]=data.OndeRayon[i];
+			RotAxe[i]=data.RotAxe[i];
+		}
+	}
+	
+	void OnEnable()
+	{
+		SaveData.OnLoaded += delegate{LoadData();};
+		SaveData.OnBeforeSave += delegate{StoreData();};
+		SaveData.OnBeforeSave += delegate{SaveData.AddSpiroData(data);};
+		Debug.Log("Save Event added");
+	}
+	
+	void OnDisable()
+	{
+		SaveData.OnLoaded -= delegate{LoadData();};
+		SaveData.OnBeforeSave -= delegate{StoreData();};
+		SaveData.OnBeforeSave -= delegate{SaveData.AddSpiroData(data);};
+	}
+	
 	void Start()
     {	
+		//OnEnabled();
 		if (!isInitialised) 
 		{
 			InitValues();
 			Initialisation();
+			for (int k=0;k<25;k++)
+			{
+				GameObject go = Instantiate(AxeToInstatiate);
+				CentreRayon[k]=go;
+			}
 			//RefreshInputField();
 		}
 		Attends=false;
@@ -106,21 +201,19 @@ public class SpiroFormule : Spirographe
 		
     public void InitValues()
 	{
-		for (int k=0;k<25;k++)
+		/*for (int k=0;k<25;k++)
 		{
-			RR[k]=20.0f-k*(15.0f/100.0f);
+			/*RR[k]=20.0f-k*(15.0f/100.0f);
 			facteurT[k]=1.0f;
 			AA[k]=1.0f;
 			VV[k]=0.01f;
 			PP[k]=0.0f;
 			RotAxe[k]=true;
-			GameObject go = Instantiate(AxeToInstatiate);
-			CentreRayon[k]=go;
 		}
 		profondeur=3;
 		RR[0]=10.0f;
 		RR[1]=6.0f;
-		RR[2]=1.0f;
+		RR[2]=1.0f;*/
 	}
 	
 	//Duplication
