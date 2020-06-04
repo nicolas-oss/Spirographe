@@ -780,8 +780,8 @@ RectTransform:
   m_Father: {fileID: 687487561}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
@@ -1000,8 +1000,8 @@ RectTransform:
   m_Father: {fileID: 1859303136}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 177, y: 0}
   m_Pivot: {x: 0, y: 1}
@@ -4243,9 +4243,9 @@ RectTransform:
   m_Father: {fileID: 1859303136}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 88.5, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 88.5, y: -57}
   m_SizeDelta: {x: 177, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &405866053
@@ -6863,8 +6863,8 @@ RectTransform:
   m_Father: {fileID: 687487561}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
@@ -11408,7 +11408,6 @@ GameObject:
   - component: {fileID: 933900301}
   - component: {fileID: 933900300}
   - component: {fileID: 933900299}
-  - component: {fileID: 933900298}
   m_Layer: 5
   m_Name: ButtonLoad
   m_TagString: Untagged
@@ -11436,28 +11435,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 113.4}
   m_SizeDelta: {x: 160, y: 22}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &933900298
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 933900296}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da3219a8d598ce24a84e4049ad07cdb5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SelectedLine: {fileID: 0}
-  selected: {r: 0, g: 0, b: 0, a: 1}
-  unselected: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  ActiveObjectInScene: {fileID: 0}
-  PreviousTextLine: {fileID: 0}
-  TextNameLine: {fileID: 0}
-  NewLineName: {fileID: 0}
-  NewLine: {fileID: 0}
-  LineCount: 0
-  RootList: {fileID: 906278670}
 --- !u!114 &933900299
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11501,7 +11478,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 933900298}
+      - m_Target: {fileID: 0}
         m_MethodName: NewLineRenderer
         m_Mode: 1
         m_Arguments:
@@ -19518,7 +19495,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 177, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &1374263330
@@ -24486,11 +24463,11 @@ MonoBehaviour:
   selected: {r: 0, g: 0, b: 0, a: 1}
   unselected: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   ActiveObjectInScene: {fileID: 0}
-  PreviousTextLine: {fileID: 0}
-  TextNameLine: {fileID: 0}
+  PreviousTextLine: {fileID: 1363735231}
+  TextNameLine: {fileID: 1363735231}
   NewLineName: {fileID: 0}
   NewLine: {fileID: 0}
-  SelectedLine: {fileID: 0}
+  SelectedLine: {fileID: 1283168859}
   LineCount: 0
   RootList: {fileID: 906278670}
   BoutonSelectionPremiereLigne: {fileID: 342655208}

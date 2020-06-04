@@ -47,7 +47,7 @@ public class GameController : Spirographe
 	
 	public void GetActiveTextLine() //recherche de la ligne active en scannant les enfants du GameObject contenant toutes les lignes
 	{
-		PreviousTextLine=RootList.transform.GetChild(0).gameObject;
+		/*PreviousTextLine=RootList.gameObject.transform.GetChild(0).gameObject;
 		for (int j=0; j<RootList.transform.childCount; j++)
 		{
 			if (RootList.transform.GetChild(j).GetComponent<Text>().color == selected)
@@ -55,7 +55,7 @@ public class GameController : Spirographe
 				PreviousTextLine=RootList.transform.GetChild(j).gameObject;
 				break;
 			}
-		}
+		}*/
 	}
 	
 	public void DuplicateCurrentSpiro()
@@ -67,14 +67,14 @@ public class GameController : Spirographe
 		NewLine = Instantiate(ActiveObjectInScene);
 		NewLine.tag="Untagged";
 		GetActiveTextLine();
-		NewLineName = Instantiate(PreviousTextLine);
+		/*NewLineName = Instantiate(PreviousTextLine);
 		LineCount++;
 		NameLine = NewLineName.GetComponent<Text>();
 		NewLineName.transform.SetParent(PreviousTextLine.transform.parent,false);
 		NameLine.text = ("SpiroFormule"+LineCount.ToString());
 		NewLine.name = NameLine.text;
 		NewLineName.transform.Find("DeleteButton").gameObject.SetActive(true);
-		NewLineName.transform.Find("SelectButton").gameObject.GetComponent<SelectButton>().SelectLine();
+		NewLineName.transform.Find("SelectButton").gameObject.GetComponent<SelectButton>().SelectLine();*/
 		RefreshInputField();
 	}
 	
@@ -88,9 +88,9 @@ public class GameController : Spirographe
 	
 	public void CreateSpiro(SpiroData data)
 	{
-		DuplicateCurrentSpiro();
 		GetActiveLine();
-		SelectedLine.GetComponent<SpiroFormule>().data=data;
-		SelectedLine.GetComponent<SpiroFormule>().LoadData();
+		NewLine = Instantiate(ActiveObjectInScene);
+		NewLine.GetComponent<SpiroFormule>().data=data;
+		NewLine.GetComponent<SpiroFormule>().LoadData();
 	}
 }

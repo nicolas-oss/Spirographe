@@ -12,15 +12,17 @@ public class SaveData
 	public delegate void SerializeAction();
 	public static event SerializeAction OnLoaded;
 	public static event SerializeAction OnBeforeSave;
+	public GameController GC;
 	
 	public static void Load(string path)
 	{
 		spiroContainer=LoadSpiros(path);
-		GameController gameController = new GameController();
+		//GameController gameController = GameController();
 		
 		foreach (SpiroData data in spiroContainer.spiros)
 		{
-			gameController.GetComponent<GameController>().CreateSpiro(data);
+			GameController GClocal = new GameController();
+			GClocal.CreateSpiro(data);
 			OnLoaded();
 		}
 	}
