@@ -52,6 +52,7 @@ public class SpiroFormule : MonoBehaviour
 	public bool isInitialised;//=false;
 	float alpha = 1.0f;
 	Vector3 scaleChange;
+	public bool animation,toRefresh;
 	
 	Vector3 RotationNulle,DeplacementNul;
 	//GameObject[] CentreDisque;
@@ -137,22 +138,25 @@ public class SpiroFormule : MonoBehaviour
 	void OnEnable()
 	{
 		//SaveData.OnLoaded += delegate{LoadData();};
-		if (Master) 
-		{
+		//if (Master) 
+		//{
 			SaveData.OnBeforeSave += delegate{StoreData();};
 			SaveData.OnBeforeSave += delegate{SaveData.AddSpiroData(data);};
 			Debug.Log("Save Event added");
-		}		
+			Spirographe.onValueChange += GestionAnimation;
+		//}		
 	}
 	
 	void OnDisable()
 	{
 		//SaveData.OnLoaded -= delegate{LoadData();};
-		if (Master) 
-		{
+		//if (Master) 
+		//{
 			SaveData.OnBeforeSave -= delegate{StoreData();};
 			SaveData.OnBeforeSave -= delegate{SaveData.AddSpiroData(data);};
-		}
+			Spirographe.onValueChange -= GestionAnimation;
+			Debug.Log("Souscriptions du spiro annulées");
+		//}
 	}
 	
 	void Start()
@@ -191,12 +195,44 @@ public class SpiroFormule : MonoBehaviour
 		RotationNulle.z = 0.0f;
 		DeplacementNul=RotationNulle;
 		isInitialised=true;
+		animation=CheckAnimation(); // est-ce animé ?
+		TraceSpirographe();
     }
+
+	public void GestionAnimation()
+	{
+		//animation=CheckAnimation();
+		if (tag=="Selected") 
+		{
+			animation=CheckAnimation();
+			ApplyRotation();
+			TraceSpirographe();
+		}
+	}	
+	
+	public bool CheckAnimation()
+	{
+		bool check=false;
+		for (int i=0;i<profondeur;i++)
+		{
+			check |= OndeRayon[i];
+		}
+		return check;
+	}
+	
+	public void ApplyRotation()
+	{
+		transform.localEulerAngles=RotationNulle;
+		if (AnimRotation) {Rotation=(VitesseRotation*Time.time)+OffsetRotation;}
+		Rotation%=360.0f;
+		transform.Rotate(0.0f,Rotation,0.0f);
+	}
 
     void Update()
     {
-        //if (Master) 
-			Spirographe();
+        if ((AnimRotation) && (Master)) ApplyRotation();
+		//if (Master) 
+		if ((animation) && (Master)) TraceSpirographe();
 		
 		if ((Master) && (Duplication) && !(Attends))
 		{
@@ -262,9 +298,9 @@ public class SpiroFormule : MonoBehaviour
 		return AO*Mathf.Sin(VO*Time.frameCount+PO);
 	}
 	
-	//Spirographe
+	//TraceSpirographe
 	
-	public void Spirographe()
+	public void TraceSpirographe()
 	{
 		int m;
 		/*for (m=0;m<profondeur-1;m++) 
@@ -292,10 +328,7 @@ public class SpiroFormule : MonoBehaviour
 			CentreRayon[m].transform.localEulerAngles=RotationNulle;
 		}
 		
-		transform.localEulerAngles=RotationNulle;
-		if (AnimRotation) {Rotation=(VitesseRotation*Time.time)+OffsetRotation;}
-		Rotation%=360.0f;
-		transform.Rotate(0.0f,Rotation,0.0f);
+		//ApplyRotation();
 	
 		lineRenderer.positionCount = (int)NombrePoints+1;
 		

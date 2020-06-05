@@ -91,6 +91,7 @@ public class InputFieldPanelDisques : MonoBehaviour
 		EcritureValeur(ValeurOut);
 		Spirographe.RefreshInputFieldPanelDisques(); // on rafraichi les autres champs IFR
 		//Debug.Log("ok");
+		Spirographe.ValueChange(); //Call ValueChange Event
 	}
 	
 	public void AjusteWithEnter()
@@ -99,6 +100,7 @@ public class InputFieldPanelDisques : MonoBehaviour
 		ValeurOut = float.Parse(GetComponent<InputField>().text);
 		EcritureValeur(ValeurOut);
 		Spirographe.RefreshInputFieldPanelDisques(); // on rafraichi les autres champs IFR
+		Spirographe.ValueChange(); //Call ValueChange Event
 	}
 	
 	void EcritureValeur(float ValeurOut)

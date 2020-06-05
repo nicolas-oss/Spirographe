@@ -31,6 +31,7 @@ public class ToggleAnimRayon : MonoBehaviour
 		bool Check = GetComponent<Toggle>().isOn;
 		SelectedLine.OndeRayon[index]=Check;
 		Spirographe.RefreshInputFieldPanelDisques();
+		Spirographe.ValueChange(); //Call ValueChange Event
 	}
 	
 	public void RefreshContent()

@@ -32,6 +32,7 @@ public class ToggleRotAxe : MonoBehaviour
 		bool Check = GetComponent<Toggle>().isOn;
 		SelectedLine.RotAxe[index]=Check;
 		Spirographe.RefreshInputFieldPanelDisques();
+		Spirographe.ValueChange(); //Call ValueChange Event
 	}
 	
 	public void RefreshContent()

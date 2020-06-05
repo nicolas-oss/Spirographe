@@ -39,6 +39,7 @@ public class ToggleInterface : MonoBehaviour
 		GetActiveLine();
 		bool Check = GetComponent<Toggle>().isOn;
 		SelectedLine.GetType().GetField(InputID).SetValue(SelectedLine,Check);
+		Spirographe.ValueChange(); //Call ValueChange Event
     }
 	
 	public void RefreshContent()

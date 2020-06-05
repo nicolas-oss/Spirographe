@@ -65,12 +65,14 @@ public class InputFieldInterface : MonoBehaviour
 		if (Clamp) {ValeurSortieIF=(float)Math.Floor((ValeurSortieIF/Precision))*Precision;}
 		GetComponent<InputField>().text = ValeurSortieIF.ToString();
 		Spirographe.SelectedLine.GetType().GetField(InputID).SetValue(Spirographe.SelectedLine,ValeurSortieIF);
+		Spirographe.ValueChange(); //Call ValueChange Event
 	}
 	
 	public void AjusteWithEnter()
 	{
 		ValeurSortieIF = float.Parse(GetComponent<InputField>().text);
 		Spirographe.SelectedLine.GetType().GetField(InputID).SetValue(Spirographe.SelectedLine,ValeurSortieIF);
+		Spirographe.ValueChange(); //Call ValueChange Event
 	}
 	
 	public void RefreshContent()

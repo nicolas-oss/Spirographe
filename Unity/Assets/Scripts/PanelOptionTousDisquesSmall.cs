@@ -103,6 +103,7 @@ public class PanelOptionTousDisquesSmall : MonoBehaviour
 		}
 		RefreshPanel();
 		PanelOptionTousDisques.GetComponent<PanelOptionTousDisques>().BuildPanel(); //refresh panel tous disques too
+		Spirographe.ValueChange(); //Call ValueChange Event
 	}
 	
 	public void DeleteLine()
@@ -119,6 +120,7 @@ public class PanelOptionTousDisquesSmall : MonoBehaviour
 		}
 		RefreshPanel();
 		PanelOptionTousDisques.GetComponent<PanelOptionTousDisques>().BuildPanel(); //refresh panel tous disques too
+		Spirographe.ValueChange(); //Call ValueChange Event
 	}
 	
 	public void RefreshPanel()
