@@ -67,14 +67,13 @@ public class ExportSVG : MonoBehaviour
 		Xmax=0.0f;
 		Ymin=0.0f;
 		Ymax=0.0f;
-		int i;
 	}
 	
 	public string generatePointList()
 	{
 		string X,Y,lineSVG;
 		int i;
-		float A,B;
+		//float A,B;
 		
 		Vector3[] allPos = new Vector3[lineRenderer.positionCount];
 		lineRenderer.GetPositions(allPos);

@@ -84,7 +84,7 @@ public class GameController : MonoBehaviour
 	
 	public void DuplicateCurrentSpiro()
 	{
-		bool Visibility;
+		//bool Visibility;
 		//GameObject BoutonDelete;
 		
 		GetActiveLine();

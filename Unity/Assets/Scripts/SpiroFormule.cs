@@ -310,7 +310,7 @@ public class SpiroFormule : MonoBehaviour
 		if (m==profondeur-1) return;*/
 		
 		float ratio;
-		int k,l,NbPtsReel;
+		int k,l;//,NbPtsReel;
 		float NbTour;
 		LineRenderer lineRenderer = GetComponent<LineRenderer>();
 		lineRenderer.widthMultiplier = widthOfLineRenderer;

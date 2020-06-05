@@ -3,16 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
-using System.Collections;
 
 public class ClicPanelSurface : MonoBehaviour
 {
 	public delegate void BeginDragEvent();
 	public delegate void DragEvent();
-	public delegate void EndEvent();
+	//public delegate void EndEvent();
     public static event BeginDragEvent FirstDragEvent;
 	public static event DragEvent MainDragEvent;
-	public static event EndEvent EndDragEvent;
+	//public static event EndEvent EndDragEvent;
 
 	public void BeginDrag()
 	{

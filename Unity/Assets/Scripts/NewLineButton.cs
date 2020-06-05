@@ -35,7 +35,7 @@ public class NewLineButton : MonoBehaviour
 	
 	public void NewLineRenderer()
 	{
-		bool Visibility;
+		//bool Visibility;
 		//GameObject BoutonDelete;
 		
 		GetActiveLine();
