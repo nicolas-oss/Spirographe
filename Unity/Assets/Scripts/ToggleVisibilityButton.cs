@@ -13,5 +13,6 @@ public class ToggleVisibilityButton : MonoBehaviour
 		NameLine = TextNameLine.GetComponent<Text>();
 		Visibility=GameObject.Find(NameLine.text).GetComponent<Renderer>().enabled;
 		GameObject.Find(NameLine.text).GetComponent<Renderer>().enabled=!Visibility;
+		GameObject.Find(NameLine.text).GetComponent<SpiroFormule>().enabled=!Visibility;
 	}
 }
