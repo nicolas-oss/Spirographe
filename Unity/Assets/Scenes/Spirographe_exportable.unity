@@ -3920,20 +3920,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 367d170b5207cf44ab88995036caab54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 0
-  ValeurIn: 0
-  ValeurOut: 0
-  Value: 0
-  ActiveObjectInScene: {fileID: 0}
-  SelectedLine: {fileID: 0}
-  FacteurDiv: 100
-  InputID: 
-  Clamp: 0
-  Precision: 0
-  CurrentMousePos: {x: 0, y: 0, z: 0}
-  MousePosInitiale: {x: 0, y: 0, z: 0}
-  DeltaMousePos: {x: 0, y: 0, z: 0}
-  MainInputField: {fileID: 0}
 --- !u!114 &401892483
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15343,20 +15329,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee990b54b03f3f8479ced5a272cb0ccd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 0
-  ValeurIn: 0
-  ValeurOut: 0
-  Value: 0
-  ActiveObjectInScene: {fileID: 0}
-  SelectedLine: {fileID: 0}
-  FacteurDiv: 100
-  InputID: facteurT
-  Clamp: 0
-  Precision: 0
-  CurrentMousePos: {x: 0, y: 0, z: 0}
-  MousePosInitiale: {x: 0, y: 0, z: 0}
-  DeltaMousePos: {x: 0, y: 0, z: 0}
-  MainInputField: {fileID: 0}
 --- !u!114 &1211339930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21031,11 +21003,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e6d868ebbe44d34589c0f1b25d7f316, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ValeurProfondeur: 0
-  SelectedLine: {fileID: 0}
-  InputID: profondeur
-  MainInputField: {fileID: 0}
-  PanelTD: {fileID: 1296304771}
 --- !u!1 &1632512766
 GameObject:
   m_ObjectHideFlags: 0
@@ -22155,11 +22122,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e6d868ebbe44d34589c0f1b25d7f316, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ValeurProfondeur: 0
-  SelectedLine: {fileID: 0}
-  InputID: profondeur
-  MainInputField: {fileID: 0}
-  PanelTD: {fileID: 564254758}
 --- !u!114 &1765471521
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22305,11 +22267,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0170fa6db276f8c43aa50b4322604195, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ValeurProfondeur: 0
-  SelectedLine: {fileID: 0}
-  InputID: profondeur
-  MainInputField: {fileID: 0}
-  PanelTD: {fileID: 564254758}
 --- !u!1 &1770260887
 GameObject:
   m_ObjectHideFlags: 0
@@ -25930,7 +25887,6 @@ GameObject:
   - component: {fileID: 2078732353}
   - component: {fileID: 2078732352}
   - component: {fileID: 2078732351}
-  - component: {fileID: 2078732354}
   m_Layer: 5
   m_Name: ButtonSavePicture
   m_TagString: Untagged
@@ -26049,20 +26005,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2078732349}
   m_CullTransparentMesh: 0
---- !u!114 &2078732354
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2078732349}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 053040329e4303b4a973b5ba989ee9d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  resWidth: 1920
-  resHeight: 1080
 --- !u!224 &2084698164 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8797670506541368239, guid: 94a57ccd26d91a44f8bbb051edeacd1e,
@@ -28809,20 +28751,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 367d170b5207cf44ab88995036caab54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 0
-  ValeurIn: 0
-  ValeurOut: 0
-  Value: 0
-  ActiveObjectInScene: {fileID: 0}
-  SelectedLine: {fileID: 0}
-  FacteurDiv: 100
-  InputID: 
-  Clamp: 0
-  Precision: 0
-  CurrentMousePos: {x: 0, y: 0, z: 0}
-  MousePosInitiale: {x: 0, y: 0, z: 0}
-  DeltaMousePos: {x: 0, y: 0, z: 0}
-  MainInputField: {fileID: 0}
 --- !u!114 &2805530411424273177
 MonoBehaviour:
   m_ObjectHideFlags: 0

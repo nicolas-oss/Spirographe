@@ -22,7 +22,7 @@ public class GameController : MonoBehaviour
 	
     void Start()
     {
-      dataPath=Application.dataPath+"/Spiro/trytosave.xml";
+      dataPath=Application.dataPath+"/Spiro/";
 	  SpiroBasePath=Application.dataPath+"/Prefabs/SpiroFormule.prefab";
 	  BoutonSelectionPremiereLigne.SelectLine(); //on sélectionne la seule spiro de la scene
 	  Spirographe.Selection(); //Send Initialisation event (to build panels)

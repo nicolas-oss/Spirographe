@@ -297,7 +297,7 @@ public class SpiroFormule : MonoBehaviour
 		else
 		{
 			NbTour=1;
-			ratio=(RR[0]/(RR[1]))*facteurT[0];
+			ratio=(RR[0]/(RR[1]))*facteurT[1];
 			for (l=1;l<NombreDeTourMaximum;l++)
 			{
 				NbTour=l;	
