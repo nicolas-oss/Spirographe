@@ -46,7 +46,6 @@ public class InputFieldInterface : MonoBehaviour
 	
 	public void SetActiveEvent()
 	{
-		//Debug.Log("Event Activated");
 		ClicPanelSurface.DestroyEvent();	
 		ClicPanelSurface.FirstDragEvent += BeginAjusteWithDrag; //on souscrit à l'event BeginAjusteWithDrag
 		ClicPanelSurface.MainDragEvent += AjusteWithDrag;		//on souscrit à l'event AjusteWithDrag
@@ -60,7 +59,6 @@ public class InputFieldInterface : MonoBehaviour
 	
 	public void AjusteWithDrag()
 	{
-		//Debug.Log("Dragging");
 		CurrentMousePos = Input.mousePosition;
 		DeltaMousePos = CurrentMousePos-MousePosInitiale;
 		ValeurSortieIF = ValeurInitialeIF + DeltaMousePos.x/FacteurDiv;

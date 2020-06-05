@@ -23,33 +23,31 @@ public static class Spirographe
 	
 	public static void RefreshInputField()
 	{
-		Debug.Log("Calling Refresh");
+		//Debug.Log("Calling Refresh");
 		if (onRefreshInputField != null) onRefreshInputField();
 	}
 	
 	public static void RefreshInputFieldPanelDisques()
 	{
-		Debug.Log("Calling Event Refresh Panel Disques");
+		//Debug.Log("Calling Event Refresh Panel Disques");
 		if (onRefreshInputFieldPanelDisques != null) onRefreshInputFieldPanelDisques();
 	}
 	
 	public static void DestroyEventInputField()
 	{
-		Debug.Log("Calling Event Destroy Event Input Field");
+		//Debug.Log("Calling Event Destroy Event Input Field");
 		if(onDestroyRefreshInputFieldEvent != null) onDestroyRefreshInputFieldEvent();
 	}
 	
 	public static void Initialisation()
 	{
-		Debug.Log("Calling event Initialisation");
+		//Debug.Log("Calling event Initialisation");
 		if(onInitialisation != null) onInitialisation();
-		//onRefreshInputField();
-		//onRefreshInputFieldPanelDisques();
 	}
 	
 	public static void Selection()
 	{
-		Debug.Log("Calling event SelectionLine");
+		//Debug.Log("Calling event SelectionLine");
 		if(onSelectionLine != null) 
 			{
 				SelectedLine = GetActiveSpiroFormule();

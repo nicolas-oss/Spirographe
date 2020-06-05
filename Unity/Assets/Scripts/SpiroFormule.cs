@@ -21,7 +21,7 @@ public class SpiroFormule : MonoBehaviour
 	public float[] facteurT = new float[TailleTableaux];
 	public bool[] OndeRayon = new bool[TailleTableaux];
 	public bool[] RotAxe = new bool[TailleTableaux];
-	public GameObject[] Axe = new GameObject[TailleTableaux];
+	//public GameObject[] Axe = new GameObject[TailleTableaux];
 	public GameObject[] CentreRayon = new GameObject[TailleTableaux];
 	//GameObject AxeToInstatiate;
 	public GameObject Centre;
@@ -158,7 +158,6 @@ public class SpiroFormule : MonoBehaviour
 	void Start()
     {	
 		//GameObject AxeToInstatiate = new GameObject();
-		//OnEnabled();
 		if (!isInitialised) 
 		{
 			//InitValues();
@@ -193,18 +192,6 @@ public class SpiroFormule : MonoBehaviour
 		DeplacementNul=RotationNulle;
 		isInitialised=true;
     }
-	
-	/*public void InitSize()
-	{
-		R=new float[profondeur];
-		A=new float[profondeur];
-		V=new float[profondeur];
-		P=new float[profondeur];
-		facteur=new float[profondeur];
-		OndeR=new bool[profondeur];
-		RotAxe=new bool[profondeur];
-		Axe=new GameObject[];
-	}*/
 
     void Update()
     {

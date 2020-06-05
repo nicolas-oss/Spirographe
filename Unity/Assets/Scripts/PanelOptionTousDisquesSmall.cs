@@ -12,9 +12,6 @@ public class PanelOptionTousDisquesSmall : MonoBehaviour
 	void Start()
 	{
 		Spirographe.onSelectionLine += BuildPanel;
-		//Spirographe.onRefreshInputField += BuildPanel;
-		//Spirographe.onRefreshInputFieldPanelDisques += RefreshPanel;
-		//Spirographe.onSelectionLine += BuildPanel;		//on souscrit à l'event onSelection
 	}
 	
 	public void RemoveEventsFromLine(GameObject LigneEnCours)
@@ -30,26 +27,15 @@ public class PanelOptionTousDisquesSmall : MonoBehaviour
 	
 	void ResetPanel()
 	{
-		//GameObject LigneEnCours,IFREnCours,IFFEnCours;
 		foreach (Transform child in PanelLignes.transform)
-		//while (PanelLignes.transform.childCount>1)
 		{
-			/*LigneEnCours = PanelLignes.transform.GetChild(0).gameObject;
-			IFREnCours =  LigneEnCours.transform.Find(IFR.name).gameObject;
-			IFFEnCours =  LigneEnCours.transform.Find(IFF.name).gameObject;
-			IFREnCours.GetComponent<InputFieldRayon>().UnsubscribeRefreshEvent();
-			IFFEnCours.GetComponent<InputFieldFacteur>().UnsubscribeRefreshEvent();
-			Debug.Log("Event unSubscribed");*/
-			//RemoveEventsFromLine(child.gameObject);
 			Destroy(child.gameObject);
-			//Debug.Log("Line Destroyed");
 		}
 	}
 	
 	public void BuildPanel()
 	{
 		GameObject LineCurr; //
-		//ResetPanel();
 		SpiroParametrableActive=Spirographe.GetActiveObject();
 		SelectedLine=Spirographe.GetActiveSpiroFormule();
 		int profondeur = SelectedLine.profondeur;
@@ -67,18 +53,9 @@ public class PanelOptionTousDisquesSmall : MonoBehaviour
 				IFR.GetComponent<InputFieldPanelDisques>().index=i;
 				IFR.GetComponent<InputFieldPanelDisques>().RefreshContent();
 				IFR.GetComponent<InputFieldPanelDisques>().Start();
-			/*IFA.GetComponent<InputField>().GetComponent<InputFieldAmplitude>().index=i;
-			IFA.GetComponent<InputField>().GetComponent<InputFieldAmplitude>().RefreshContent();
-			IFV.GetComponent<InputField>().GetComponent<InputFieldVitesse>().index=i;
-			IFV.GetComponent<InputField>().GetComponent<InputFieldVitesse>().RefreshContent();
-			IFP.GetComponent<InputField>().GetComponent<InputFieldPhase>().index=i;
-			IFP.GetComponent<InputField>().GetComponent<InputFieldPhase>().RefreshContent();*/
 				IFF.GetComponent<InputFieldPanelDisques>().index=i;
 				IFF.GetComponent<InputFieldPanelDisques>().RefreshContent();
 				IFF.GetComponent<InputFieldPanelDisques>().Start();
-			//Debug.Log(ToggleActiveDisque.name);//GetComponent<Toggle>().GetComponent<ToggleAnimRayon>().index.ToString);
-			/*ToggleActiveDisque.GetComponent<Toggle>().GetComponent<ToggleAnimRayon>().index=i;
-			ToggleAnimation.GetComponent<Toggle>().GetComponent<ToggleRotAxe>().index=i;*/
 				ToggleActiveDisque.GetComponent<ToggleRotAxe>().index=i;
 				ToggleActiveDisque.GetComponent<ToggleRotAxe>().RefreshContent();
 				GameObject NewLine=Instantiate(LigneSpiro);
@@ -87,9 +64,8 @@ public class PanelOptionTousDisquesSmall : MonoBehaviour
 				NewLine.transform.SetParent(PanelLignes.transform,false);
 			}
 		}
-		//RefreshInputField();
 		GetComponent<RectTransform>().ForceUpdateRectTransforms();
-		Debug.Log("Building Panel big");
+		//Debug.Log("Building Panel big");
 		//Reste à cacher les lignes restantes éventuelles :
 		if (profondeur<=NbLignesCrees)
 		{
@@ -112,24 +88,14 @@ public class PanelOptionTousDisquesSmall : MonoBehaviour
 		{
 			IFR.GetComponent<InputField>().GetComponent<InputFieldPanelDisques>().index=i;
 			IFR.GetComponent<InputField>().GetComponent<InputFieldPanelDisques>().RefreshContent();
-			/*IFA.GetComponent<InputField>().GetComponent<InputFieldAmplitude>().index=i;
-			IFA.GetComponent<InputField>().GetComponent<InputFieldAmplitude>().RefreshContent();
-			IFV.GetComponent<InputField>().GetComponent<InputFieldVitesse>().index=i;
-			IFV.GetComponent<InputField>().GetComponent<InputFieldVitesse>().RefreshContent();
-			IFP.GetComponent<InputField>().GetComponent<InputFieldPhase>().index=i;
-			IFP.GetComponent<InputField>().GetComponent<InputFieldPhase>().RefreshContent();*/
 			IFF.GetComponent<InputField>().GetComponent<InputFieldPanelDisques>().index=i;
 			IFF.GetComponent<InputField>().GetComponent<InputFieldPanelDisques>().RefreshContent();
-			//Debug.Log(ToggleActiveDisque.name);//GetComponent<Toggle>().GetComponent<ToggleAnimRayon>().index.ToString);
-			/*ToggleActiveDisque.GetComponent<Toggle>().GetComponent<ToggleAnimRayon>().index=i;
-			ToggleAnimation.GetComponent<Toggle>().GetComponent<ToggleRotAxe>().index=i;*/
 			ToggleActiveDisque.GetComponent<ToggleRotAxe>().index=i;
 			ToggleActiveDisque.GetComponent<ToggleRotAxe>().RefreshContent();
 			GameObject NewLine=Instantiate(LigneSpiro);
 			NewLine.name="Ligne"+(i).ToString();
 			NewLine.SetActive(true);
 			NewLine.transform.SetParent(PanelLignes.transform,false);
-			//PanelOptionTousDisques.GetComponent<PanelOptionTousDisques>().BuildPanel();  //refresh panel tous disques too
 		}
 		else
 		{
