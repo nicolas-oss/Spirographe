@@ -43,11 +43,13 @@ public class SpiroFormule : MonoBehaviour
 	public bool Duplication,Animate,Fondu;
 	public float FacteurAttenuationFondu,FacteurScaleAnimation;
 	public float IntervalDuplication,DureeVie;
+	public bool z=true;
+	public float profondeur_z;
 	bool Attends;
-	bool Master=true;
+	public bool Master;//=true;
 	public Color c1 = Color.yellow;
     public Color c2 = Color.red;
-	public bool isInitialised=false;
+	public bool isInitialised;//=false;
 	float alpha = 1.0f;
 	Vector3 scaleChange;
 	
@@ -56,38 +58,41 @@ public class SpiroFormule : MonoBehaviour
 	
 	public void StoreData()
 	{
-		data.profondeur=profondeur;
-		data.NombrePoints=NombrePoints;
-		data.delta=delta;
-		data.NombreDeTour=NombreDeTour;
-		data.NombreDeTourMaximum=NombreDeTourMaximum;
-		data.Automatique=Automatique;
-		data.widthOfLineRenderer=widthOfLineRenderer;
-		data.Echelle=Echelle;
-		data.Rotation=Rotation;
-		data.AnimRotation=AnimRotation;
-		data.VitesseRotation=VitesseRotation;
-		data.OffsetRotation=OffsetRotation;
-		data.Duplication=Duplication;
-		data.Animate=Animate;
-		data.Fondu=Fondu;
-		data.FacteurAttenuationFondu=FacteurAttenuationFondu;
-		data.FacteurScaleAnimation=FacteurScaleAnimation;
-		data.IntervalDuplication=IntervalDuplication;
-		data.DureeVie=DureeVie;
-		data.Master=Master;
-		data.isInitialised=isInitialised;
-		for (int i=0;i<profondeur;i++)
+		if (Master)
 		{
-			data.RR[i]=RR[i];
-			data.AA[i]=AA[i];
-			data.VV[i]=VV[i];
-			data.PP[i]=PP[i];
-			data.facteurT[i]=facteurT[i];
-			data.OndeRayon[i]=OndeRayon[i];
-			data.RotAxe[i]=RotAxe[i];
+			data.profondeur=profondeur;
+			data.NombrePoints=NombrePoints;
+			data.delta=delta;
+			data.NombreDeTour=NombreDeTour;
+			data.NombreDeTourMaximum=NombreDeTourMaximum;
+			data.Automatique=Automatique;
+			data.widthOfLineRenderer=widthOfLineRenderer;
+			data.Echelle=Echelle;
+			data.Rotation=Rotation;
+			data.AnimRotation=AnimRotation;
+			data.VitesseRotation=VitesseRotation;
+			data.OffsetRotation=OffsetRotation;
+			data.Duplication=Duplication;
+			data.Animate=Animate;
+			data.Fondu=Fondu;
+			data.FacteurAttenuationFondu=FacteurAttenuationFondu;
+			data.FacteurScaleAnimation=FacteurScaleAnimation;
+			data.IntervalDuplication=IntervalDuplication;
+			data.DureeVie=DureeVie;
+			data.Master=Master;
+			data.isInitialised=isInitialised;
+			for (int i=0;i<profondeur;i++)
+			{
+				data.RR[i]=RR[i];
+				data.AA[i]=AA[i];
+				data.VV[i]=VV[i];
+				data.PP[i]=PP[i];
+				data.facteurT[i]=facteurT[i];
+				data.OndeRayon[i]=OndeRayon[i];
+				data.RotAxe[i]=RotAxe[i];
+			}
+			Debug.Log("Values copied");
 		}
-		Debug.Log("Values copied");
 	}
 	
 	public void LoadData()
@@ -128,24 +133,30 @@ public class SpiroFormule : MonoBehaviour
 	void OnEnable()
 	{
 		//SaveData.OnLoaded += delegate{LoadData();};
-		SaveData.OnBeforeSave += delegate{StoreData();};
-		SaveData.OnBeforeSave += delegate{SaveData.AddSpiroData(data);};
-		Debug.Log("Save Event added");
+		if (Master) 
+		{
+			SaveData.OnBeforeSave += delegate{StoreData();};
+			SaveData.OnBeforeSave += delegate{SaveData.AddSpiroData(data);};
+			Debug.Log("Save Event added");
+		}		
 	}
 	
 	void OnDisable()
 	{
 		//SaveData.OnLoaded -= delegate{LoadData();};
-		SaveData.OnBeforeSave -= delegate{StoreData();};
-		SaveData.OnBeforeSave -= delegate{SaveData.AddSpiroData(data);};
+		if (Master) 
+		{
+			SaveData.OnBeforeSave -= delegate{StoreData();};
+			SaveData.OnBeforeSave -= delegate{SaveData.AddSpiroData(data);};
+		}
 	}
 	
 	void Start()
     {	
 		//GameObject AxeToInstatiate = new GameObject();
 		//OnEnabled();
-		//if (!isInitialised) 
-		//{
+		if (!isInitialised) 
+		{
 			//InitValues();
 			//Initialisation();
 			GameObject Centre = new GameObject();
@@ -156,7 +167,7 @@ public class SpiroFormule : MonoBehaviour
 				CentreRayon[k]=go;
 			}
 			//RefreshInputField();
-		//}
+		}
 		
 		Attends=false;
 		if (!(Master))
@@ -164,6 +175,9 @@ public class SpiroFormule : MonoBehaviour
 			Gradient gradient = new Gradient();
 			gradient.SetKeys(new GradientColorKey[] { new GradientColorKey(c1, 0.0f), new GradientColorKey(c2, 1.0f)}, new GradientAlphaKey[] { new GradientAlphaKey(alpha, 0.0f), new GradientAlphaKey(alpha, 1.0f) });
 			gameObject.GetComponent<LineRenderer>().colorGradient=gradient;
+			
+			SaveData.OnBeforeSave -= delegate{StoreData();};
+			SaveData.OnBeforeSave -= delegate{SaveData.AddSpiroData(data);};
 		}
 		scaleChange.x = FacteurAttenuationFondu;
 		scaleChange.y = FacteurAttenuationFondu;
@@ -245,6 +259,7 @@ public class SpiroFormule : MonoBehaviour
 		var SpiroClone = Instantiate(gameObject);
 		//SpiroClone.AddComponent<SpiroClone>;
 		SpiroClone.GetComponent<SpiroFormule>().Master=false;
+		SpiroClone.GetComponent<SpiroFormule>().OnDisable();
 		Destroy (SpiroClone, DureeVie);
 		Attends=false;
 	}
@@ -308,6 +323,8 @@ public class SpiroFormule : MonoBehaviour
 			}
 		}
 	
+		float step_profondeur=profondeur_z/NombrePoints;
+		
 		for (k=0;k<NombrePoints+1;k++)
 			{
 				lineRenderer.SetPosition(k,CentreRayon[profondeur-1].transform.position);
@@ -317,6 +334,7 @@ public class SpiroFormule : MonoBehaviour
 					if (RotAxe[m]) CentreRayon[m].transform.Rotate(0.0f,-(360.0f/(NombrePoints/NbTour)*(RR[m-1]/RR[m]))*facteurT[m],0.0f, Space.Self);
 				}
 				lineRenderer.SetPosition(k,CentreRayon[profondeur-1].transform.position);
+				if (z) CentreRayon[profondeur-1].transform.Translate((step_profondeur)*Vector3.up,Space.Self);
 			}
 	}
 }

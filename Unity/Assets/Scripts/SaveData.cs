@@ -48,7 +48,7 @@ public class SaveData
 	
 	public static void AddSpiroData(SpiroData data)
 	{
-		spiroContainer.spiros.Add(data);
+		if (data.Master) spiroContainer.spiros.Add(data);
 	}
 	
 	public static void ClearSpiros()

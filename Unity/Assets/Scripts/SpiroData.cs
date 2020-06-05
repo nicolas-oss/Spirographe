@@ -37,7 +37,7 @@ public class SpiroData
 	public float FacteurAttenuationFondu,FacteurScaleAnimation;
 	public float IntervalDuplication,DureeVie;
 	//bool Attends;
-	public bool Master=true;
+	public bool Master;
 	public Color c1 = Color.yellow;
     public Color c2 = Color.red;
 	public bool isInitialised;
