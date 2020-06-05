@@ -41,4 +41,6 @@ public class SpiroData
 	public Color c1 = Color.yellow;
     public Color c2 = Color.red;
 	public bool isInitialised;
+	public bool z=true;
+	public float profondeur_z;
 }

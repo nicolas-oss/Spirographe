@@ -6,7 +6,7 @@ using System.IO;
 public class ExportSVG : MonoBehaviour
 {
 	string FileName;
-	public GameObject Interface;
+	//public GameObject Interface;
 	float facteurZoom=40.0f;
 	public float OffsetX=250.0f;
 	public float OffsetY=100.0f;
@@ -15,6 +15,8 @@ public class ExportSVG : MonoBehaviour
 	public string HeaderFileName,FooterFileName;
 	LineRenderer lineRenderer;
 	public float Xmin,Xmax,Ymin,Ymax,XCurr,YCurr;
+	Vector3 screenPos;
+	public Camera MainCam;
 
     void Start()
     {
@@ -82,7 +84,7 @@ public class ExportSVG : MonoBehaviour
 		Ymax=Ymin;
 		
 		/////Get Min and Max
-		for (i=0;i<lineRenderer.positionCount;i++)
+		/*for (i=0;i<lineRenderer.positionCount;i++)
 		{
 			XCurr = allPos[i].x;
 			YCurr = allPos[i].z;
@@ -90,9 +92,9 @@ public class ExportSVG : MonoBehaviour
 			Ymax = (Ymax>YCurr)? Ymax:YCurr;
 			Xmin = (Xmin<XCurr)? Xmin:XCurr;
 			Ymin = (Ymin<YCurr)? Ymin:YCurr;
-		}
+		}*/
 		//Debug.Log("Xmin="+Xmin.ToString()+" Ymin="+Ymin.ToString()+"Xmax="+Xmax.ToString()+" Ymax="+Ymax.ToString());
-		facteurZoom=LargeurSVG/(Xmax-Xmin);
+		//facteurZoom=LargeurSVG/(Xmax-Xmin);
 		X="";
 		Y="";
 		lineSVG="";
@@ -100,10 +102,13 @@ public class ExportSVG : MonoBehaviour
 		{
 			XCurr=allPos[i].x;
 			YCurr=allPos[i].z;
-			A=(XCurr-Xmin)*facteurZoom;
+			screenPos = MainCam.WorldToScreenPoint(allPos[i]);
+			/*A=(XCurr-Xmin)*facteurZoom;
 			B=(Ymax-YCurr)*facteurZoom;
 			X=((Mathf.Floor(A+0.5f))).ToString();
-			Y=((Mathf.Floor(B+0.5f))).ToString();	
+			Y=((Mathf.Floor(B+0.5f))).ToString();*/	
+			X=((Mathf.Floor(screenPos.x+0.5f))).ToString();
+			Y=((Mathf.Floor(screenPos.y+0.5f))).ToString();
 			lineSVG+=X+","+Y+" ";
 		}
 		return lineSVG;

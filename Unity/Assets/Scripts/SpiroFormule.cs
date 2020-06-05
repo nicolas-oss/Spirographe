@@ -43,7 +43,7 @@ public class SpiroFormule : MonoBehaviour
 	public bool Duplication,Animate,Fondu;
 	public float FacteurAttenuationFondu,FacteurScaleAnimation;
 	public float IntervalDuplication,DureeVie;
-	public bool z=true;
+	public bool z;
 	public float profondeur_z;
 	bool Attends;
 	public bool Master;//=true;
@@ -81,6 +81,8 @@ public class SpiroFormule : MonoBehaviour
 			data.DureeVie=DureeVie;
 			data.Master=Master;
 			data.isInitialised=isInitialised;
+			data.z=z;
+			data.profondeur_z=profondeur_z;
 			for (int i=0;i<profondeur;i++)
 			{
 				data.RR[i]=RR[i];
@@ -118,6 +120,8 @@ public class SpiroFormule : MonoBehaviour
 		DureeVie=data.DureeVie;
 		Master=data.Master;
 		isInitialised=data.isInitialised;
+		z=data.z;
+		profondeur_z = data.profondeur_z;
 		for (int i=0;i<TailleTableaux-1;i++)
 		{
 			RR[i]=data.RR[i];
