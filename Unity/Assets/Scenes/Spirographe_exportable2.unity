@@ -4175,7 +4175,6 @@ GameObject:
   - component: {fileID: 401892485}
   - component: {fileID: 401892484}
   - component: {fileID: 401892483}
-  - component: {fileID: 401892482}
   - component: {fileID: 401892486}
   m_Layer: 5
   m_Name: InputField_Rayon
@@ -4205,18 +4204,6 @@ RectTransform:
   m_AnchoredPosition: {x: 82.04863, y: -10}
   m_SizeDelta: {x: 48, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &401892482
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 401892480}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 367d170b5207cf44ab88995036caab54, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &401892483
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12399,7 +12386,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1087852052}
   - component: {fileID: 1087852053}
-  - component: {fileID: 1087852054}
   - component: {fileID: 1087852055}
   m_Layer: 0
   m_Name: ToggleDecaler
@@ -12475,18 +12461,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 0
---- !u!114 &1087852054
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1087852051}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 127185f1c0d63f84ea6eeaaa2662fbc6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1087852055
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15389,7 +15363,6 @@ GameObject:
   - component: {fileID: 1211339932}
   - component: {fileID: 1211339931}
   - component: {fileID: 1211339930}
-  - component: {fileID: 1211339929}
   - component: {fileID: 1211339933}
   m_Layer: 5
   m_Name: InputField_Transmission
@@ -15419,18 +15392,6 @@ RectTransform:
   m_AnchoredPosition: {x: 139.02432, y: -10}
   m_SizeDelta: {x: 48, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1211339929
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1211339927}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee990b54b03f3f8479ced5a272cb0ccd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1211339930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18862,7 +18823,6 @@ GameObject:
   - component: {fileID: 1414948708}
   - component: {fileID: 1414948707}
   - component: {fileID: 1414948706}
-  - component: {fileID: 1414948709}
   - component: {fileID: 1414948712}
   - component: {fileID: 1414948711}
   - component: {fileID: 1414948710}
@@ -18994,18 +18954,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1414948704}
   m_CullTransparentMesh: 0
---- !u!114 &1414948709
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1414948704}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71fcf70e1bd69dd4bafa8aa5d5393183, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1414948710
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20765,7 +20713,6 @@ GameObject:
   - component: {fileID: 1630090993}
   - component: {fileID: 1630090992}
   - component: {fileID: 1630090991}
-  - component: {fileID: 1630090995}
   m_Layer: 5
   m_Name: InputField_Profondeur
   m_TagString: Untagged
@@ -20927,18 +20874,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1630090989}
   m_CullTransparentMesh: 0
---- !u!114 &1630090995
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1630090989}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e6d868ebbe44d34589c0f1b25d7f316, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1632512766
 GameObject:
   m_ObjectHideFlags: 0
@@ -21357,7 +21292,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1710510391}
   - component: {fileID: 1710510390}
-  - component: {fileID: 1710510389}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -21365,18 +21299,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!114 &1710510389
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1710510388}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a68c43fe1f2a47cfa234b5eeaa98012, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!108 &1710510390
 Light:
   m_ObjectHideFlags: 0
@@ -22126,8 +22048,6 @@ GameObject:
   - component: {fileID: 1765471523}
   - component: {fileID: 1765471522}
   - component: {fileID: 1765471521}
-  - component: {fileID: 1765471520}
-  - component: {fileID: 1765471525}
   m_Layer: 5
   m_Name: InputField_Profondeur
   m_TagString: Untagged
@@ -22156,18 +22076,6 @@ RectTransform:
   m_AnchoredPosition: {x: -5, y: 1}
   m_SizeDelta: {x: 48, y: 20}
   m_Pivot: {x: 1, y: 0}
---- !u!114 &1765471520
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1765471518}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e6d868ebbe44d34589c0f1b25d7f316, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1765471521
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22301,18 +22209,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1765471518}
   m_CullTransparentMesh: 0
---- !u!114 &1765471525
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1765471518}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0170fa6db276f8c43aa50b4322604195, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1770260887
 GameObject:
   m_ObjectHideFlags: 0
@@ -28267,7 +28163,6 @@ GameObject:
   - component: {fileID: 2805530411424273175}
   - component: {fileID: 2805530411424273174}
   - component: {fileID: 2805530411424273173}
-  - component: {fileID: 2805530411424273176}
   - component: {fileID: 2805530411424273177}
   m_Layer: 5
   m_Name: InputField_Rayon
@@ -28397,18 +28292,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2805530411424273171}
   m_CullTransparentMesh: 0
---- !u!114 &2805530411424273176
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2805530411424273171}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 367d170b5207cf44ab88995036caab54, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2805530411424273177
 MonoBehaviour:
   m_ObjectHideFlags: 0
