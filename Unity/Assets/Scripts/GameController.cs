@@ -18,6 +18,7 @@ public class GameController : MonoBehaviour
 	public GameObject RootList;
 	public SelectButton BoutonSelectionPremiereLigne;
 	public GameObject SpiroFormuleToInstantiate;
+	public GameObject FileBrowser;
 
 	
     void Start()
@@ -33,14 +34,14 @@ public class GameController : MonoBehaviour
 	void OnEnable()
 	{
 		saveButton.onClick.AddListener(delegate{SaveData.Save(dataPath,SaveData.spiroContainer);});
-		loadButton.onClick.AddListener(delegate{SaveData.Load(dataPath);});
+		loadButton.onClick.AddListener(delegate{FileBrowser.GetComponent<FileBrowserPanel>().BuildPanel();});
 		duplicateButton.onClick.AddListener(delegate{DuplicateCurrentSpiro();});
 	}
 	
 	void OnDisable()
 	{
 		saveButton.onClick.RemoveListener(delegate{SaveData.Save(dataPath,SaveData.spiroContainer);});
-		loadButton.onClick.RemoveListener(delegate{SaveData.Load(dataPath);});
+		loadButton.onClick.RemoveListener(delegate{FileBrowser.GetComponent<FileBrowserPanel>().BuildPanel();});
 		duplicateButton.onClick.RemoveListener(delegate{DuplicateCurrentSpiro();});
 	}
 	

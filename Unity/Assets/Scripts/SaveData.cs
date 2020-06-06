@@ -17,7 +17,7 @@ public class SaveData
 	
 	public static void Load(string path)
 	{
-		//path=EditorUtility.OpenFilePanel("Chargement",path,"xml");
+		//path=FileBrowserPanel.("Chargement",path,"xml");
 		spiroContainer=LoadSpiros(path);
 		//GameController gameController = GameController();
 		
