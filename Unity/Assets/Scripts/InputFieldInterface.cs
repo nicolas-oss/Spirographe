@@ -58,6 +58,7 @@ public class InputFieldInterface : MonoBehaviour
 	
 	public void AjusteWithDrag()
 	{
+		Debug.Log("IF drag");
 		CurrentMousePos = Input.mousePosition;
 		DeltaMousePos = CurrentMousePos-MousePosInitiale;
 		ValeurSortieIF = ValeurInitialeIF + DeltaMousePos.x/FacteurDiv;

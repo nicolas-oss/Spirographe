@@ -13,7 +13,7 @@ public class SaveData
 	public delegate void SerializeAction();
 	public static event SerializeAction OnLoaded;
 	public static event SerializeAction OnBeforeSave;
-	public GameController GC;
+	//public GameController GC;
 	
 	public static void Load(string path)
 	{
@@ -24,10 +24,10 @@ public class SaveData
 		
 		foreach (SpiroData data in spiroContainer.spiros)
 		{
-			GameController GClocal = new GameController();
-			GClocal.CreateSpiro(data,GameController.SpiroBasePath);
+			//GameController GClocal = new GameController();
+			GameController.CreateSpiro(data,GameController.SpiroBasePath);
 		}
-		OnLoaded();
+		//OnLoaded();
 	}
 	
 	public static string SpiroName() 
@@ -38,6 +38,7 @@ public class SaveData
 	public static void Save(string path, SpiroContainer spiros)
 	{
 		string localPath;
+		ClearSpiros();
 		OnBeforeSave();
 		Debug.Log("Saving1...");
 		localPath=SpiroName();
@@ -48,12 +49,15 @@ public class SaveData
 	
 	public static void AddSpiroData(SpiroData data)
 	{
+		Debug.Log("AddSpiroData Call");
 		if (data.Master) spiroContainer.spiros.Add(data);
 	}
 	
 	public static void ClearSpiros()
 	{
 		spiroContainer.spiros.Clear();
+		Debug.Log("Container Empty");
+		Debug.Log(spiroContainer.spiros.Count.ToString());
 	}
 
 	public static SpiroContainer LoadSpiros(string path)

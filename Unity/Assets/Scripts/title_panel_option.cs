@@ -10,7 +10,11 @@ public class title_panel_option : MonoBehaviour
 	{
 		bool activation;
 		activation=PanelOption.active;
+		//Spirographe.RefreshInputField();
 		PanelOption.SetActive(!activation);
+		Spirographe.RefreshInputField();
+		//transform.parent.GetComponent<RectTransform>().ForceUpdateRectTransforms(); //force refresh
+		//transform.Translate(Vector3.up);											//force refresh
 	}
 	
 	public void ShowPanel()

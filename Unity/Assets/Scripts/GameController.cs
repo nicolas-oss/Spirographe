@@ -9,10 +9,11 @@ public class GameController : MonoBehaviour
 	public static string SpiroBasePath;
 	
 	public Button loadButton,saveButton,newButton,duplicateButton;
-	public Color selected = Color.black;
+	public static Color selected = Color.black;
 	public Color unselected = Color.gray;
-	Text NameLine;
-	public GameObject ActiveObjectInScene,PreviousTextLine,TextNameLine,NewLineName,NewLine;
+	static Text NameLine;
+	public static GameObject ActiveObjectInScene,PreviousTextLine,TextNameLine,NewLineName;
+	public static GameObject NewLine;
 	public SpiroFormule SelectedLine;
 	//public int LineCount;
 	public GameObject RootList;
@@ -51,7 +52,7 @@ public class GameController : MonoBehaviour
 		SelectedLine = Spirographe.GetActiveSpiroFormule();
 	}
 	
-	public void GetActiveTextLine() //recherche de la ligne active en scannant les enfants du GameObject contenant toutes les lignes
+	public static void GetActiveTextLine() //recherche de la ligne active en scannant les enfants du GameObject contenant toutes les lignes
 	{
 		GameObject root = GameObject.Find("ListSpiro");
 		PreviousTextLine=root.transform.GetChild(0).gameObject;
@@ -69,7 +70,7 @@ public class GameController : MonoBehaviour
 		}
 	}
 	
-	public string CreateTextLine()
+	public static string CreateTextLine()
 	{
 		GetActiveTextLine();
 		NewLineName = Instantiate(PreviousTextLine);
@@ -104,12 +105,12 @@ public class GameController : MonoBehaviour
 	{
 	}
 	
-	public void CreateSpiro(SpiroData data, string path)
+	public static void CreateSpiro(SpiroData data, string path)
 	{
-		GetActiveLine();
+		//GetActiveLine();
 		//GameObject prefab = Resources.Load<GameObject>(path);
 		//GameObject go = GameObject.Instantiate(prefab) as GameObject;
-		NewLine = Instantiate(ActiveObjectInScene);
+		NewLine = Instantiate(Spirographe.ActiveObjectInScene);
 		NewLine.GetComponent<SpiroFormule>().data=data;
 		NewLine.GetComponent<SpiroFormule>().LoadData();
 		NewLine.tag="Untagged";

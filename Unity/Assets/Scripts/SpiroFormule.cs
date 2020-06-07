@@ -15,6 +15,7 @@ public class SpiroFormule : MonoBehaviour
 	public static int TailleTableaux = 25;
 	//Parametres cercles
 	public float[] RR = new float[TailleTableaux];
+	public float[] RROffset = new float[TailleTableaux];
 	public float[] AA = new float[TailleTableaux];
 	public float[] VV = new float[TailleTableaux];
 	public float[] PP = new float[TailleTableaux];
@@ -87,6 +88,7 @@ public class SpiroFormule : MonoBehaviour
 			for (int i=0;i<profondeur;i++)
 			{
 				data.RR[i]=RR[i];
+				data.RROffset[i] = RROffset[i];
 				data.AA[i]=AA[i];
 				data.VV[i]=VV[i];
 				data.PP[i]=PP[i];
@@ -126,6 +128,7 @@ public class SpiroFormule : MonoBehaviour
 		for (int i=0;i<TailleTableaux-1;i++)
 		{
 			RR[i]=data.RR[i];
+			RROffset[i] = data.RROffset[i];
 			AA[i]=data.AA[i];
 			VV[i]=data.VV[i];
 			PP[i]=data.PP[i];
@@ -147,11 +150,12 @@ public class SpiroFormule : MonoBehaviour
 		//}		
 	}
 	
-	void OnDisable()
+	public void OnDisable()
 	{
 		//SaveData.OnLoaded -= delegate{LoadData();};
 		//if (Master) 
 		//{
+			//SaveData.ClearSpiros();
 			SaveData.OnBeforeSave -= delegate{StoreData();};
 			SaveData.OnBeforeSave -= delegate{SaveData.AddSpiroData(data);};
 			Spirographe.onValueChange -= GestionAnimation;
@@ -324,7 +328,7 @@ public class SpiroFormule : MonoBehaviour
 			CentreRayon[m].transform.SetParent(CentreRayon[m-1].transform);
 			CentreRayon[m].transform.localEulerAngles=RotationNulle;
 			CentreRayon[m].transform.localPosition = DeplacementNul;
-			CentreRayon[m].transform.Translate(Echelle*(RR[m-1]-RR[m]+Convert.ToInt32(OndeRayon[m])*Onde(AA[m],VV[m],PP[m]))*Vector3.forward,Space.Self);
+			CentreRayon[m].transform.Translate(Echelle*(RR[m-1]-RR[m]+RROffset[m]+Convert.ToInt32(OndeRayon[m])*Onde(AA[m],VV[m],PP[m]))*Vector3.forward,Space.Self);
 			CentreRayon[m].transform.localEulerAngles=RotationNulle;
 		}
 		

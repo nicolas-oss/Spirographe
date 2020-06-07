@@ -12,6 +12,7 @@ public class SpiroData
 	public static int TailleTableaux = 25;
 	//Parametres cercles
 	public float[] RR = new float[TailleTableaux];
+	public float[] RROffset = new float[TailleTableaux];
 	public float[] AA = new float[TailleTableaux];
 	public float[] VV = new float[TailleTableaux];
 	public float[] PP = new float[TailleTableaux];

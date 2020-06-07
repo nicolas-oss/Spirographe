@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class PanelOptionTousDisques : MonoBehaviour
 {
-    public GameObject LigneSpiro,TextNumeroDisque,IFR,IFA,IFV,IFP,IFF,ToggleActiveDisque,ToggleAnimation,PanelLignes;
+    public GameObject LigneSpiro,TextNumeroDisque,IFR,IFRO,IFA,IFV,IFP,IFF,ToggleActiveDisque,ToggleAnimation,PanelLignes;
 	SpiroFormule SelectedLine;
 	GameObject SpiroParametrableActive;
 	
@@ -40,6 +40,7 @@ public class PanelOptionTousDisques : MonoBehaviour
 			{
 				TextNumeroDisque.GetComponent<Text>().text=(i+1).ToString();
 				InitField(ref IFR,i);
+				InitField(ref IFRO,i);
 				InitField(ref IFA,i);
 				InitField(ref IFV,i);
 				InitField(ref IFP,i);

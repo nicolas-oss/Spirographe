@@ -40,8 +40,10 @@ public class DeleteLineButton : MonoBehaviour
 				LineToActivate = NbChildren-1;
 			}
 			SelectedLine=GameObject.Find(GameObject.Find("ListSpiro").transform.GetChild(NbChildren-1).gameObject.GetComponent<Text>().text).GetComponent<SpiroFormule>();
+			GameObject.Find(NameLine.text).GetComponent<SpiroFormule>().OnDisable();
 			Destroy(GameObject.Find(NameLine.text));
 			Destroy(TextNameLineToDelete);
+			//System.GC.Collect();
 			NewTextNameLine = GameObject.Find("ListSpiro").transform.GetChild(LineToActivate).gameObject;
 			//SelectLine(NewTextNameLine);
 			if (isSelected) NewTextNameLine.transform.Find("SelectButton").gameObject.GetComponent<SelectButton>().SelectLine();

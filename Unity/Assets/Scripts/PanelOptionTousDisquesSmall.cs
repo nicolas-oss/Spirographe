@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class PanelOptionTousDisquesSmall : MonoBehaviour
 {
-    public GameObject LigneSpiro,TextNumeroDisque,IFR,IFA,IFV,IFP,IFF,ToggleActiveDisque,ToggleAnimation,PanelLignes,PanelOptionTousDisques;
+    public GameObject LigneSpiro,TextNumeroDisque,IFR,IFRO,IFA,IFV,IFP,IFF,ToggleActiveDisque,ToggleAnimation,PanelLignes,PanelOptionTousDisques;
 	SpiroFormule SelectedLine;
 	GameObject SpiroParametrableActive;
 	
@@ -16,9 +16,10 @@ public class PanelOptionTousDisquesSmall : MonoBehaviour
 	
 	public void RemoveEventsFromLine(GameObject LigneEnCours)
 	{
-		GameObject IFREnCours,IFFEnCours;
+		GameObject IFREnCours,IFROEnCours,IFFEnCours;
 		//LigneEnCours = PanelLignes.transform.GetChild(0).gameObject;
 			IFREnCours =  LigneEnCours.transform.Find(IFR.name).gameObject;
+			IFROEnCours =  LigneEnCours.transform.Find(IFRO.name).gameObject;
 			IFFEnCours =  LigneEnCours.transform.Find(IFF.name).gameObject;
 			IFREnCours.GetComponent<InputFieldPanelDisques>().UnsubscribeRefreshEvent();
 			IFFEnCours.GetComponent<InputFieldPanelDisques>().UnsubscribeRefreshEvent();
@@ -56,6 +57,9 @@ public class PanelOptionTousDisquesSmall : MonoBehaviour
 				IFF.GetComponent<InputFieldPanelDisques>().index=i;
 				IFF.GetComponent<InputFieldPanelDisques>().RefreshContent();
 				IFF.GetComponent<InputFieldPanelDisques>().Start();
+				IFRO.GetComponent<InputFieldPanelDisques>().index=i;
+				IFRO.GetComponent<InputFieldPanelDisques>().RefreshContent();
+				IFRO.GetComponent<InputFieldPanelDisques>().Start();
 				ToggleActiveDisque.GetComponent<ToggleRotAxe>().index=i;
 				ToggleActiveDisque.GetComponent<ToggleRotAxe>().RefreshContent();
 				GameObject NewLine=Instantiate(LigneSpiro);
@@ -90,6 +94,8 @@ public class PanelOptionTousDisquesSmall : MonoBehaviour
 			IFR.GetComponent<InputField>().GetComponent<InputFieldPanelDisques>().RefreshContent();
 			IFF.GetComponent<InputField>().GetComponent<InputFieldPanelDisques>().index=i;
 			IFF.GetComponent<InputField>().GetComponent<InputFieldPanelDisques>().RefreshContent();
+			IFRO.GetComponent<InputField>().GetComponent<InputFieldPanelDisques>().index=i;
+			IFRO.GetComponent<InputField>().GetComponent<InputFieldPanelDisques>().RefreshContent();
 			ToggleActiveDisque.GetComponent<ToggleRotAxe>().index=i;
 			ToggleActiveDisque.GetComponent<ToggleRotAxe>().RefreshContent();
 			GameObject NewLine=Instantiate(LigneSpiro);

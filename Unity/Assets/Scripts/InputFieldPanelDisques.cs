@@ -107,6 +107,7 @@ public class InputFieldPanelDisques : MonoBehaviour
 		switch (inputID)
 		{
 			case  "RR" : SelectedLine.RR[index]=ValeurOut; break;
+			case  "RRO" : SelectedLine.RROffset[index]=ValeurOut; break;
 			case  "AA" : SelectedLine.AA[index]=ValeurOut; break;
 			case  "VV" : SelectedLine.VV[index]=ValeurOut; break;
 			case  "PP" : SelectedLine.PP[index]=ValeurOut; break;
@@ -120,6 +121,7 @@ public class InputFieldPanelDisques : MonoBehaviour
 		switch (inputID)
 		{
 			case  "RR" : Valeur=SelectedLine.RR[index]; break;
+			case  "RRO" : Valeur=SelectedLine.RROffset[index]; break;
 			case  "AA" : Valeur=SelectedLine.AA[index]; break;
 			case  "VV" : Valeur=SelectedLine.VV[index]; break;
 			case  "PP" : Valeur=SelectedLine.PP[index]; break;

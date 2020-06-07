@@ -21,18 +21,22 @@ public class FileBrowserPanel : MonoBehaviour
 
 	public void BuildPanel()
 	{	
-		//VidangeContentPanel();
+		VidangeContentPanel();
 		GenerationLignes();
 		transform.GetChild(0).gameObject.SetActive(true);
 	}
 	
 	void VidangeContentPanel()
 	{
-		while (ViewportContent.transform.childCount>0)
+		/*while (ViewportContent.transform.childCount>0)
 		{
 			GameObject LigneEnCours;
 			LigneEnCours = ViewportContent.transform.GetChild(0).gameObject;
 			Destroy(LigneEnCours);
+		}*/
+		foreach (Transform child in ViewportContent.transform)
+		{
+			Destroy(child.gameObject);
 		}
 	}
 	
@@ -47,21 +51,24 @@ public class FileBrowserPanel : MonoBehaviour
 				GameObject NewLine=Instantiate(Ligne);									//on crée une nlle ligne
 				NewLine.transform.SetParent(ViewportContent.transform,true);				//on la rattache au viewport
 				NewLine.transform.GetChild(0).gameObject.GetComponent<Text>().text=fileName;	//on renomme le champ texte correspondant
-				//i++;
+				NewLine.transform.SetSiblingIndex(0); //on remonte la dernière ligne créée en haut
+				NewLine.SetActive(true);
 			}
 	}
 	
 	public void SelectionLigne(string NomLigne)
 	{
 		Debug.Log(sourceDirectory+NomLigne+" reçu in Panel");
-		transform.GetChild(0).gameObject.SetActive(false);
-		SaveData.Load(Application.dataPath+"/Spiro/"+NomLigne);
+		//this.transform.GetChild(0).gameObject.SetActive(false);
 		FermeturePanneau();
+		SaveData.Load(Application.dataPath+"/Spiro/"+NomLigne);
+		
 		//return NomLigne;
 	}
 	
 	public void FermeturePanneau()
 	{
+		Debug.Log("Closing...");
 		transform.GetChild(0).gameObject.SetActive(false);
 	}
 }
