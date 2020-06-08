@@ -6,10 +6,10 @@ using UnityEngine.UI;
 
 public class ColorButton : MonoBehaviour
 {
-    public ColorPicker ColorPickerPanel;
+    public GameObject ColorPickerPanel;
 	public GameObject IFColorPicker;
 	public GameObject ColorFieldToRefresh;
-	public string InputID;
+	public int index;
 	GameObject ActiveGO;
 	SpiroFormule SelectedLine;
 	bool isPicking;
@@ -17,16 +17,33 @@ public class ColorButton : MonoBehaviour
 	string PickedColorString;
 
 	// Start is called before the first frame update
-    void Start()
+    void OnEnable()
+	{
+		Spirographe.onSelectionLine += Refresh;
+		Button btn = GetComponent<Button>();
+		btn.onClick.AddListener(BeginColorPicking);
+		//btn.onClick.AddListener(BeginColorPicking); 
+	}
+	
+	void OnDisable()
+	{
+		Spirographe.onSelectionLine -= Refresh;
+	}
+	
+	void Start()
     {
-        isPicking=false;
+        index=transform.GetSiblingIndex();
+		Refresh();
     }
 
-    // Update is called once per frame
-    void LateUpdate()
-    {
-        if (isPicking) ColorPicking();
-    }
+    public void OnSelect()
+	{
+		ColorPicking();
+	}
+	
+	public void RecalculeGradient()
+	{
+	}
 	
 	public void ShowPanel()
 	{
@@ -35,24 +52,45 @@ public class ColorButton : MonoBehaviour
 	
 	public void BeginColorPicking()
 	{	
-		//ShowPanel();
-		SelectedLine=Spirographe.GetActiveSpiroFormule();
-		//if (!isPicking) 
-		ColorPickerPanel.GetComponent<ColorPicker>().CurrentColor=ColorFieldToRefresh.GetComponent<Image>().color;
-		isPicking=true;
+		Debug.Log("BeginColorPicking");
+		//SelectedLine=Spirographe.GetActiveSpiroFormule();
+		//if (!isPicking)
+		ShowPanel();
+		/*Color CouleurCourante = ColorPickerPanel.GetComponent<ColorPicker>().CurrentColor;
+		CouleurCourante = SelectedLine.couleur[index];*/
+		ColorPickerPanel.GetComponent<ColorPicker>().CurrentColor = Spirographe.SelectedLine.couleur[index];
+		
+		//isPicking=true;
 		//IFColorPicker.GetComponent<InputField>().text="#"+ColorUtility.ToHtmlStringRGBA(ColorFieldToRefresh.GetComponent<Image>().color);
 	}
 	
 	public void ColorPicking()
 	{
+		Color CurrentColor;
 		/*PickedColorString=IFColorPicker.GetComponent<InputField>().text;
 		ColorUtility.TryParseHtmlString(PickedColorString, out newCol);
 		SelectedLine.GetType().GetField(InputID).SetValue(SelectedLine,newCol);*/
-		ColorFieldToRefresh.GetComponent<Image>().color=ColorPickerPanel.GetComponent<ColorPicker>().CurrentColor;
+		CurrentColor = ColorPickerPanel.GetComponent<ColorPicker>().CurrentColor;
+		SelectedLine.couleur[index] = CurrentColor;
+		GetComponent<Image>().color=CurrentColor;
+		RecalculeGradient();
 	}
 	
 	public void EndColorPicking()
 	{
 		isPicking=false;
+	}
+	
+	public void Refresh()
+	{
+		if (index > Spirographe.SelectedLine.NombreCouleur) 
+		{
+			gameObject.SetActive(false);
+		}
+		else
+		{
+			gameObject.SetActive(true);
+			GetComponent<Image>().color = Spirographe.SelectedLine.couleur[index]; 
+		}
 	}
 }

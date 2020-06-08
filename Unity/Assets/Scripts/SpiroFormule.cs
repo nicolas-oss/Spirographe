@@ -58,6 +58,10 @@ public class SpiroFormule : MonoBehaviour
 	Vector3 RotationNulle,DeplacementNul;
 	//GameObject[] CentreDisque;
 	
+	public int NombreCouleur;
+	static int TailleTableauCouleur = 16;
+	public Color[] couleur = new Color[TailleTableauCouleur];
+	
 	public void StoreData()
 	{
 		if (Master)
