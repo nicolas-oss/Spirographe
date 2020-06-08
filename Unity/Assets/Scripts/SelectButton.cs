@@ -31,7 +31,7 @@ public class SelectButton : MonoBehaviour
 		RootList = transform.parent.parent.gameObject;
 		for (int j=0; j<RootList.transform.childCount; j++)
 		{
-			if (RootList.transform.GetChild(j).GetComponent<Text>().color == selected)
+			if (RootList.transform.GetChild(j).transform.Find("TextName").GetComponent<Text>().color == selected)
 			{
 				PreviousTextLine=RootList.transform.GetChild(j).gameObject;
 				break;
@@ -45,10 +45,10 @@ public class SelectButton : MonoBehaviour
 		GetActiveTextLine();
 		TextNameLine=transform.parent.gameObject;
 		//if (PreviousTextLine==null) {PreviousTextLine=TextNameLine;}
-		NameLine = TextNameLine.GetComponent<Text>();
+		NameLine = TextNameLine.transform.Find("TextName").GetComponent<Text>();
 		ActiveObjectInScene.tag="Untagged";
-		PreviousTextLine.GetComponent<Text>().color = unselected;
-		TextNameLine.GetComponent<Text>().color = selected;
+		PreviousTextLine.transform.Find("TextName").GetComponent<Text>().color = unselected;
+		TextNameLine.transform.Find("TextName").GetComponent<Text>().color = selected;
 		ActiveObjectInScene = GameObject.Find(NameLine.text);
 		ActiveObjectInScene.tag="Selected";
 		PreviousTextLine = TextNameLine;

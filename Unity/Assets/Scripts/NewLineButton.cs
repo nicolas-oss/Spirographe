@@ -25,7 +25,7 @@ public class NewLineButton : MonoBehaviour
 		PreviousTextLine=RootList.transform.GetChild(0).gameObject;
 		for (int j=0; j<RootList.transform.childCount; j++)
 		{
-			if (RootList.transform.GetChild(j).GetComponent<Text>().color == selected)
+			if (RootList.transform.GetChild(j).transform.Find("TextName").GetComponent<Text>().color == selected)
 			{
 				PreviousTextLine=RootList.transform.GetChild(j).gameObject;
 				break;
@@ -44,7 +44,7 @@ public class NewLineButton : MonoBehaviour
 		GetActiveTextLine();
 		NewLineName = Instantiate(PreviousTextLine);
 		LineCount++;
-		NameLine = NewLineName.GetComponent<Text>();
+		NameLine = NewLineName.transform.Find("TextName").GetComponent<Text>();
 		NewLineName.transform.SetParent(PreviousTextLine.transform.parent,false);
 		NameLine.text = ("SpiroFormule"+LineCount.ToString());
 		NewLine.name = NameLine.text;

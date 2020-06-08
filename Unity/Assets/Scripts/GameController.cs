@@ -21,7 +21,6 @@ public class GameController : MonoBehaviour
 	public GameObject SpiroFormuleToInstantiate;
 	public GameObject FileBrowser;
 
-	
     void Start()
     {
       dataPath=Application.dataPath+"/Spiro/";
@@ -56,15 +55,13 @@ public class GameController : MonoBehaviour
 	{
 		GameObject root = GameObject.Find("ListSpiro");
 		PreviousTextLine=root.transform.GetChild(0).gameObject;
-		//GameObject root = new GameObject();
-		//root=RootList;
-		//Debug.Log(RootList.name+" "+RootList.transform.gameObject);
 		for (int j=0; j<root.transform.childCount; j++)
 		{
-			if (root.transform.GetChild(j).gameObject.GetComponent<Text>().color == selected)
+			if (root.transform.GetChild(j).transform.Find("TextName").GetComponent<Text>().color == selected)
 			{
 				PreviousTextLine=root.transform.GetChild(j).gameObject;
-				//Debug.Log("Text ligne active : n°"+j.ToString());
+				Debug.Log("Text ligne active : n°"+j.ToString());
+				Debug.Log("Text ligne active : nom"+root.transform.GetChild(j).transform.Find("TextName").GetComponent<Text>().text);
 				break;
 			}
 		}
@@ -75,7 +72,7 @@ public class GameController : MonoBehaviour
 		GetActiveTextLine();
 		NewLineName = Instantiate(PreviousTextLine);
 		Spirographe.LineCount++;
-		NameLine = NewLineName.GetComponent<Text>();
+		NameLine = NewLineName.transform.Find("TextName").GetComponent<Text>();
 		NewLineName.transform.SetParent(PreviousTextLine.transform.parent,false);
 		NameLine.text = ("Spiro"+Spirographe.LineCount.ToString());
 		NewLine.name = NameLine.text;
