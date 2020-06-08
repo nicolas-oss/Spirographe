@@ -214,15 +214,18 @@ public class SpiroFormule : MonoBehaviour
 
 	public void RecalculeGradient()
 	{		
+		gradient = new Gradient();
 		colorKey = new GradientColorKey[NombreCouleur];
 		alphaKey = new GradientAlphaKey[NombreCouleur];
 
 		for (int i=0; i<NombreCouleur; i++)
 		{
 			colorKey[i].color = couleur[i];
-			colorKey[i].time = (i)/(NombreCouleur);
+			colorKey[i].time = (1.0f*i)/(1.0f*NombreCouleur);
 			alphaKey[i].alpha = 1.0f;
+			alphaKey[i].time = (1.0f*i)/(1.0f*NombreCouleur);
         }
+		
         gradient.SetKeys(colorKey, alphaKey);
         gameObject.GetComponent<LineRenderer>().colorGradient=gradient;
 	}
