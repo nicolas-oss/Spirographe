@@ -42,7 +42,7 @@ public class FileBrowserPanel : MonoBehaviour
 	public void SelectionLigne(string NomLigne)
 	{
 		FermeturePanneau();
-		SaveData.Load(Application.dataPath+"/Spiro/"+NomLigne);
+		SaveData.Load(GameController.dataPath+NomLigne);
 	}
 	
 	public void FermeturePanneau()

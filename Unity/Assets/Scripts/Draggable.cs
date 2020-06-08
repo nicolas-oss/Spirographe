@@ -36,7 +36,7 @@ public class Draggable : MonoBehaviour
     {
         CurrentMousePos = Input.mousePosition;
 		DeltaMousePos = CurrentMousePos-MousePosInitiale;
-		Debug.Log(DeltaMousePos);
+		//Debug.Log(DeltaMousePos);
 		transform.localPosition=DeltaMousePos+InitialePos;
     }
 }

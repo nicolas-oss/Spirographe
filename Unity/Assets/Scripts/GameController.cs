@@ -33,14 +33,14 @@ public class GameController : MonoBehaviour
 	
 	void OnEnable()
 	{
-		saveButton.onClick.AddListener(delegate{SaveData.Save(dataPath,SaveData.spiroContainer);});
+		//saveButton.onClick.AddListener(delegate{SaveData.Save(dataPath,SaveData.spiroContainer);});
 		loadButton.onClick.AddListener(delegate{FileBrowser.GetComponent<FileBrowserPanel>().BuildPanel();});
 		duplicateButton.onClick.AddListener(delegate{DuplicateCurrentSpiro();});
 	}
 	
 	void OnDisable()
 	{
-		saveButton.onClick.RemoveListener(delegate{SaveData.Save(dataPath,SaveData.spiroContainer);});
+		//saveButton.onClick.RemoveListener(delegate{SaveData.Save(dataPath,SaveData.spiroContainer);});
 		loadButton.onClick.RemoveListener(delegate{FileBrowser.GetComponent<FileBrowserPanel>().BuildPanel();});
 		duplicateButton.onClick.RemoveListener(delegate{DuplicateCurrentSpiro();});
 	}

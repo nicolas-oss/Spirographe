@@ -37,13 +37,13 @@ public class SaveData
 	
 	public static void Save(string path, SpiroContainer spiros)
 	{
-		string localPath;
+		//string localPath;
 		ClearSpiros();
 		OnBeforeSave();
 		Debug.Log("Saving1...");
-		localPath=SpiroName();
-		Debug.Log(localPath);
-		SaveSpiros(localPath,spiros);
+		//localPath=SpiroName();
+		//Debug.Log(localPath);
+		SaveSpiros(path,spiros);
 		ClearSpiros();
 	}
 	
