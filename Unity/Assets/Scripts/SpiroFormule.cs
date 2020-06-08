@@ -92,7 +92,7 @@ public class SpiroFormule : MonoBehaviour
 			data.isInitialised=isInitialised;
 			data.z=z;
 			data.profondeur_z=profondeur_z;
-			for (int i=0;i<profondeur;i++)
+			for (int i=0;i<TailleTableaux-1;i++)
 			{
 				data.RR[i]=RR[i];
 				data.RROffset[i] = RROffset[i];
@@ -102,6 +102,11 @@ public class SpiroFormule : MonoBehaviour
 				data.facteurT[i]=facteurT[i];
 				data.OndeRayon[i]=OndeRayon[i];
 				data.RotAxe[i]=RotAxe[i];
+			}
+			data.NombreCouleur=NombreCouleur;
+			for (int i=0;i<TailleTableauCouleur;i++)
+			{
+				data.couleur[i] = couleur[i];
 			}
 			Debug.Log("Values copied");
 		}
@@ -142,6 +147,11 @@ public class SpiroFormule : MonoBehaviour
 			facteurT[i]=data.facteurT[i];
 			OndeRayon[i]=data.OndeRayon[i];
 			RotAxe[i]=data.RotAxe[i];
+		}
+		NombreCouleur=data.NombreCouleur;
+		for (int i=0;i<TailleTableauCouleur;i++)
+		{
+			couleur[i] = data.couleur[i];
 		}
 	}
 	

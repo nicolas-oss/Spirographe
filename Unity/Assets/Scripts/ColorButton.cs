@@ -49,7 +49,7 @@ public class ColorButton : MonoBehaviour
 	
 	public void BeginColorPicking()
 	{	
-		Debug.Log("BeginColorPicking");
+		//Debug.Log("BeginColorPicking");
 		Spirographe.DestroyColorChangeEvent();
 		ShowPanel();
 		ColorPickerPanel.GetComponent<ColorPicker>().CurrentColor = Spirographe.SelectedLine.couleur[index];
@@ -58,7 +58,7 @@ public class ColorButton : MonoBehaviour
 	
 	public void ColorPicking()
 	{
-		Debug.Log("ColorPicking");
+		//Debug.Log("ColorPicking");
 		Color CurrentColor;
 		/*PickedColorString=IFColorPicker.GetComponent<InputField>().text;
 		ColorUtility.TryParseHtmlString(PickedColorString, out newCol);
@@ -78,7 +78,7 @@ public class ColorButton : MonoBehaviour
 	{
 		SelectedLine = Spirographe.GetActiveSpiroFormule();
 		int NbCoul = SelectedLine.NombreCouleur;
-		Debug.Log("Nombre Coul = "+NbCoul.ToString());
+		//Debug.Log("Nombre Coul = "+NbCoul.ToString());
 		if (index > NbCoul-1) 
 		{
 			gameObject.SetActive(false);

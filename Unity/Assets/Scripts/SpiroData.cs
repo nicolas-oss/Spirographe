@@ -44,4 +44,8 @@ public class SpiroData
 	public bool isInitialised;
 	public bool z=true;
 	public float profondeur_z;
+	
+	public int NombreCouleur;
+	public static int TailleTableauCouleur = 8;
+	public Color[] couleur = new Color[TailleTableauCouleur];
 }
