@@ -15,9 +15,7 @@ public class ColorButton : MonoBehaviour
 	bool isPicking;
 	Color newCol;
 	string PickedColorString;
-	Gradient gradient;
-	GradientColorKey[] colorKey;
-	GradientAlphaKey[] alphaKey;
+
 
 	// Start is called before the first frame update
     void OnEnable()
@@ -37,51 +35,11 @@ public class ColorButton : MonoBehaviour
     {
         index=transform.GetSiblingIndex();
 		Refresh();
-		gradient = new Gradient();
     }
 
     public void OnSelect()
 	{
 		ColorPicking();
-	}
-	
-	public void InitGradient()
-	{
-		int NbCoul = Spirographe.SelectedLine.NombreCouleur;
-        colorKey = new GradientColorKey[NbCoul-1];
-		alphaKey = new GradientAlphaKey[NbCoul-1];
-		
-        for (int i=0; i<NbCoul; i++)
-		{
-			colorKey[i].color = Spirographe.SelectedLine.couleur[i];
-			colorKey[i].time = i/(NbCoul-1);
-			alphaKey[i].alpha = 1.0f;
-        }
-
-        gradient.SetKeys(colorKey, alphaKey);
-
-        Spirographe.ActiveObjectInScene.GetComponent<LineRenderer>().colorGradient=gradient;
-	}
-	
-	public void RecalculeGradient()
-	{
-		gradient = new Gradient();
-		
-		int NbCoul = Spirographe.SelectedLine.NombreCouleur;
-		Debug.Log("NbCoul="+NbCoul.ToString());
-        colorKey = new GradientColorKey[NbCoul];
-		alphaKey = new GradientAlphaKey[NbCoul];
-		
-        for (int i=0; i<NbCoul; i++)
-		{
-			colorKey[i].color = Spirographe.SelectedLine.couleur[i];
-			colorKey[i].time = i/(NbCoul-1);
-			alphaKey[i].alpha = 1.0f;
-        }
-
-        gradient.SetKeys(colorKey, alphaKey);
-
-        Spirographe.ActiveObjectInScene.GetComponent<LineRenderer>().colorGradient=gradient;
 	}
 	
 	public void ShowPanel()
@@ -108,7 +66,7 @@ public class ColorButton : MonoBehaviour
 		CurrentColor = ColorPickerPanel.GetComponent<ColorPicker>().CurrentColor;
 		Spirographe.SelectedLine.couleur[index] = CurrentColor;
 		GetComponent<Image>().color=CurrentColor;
-		RecalculeGradient();
+		Spirographe.SelectedLine.RecalculeGradient();
 	}
 	
 	public void EndColorPicking()
