@@ -62,8 +62,8 @@ public class SpiroFormule : MonoBehaviour
 	static int TailleTableauCouleur = 8;
 	public Color[] couleur = new Color[TailleTableauCouleur];
 	public Gradient gradient;
-	public GradientColorKey[] colorKey = new GradientColorKey[TailleTableauCouleur];
-	public GradientAlphaKey[] alphaKey = new GradientAlphaKey[TailleTableauCouleur];
+	public GradientColorKey[] colorKey; //= new GradientColorKey[TailleTableauCouleur];
+	public GradientAlphaKey[] alphaKey; //= new GradientAlphaKey[TailleTableauCouleur];
 	
 	public void StoreData()
 	{
@@ -208,22 +208,23 @@ public class SpiroFormule : MonoBehaviour
 		isInitialised=true;
 		animation=CheckAnimation(); // est-ce animé ?
 		RecalculeGradient();
+		
 		TraceSpirographe();
     }
 
 	public void RecalculeGradient()
 	{		
-        //gradient = new Gradient();
+		colorKey = new GradientColorKey[NombreCouleur];
+		alphaKey = new GradientAlphaKey[NombreCouleur];
+
 		for (int i=0; i<NombreCouleur; i++)
 		{
-			colorKey[i].color = Spirographe.SelectedLine.couleur[i];
-			colorKey[i].time = i/(NombreCouleur-1);
+			colorKey[i].color = couleur[i];
+			colorKey[i].time = (i)/(NombreCouleur);
 			alphaKey[i].alpha = 1.0f;
         }
-
         gradient.SetKeys(colorKey, alphaKey);
-
-        Spirographe.ActiveObjectInScene.GetComponent<LineRenderer>().colorGradient=gradient;
+        gameObject.GetComponent<LineRenderer>().colorGradient=gradient;
 	}
 	
 	public void GestionAnimation()
