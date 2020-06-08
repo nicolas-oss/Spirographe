@@ -10,12 +10,14 @@ public static class Spirographe
 	public delegate void InitialisationEvent();
 	public delegate void SelectionLineEvent();
 	public delegate void ValueChangeEvent();
+	public delegate void ColorChangeEvent();
     public static event RefreshInputFieldEvent onRefreshInputField; //declaration de l'event suivant la signature précédente
 	public static event RefreshInputFieldPanelDisquesEvent onRefreshInputFieldPanelDisques;
 	public static event DestroyEventInputFieldEvent onDestroyRefreshInputFieldEvent;
 	public static event InitialisationEvent onInitialisation;
 	public static event SelectionLineEvent onSelectionLine;
 	public static event ValueChangeEvent onValueChange;
+	public static event ColorChangeEvent onColorChange;
 	
 	public static int LineCount;
 	public static SpiroFormule SelectedLine;
@@ -62,6 +64,17 @@ public static class Spirographe
 	{
 		Debug.Log("Calling event ValueChange");
 		if(onValueChange != null) onValueChange();
+	}
+	
+	public static void ColorChange()
+	{
+		Debug.Log("Calling event ColorChange");
+		if(onColorChange!= null) onColorChange();
+	}
+	
+	public static void DestroyColorChangeEvent()
+	{
+		onColorChange=null;
 	}
 	
 	/////////////////////////////////////////GetActiveObject functions//////////////////////////////////////

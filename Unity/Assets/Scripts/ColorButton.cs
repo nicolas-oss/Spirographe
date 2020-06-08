@@ -53,25 +53,21 @@ public class ColorButton : MonoBehaviour
 	public void BeginColorPicking()
 	{	
 		Debug.Log("BeginColorPicking");
-		//SelectedLine=Spirographe.GetActiveSpiroFormule();
-		//if (!isPicking)
 		ShowPanel();
-		/*Color CouleurCourante = ColorPickerPanel.GetComponent<ColorPicker>().CurrentColor;
-		CouleurCourante = SelectedLine.couleur[index];*/
 		ColorPickerPanel.GetComponent<ColorPicker>().CurrentColor = Spirographe.SelectedLine.couleur[index];
-		
-		//isPicking=true;
-		//IFColorPicker.GetComponent<InputField>().text="#"+ColorUtility.ToHtmlStringRGBA(ColorFieldToRefresh.GetComponent<Image>().color);
+		Spirographe.DestroyColorChangeEvent();
+		Spirographe.onColorChange += ColorPicking;
 	}
 	
 	public void ColorPicking()
 	{
+		Debug.Log("ColorPicking");
 		Color CurrentColor;
 		/*PickedColorString=IFColorPicker.GetComponent<InputField>().text;
 		ColorUtility.TryParseHtmlString(PickedColorString, out newCol);
 		SelectedLine.GetType().GetField(InputID).SetValue(SelectedLine,newCol);*/
 		CurrentColor = ColorPickerPanel.GetComponent<ColorPicker>().CurrentColor;
-		SelectedLine.couleur[index] = CurrentColor;
+		Spirographe.SelectedLine.couleur[index] = CurrentColor;
 		GetComponent<Image>().color=CurrentColor;
 		RecalculeGradient();
 	}
