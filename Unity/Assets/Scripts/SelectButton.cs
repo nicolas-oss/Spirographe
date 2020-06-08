@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using UnityEngine.EventSystems;
 
 public class SelectButton : MonoBehaviour
 {
@@ -54,5 +55,6 @@ public class SelectButton : MonoBehaviour
 		PreviousTextLine = TextNameLine;
 		Spirographe.Selection(); //call Selection Event
 		Spirographe.RefreshInputField();
+		EventSystem.current.SetSelectedGameObject(null); //deselect button
 	}
 }
