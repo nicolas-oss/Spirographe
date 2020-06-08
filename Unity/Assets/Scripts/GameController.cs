@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
-    string dataPath;
+    public static string dataPath;
 	public static string SpiroBasePath;
 	
 	public Button loadButton,saveButton,newButton,duplicateButton;
@@ -25,10 +25,10 @@ public class GameController : MonoBehaviour
     {
       dataPath=Application.dataPath+"/Spiro/";
 	  SpiroBasePath=Application.dataPath+"/Prefabs/SpiroFormule.prefab";
-	  BoutonSelectionPremiereLigne.SelectLine(); //on sélectionne la seule spiro de la scene
-	  Spirographe.Selection(); //Send Initialisation event (to build panels)
+	  BoutonSelectionPremiereLigne.SelectLine(); 	//on sélectionne la seule spiro de la scene
+	  Spirographe.Selection(); 						//Send Initialisation event (to build panels)
 	  GetActiveTextLine();
-	  Spirographe.LineCount=1; //on comence avec une ligne
+	  Spirographe.LineCount=1; 						//on comence avec une ligne
     }
 	
 	void OnEnable()
