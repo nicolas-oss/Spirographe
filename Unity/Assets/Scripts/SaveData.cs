@@ -5,6 +5,7 @@ using System.Xml;
 using System.Xml.Serialization;
 using System.IO;
 using UnityEditor;
+using UnityEngine.UI;
 
 public class SaveData
 {
@@ -12,7 +13,7 @@ public class SaveData
 	
 	public delegate void SerializeAction();
 	public static event SerializeAction OnLoaded;
-	public static event SerializeAction OnBeforeSave;
+	//public static event SerializeAction OnBeforeSave;
 	//public GameController GC;
 	
 	public static void Load(string path)
@@ -35,11 +36,35 @@ public class SaveData
 		return string.Format("{0}/Spiro/spiro_{1}.xml", Application.dataPath, System.DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss"));	
     }
 	
+	public static void SaveAllDatas()
+	{
+		GameObject RootList,LineToSave;
+		string NameLine;
+		RootList = GameObject.Find("ListSpiro");
+		
+		/*foreach (Transform child in RootList.transform)
+		{
+			NameLine = child.gameObject.transform.Find("TextName").GetComponent<Text>().text;
+			LineToSave = GameObject.Find(NameLine);
+			LineToSave.GetComponent<SpiroFormule>().StoreData();
+		}*/
+		
+		for (int j=0; j<RootList.transform.childCount; j++)
+		{
+			NameLine = RootList.transform.GetChild(j).transform.Find("TextName").GetComponent<Text>().text;
+			//Debug.Log(NameLine);
+			LineToSave = GameObject.Find(NameLine);
+			LineToSave.GetComponent<SpiroFormule>().StoreData();
+			AddSpiroData(LineToSave.GetComponent<SpiroFormule>().data);
+		}
+	}
+	
 	public static void Save(string path, SpiroContainer spiros)
 	{
 		//string localPath;
 		ClearSpiros();
-		OnBeforeSave();
+		SaveAllDatas();
+		//OnBeforeSave();
 		Debug.Log("Saving1...");
 		//localPath=SpiroName();
 		//Debug.Log(localPath);

@@ -160,8 +160,8 @@ public class SpiroFormule : MonoBehaviour
 		//SaveData.OnLoaded += delegate{LoadData();};
 		//if (Master) 
 		//{
-			SaveData.OnBeforeSave += delegate{StoreData();};
-			SaveData.OnBeforeSave += delegate{SaveData.AddSpiroData(data);};
+			//SaveData.OnBeforeSave += delegate{StoreData();};
+			//SaveData.OnBeforeSave += delegate{SaveData.AddSpiroData(data);};
 			Debug.Log("Save Event added");
 			Spirographe.onValueChange += GestionAnimation;
 		//}		
@@ -173,8 +173,8 @@ public class SpiroFormule : MonoBehaviour
 		//if (Master) 
 		//{
 			//SaveData.ClearSpiros();
-			SaveData.OnBeforeSave -= delegate{StoreData();};
-			SaveData.OnBeforeSave -= delegate{SaveData.AddSpiroData(data);};
+			//SaveData.OnBeforeSave -= delegate{StoreData();};
+			//SaveData.OnBeforeSave -= delegate{SaveData.AddSpiroData(data);};
 			Spirographe.onValueChange -= GestionAnimation;
 			Debug.Log("Souscriptions du spiro annulées");
 		//}
@@ -204,8 +204,8 @@ public class SpiroFormule : MonoBehaviour
 			gradient.SetKeys(new GradientColorKey[] { new GradientColorKey(c1, 0.0f), new GradientColorKey(c2, 1.0f)}, new GradientAlphaKey[] { new GradientAlphaKey(alpha, 0.0f), new GradientAlphaKey(alpha, 1.0f) });
 			gameObject.GetComponent<LineRenderer>().colorGradient=gradient;*/
 			
-			SaveData.OnBeforeSave -= delegate{StoreData();};					// ???????? working ???
-			SaveData.OnBeforeSave -= delegate{SaveData.AddSpiroData(data);};	// ???????? working ???
+			//SaveData.OnBeforeSave -= delegate{StoreData();};					// ???????? working ???
+			//SaveData.OnBeforeSave -= delegate{SaveData.AddSpiroData(data);};	// ???????? working ???
 		}
 		scaleChange.x = FacteurAttenuationFondu;
 		scaleChange.y = FacteurAttenuationFondu;
