@@ -200,12 +200,12 @@ public class SpiroFormule : MonoBehaviour
 		Attends=false;
 		if (!(Master))
 		{
-			Gradient gradient = new Gradient();
+			/*Gradient gradient = new Gradient();
 			gradient.SetKeys(new GradientColorKey[] { new GradientColorKey(c1, 0.0f), new GradientColorKey(c2, 1.0f)}, new GradientAlphaKey[] { new GradientAlphaKey(alpha, 0.0f), new GradientAlphaKey(alpha, 1.0f) });
-			gameObject.GetComponent<LineRenderer>().colorGradient=gradient;
+			gameObject.GetComponent<LineRenderer>().colorGradient=gradient;*/
 			
-			SaveData.OnBeforeSave -= delegate{StoreData();};
-			SaveData.OnBeforeSave -= delegate{SaveData.AddSpiroData(data);};
+			SaveData.OnBeforeSave -= delegate{StoreData();};					// ???????? working ???
+			SaveData.OnBeforeSave -= delegate{SaveData.AddSpiroData(data);};	// ???????? working ???
 		}
 		scaleChange.x = FacteurAttenuationFondu;
 		scaleChange.y = FacteurAttenuationFondu;
@@ -309,10 +309,26 @@ public class SpiroFormule : MonoBehaviour
 		if (Fondu)
 		{
 			alpha*=FacteurAttenuationFondu;
-			Gradient gradient = new Gradient();
-			gradient.SetKeys(new GradientColorKey[] { new GradientColorKey(c1, 0.0f), new GradientColorKey(c2, 1.0f)}, new GradientAlphaKey[] { new GradientAlphaKey(alpha, 0.0f), new GradientAlphaKey(alpha, 1.0f) });
-			gameObject.GetComponent<LineRenderer>().colorGradient=gradient;
+			//Gradient gradient = new Gradient();
+			//gradient.SetKeys(new GradientColorKey[] { new GradientColorKey(c1, 0.0f), new GradientColorKey(c2, 1.0f)}, new GradientAlphaKey[] { new GradientAlphaKey(alpha, 0.0f), new GradientAlphaKey(alpha, 1.0f) });
+			//gameObject.GetComponent<LineRenderer>().colorGradient=gradient;
 			//GetComponent<lineRenderer>().color=red;
+			
+			gradient = gameObject.GetComponent<LineRenderer>().colorGradient;
+			alphaKey = new GradientAlphaKey[NombreCouleur];
+			colorKey = new GradientColorKey[NombreCouleur];
+
+			for (int i=0; i<NombreCouleur; i++)
+			{
+				colorKey[i].color = couleur[i];
+				colorKey[i].time = (1.0f*i)/(1.0f*NombreCouleur);
+				alphaKey[i].alpha = alpha;
+				alphaKey[i].time = (1.0f*i)/(1.0f*NombreCouleur);
+			}
+		
+			gradient.SetKeys(colorKey, alphaKey);
+			gameObject.GetComponent<LineRenderer>().colorGradient=gradient;
+			
 		}
 		if (Animate)
 		{
@@ -327,6 +343,7 @@ public class SpiroFormule : MonoBehaviour
 		var SpiroClone = Instantiate(gameObject);
 		//SpiroClone.AddComponent<SpiroClone>;
 		SpiroClone.GetComponent<SpiroFormule>().Master=false;
+		SpiroClone.tag="Clone";
 		SpiroClone.GetComponent<SpiroFormule>().OnDisable();
 		Destroy (SpiroClone, DureeVie);
 		Attends=false;
