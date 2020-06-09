@@ -59,7 +59,7 @@ public class SpiroFormule : MonoBehaviour
 	//GameObject[] CentreDisque;
 	
 	public int NombreCouleur;
-	static int TailleTableauCouleur = 8;
+	public static int TailleTableauCouleur = 8;
 	public Color[] couleur = new Color[TailleTableauCouleur];
 	public Gradient gradient;
 	public GradientColorKey[] colorKey; //= new GradientColorKey[TailleTableauCouleur];
