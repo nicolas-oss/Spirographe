@@ -413,10 +413,10 @@ public class SpiroFormule : MonoBehaviour
 				CentreRayon[0].transform.Rotate(0.0f,(360.0f/(NombrePoints/NbTour)),0.0f,Space.Self);
 				for (m=1;m<profondeur-1;m++)
 				{
-					if (RotAxe[m]) CentreRayon[m].transform.Rotate(0.0f,-(360.0f/(NombrePoints/NbTour)*(RR[m-1]/RR[m]))*facteurT[m],0.0f, Space.Self);
+					if (RotAxe[m]) CentreRayon[m].transform.Rotate(0.0f,-(360.0f/(NombrePoints/NbTour)*(RR[m-1]/RR[m]))*facteurT[m],0.0f,                                                                                           );
 				}
 				lineRenderer.SetPosition(k,CentreRayon[profondeur-1].transform.position);
-				if (z) CentreRayon[profondeur-1].transform.Translate((step_profondeur)*Vector3.up,Space.Self);
+				if (z) CentreRayon[profondeur-1].transform.Translate((step_profondeur)*Vector3.up,Space.Self);  //décalage en y si profondeur
 			}
 	}
 }
