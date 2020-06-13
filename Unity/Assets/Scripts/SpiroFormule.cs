@@ -54,6 +54,7 @@ public class SpiroFormule : MonoBehaviour
 	float alpha = 1.0f;
 	Vector3 scaleChange;
 	public bool animation,toRefresh;
+	public bool disquePoly;
 	
 	Vector3 RotationNulle,DeplacementNul;
 	//GameObject[] CentreDisque;
@@ -370,6 +371,8 @@ public class SpiroFormule : MonoBehaviour
 		float ratio;
 		int k,l;//,NbPtsReel;
 		float NbTour;
+		float angleDisquePoly;
+		int nbPtsDisquePoly;
 		LineRenderer lineRenderer = GetComponent<LineRenderer>();
 		lineRenderer.widthMultiplier = widthOfLineRenderer;
 		
@@ -386,6 +389,11 @@ public class SpiroFormule : MonoBehaviour
 			CentreRayon[m].transform.localEulerAngles=RotationNulle;
 		}
 		
+		if (disquePoly) 
+		{
+			CentreRayon[profondeur-1].transform.Translate((Echelle*(RR[profondeur-2]))*Vector3.forward,Space.Self);			//attention suppression des ondes et profondeur à vérifier
+		}
+	
 		//ApplyRotation();
 	
 		lineRenderer.positionCount = (int)NombrePoints+1;
@@ -407,16 +415,26 @@ public class SpiroFormule : MonoBehaviour
 	
 		float step_profondeur=profondeur_z/NombrePoints;
 		
+		angleDisquePoly=Mathf.Acos(0.5f+0.5f*(RR[profondeur-1]*RR[profondeur-1]-RR[profondeur-2]*RR[profondeur-2])); //on recale le disquepoly tous les angleDisquePoly
+		nbPtsDisquePoly=(int)(((float)NombrePoints/(float)NbTour)*(360.0f/(float)angleDisquePoly));
+		
 		for (k=0;k<NombrePoints+1;k++)
 			{
 				lineRenderer.SetPosition(k,CentreRayon[profondeur-1].transform.position);
 				CentreRayon[0].transform.Rotate(0.0f,(360.0f/(NombrePoints/NbTour)),0.0f,Space.Self);
 				for (m=1;m<profondeur-1;m++)
 				{
-					if (RotAxe[m]) CentreRayon[m].transform.Rotate(0.0f,-(360.0f/(NombrePoints/NbTour)*(RR[m-1]/RR[m]))*facteurT[m],0.0f,                                                                                           );
+					if (RotAxe[m]) CentreRayon[m].transform.Rotate(0.0f,-(360.0f/(NombrePoints/NbTour)*(RR[m-1]/RR[m]))*facteurT[m],0.0f, Space.Self);
+					if ((disquePoly) && (m%nbPtsDisquePoly==0.0f))			// si disquePoly
+					{
+						CentreRayon[profondeur].transform.parent=null; 	// on détache le crayon
+						CentreRayon[profondeur-1].transform.Translate((Echelle*(RR[profondeur-2]))*Vector3.forward,Space.Self);			//attention suppression des ondes et profondeur à vérifier
+						CentreRayon[profondeur-1].transform.Rotate(0.0f,-angleDisquePoly,0.0f, Space.Self);		// on tourne l'avant-dernier disque
+						CentreRayon[profondeur].transform.SetParent(CentreRayon[profondeur-1-1].transform);		// on ré-attache la crayon
+					}
 				}
 				lineRenderer.SetPosition(k,CentreRayon[profondeur-1].transform.position);
-				if (z) CentreRayon[profondeur-1].transform.Translate((step_profondeur)*Vector3.up,Space.Self);  //décalage en y si profondeur
+				if (z) CentreRayon[profondeur-1].transform.Translate((step_profondeur)*Vector3.up,Space.Self);
 			}
 	}
 }
