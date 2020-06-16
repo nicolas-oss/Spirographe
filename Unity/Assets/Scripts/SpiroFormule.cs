@@ -285,6 +285,8 @@ public class SpiroFormule : MonoBehaviour
         if ((AnimRotation) && (Master)) ApplyRotation();
 		//if (Master) 
 		if ((animation) && (Master)) TraceSpirographe();
+	
+		if ((animation) || (AnimRotation)) PostSpiro();  //clones ?
 		
 		if ((Master) && (Duplication) && !(Attends))
 		{

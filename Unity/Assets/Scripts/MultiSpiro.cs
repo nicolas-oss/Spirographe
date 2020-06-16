@@ -12,8 +12,11 @@ public class MultiSpiro : MonoBehaviour
 	Vector3 A,A1,A2,rotation,position,globalPosition;
 	Quaternion RotQuaternion;
 	public int multiple=5;
+	public float vitesseRelative=1.0f;
 	//public int i;
 	static SpiroFormule spiroFormule1,spiroFormule2;
+	public bool profondeur;
+	public float facteur_profondeur;
 	
     void OnEnable()
 	{
@@ -75,8 +78,8 @@ public class MultiSpiro : MonoBehaviour
 		
 		for (int i = 0; i<NbrPts*multiple; i++)
 		{
-			Root1.transform.position = Spiro1.transform.TransformPoint(Line1.GetPosition(i%N1));
-			Root2.transform.position = Spiro2.transform.TransformPoint(Line2.GetPosition(i%N2));
+			Root1.transform.position = Spiro1.transform.TransformPoint(Line1.GetPosition(i%(N1-1)));
+			Root2.transform.position = Spiro2.transform.TransformPoint(Line2.GetPosition((int)(i*vitesseRelative%(N2-1))));
 			A1=Root1.transform.position;
 			A2=Root2.transform.position;
 			//Root1.transform.position = A1;
@@ -105,7 +108,7 @@ public class MultiSpiro : MonoBehaviour
 				//quotient=1.0f;
 				while (quotient>1)
 				{
-					L2+=0.01f;
+					L2+=0.001f;
 					quotient=CalculQuotient();
 				}
 			}
@@ -138,7 +141,8 @@ public class MultiSpiro : MonoBehaviour
 			Root1Rotation.transform.Rotate(0.0f,alpha,0.0f,Space.Self);
 			Root1Rotation.transform.localPosition = position;
 			globalPosition = Crayon.transform.position;
-			Line.SetPosition(i,globalPosition);
+			if (profondeur) globalPosition+=1.0f*i*facteur_profondeur*Vector3.up;
+			Line.SetPosition(i,globalPosition);  
 			
 			//i++;
 			
