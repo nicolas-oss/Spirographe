@@ -10,4 +10,8 @@ public class SpiroContainer
     [XmlArray("SpiroArray")]
 	[XmlArrayItem("Spiro")]
 	public List<SpiroData> spiros = new List<SpiroData>();
+	
+	[XmlArray("MultiSpiroArray")]
+	[XmlArrayItem("MultiSpiro")]
+	public List<MultiSpiroData> multiSpiros = new List<MultiSpiroData>();
 }

@@ -18,15 +18,17 @@ public class SaveData
 	
 	public static void Load(string path)
 	{
-		//path=FileBrowserPanel.("Chargement",path,"xml");
 		spiroContainer=LoadSpiros(path);
-		//GameController gameController = GameController();
-		
 		
 		foreach (SpiroData data in spiroContainer.spiros)
 		{
-			//GameController GClocal = new GameController();
 			GameController.CreateSpiro(data,GameController.SpiroBasePath);
+		}
+		
+		foreach (MultiSpiroData data in spiroContainer.multiSpiros)
+		{
+			GameObject.Find("MultiSpiro").GetComponent<MultiSpiro>().data=data;
+			GameObject.Find("MultiSpiro").GetComponent<MultiSpiro>().LoadData();
 		}
 		//OnLoaded();
 	}
@@ -57,17 +59,15 @@ public class SaveData
 			LineToSave.GetComponent<SpiroFormule>().StoreData();
 			AddSpiroData(LineToSave.GetComponent<SpiroFormule>().data);
 		}
+		GameObject.Find("MultiSpiro").GetComponent<MultiSpiro>().StoreData();
+		AddMultiSpiroData(GameObject.Find("MultiSpiro").GetComponent<MultiSpiro>().data);
 	}
 	
 	public static void Save(string path, SpiroContainer spiros)
 	{
-		//string localPath;
 		ClearSpiros();
 		SaveAllDatas();
-		//OnBeforeSave();
 		Debug.Log("Saving1...");
-		//localPath=SpiroName();
-		//Debug.Log(localPath);
 		SaveSpiros(path,spiros);
 		ClearSpiros();
 	}
@@ -78,11 +78,18 @@ public class SaveData
 		if (data.Master) spiroContainer.spiros.Add(data);
 	}
 	
+	public static void AddMultiSpiroData(MultiSpiroData data)
+	{
+		Debug.Log("AddMultiSpiroData Call");
+		spiroContainer.multiSpiros.Add(data);
+	}
+	
 	public static void ClearSpiros()
 	{
 		spiroContainer.spiros.Clear();
-		Debug.Log("Container Empty");
-		Debug.Log(spiroContainer.spiros.Count.ToString());
+		spiroContainer.multiSpiros.Clear();
+		//Debug.Log("Container Empty");
+		//Debug.Log(spiroContainer.spiros.Count.ToString());
 	}
 
 	public static SpiroContainer LoadSpiros(string path)

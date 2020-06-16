@@ -39,8 +39,6 @@ public class SpiroData
 	public float IntervalDuplication,DureeVie;
 	//bool Attends;
 	public bool Master;
-	public Color c1 = Color.yellow;
-    public Color c2 = Color.red;
 	public bool isInitialised;
 	public bool z=true;
 	public float profondeur_z;

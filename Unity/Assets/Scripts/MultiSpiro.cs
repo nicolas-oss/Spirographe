@@ -18,7 +18,38 @@ public class MultiSpiro : MonoBehaviour
 	public bool profondeur;
 	public float facteur_profondeur;
 	
-    void OnEnable()
+	public MultiSpiroData data = new MultiSpiroData();
+	
+    public void StoreData()
+	{
+		//data.Line1=Line1;
+		//data.Line2=Line2;
+		//data.Spiro1=Spiro1;
+		//data.Spiro2=Spiro2;
+		data.multiple=multiple;
+		data.vitesseRelative=vitesseRelative;
+		//data.spiroFormule1=spiroFormule1;
+		//data.spiroFormule2=spiroFormule2;
+		data.profondeur=profondeur;
+		data.facteur_profondeur=facteur_profondeur;
+	}
+	
+	public void LoadData()
+	{
+		//Line1=data.Line1;
+		//Line2=data.Line2;
+		//Spiro1=data.Spiro1;
+		//Spiro2=data.Spiro2;
+		multiple=data.multiple;
+		vitesseRelative=data.vitesseRelative;
+		//spiroFormule1=data.spiroFormule1;
+		//spiroFormule2=data.spiroFormule2;
+		profondeur=data.profondeur;
+		facteur_profondeur=data.facteur_profondeur;
+	}
+
+	
+	void OnEnable()
 	{
 		Spiro1.GetComponent<SpiroFormule>().onPostSpiro +=  delegate{CalculeMultiSpiro();};
 		Spiro2.GetComponent<SpiroFormule>().onPostSpiro +=  delegate{CalculeMultiSpiro();};
