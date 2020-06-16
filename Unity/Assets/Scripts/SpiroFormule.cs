@@ -22,9 +22,7 @@ public class SpiroFormule : MonoBehaviour
 	public float[] facteurT = new float[TailleTableaux];
 	public bool[] OndeRayon = new bool[TailleTableaux];
 	public bool[] RotAxe = new bool[TailleTableaux];
-	//public GameObject[] Axe = new GameObject[TailleTableaux];
 	public GameObject[] CentreRayon = new GameObject[TailleTableaux];
-	//GameObject AxeToInstatiate;
 	public GameObject Centre;
 	
 	//paramètres crayon
@@ -55,9 +53,9 @@ public class SpiroFormule : MonoBehaviour
 	Vector3 scaleChange;
 	public bool animation,toRefresh;
 	public bool disquePoly;
+	public int nbCoteDisquePoly;
 	
 	Vector3 RotationNulle,DeplacementNul;
-	//GameObject[] CentreDisque;
 	
 	public int NombreCouleur;
 	public static int TailleTableauCouleur = 8;
@@ -65,6 +63,9 @@ public class SpiroFormule : MonoBehaviour
 	public Gradient gradient;
 	public GradientColorKey[] colorKey; //= new GradientColorKey[TailleTableauCouleur];
 	public GradientAlphaKey[] alphaKey; //= new GradientAlphaKey[TailleTableauCouleur];
+	
+	public delegate void PostSpiroEvent();
+	public event PostSpiroEvent onPostSpiro;
 	
 	public void StoreData()
 	{
@@ -199,6 +200,7 @@ public class SpiroFormule : MonoBehaviour
 		}
 		
 		Attends=false;
+		
 		if (!(Master))
 		{
 			/*Gradient gradient = new Gradient();
@@ -208,6 +210,8 @@ public class SpiroFormule : MonoBehaviour
 			//SaveData.OnBeforeSave -= delegate{StoreData();};					// ???????? working ???
 			//SaveData.OnBeforeSave -= delegate{SaveData.AddSpiroData(data);};	// ???????? working ???
 		}
+		
+		
 		scaleChange.x = FacteurAttenuationFondu;
 		scaleChange.y = FacteurAttenuationFondu;
 		scaleChange.z = FacteurAttenuationFondu;
@@ -250,7 +254,13 @@ public class SpiroFormule : MonoBehaviour
 			ApplyRotation();
 			TraceSpirographe();
 		}
-	}	
+	}
+	
+	public void PostSpiro()
+	{
+		Debug.Log("Calling event Remplissage");
+		if ((onPostSpiro!= null) && (Master)) onPostSpiro();
+	}
 	
 	public bool CheckAnimation()
 	{
@@ -373,6 +383,7 @@ public class SpiroFormule : MonoBehaviour
 		float NbTour;
 		float angleDisquePoly;
 		int nbPtsDisquePoly;
+		Vector3 pointPosition;
 		LineRenderer lineRenderer = GetComponent<LineRenderer>();
 		lineRenderer.widthMultiplier = widthOfLineRenderer;
 		
@@ -436,5 +447,7 @@ public class SpiroFormule : MonoBehaviour
 				lineRenderer.SetPosition(k,CentreRayon[profondeur-1].transform.position);
 				if (z) CentreRayon[profondeur-1].transform.Translate((step_profondeur)*Vector3.up,Space.Self);
 			}
+		//LineRemplissage.Remplissage();
+		PostSpiro();
 	}
 }

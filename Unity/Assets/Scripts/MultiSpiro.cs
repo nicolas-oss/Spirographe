@@ -6,49 +6,75 @@ public class MultiSpiro : MonoBehaviour
 {
     public LineRenderer Line,Line1,Line2;
 	public GameObject Spiro1,Spiro2;
-	public float quotient,alpha,L,L1,L2;
+	public float quotient,alpha,beta,L,L1,L2;
 	public int NbrPts,N1,N2;
 	public GameObject Root1,Root2,Crayon,Root1Rotation;
 	Vector3 A1,A2,rotation,position,globalPosition;
 	Quaternion RotQuaternion;
 	public int multiple=5;
-	public int i;
+	//public int i;
+	static SpiroFormule spiroFormule1,spiroFormule2;
 	
     void OnEnable()
 	{
-		i=0;
+		Spiro1.GetComponent<SpiroFormule>().onPostSpiro +=  delegate{CalculeMultiSpiro();};
+		//Spiro2.GetComponent<SpiroFormule>().onPostSpiro +=  delegate{CalculeMultiSpiro();};
+	}
+	
+	void OnDisable()
+	{
+		Spiro1.GetComponent<SpiroFormule>().onPostSpiro -=  delegate{CalculeMultiSpiro();};
+		//Spiro2.GetComponent<SpiroFormule>().onPostSpiro -=  delegate{CalculeMultiSpiro();};
 	}
 	
 	void Update()
 	{
-		CalculeMultiSpiro();
+		//CalculeMultiSpiro();
 	}
 	
 	void Start()
     {
 		Line1=Spiro1.GetComponent<LineRenderer>();
 		Line2=Spiro2.GetComponent<LineRenderer>();
+		spiroFormule1=Spiro1.GetComponent<SpiroFormule>();
+		spiroFormule2=Spiro2.GetComponent<SpiroFormule>();
 		N1=Line1.positionCount;
 		N2=Line2.positionCount;
 		if (Line1.positionCount<Line2.positionCount) {NbrPts=Line2.positionCount;} else {NbrPts = Line1.positionCount;}
 		Line = GetComponent<LineRenderer>();
 		Line.positionCount = NbrPts*multiple;
 		//i=0;
+		//Spiro2.GetComponent<SpiroFormule>().onPostSpiro += CalculeMultiSpiro();
     }
 
     public float CalculQuotient()
 	{
 		return ((L1*L1-L2*L2)/(2.0f*L1*L));
 	}
+	
+	/*public void orienteRoot1();
+	{
+		float alpha;
+		alpha = Mathf.Atan(
+	}*/
     
 	public void CalculeMultiSpiro()
     {
         //for (int j = 0; j<10;j++)
 			//{
-		Start();
-		//for (int i = 0; i<NbrPts*multiple; i++)
-		//{
+		//Start();
+		Line1=Spiro1.GetComponent<LineRenderer>();
+		Line2=Spiro2.GetComponent<LineRenderer>();
+		spiroFormule1=Spiro1.GetComponent<SpiroFormule>();
+		spiroFormule2=Spiro2.GetComponent<SpiroFormule>();
+		N1=Line1.positionCount;
+		N2=Line2.positionCount;
+		if (Line1.positionCount<Line2.positionCount) {NbrPts=Line2.positionCount;} else {NbrPts = Line1.positionCount;}
+		Line = GetComponent<LineRenderer>();
+		Line.positionCount = NbrPts*multiple;
 		
+		for (int i = 0; i<NbrPts*multiple; i++)
+		{
 			Root1.transform.position = Spiro1.transform.TransformPoint(Line1.GetPosition(i%N1));
 			Root2.transform.position = Spiro2.transform.TransformPoint(Line2.GetPosition(i%N2));
 			A1=Root1.transform.position;
@@ -58,6 +84,8 @@ public class MultiSpiro : MonoBehaviour
 			L=Vector3.Distance(A1,A2);
 			//Debug.Log("L="+L.ToString());
 			//Debug.Log("L="+L.ToString());
+			beta=Mathf.Asin(A1.z/L);
+			if (L==0.0f) {beta=90;} else {beta*=57.296f;} //conversion radian vers degres
 			
 			if (L==0.0f) 
 			{
@@ -87,7 +115,7 @@ public class MultiSpiro : MonoBehaviour
 				}
 			}
 			alpha = Mathf.Acos(quotient);
-			alpha*=57.296f;
+			alpha*=57.296f; //conversion radian vers degres
 			
 			position.x=L1;
 			position.y=0.0f;
@@ -98,15 +126,18 @@ public class MultiSpiro : MonoBehaviour
 			rotation.z = 0.0f;
 			
 			//Debug.Log("rotation x="+(rotation.x).ToString()+" y="+(rotation.y).ToString()+" z="+(rotation.z).ToString());
+			Root1.transform.localEulerAngles = rotation;		//on applique la rotation de la contrainte Aim sur Root1
+			Root1.transform.Rotate(0.0f,beta,0.0f,Space.Self);
+			
 			Root1Rotation.transform.localEulerAngles = rotation;
 			Root1Rotation.transform.Rotate(0.0f,alpha,0.0f,Space.Self);
 			Root1Rotation.transform.localPosition = position;
 			globalPosition = Crayon.transform.position;
 			Line.SetPosition(i,globalPosition);
 			
-			i++;
+			//i++;
 			
-		//}
-		if (i>multiple*NbrPts) i=0;
+		}
+		//if (i>multiple*NbrPts) i=0;
     }
 }
