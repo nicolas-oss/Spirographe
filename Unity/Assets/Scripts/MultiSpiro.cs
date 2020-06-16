@@ -9,7 +9,7 @@ public class MultiSpiro : MonoBehaviour
 	public float quotient,alpha,beta,L,L1,L2;
 	public int NbrPts,N1,N2;
 	public GameObject Root1,Root2,Crayon,Root1Rotation;
-	Vector3 A1,A2,rotation,position,globalPosition;
+	Vector3 A,A1,A2,rotation,position,globalPosition;
 	Quaternion RotQuaternion;
 	public int multiple=5;
 	//public int i;
@@ -18,13 +18,13 @@ public class MultiSpiro : MonoBehaviour
     void OnEnable()
 	{
 		Spiro1.GetComponent<SpiroFormule>().onPostSpiro +=  delegate{CalculeMultiSpiro();};
-		//Spiro2.GetComponent<SpiroFormule>().onPostSpiro +=  delegate{CalculeMultiSpiro();};
+		Spiro2.GetComponent<SpiroFormule>().onPostSpiro +=  delegate{CalculeMultiSpiro();};
 	}
 	
 	void OnDisable()
 	{
 		Spiro1.GetComponent<SpiroFormule>().onPostSpiro -=  delegate{CalculeMultiSpiro();};
-		//Spiro2.GetComponent<SpiroFormule>().onPostSpiro -=  delegate{CalculeMultiSpiro();};
+		Spiro2.GetComponent<SpiroFormule>().onPostSpiro -=  delegate{CalculeMultiSpiro();};
 	}
 	
 	void Update()
@@ -84,8 +84,13 @@ public class MultiSpiro : MonoBehaviour
 			L=Vector3.Distance(A1,A2);
 			//Debug.Log("L="+L.ToString());
 			//Debug.Log("L="+L.ToString());
-			beta=Mathf.Asin(A1.z/L);
+			//beta=Mathf.Asin(A1.z/L);
+			A=A2-A1;
+			beta=Mathf.Acos(A.x/L);
+
+			//if (A.x==0.0f) {beta=90;} else beta = 57.296f*Mathf.Atan((A.z)/(A.x));
 			if (L==0.0f) {beta=90;} else {beta*=57.296f;} //conversion radian vers degres
+			if (A.z<0.0f) {beta=-beta;}
 			
 			if (L==0.0f) 
 			{
