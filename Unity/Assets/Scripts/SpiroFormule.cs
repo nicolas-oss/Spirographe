@@ -53,6 +53,7 @@ public class SpiroFormule : MonoBehaviour
 	Vector3 scaleChange;
 	public bool animation,toRefresh;
 	public bool disquePoly;
+	public bool Sphere;
 	public int nbCoteDisquePoly;
 	
 	Vector3 RotationNulle,DeplacementNul;
@@ -435,6 +436,9 @@ public class SpiroFormule : MonoBehaviour
 			{
 				lineRenderer.SetPosition(k,CentreRayon[profondeur-1].transform.position);
 				CentreRayon[0].transform.Rotate(0.0f,(360.0f/(NombrePoints/NbTour)),0.0f,Space.Self);
+								
+				if (Sphere) {CentreRayon[0].transform.Rotate((360.0f/(NombrePoints/NbTour)),0.0f,0.0f,Space.Self);}
+
 				for (m=1;m<profondeur-1;m++)
 				{
 					if (RotAxe[m]) CentreRayon[m].transform.Rotate(0.0f,-(360.0f/(NombrePoints/NbTour)*(RR[m-1]/RR[m]))*facteurT[m],0.0f, Space.Self);

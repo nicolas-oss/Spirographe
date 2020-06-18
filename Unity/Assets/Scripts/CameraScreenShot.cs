@@ -12,9 +12,8 @@ public class CameraScreenShot : MonoBehaviour
 		return string.Format("{0}/screenshots/screen_{1}x{2}_{3}.png", Application.dataPath, width, height, System.DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss"));
     }
 	
-	public void ScreenShot()
-    {
-        //ScreenCapture.CaptureScreenshot("SpiroScreenShot"+System.DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss")+".png",1);
+	public void Capture(string filename)
+	{
 		RenderTexture rt = new RenderTexture(resWidth, resHeight, 24);
 		GetComponent<Camera>().targetTexture = rt;
 		Texture2D screenShot = new Texture2D(resWidth, resHeight, TextureFormat.RGB24, false);
@@ -25,8 +24,23 @@ public class CameraScreenShot : MonoBehaviour
 		RenderTexture.active = null; // JC: added to avoid errors
 		Destroy(rt);
 		byte[] bytes = screenShot.EncodeToPNG();
-		string filename = ScreenShotName(resWidth, resHeight);
 		System.IO.File.WriteAllBytes(filename, bytes);
+		//Debug.Log(string.Format("Took screenshot to: {0}", filename));
+	}
+	
+	public void Record(string filename)
+	{
+		string filenamecomplet;
+		filenamecomplet="{0}/sequences/"+filename+".png";
+		Capture(filenamecomplet);
+		Debug.Log("rec "+filename);
+	}
+	
+	public void ScreenShot()
+    {
+        string filename;
+		filename = ScreenShotName(resWidth, resHeight);
+		Capture(filename);
 		Debug.Log(string.Format("Took screenshot to: {0}", filename));
     }
 }
