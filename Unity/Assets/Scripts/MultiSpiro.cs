@@ -30,6 +30,8 @@ public class MultiSpiro : MonoBehaviour
 		data.vitesseRelative=vitesseRelative;
 		//data.spiroFormule1=spiroFormule1;
 		//data.spiroFormule2=spiroFormule2;
+		data.L1=L1;
+		data.L2=L2;
 		data.profondeur=profondeur;
 		data.facteur_profondeur=facteur_profondeur;
 	}
@@ -42,6 +44,8 @@ public class MultiSpiro : MonoBehaviour
 		//Spiro2=data.Spiro2;
 		multiple=data.multiple;
 		vitesseRelative=data.vitesseRelative;
+		L1=data.L1;
+		L2=data.L2;
 		//spiroFormule1=data.spiroFormule1;
 		//spiroFormule2=data.spiroFormule2;
 		profondeur=data.profondeur;

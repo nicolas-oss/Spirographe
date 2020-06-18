@@ -9,6 +9,10 @@ public class FileBrowserPanel : MonoBehaviour
 	public GameObject ViewportContent;
 	public GameObject Ligne;
 	public int index;
+	//string LigneSelectionnee;
+	int Fonction;
+	static int Load=0;
+	static int Merge=0;
 
 	public void BuildPanel()
 	{	
@@ -42,12 +46,30 @@ public class FileBrowserPanel : MonoBehaviour
 	public void SelectionLigne(string NomLigne)
 	{
 		FermeturePanneau();
+		if (Fonction==Load)
+		{
+			GameController.DeleteAll();
+			GameController.LineCount=0;
+		}
 		SaveData.Load(GameController.dataPath+NomLigne);
+		//LigneSelectionnee=NomLigne;
 	}
 	
 	public void FermeturePanneau()
 	{
 		//Debug.Log("Closing...");
 		transform.GetChild(0).gameObject.SetActive(false);
+	}
+	
+	public void BuildLoadPanel()
+	{
+		Fonction = Load;
+		BuildPanel();
+	}
+	
+	public void BuildMergePanel()
+	{
+		Fonction = Merge;
+		BuildPanel();
 	}
 }

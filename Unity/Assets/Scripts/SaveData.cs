@@ -27,8 +27,9 @@ public class SaveData
 		
 		foreach (MultiSpiroData data in spiroContainer.multiSpiros)
 		{
-			GameObject.Find("MultiSpiro").GetComponent<MultiSpiro>().data=data;
-			GameObject.Find("MultiSpiro").GetComponent<MultiSpiro>().LoadData();
+			GameController.CreateMultiSpiro(data,GameController.SpiroBasePath);
+			//GameObject.Find("MultiSpiro").GetComponent<MultiSpiro>().data=data;
+			//GameObject.Find("MultiSpiro").GetComponent<MultiSpiro>().LoadData();
 		}
 		//OnLoaded();
 	}
@@ -56,8 +57,11 @@ public class SaveData
 			NameLine = RootList.transform.GetChild(j).transform.Find("TextName").GetComponent<Text>().text;
 			//Debug.Log(NameLine);
 			LineToSave = GameObject.Find(NameLine);
-			LineToSave.GetComponent<SpiroFormule>().StoreData();
-			AddSpiroData(LineToSave.GetComponent<SpiroFormule>().data);
+			if (LineToSave.GetComponent<SpiroFormule>()!=null) 
+			{
+				LineToSave.GetComponent<SpiroFormule>().StoreData();
+				AddSpiroData(LineToSave.GetComponent<SpiroFormule>().data);
+			}
 		}
 		//GameObject.Find("MultiSpiro").GetComponent<MultiSpiro>().StoreData();
 		AddMultiSpiroData(GameObject.Find("MultiSpiro").GetComponent<MultiSpiro>().data);

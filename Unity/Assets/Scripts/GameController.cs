@@ -8,7 +8,7 @@ public class GameController : MonoBehaviour
     public static string dataPath;
 	public static string SpiroBasePath;
 	
-	public Button loadButton,saveButton,newButton,duplicateButton,deletAllButton;
+	public Button loadButton,saveButton,newButton,duplicateButton,deletAllButton,fusionnerButton;
 	public static Color selected = Color.black;
 	public Color unselected = Color.gray;
 	static Text NameLine;
@@ -19,8 +19,11 @@ public class GameController : MonoBehaviour
 	public static int LineCount;
 	public GameObject RootList;
 	public SelectButton BoutonSelectionPremiereLigne;
-	public GameObject SpiroFormuleToInstantiate;
+	public GameObject SpiroFormuleToInstantiate,TextBaseToInstantiate,MultiSpiroToInstantiate;
 	public GameObject FileBrowser;
+	public GameObject SpiroParametrableRoot,MultiSpiroParametrableRoot; //papa de tous les spiroFormules + centre de rotation base
+	string path;
+	static GameObject BaseSpiro,SpiroRoot,TextBase,MultiSpiroRoot,BaseMultiSpiro;
 
     void Start()
     {
@@ -29,13 +32,19 @@ public class GameController : MonoBehaviour
 	  BoutonSelectionPremiereLigne.SelectLine(); 	//on sélectionne la seule spiro de la scene
 	  Spirographe.Selection(); 						//Send Initialisation event (to build panels)
 	  GetActiveTextLine();
-	  LineCount=2; 						//on comence avec une ligne
+	  LineCount=2; 									//on comence avec une/deux ligne(s)
+	  BaseSpiro = SpiroFormuleToInstantiate;
+	  BaseMultiSpiro = MultiSpiroToInstantiate;
+	  SpiroRoot = SpiroParametrableRoot;
+	  MultiSpiroRoot = MultiSpiroParametrableRoot;
+	  TextBase = TextBaseToInstantiate;
     }
 	
 	void OnEnable()
 	{
 		//saveButton.onClick.AddListener(delegate{SaveData.Save(dataPath,SaveData.spiroContainer);});
-		loadButton.onClick.AddListener(delegate{FileBrowser.GetComponent<FileBrowserPanel>().BuildPanel();});
+		loadButton.onClick.AddListener(delegate{LoadScene(path);});
+		fusionnerButton.onClick.AddListener(delegate{MergeScene(path);});
 		duplicateButton.onClick.AddListener(delegate{DuplicateCurrentSpiro();});
 		deletAllButton.onClick.AddListener(delegate{DeleteAll();});
 	}
@@ -43,7 +52,8 @@ public class GameController : MonoBehaviour
 	void OnDisable()
 	{
 		//saveButton.onClick.RemoveListener(delegate{SaveData.Save(dataPath,SaveData.spiroContainer);});
-		loadButton.onClick.RemoveListener(delegate{FileBrowser.GetComponent<FileBrowserPanel>().BuildPanel();});
+		loadButton.onClick.RemoveListener(delegate{LoadScene(path);});
+		fusionnerButton.onClick.RemoveListener(delegate{MergeScene(path);});
 		duplicateButton.onClick.RemoveListener(delegate{DuplicateCurrentSpiro();});
 		deletAllButton.onClick.RemoveListener(delegate{DeleteAll();});
 	}
@@ -70,30 +80,28 @@ public class GameController : MonoBehaviour
 		}
 	}
 	
-	public static string CreateTextLine()
+	public static string CreateTextLine(string name)
 	{
-		GetActiveTextLine();
-		NewLineName = Instantiate(PreviousTextLine);
+		//GetActiveTextLine();
+		GameObject root = GameObject.Find("ListSpiro");
+		NewLineName = Instantiate(TextBase);
 		LineCount++;
 		NameLine = NewLineName.transform.Find("TextName").GetComponent<Text>();
-		NewLineName.transform.SetParent(PreviousTextLine.transform.parent,false);
-		NameLine.text = ("Spiro"+LineCount.ToString());
+		NewLineName.transform.SetParent(root.transform,false);
+		NameLine.text = (name+LineCount.ToString());
 		NewLine.name = NameLine.text;
 		NewLineName.transform.Find("DeleteButton").gameObject.SetActive(true);
-		NewLineName.transform.Find("SelectButton").gameObject.GetComponent<SelectButton>().SelectLine();
+		//NewLineName.transform.Find("SelectButton").gameObject.GetComponent<SelectButton>().SelectLine();
 		return NewLine.name;
 	}
 	
 	public void DuplicateCurrentSpiro()
 	{
-		//bool Visibility;
-		//GameObject BoutonDelete;
-		
 		GetActiveLine();
 		NewLine = Instantiate(ActiveObjectInScene);
 		NewLine.tag="Untagged";
 		GetActiveTextLine();
-		CreateTextLine();
+		CreateTextLine("Spiro");
 		Spirographe.RefreshInputField();
 	}
 	
@@ -101,8 +109,14 @@ public class GameController : MonoBehaviour
 	{
 	}
 	
-	public void LoadSpiro(string path)
+	public void LoadScene(string path)
 	{
+		FileBrowser.GetComponent<FileBrowserPanel>().BuildLoadPanel();
+	}
+	
+	public void MergeScene(string path)
+	{
+		FileBrowser.GetComponent<FileBrowserPanel>().BuildMergePanel();
 	}
 	
 	public static void CreateSpiro(SpiroData data, string path)
@@ -110,11 +124,28 @@ public class GameController : MonoBehaviour
 		//GetActiveLine();
 		//GameObject prefab = Resources.Load<GameObject>(path);
 		//GameObject go = GameObject.Instantiate(prefab) as GameObject;
-		NewLine = Instantiate(Spirographe.ActiveObjectInScene);
+		
+		NewLine = Instantiate(BaseSpiro);
 		NewLine.GetComponent<SpiroFormule>().data=data;
 		NewLine.GetComponent<SpiroFormule>().LoadData();
+		NewLine.GetComponent<SpiroFormule>().Centre=SpiroRoot;
+		NewLine.transform.SetParent(SpiroRoot.transform,false);
 		NewLine.tag="Untagged";
-		NewLine.name=CreateTextLine();
+		NewLine.name=CreateTextLine("Spiro");
+		//GetActiveTextLine();
+		//NewLineName = Instantiate(PreviousTextLine);
+		//NewLineName.transform.SetParent(PreviousTextLine.transform.parent,false);
+	}
+	
+	public static void CreateMultiSpiro(MultiSpiroData data, string path)
+	{
+		NewLine = Instantiate(BaseMultiSpiro);
+		NewLine.GetComponent<MultiSpiro>().data=data;
+		NewLine.GetComponent<MultiSpiro>().LoadData();
+		//NewLine.GetComponent<SpiroFormule>().Centre=SpiroRoot;
+		NewLine.transform.SetParent(MultiSpiroRoot.transform,false);
+		NewLine.tag="Untagged";
+		NewLine.name=CreateTextLine("MultiSpiro");
 		//GetActiveTextLine();
 		//NewLineName = Instantiate(PreviousTextLine);
 		//NewLineName.transform.SetParent(PreviousTextLine.transform.parent,false);

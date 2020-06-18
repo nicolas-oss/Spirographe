@@ -11,4 +11,5 @@ public class MultiSpiroData
 	//public SpiroFormule spiroFormule1,spiroFormule2;
 	public bool profondeur;
 	public float facteur_profondeur;
+	public float L1,L2;
 }
