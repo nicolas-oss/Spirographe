@@ -31,7 +31,7 @@ public class CameraScreenShot : MonoBehaviour
 	public void Record(string filename)
 	{
 		string filenamecomplet;
-		filenamecomplet="{0}/sequences/"+filename+".png";
+		filenamecomplet="E:/DATA/3d/Spirographe/sequences/"+filename+".png";
 		Capture(filenamecomplet);
 		Debug.Log("rec "+filename);
 	}

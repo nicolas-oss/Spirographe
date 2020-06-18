@@ -8,7 +8,7 @@ public class GameController : MonoBehaviour
     public static string dataPath;
 	public static string SpiroBasePath;
 	
-	public Button loadButton,saveButton,newButton,duplicateButton;
+	public Button loadButton,saveButton,newButton,duplicateButton,deletAllButton;
 	public static Color selected = Color.black;
 	public Color unselected = Color.gray;
 	static Text NameLine;
@@ -16,6 +16,7 @@ public class GameController : MonoBehaviour
 	public static GameObject NewLine;
 	public SpiroFormule SelectedLine;
 	//public int LineCount;
+	public static int LineCount;
 	public GameObject RootList;
 	public SelectButton BoutonSelectionPremiereLigne;
 	public GameObject SpiroFormuleToInstantiate;
@@ -28,7 +29,7 @@ public class GameController : MonoBehaviour
 	  BoutonSelectionPremiereLigne.SelectLine(); 	//on sélectionne la seule spiro de la scene
 	  Spirographe.Selection(); 						//Send Initialisation event (to build panels)
 	  GetActiveTextLine();
-	  Spirographe.LineCount=1; 						//on comence avec une ligne
+	  LineCount=2; 						//on comence avec une ligne
     }
 	
 	void OnEnable()
@@ -36,6 +37,7 @@ public class GameController : MonoBehaviour
 		//saveButton.onClick.AddListener(delegate{SaveData.Save(dataPath,SaveData.spiroContainer);});
 		loadButton.onClick.AddListener(delegate{FileBrowser.GetComponent<FileBrowserPanel>().BuildPanel();});
 		duplicateButton.onClick.AddListener(delegate{DuplicateCurrentSpiro();});
+		deletAllButton.onClick.AddListener(delegate{DeleteAll();});
 	}
 	
 	void OnDisable()
@@ -43,6 +45,7 @@ public class GameController : MonoBehaviour
 		//saveButton.onClick.RemoveListener(delegate{SaveData.Save(dataPath,SaveData.spiroContainer);});
 		loadButton.onClick.RemoveListener(delegate{FileBrowser.GetComponent<FileBrowserPanel>().BuildPanel();});
 		duplicateButton.onClick.RemoveListener(delegate{DuplicateCurrentSpiro();});
+		deletAllButton.onClick.RemoveListener(delegate{DeleteAll();});
 	}
 	
 	public void GetActiveLine()
@@ -71,10 +74,10 @@ public class GameController : MonoBehaviour
 	{
 		GetActiveTextLine();
 		NewLineName = Instantiate(PreviousTextLine);
-		Spirographe.LineCount++;
+		LineCount++;
 		NameLine = NewLineName.transform.Find("TextName").GetComponent<Text>();
 		NewLineName.transform.SetParent(PreviousTextLine.transform.parent,false);
-		NameLine.text = ("Spiro"+Spirographe.LineCount.ToString());
+		NameLine.text = ("Spiro"+LineCount.ToString());
 		NewLine.name = NameLine.text;
 		NewLineName.transform.Find("DeleteButton").gameObject.SetActive(true);
 		NewLineName.transform.Find("SelectButton").gameObject.GetComponent<SelectButton>().SelectLine();
@@ -115,5 +118,20 @@ public class GameController : MonoBehaviour
 		//GetActiveTextLine();
 		//NewLineName = Instantiate(PreviousTextLine);
 		//NewLineName.transform.SetParent(PreviousTextLine.transform.parent,false);
+	}
+	
+	public static void DeleteAll()
+	{
+		GameObject TextNameLineToDelete;
+		GameObject root = GameObject.Find("ListSpiro");
+		Text NameLine;
+		Debug.Log(root.transform.childCount.ToString());
+		for (int j=root.transform.childCount; j>0; j--)
+		{
+			TextNameLineToDelete = root.transform.GetChild(j-1).gameObject;
+			NameLine = TextNameLineToDelete.transform.Find("TextName").GetComponent<Text>();
+			Destroy(GameObject.Find(NameLine.text));
+			Destroy(TextNameLineToDelete);
+		}	
 	}
 }

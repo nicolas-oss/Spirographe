@@ -19,7 +19,6 @@ public static class Spirographe
 	public static event ValueChangeEvent onValueChange;
 	public static event ColorChangeEvent onColorChange;
 	
-	public static int LineCount;
 	public static SpiroFormule SelectedLine;
 	public static GameObject ActiveObjectInScene;
 

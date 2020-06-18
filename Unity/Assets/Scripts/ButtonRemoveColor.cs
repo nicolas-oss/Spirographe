@@ -18,7 +18,7 @@ public class ButtonRemoveColor : MonoBehaviour
 		{
 			NbCoul--;
 			Spirographe.SelectedLine.NombreCouleur=NbCoul;
-			Debug.Log("Calling event ColorAdd");
+			//Debug.Log("Calling event ColorAdd");
 			ButtonAddColor.CallColorAddEvent();
 		}
 	}
