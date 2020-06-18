@@ -15,7 +15,10 @@ public class InputFieldRotation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       isRotating=Spirographe.GetActiveSpiroFormule().AnimRotation;
-	   if (isRotating) GetComponent<InputFieldInterface>().RefreshContent();
+       if (Spirographe.GetActiveSpiroFormule()!=null)
+	   {
+			isRotating=Spirographe.GetActiveSpiroFormule().AnimRotation;
+			if (isRotating) GetComponent<InputFieldInterface>().RefreshContent();
+	   }
     }
 }

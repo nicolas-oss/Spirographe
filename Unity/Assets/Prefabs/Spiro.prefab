@@ -142,7 +142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   profondeur: 3
-  NombrePoints: 1000
+  NombrePoints: 500
   RR:
   - 10
   - 6
@@ -299,7 +299,7 @@ MonoBehaviour:
   - 1
   - 1
   - 1
-  OndeRayon: 01010100000000000000000000000000000000000000000000
+  OndeRayon: 00000000000000000000000000000000000000000000000000
   RotAxe: 01010101010101010101010101010101010101010101010101
   CentreRayon:
   - {fileID: 0}
@@ -353,7 +353,10 @@ MonoBehaviour:
   isInitialised: 0
   animation: 0
   toRefresh: 0
-  NombreCouleur: 2
+  disquePoly: 0
+  Sphere: 0
+  nbCoteDisquePoly: 0
+  NombreCouleur: 4
   couleur:
   - {r: 1, g: 0.9215687, b: 0.015686275, a: 1}
   - {r: 1, g: 0, b: 0, a: 1}

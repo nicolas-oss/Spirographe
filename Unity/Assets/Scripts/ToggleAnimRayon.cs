@@ -38,7 +38,15 @@ public class ToggleAnimRayon : MonoBehaviour
 	{
 		bool Check;
 		GetActiveLine();
-		Check = SelectedLine.OndeRayon[index];
-		GetComponent<Toggle>().isOn = Check;
+		if (SelectedLine==null)
+		{
+			GetComponent<Toggle>().interactable = false;
+		}
+		else
+		{
+			GetComponent<Toggle>().interactable = true;
+			Check = SelectedLine.OndeRayon[index];
+			GetComponent<Toggle>().isOn = Check;
+		}
 	}
 }

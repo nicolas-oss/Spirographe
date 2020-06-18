@@ -78,7 +78,15 @@ public class InputFieldInterface : MonoBehaviour
 	public void RefreshContent()
 	{
 		float ValeurCourante;
-		ValeurCourante = (float)Spirographe.SelectedLine.GetType().GetField(InputID).GetValue(Spirographe.SelectedLine); 	//on lit la valeur courante de l'inputID
-		GetComponent<InputField>().text = ValeurCourante.ToString(); 								//on l'écrit dans le champ text de l'IF
+		if (Spirographe.SelectedLine==null)
+		{
+			GetComponent<InputField>().interactable = false;
+		}
+		else
+		{
+			GetComponent<InputField>().interactable = true;
+			ValeurCourante = (float)Spirographe.SelectedLine.GetType().GetField(InputID).GetValue(Spirographe.SelectedLine); 	//on lit la valeur courante de l'inputID
+			GetComponent<InputField>().text = ValeurCourante.ToString(); 								//on l'écrit dans le champ text de l'IF
+		}
 	}
 }

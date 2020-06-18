@@ -134,7 +134,12 @@ public class InputFieldPanelDisques : MonoBehaviour
 	{
 		float Value;
 		GetActiveLine();
-		Value=LectureValeur();
-		GetComponent<InputField>().text = Value.ToString();
+		if (SelectedLine==null) {GetComponent<InputField>().interactable = false;}
+		else
+		{
+			GetComponent<InputField>().interactable = true;
+			Value=LectureValeur();
+			GetComponent<InputField>().text = Value.ToString();
+		}
 	}
 }

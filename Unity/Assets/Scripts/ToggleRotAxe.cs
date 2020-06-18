@@ -39,7 +39,15 @@ public class ToggleRotAxe : MonoBehaviour
 	{
 		bool Check;
 		GetActiveLine();
-		Check = SelectedLine.RotAxe[index];
-		GetComponent<Toggle>().isOn = Check;
+		if (SelectedLine==null)
+		{
+			GetComponent<Toggle>().interactable = false;
+		}
+		else
+		{
+			GetComponent<Toggle>().interactable = true;
+			Check = SelectedLine.RotAxe[index];
+			GetComponent<Toggle>().isOn = Check;
+		}
 	}
 }

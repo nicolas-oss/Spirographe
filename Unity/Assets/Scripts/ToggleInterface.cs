@@ -46,7 +46,15 @@ public class ToggleInterface : MonoBehaviour
 	{
 		bool Check;
 		GetActiveLine();
-		Check = (bool)SelectedLine.GetType().GetField(InputID).GetValue(SelectedLine);
-		GetComponent<Toggle>().isOn = Check;
+		if (SelectedLine==null)
+		{
+			GetComponent<Toggle>().interactable = false;
+		}
+		else
+		{
+			GetComponent<Toggle>().interactable = true;
+			Check = (bool)SelectedLine.GetType().GetField(InputID).GetValue(SelectedLine);
+			GetComponent<Toggle>().isOn = Check;
+		}
 	}
 }

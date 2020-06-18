@@ -79,19 +79,22 @@ public class ColorButton : MonoBehaviour
 	public void Refresh()
 	{
 		SelectedLine = Spirographe.GetActiveSpiroFormule();
-		int NbCoul = SelectedLine.NombreCouleur;
-		Debug.Log("Nombre Coul = "+NbCoul.ToString());
-		if (index > NbCoul-1) 
+		if (SelectedLine!=null)
 		{
-			gameObject.GetComponent<Button>().enabled=false;
-			gameObject.GetComponent<Image>().enabled=false;
-		}
-		else
-		{
-			Debug.Log("Activation");
-			gameObject.GetComponent<Button>().enabled=true;
-			gameObject.GetComponent<Image>().enabled=true;
-			GetComponent<Image>().color = SelectedLine.couleur[index]; 
+			int NbCoul = SelectedLine.NombreCouleur;
+			Debug.Log("Nombre Coul = "+NbCoul.ToString());
+			if (index > NbCoul-1) 
+			{
+				gameObject.GetComponent<Button>().enabled=false;
+				gameObject.GetComponent<Image>().enabled=false;
+			}
+			else
+			{
+				Debug.Log("Activation");
+				gameObject.GetComponent<Button>().enabled=true;
+				gameObject.GetComponent<Image>().enabled=true;
+				GetComponent<Image>().color = SelectedLine.couleur[index]; 
+			}
 		}
 	}
 }

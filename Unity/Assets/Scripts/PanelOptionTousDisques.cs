@@ -24,10 +24,11 @@ public class PanelOptionTousDisques : MonoBehaviour
 	
 	public void BuildPanel()
 	{
+		int profondeur;
 		GameObject LineCurr;
 		SpiroParametrableActive=Spirographe.GetActiveObject();
 		SelectedLine=Spirographe.GetActiveSpiroFormule();
-		int profondeur = SelectedLine.profondeur;
+		if (SelectedLine==null) {profondeur=0;} else {profondeur = SelectedLine.profondeur;}
 		int NbLignesCrees = PanelLignes.transform.childCount;
 		for (int i=0;i<profondeur;i++)
 		{
