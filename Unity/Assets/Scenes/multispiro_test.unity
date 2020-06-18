@@ -2548,6 +2548,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 634110372}
     m_Modifications:
+    - target: {fileID: 51395521, guid: 478682cce47502a4f8de5445faf047a3, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.r
+      value: 0.29803923
+      objectReference: {fileID: 0}
+    - target: {fileID: 51395521, guid: 478682cce47502a4f8de5445faf047a3, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.g
+      value: 0.29803923
+      objectReference: {fileID: 0}
+    - target: {fileID: 51395521, guid: 478682cce47502a4f8de5445faf047a3, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.b
+      value: 0.29803923
+      objectReference: {fileID: 0}
     - target: {fileID: 234242488236170127, guid: 478682cce47502a4f8de5445faf047a3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -26267,7 +26279,6 @@ MonoBehaviour:
   duplicateButton: {fileID: 507007950}
   deletAllButton: {fileID: 627040252}
   fusionnerButton: {fileID: 738726150}
-  unselected: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   SelectedLine: {fileID: 1283168859}
   RootList: {fileID: 634110371}
   BoutonSelectionPremiereLigne: {fileID: 1917997779}

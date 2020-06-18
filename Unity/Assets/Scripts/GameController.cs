@@ -10,7 +10,7 @@ public class GameController : MonoBehaviour
 	
 	public Button loadButton,saveButton,newButton,duplicateButton,deletAllButton,fusionnerButton;
 	public static Color selected = Color.black;
-	public Color unselected = Color.gray;
+	public static Color unselected;
 	static Text NameLine;
 	public static GameObject ActiveObjectInScene,PreviousTextLine,TextNameLine,NewLineName;
 	public static GameObject NewLine;
@@ -38,6 +38,7 @@ public class GameController : MonoBehaviour
 	  SpiroRoot = SpiroParametrableRoot;
 	  MultiSpiroRoot = MultiSpiroParametrableRoot;
 	  TextBase = TextBaseToInstantiate;
+	  unselected = SelectButton.unselected;
     }
 	
 	void OnEnable()
@@ -89,6 +90,7 @@ public class GameController : MonoBehaviour
 		NameLine = NewLineName.transform.Find("TextName").GetComponent<Text>();
 		NewLineName.transform.SetParent(root.transform,false);
 		NameLine.text = (name+LineCount.ToString());
+		NameLine.color = unselected;
 		NewLine.name = NameLine.text;
 		NewLineName.transform.Find("DeleteButton").gameObject.SetActive(true);
 		//NewLineName.transform.Find("SelectButton").gameObject.GetComponent<SelectButton>().SelectLine();

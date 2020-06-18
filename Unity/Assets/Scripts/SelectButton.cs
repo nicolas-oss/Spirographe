@@ -10,8 +10,9 @@ public class SelectButton : MonoBehaviour
 	public SpiroFormule SelectedLine;
 	public GameObject ActiveObjectInScene;
 	public GameObject TextNameLine;
-	public Color selected = Color.black;
-	public Color unselected = Color.gray;
+	public Color unselectedpublic;
+	public static Color selected = Color.black;
+	public static Color unselected = new Color32(76,76,76,255);
 	public Text NameLine;
 	public GameObject PreviousTextLine;
 	
