@@ -167,6 +167,7 @@ public class SpiroFormule : MonoBehaviour
 			//SaveData.OnBeforeSave += delegate{SaveData.AddSpiroData(data);};
 			Debug.Log("Save Event added");
 			Spirographe.onValueChange += GestionAnimation;
+			
 		//}		
 	}
 	
@@ -180,14 +181,15 @@ public class SpiroFormule : MonoBehaviour
 			//SaveData.OnBeforeSave -= delegate{SaveData.AddSpiroData(data);};
 			Spirographe.onValueChange -= GestionAnimation;
 			Debug.Log("Souscriptions du spiro annulées");
+			onPostSpiro=null;
 		//}
 	}
 	
 	void Start()
     {	
 		//GameObject AxeToInstatiate = new GameObject();
-		if (!isInitialised) 
-		{
+		//if (!isInitialised) 
+		//{
 			//InitValues();
 			//Initialisation();
 			GameObject Centre = new GameObject();
@@ -198,7 +200,7 @@ public class SpiroFormule : MonoBehaviour
 				CentreRayon[k]=go;
 			}
 			//RefreshInputField();
-		}
+		//}
 		
 		Attends=false;
 		

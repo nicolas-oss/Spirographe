@@ -101,6 +101,8 @@ public class MultiSpiro : MonoBehaviour
         //for (int j = 0; j<10;j++)
 			//{
 		//Start();
+		if ((Line1==null) || (Line2==null)) return;
+		
 		Line1=Spiro1.GetComponent<LineRenderer>();
 		Line2=Spiro2.GetComponent<LineRenderer>();
 		spiroFormule1=Spiro1.GetComponent<SpiroFormule>();
