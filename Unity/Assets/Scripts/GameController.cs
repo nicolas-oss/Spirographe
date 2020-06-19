@@ -48,6 +48,7 @@ public class GameController : MonoBehaviour
 		fusionnerButton.onClick.AddListener(delegate{MergeScene(path);});
 		duplicateButton.onClick.AddListener(delegate{DuplicateCurrentSpiro();});
 		deletAllButton.onClick.AddListener(delegate{DeleteAll();});
+		SaveData.onLoaded += SelectFirstLine;
 	}
 	
 	void OnDisable()
@@ -79,6 +80,22 @@ public class GameController : MonoBehaviour
 				break;
 			}
 		}
+	}
+		
+	public void SelectFirstLine()
+	{
+		int i=0;
+		GameObject TextNameLineToSelect;
+		Text NameLine;
+		GameObject root = GameObject.Find("ListSpiro");
+		//root.transform.GetChild(i).transform.Find("TextName").GetComponent<Text>().color == selected;
+		TextNameLineToSelect = root.transform.GetChild(i).gameObject;
+		Debug.Log("TextNameLineToSelect "+TextNameLineToSelect.name);
+		//TextNameLineToSelect.tag = "Selected";
+		TextNameLineToSelect.transform.Find("TextName").GetComponent<Text>().color = selected;		
+		NameLine = TextNameLineToSelect.transform.Find("TextName").GetComponent<Text>();	
+		GameObject.Find(NameLine.text).tag = "Selected";
+		Debug.Log("Select "+NameLine.text);
 	}
 	
 	public static string CreateTextLine(string name)
@@ -113,6 +130,7 @@ public class GameController : MonoBehaviour
 	
 	public void LoadScene(string path)
 	{
+		DeleteAll();
 		FileBrowser.GetComponent<FileBrowserPanel>().BuildLoadPanel();
 	}
 	
@@ -144,13 +162,9 @@ public class GameController : MonoBehaviour
 		NewLine = Instantiate(BaseMultiSpiro);
 		NewLine.GetComponent<MultiSpiro>().data=data;
 		NewLine.GetComponent<MultiSpiro>().LoadData();
-		//NewLine.GetComponent<SpiroFormule>().Centre=SpiroRoot;
 		NewLine.transform.SetParent(MultiSpiroRoot.transform,false);
 		NewLine.tag="Untagged";
 		NewLine.name=CreateTextLine("MultiSpiro");
-		//GetActiveTextLine();
-		//NewLineName = Instantiate(PreviousTextLine);
-		//NewLineName.transform.SetParent(PreviousTextLine.transform.parent,false);
 	}
 	
 	public static void DeleteAll()

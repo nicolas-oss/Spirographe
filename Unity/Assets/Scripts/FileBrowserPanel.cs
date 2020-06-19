@@ -12,7 +12,7 @@ public class FileBrowserPanel : MonoBehaviour
 	//string LigneSelectionnee;
 	int Fonction;
 	static int Load=0;
-	static int Merge=0;
+	static int Merge=1;
 
 	public void BuildPanel()
 	{	
@@ -46,6 +46,7 @@ public class FileBrowserPanel : MonoBehaviour
 	public void SelectionLigne(string NomLigne)
 	{
 		FermeturePanneau();
+		Debug.Log("Fonction = "+Fonction.ToString());
 		if (Fonction==Load)
 		{
 			GameController.DeleteAll();

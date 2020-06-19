@@ -46,7 +46,7 @@ public class SelectButton : MonoBehaviour
 		GetActiveLine();
 		GetActiveTextLine();
 		TextNameLine=transform.parent.gameObject;
-		//if (PreviousTextLine==null) {PreviousTextLine=TextNameLine;}
+		if (PreviousTextLine==null) {PreviousTextLine=TextNameLine;}
 		NameLine = TextNameLine.transform.Find("TextName").GetComponent<Text>();
 		ActiveObjectInScene.tag="Untagged";
 		PreviousTextLine.transform.Find("TextName").GetComponent<Text>().color = unselected;

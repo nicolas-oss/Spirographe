@@ -11,10 +11,9 @@ public class SaveData
 {
     public static SpiroContainer spiroContainer = new SpiroContainer();
 	
-	public delegate void SerializeAction();
-	public static event SerializeAction OnLoaded;
+	public delegate void LoadEvent();
+	public static event LoadEvent onLoaded;
 	//public static event SerializeAction OnBeforeSave;
-	//public GameController GC;
 	
 	public static void Load(string path)
 	{
@@ -28,10 +27,14 @@ public class SaveData
 		foreach (MultiSpiroData data in spiroContainer.multiSpiros)
 		{
 			GameController.CreateMultiSpiro(data,GameController.SpiroBasePath);
-			//GameObject.Find("MultiSpiro").GetComponent<MultiSpiro>().data=data;
-			//GameObject.Find("MultiSpiro").GetComponent<MultiSpiro>().LoadData();
 		}
-		//OnLoaded();
+		Loaded();
+	}
+	
+	public static void Loaded()
+	{
+		if (onLoaded != null) onLoaded();
+		Spirographe.Selection();
 	}
 	
 	public static string SpiroName() 
