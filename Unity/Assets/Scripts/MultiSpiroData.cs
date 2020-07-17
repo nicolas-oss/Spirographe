@@ -12,4 +12,13 @@ public class MultiSpiroData
 	public bool profondeur;
 	public float facteur_profondeur;
 	public float L1,L2;
+	
+	/////Données ASPECT
+	
+	public int NombreCouleur;
+	public static int TailleTableauCouleur = 8;
+	public Color[] couleur = new Color[TailleTableauCouleur];
+	
+	public float widthOfLineRenderer;
 }
+
