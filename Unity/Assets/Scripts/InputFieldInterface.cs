@@ -90,7 +90,7 @@ public class InputFieldInterface : MonoBehaviour
 	public void RefreshContent()
 	{
 		float ValeurCourante;
-		if ((dataType=="SpiroFormule") && (Spirographe.SelectedLine==null))
+		if ((Spirographe.SelectedLine==null))
 		{
 			GetComponent<InputField>().interactable = false;
 		}
