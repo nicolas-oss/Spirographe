@@ -16,6 +16,7 @@ public class InputFieldInterface : MonoBehaviour
 	public float Precision;
 	public Vector3 CurrentMousePos,MousePosInitiale,DeltaMousePos;
 	public InputField MainInputField;
+	//public bool activation=true;
 		
 	public void Start()
 	{

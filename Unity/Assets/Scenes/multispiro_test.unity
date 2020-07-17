@@ -5423,6 +5423,7 @@ MonoBehaviour:
   inputID: RR
   ValeurIn: 0
   ValeurOut: 0
+  activation: 1
 --- !u!1 &405866051
 GameObject:
   m_ObjectHideFlags: 0
@@ -9524,6 +9525,7 @@ MonoBehaviour:
   inputID: RRO
   ValeurIn: 0
   ValeurOut: 0
+  activation: 1
 --- !u!114 &688889169
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17718,6 +17720,7 @@ MonoBehaviour:
   inputID: facteurT
   ValeurIn: 0
   ValeurOut: 0
+  activation: 1
 --- !u!1 &1218721483
 GameObject:
   m_ObjectHideFlags: 0
@@ -23417,6 +23420,7 @@ MonoBehaviour:
   inputID: RRO
   ValeurIn: 0
   ValeurOut: 0
+  activation: 1
 --- !u!114 &1544513949
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31595,6 +31599,7 @@ MonoBehaviour:
   inputID: PP
   ValeurIn: 0
   ValeurOut: 0
+  activation: 1
 --- !u!1 &2805530409871961187
 GameObject:
   m_ObjectHideFlags: 0
@@ -32066,6 +32071,7 @@ MonoBehaviour:
   inputID: facteurT
   ValeurIn: 0
   ValeurOut: 0
+  activation: 1
 --- !u!1 &2805530410146318082
 GameObject:
   m_ObjectHideFlags: 0
@@ -32646,6 +32652,7 @@ MonoBehaviour:
   inputID: AA
   ValeurIn: 0
   ValeurOut: 0
+  activation: 1
 --- !u!1 &2805530410528009590
 GameObject:
   m_ObjectHideFlags: 0
@@ -32809,6 +32816,7 @@ MonoBehaviour:
   inputID: VV
   ValeurIn: 0
   ValeurOut: 0
+  activation: 1
 --- !u!1 &2805530410821064252
 GameObject:
   m_ObjectHideFlags: 0
@@ -33305,6 +33313,7 @@ MonoBehaviour:
   inputID: RR
   ValeurIn: 0
   ValeurOut: 0
+  activation: 1
 --- !u!1 &3800291376013333575
 GameObject:
   m_ObjectHideFlags: 0

@@ -80,13 +80,12 @@ public class PanelOptionTousDisquesSmall : MonoBehaviour
 			}
 		}
 		
-		
-		
-		
-		
 		//Gestion affichage des coches RotAxe
-		if (profondeur>0) RefreshCochesActivation();
-
+		if (profondeur>0) 
+		{
+			RefreshCochesActivation();
+			RefreshFacteurTransmission();
+		}
 	}
 	
 	public void RefreshCochesActivation()
@@ -95,12 +94,8 @@ public class PanelOptionTousDisquesSmall : MonoBehaviour
 		{
 			GetBackgroundActivation(i).SetActive(true);
 		}
-		//if (Spirographe.profondeur>0)
-		//{
-			//Debug.Log("in prof<0");
 			GetBackgroundActivation(0).SetActive(false);	//on le cache
 			GetBackgroundActivation(Spirographe.SelectedLine.profondeur-1).SetActive(false);	//on le cache
-		//}
 	}
 	
 	GameObject GetBackgroundActivation(int i)
@@ -108,12 +103,35 @@ public class PanelOptionTousDisquesSmall : MonoBehaviour
 		GameObject LC,TAC,BAC;
 		LC = PanelLignes.transform.GetChild(i).gameObject;
 		TAC = LC.transform.Find("ToggleActivation").gameObject;
-		//Debug.Log("ToggleAct="+TAC.name);
 		BAC = TAC.transform.Find("Background").gameObject;
-		//Debug.Log("BackgroundAct="+BAC.name);
-		//BAC.SetActive(false);
 		return BAC;
 	}
+	
+	public void RefreshFacteurTransmission()
+	{
+			GameObject IFtoModify;
+			for (int i=1;i<Spirographe.SelectedLine.profondeur-1;i++)
+			{
+				IFtoModify = GetInputFieldTransmission(i);
+				IFtoModify.GetComponent<InputField>().interactable = true;	//on le cache
+				IFtoModify.GetComponent<InputFieldPanelDisques>().activation = true;
+			}
+				IFtoModify = GetInputFieldTransmission(0);
+				IFtoModify.GetComponent<InputField>().interactable = false;	//on le cache
+				IFtoModify.GetComponent<InputFieldPanelDisques>().activation = false;
+				IFtoModify = GetInputFieldTransmission(Spirographe.SelectedLine.profondeur-1);
+				IFtoModify.GetComponent<InputField>().interactable = false;	//on le cache
+				IFtoModify.GetComponent<InputFieldPanelDisques>().activation = false;
+	}
+	
+	GameObject GetInputFieldTransmission(int i)
+	{
+		GameObject LC,IFFT,BAC;
+		LC = PanelLignes.transform.GetChild(i).gameObject;
+		IFFT = LC.transform.Find("InputField_Transmission").gameObject;
+		//BAC = TAC.transform.Find("Background").gameObject;
+		return IFFT;
+	}	
 
 	
 	public void AddLine()
@@ -191,6 +209,7 @@ public class PanelOptionTousDisquesSmall : MonoBehaviour
 		}
 		
 		RefreshCochesActivation();
+		RefreshFacteurTransmission();
 		
     }
 	
