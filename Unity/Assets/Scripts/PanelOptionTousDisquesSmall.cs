@@ -79,7 +79,42 @@ public class PanelOptionTousDisquesSmall : MonoBehaviour
 				PanelLignes.transform.GetChild(i).gameObject.SetActive(false);
 			}
 		}
+		
+		
+		
+		
+		
+		//Gestion affichage des coches RotAxe
+		if (profondeur>0) RefreshCochesActivation();
+
 	}
+	
+	public void RefreshCochesActivation()
+	{
+		for (int i=1;i<Spirographe.SelectedLine.profondeur-1;i++)
+		{
+			GetBackgroundActivation(i).SetActive(true);
+		}
+		//if (Spirographe.profondeur>0)
+		//{
+			//Debug.Log("in prof<0");
+			GetBackgroundActivation(0).SetActive(false);	//on le cache
+			GetBackgroundActivation(Spirographe.SelectedLine.profondeur-1).SetActive(false);	//on le cache
+		//}
+	}
+	
+	GameObject GetBackgroundActivation(int i)
+	{
+		GameObject LC,TAC,BAC;
+		LC = PanelLignes.transform.GetChild(i).gameObject;
+		TAC = LC.transform.Find("ToggleActivation").gameObject;
+		//Debug.Log("ToggleAct="+TAC.name);
+		BAC = TAC.transform.Find("Background").gameObject;
+		//Debug.Log("BackgroundAct="+BAC.name);
+		//BAC.SetActive(false);
+		return BAC;
+	}
+
 	
 	public void AddLine()
 	{
@@ -154,6 +189,9 @@ public class PanelOptionTousDisquesSmall : MonoBehaviour
 				LineCurr.SetActive(false);
 			}
 		}
+		
+		RefreshCochesActivation();
+		
     }
 	
 	public void LateUpdate()
