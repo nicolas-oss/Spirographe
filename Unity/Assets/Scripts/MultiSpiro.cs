@@ -13,7 +13,6 @@ public class MultiSpiro : MonoBehaviour
 	Quaternion RotQuaternion;
 	public int multiple=5;
 	public float vitesseRelative=1.0f;
-	//public int i;
 	static SpiroFormule spiroFormule1,spiroFormule2;
 	public bool profondeur;
 	public float facteur_profondeur;
@@ -22,14 +21,8 @@ public class MultiSpiro : MonoBehaviour
 	
     public void StoreData()
 	{
-		//data.Line1=Line1;
-		//data.Line2=Line2;
-		//data.Spiro1=Spiro1;
-		//data.Spiro2=Spiro2;
 		data.multiple=multiple;
 		data.vitesseRelative=vitesseRelative;
-		//data.spiroFormule1=spiroFormule1;
-		//data.spiroFormule2=spiroFormule2;
 		data.L1=L1;
 		data.L2=L2;
 		data.profondeur=profondeur;
@@ -38,22 +31,15 @@ public class MultiSpiro : MonoBehaviour
 	
 	public void LoadData()
 	{
-		//Line1=data.Line1;
-		//Line2=data.Line2;
-		//Spiro1=data.Spiro1;
-		//Spiro2=data.Spiro2;
 		multiple=data.multiple;
 		vitesseRelative=data.vitesseRelative;
 		L1=data.L1;
 		L2=data.L2;
-		//spiroFormule1=data.spiroFormule1;
-		//spiroFormule2=data.spiroFormule2;
 		profondeur=data.profondeur;
 		facteur_profondeur=data.facteur_profondeur;
 	}
-
 	
-	void OnEnable()
+	public void OnEnable()
 	{
 		Spiro1.GetComponent<SpiroFormule>().onPostSpiro +=  delegate{CalculeMultiSpiro();};
 		Spiro2.GetComponent<SpiroFormule>().onPostSpiro +=  delegate{CalculeMultiSpiro();};
@@ -81,20 +67,15 @@ public class MultiSpiro : MonoBehaviour
 		if (Line1.positionCount<Line2.positionCount) {NbrPts=Line2.positionCount;} else {NbrPts = Line1.positionCount;}
 		Line = GetComponent<LineRenderer>();
 		Line.positionCount = NbrPts*multiple;
-		//i=0;
-		//Spiro2.GetComponent<SpiroFormule>().onPostSpiro += CalculeMultiSpiro();
+		
+		if (L1==0) L1=1.0f;
+		if (L2==0) L2=1.0f;
     }
 
     public float CalculQuotient()
 	{
 		return ((L1*L1-L2*L2)/(2.0f*L1*L));
 	}
-	
-	/*public void orienteRoot1();
-	{
-		float alpha;
-		alpha = Mathf.Atan(
-	}*/
     
 	public void CalculeMultiSpiro()
     {
@@ -119,16 +100,10 @@ public class MultiSpiro : MonoBehaviour
 			Root2.transform.position = Spiro2.transform.TransformPoint(Line2.GetPosition((int)(i*vitesseRelative%(N2-1))));
 			A1=Root1.transform.position;
 			A2=Root2.transform.position;
-			//Root1.transform.position = A1;
-			//Root2.transform.position = A2;
 			L=Vector3.Distance(A1,A2);
-			//Debug.Log("L="+L.ToString());
-			//Debug.Log("L="+L.ToString());
-			//beta=Mathf.Asin(A1.z/L);
 			A=A2-A1;
 			beta=Mathf.Acos(A.x/L);
 
-			//if (A.x==0.0f) {beta=90;} else beta = 57.296f*Mathf.Atan((A.z)/(A.x));
 			if (L==0.0f) {beta=90;} else {beta*=57.296f;} //conversion radian vers degres
 			if (A.z<0.0f) {beta=-beta;}
 			
@@ -142,7 +117,6 @@ public class MultiSpiro : MonoBehaviour
 			if (quotient>1) 
 			{
 				Debug.Log("WARNING ACOS trop grand");
-				//quotient=1.0f;
 				while (quotient>1)
 				{
 					L2+=0.001f;
@@ -152,7 +126,6 @@ public class MultiSpiro : MonoBehaviour
 			if (quotient<-1) 
 			{
 				Debug.Log("WARNING ACOS trop petit");
-				//quotient=1.0f;
 				while (quotient<-1)
 				{
 					L2-=0.01f;
@@ -170,7 +143,6 @@ public class MultiSpiro : MonoBehaviour
 			rotation.y = 0.0f;
 			rotation.z = 0.0f;
 			
-			//Debug.Log("rotation x="+(rotation.x).ToString()+" y="+(rotation.y).ToString()+" z="+(rotation.z).ToString());
 			Root1.transform.localEulerAngles = rotation;		//on applique la rotation de la contrainte Aim sur Root1
 			Root1.transform.Rotate(0.0f,beta,0.0f,Space.Self);
 			
@@ -180,10 +152,6 @@ public class MultiSpiro : MonoBehaviour
 			globalPosition = Crayon.transform.position;
 			if (profondeur) globalPosition+=1.0f*i*facteur_profondeur*Vector3.up;
 			Line.SetPosition(i,globalPosition);  
-			
-			//i++;
-			
 		}
-		//if (i>multiple*NbrPts) i=0;
     }
 }

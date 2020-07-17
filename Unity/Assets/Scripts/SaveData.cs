@@ -66,8 +66,12 @@ public class SaveData
 				AddSpiroData(LineToSave.GetComponent<SpiroFormule>().data);
 			}
 		}
-		//GameObject.Find("MultiSpiro").GetComponent<MultiSpiro>().StoreData();
-		AddMultiSpiroData(GameObject.Find("MultiSpiro").GetComponent<MultiSpiro>().data);
+		LineToSave=GameObject.Find("MultiSpiro");
+		if (LineToSave!=null)
+		{
+			LineToSave.GetComponent<MultiSpiro>().StoreData();
+			AddMultiSpiroData(LineToSave.GetComponent<MultiSpiro>().data);
+		}
 	}
 	
 	public static void Save(string path, SpiroContainer spiros)

@@ -82,9 +82,21 @@ public class GameController : MonoBehaviour
 		}
 	}
 		
-	public void SelectFirstLine()
+	public static GameObject GetLineByNumber(int i)
 	{
-		int i=0;
+		GameObject TextNameLineToSelect;
+		Text NameLine;
+		GameObject root = GameObject.Find("ListSpiro");
+		TextNameLineToSelect = root.transform.GetChild(i).gameObject;
+		Debug.Log("TextNameLineToSelect "+TextNameLineToSelect.name);
+		//TextNameLineToSelect.transform.Find("TextName").GetComponent<Text>().color = selected;		
+		NameLine = TextNameLineToSelect.transform.Find("TextName").GetComponent<Text>();	
+		return GameObject.Find(NameLine.text);
+		Debug.Log("Select "+NameLine.text);
+	}
+	
+	public void SelectLineByNumber(int i)
+	{
 		GameObject TextNameLineToSelect;
 		Text NameLine;
 		GameObject root = GameObject.Find("ListSpiro");
@@ -96,6 +108,11 @@ public class GameController : MonoBehaviour
 		NameLine = TextNameLineToSelect.transform.Find("TextName").GetComponent<Text>();	
 		GameObject.Find(NameLine.text).tag = "Selected";
 		Debug.Log("Select "+NameLine.text);
+	}
+	
+	public void SelectFirstLine()
+	{
+		SelectLineByNumber(0);
 	}
 	
 	public static string CreateTextLine(string name)
@@ -141,10 +158,6 @@ public class GameController : MonoBehaviour
 	
 	public static void CreateSpiro(SpiroData data, string path)
 	{
-		//GetActiveLine();
-		//GameObject prefab = Resources.Load<GameObject>(path);
-		//GameObject go = GameObject.Instantiate(prefab) as GameObject;
-		
 		NewLine = Instantiate(BaseSpiro);
 		NewLine.GetComponent<SpiroFormule>().data=data;
 		NewLine.GetComponent<SpiroFormule>().LoadData();
@@ -152,19 +165,23 @@ public class GameController : MonoBehaviour
 		NewLine.transform.SetParent(SpiroRoot.transform,false);
 		NewLine.tag="Untagged";
 		NewLine.name=CreateTextLine("Spiro");
-		//GetActiveTextLine();
-		//NewLineName = Instantiate(PreviousTextLine);
-		//NewLineName.transform.SetParent(PreviousTextLine.transform.parent,false);
 	}
 	
 	public static void CreateMultiSpiro(MultiSpiroData data, string path)
 	{
+		GameObject Line1,Line2;
 		NewLine = Instantiate(BaseMultiSpiro);
 		NewLine.GetComponent<MultiSpiro>().data=data;
 		NewLine.GetComponent<MultiSpiro>().LoadData();
 		NewLine.transform.SetParent(MultiSpiroRoot.transform,false);
 		NewLine.tag="Untagged";
 		NewLine.name=CreateTextLine("MultiSpiro");
+		Line1=GetLineByNumber(0);
+		Line2=GetLineByNumber(1);
+		if (Line1!=null) {NewLine.GetComponent<MultiSpiro>().Spiro1 = Line1;}	// link generators
+		if (Line2!=null) {NewLine.GetComponent<MultiSpiro>().Spiro2 = Line2;}
+		NewLine.GetComponent<MultiSpiro>().OnEnable();							// force init
+		NewLine.GetComponent<MultiSpiro>().CalculeMultiSpiro();					// force refresh
 	}
 	
 	public static void DeleteAll()
