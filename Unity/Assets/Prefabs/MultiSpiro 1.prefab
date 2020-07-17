@@ -388,7 +388,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8dc431b598dd3d4f9fc114f5f22dc60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NombreCouleur: 1
+  NombreCouleur: 0
   couleur:
   - {r: 1, g: 0, b: 0.942749, a: 1}
   - {r: 1, g: 0, b: 0.94117653, a: 1}
@@ -427,7 +427,7 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
-  widthOfLineRenderer: 0.01
+  widthOfLineRenderer: 0
 --- !u!1 &7260389161761879913
 GameObject:
   m_ObjectHideFlags: 0

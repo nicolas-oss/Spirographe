@@ -19,51 +19,24 @@ public class MultiSpiro : MonoBehaviour
 	
 	public MultiSpiroData data = new MultiSpiroData();
 	
-	public static int TailleTableauCouleur = 8;
-	
     public void StoreData()
 	{
-		Aspect aspectLine;
-		aspectLine = gameObject.GetComponent<Aspect>();
-		
 		data.multiple=multiple;
 		data.vitesseRelative=vitesseRelative;
 		data.L1=L1;
 		data.L2=L2;
 		data.profondeur=profondeur;
 		data.facteur_profondeur=facteur_profondeur;
-		
-		/////Données ASPECT
-			
-		data.NombreCouleur=aspectLine.NombreCouleur;
-		for (int i=0;i<TailleTableauCouleur;i++)
-		{
-			data.couleur[i] = aspectLine.couleur[i];
-		}
-		data.widthOfLineRenderer=aspectLine.widthOfLineRenderer;
 	}
 	
 	public void LoadData()
 	{
-		Aspect aspectLine;
-		aspectLine = gameObject.GetComponent<Aspect>();
-
 		multiple=data.multiple;
 		vitesseRelative=data.vitesseRelative;
 		L1=data.L1;
 		L2=data.L2;
 		profondeur=data.profondeur;
 		facteur_profondeur=data.facteur_profondeur;
-		
-		/////Données ASPECT
-		
-		aspectLine.NombreCouleur=data.NombreCouleur;
-		for (int i=0;i<TailleTableauCouleur;i++)
-		{
-			aspectLine.couleur[i] = data.couleur[i];
-		}
-		
-		aspectLine.widthOfLineRenderer=data.widthOfLineRenderer;
 	}
 	
 	public void OnEnable()

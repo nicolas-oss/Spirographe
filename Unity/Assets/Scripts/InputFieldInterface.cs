@@ -52,19 +52,9 @@ public class InputFieldInterface : MonoBehaviour
 		ClicPanelSurface.MainDragEvent += AjusteWithDrag;		//on souscrit à l'event AjusteWithDrag
 	}
 	
-	void EcritureValeur(float ValeurOut)
-	{
-		Spirographe.SelectedLine.GetType().GetField(InputID).SetValue(Spirographe.SelectedLine,ValeurOut);
-	}
-		
-	public float LectureValeur()
-	{
-		return (float)Spirographe.SelectedLine.GetType().GetField(InputID).GetValue(Spirographe.SelectedLine);
-	}
-	
 	public void BeginAjusteWithDrag()
 	{
-		ValeurInitialeIF = LectureValeur();
+		ValeurInitialeIF = (float)Spirographe.SelectedLine.GetType().GetField(InputID).GetValue(Spirographe.SelectedLine);
 		MousePosInitiale = Input.mousePosition;
 	}
 	
@@ -76,21 +66,21 @@ public class InputFieldInterface : MonoBehaviour
 		ValeurSortieIF = ValeurInitialeIF + DeltaMousePos.x/FacteurDiv;
 		if (Clamp) {ValeurSortieIF=(float)Math.Floor((ValeurSortieIF/Precision))*Precision;}
 		GetComponent<InputField>().text = ValeurSortieIF.ToString();
-		EcritureValeur(ValeurSortieIF);
+		Spirographe.SelectedLine.GetType().GetField(InputID).SetValue(Spirographe.SelectedLine,ValeurSortieIF);
 		Spirographe.ValueChange(); //Call ValueChange Event
 	}
 	
 	public void AjusteWithEnter()
 	{
 		ValeurSortieIF = float.Parse(GetComponent<InputField>().text);
-		EcritureValeur(ValeurSortieIF);
+		Spirographe.SelectedLine.GetType().GetField(InputID).SetValue(Spirographe.SelectedLine,ValeurSortieIF);
 		Spirographe.ValueChange(); //Call ValueChange Event
 	}
 	
 	public void RefreshContent()
 	{
 		float ValeurCourante;
-		if ((dataType=="SpiroFormule") && (Spirographe.SelectedLine==null))
+		if ((dataType="SpiroFormule") && (Spirographe.SelectedLine==null))
 		{
 			GetComponent<InputField>().interactable = false;
 		}

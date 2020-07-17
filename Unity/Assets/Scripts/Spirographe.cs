@@ -21,7 +21,6 @@ public static class Spirographe
 	
 	public static SpiroFormule SelectedLine;
 	public static Aspect SelectedAspect;
-	public static MultiSpiro SelectedMultiSpiro;
 	public static GameObject ActiveObjectInScene;
 
 	///////////////////////////////////////////Refresh Event////////////////////////////////////////////////
@@ -57,7 +56,6 @@ public static class Spirographe
 			{
 				SelectedLine = GetActiveSpiroFormule();
 				SelectedAspect = GetActiveAspect();
-				SelectedMultiSpiro = GetActiveMultiSpiro();
 				ActiveObjectInScene = GetActiveObject();
 				onSelectionLine();
 			}
@@ -95,10 +93,5 @@ public static class Spirographe
 	public static Aspect GetActiveAspect()
 	{
 		return GetActiveObject().GetComponent<Aspect>();
-	}
-	
-	public static MultiSpiro GetActiveMultiSpiro()
-	{
-		return GetActiveObject().GetComponent<MultiSpiro>();
 	}
 }
