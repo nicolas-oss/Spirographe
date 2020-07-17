@@ -33,8 +33,6 @@ public class SpiroFormule : MonoBehaviour
 	public float NombreDeTour,NombreDeTourMaximum;
 	public bool Automatique;
 	
-	public float widthOfLineRenderer;
-	
 	public float Echelle,Rotation;
 	public bool AnimRotation;
 	public float VitesseRotation,OffsetRotation;
@@ -65,11 +63,17 @@ public class SpiroFormule : MonoBehaviour
 	public GradientColorKey[] colorKey; //= new GradientColorKey[TailleTableauCouleur];
 	public GradientAlphaKey[] alphaKey; //= new GradientAlphaKey[TailleTableauCouleur];
 	
+	public float widthOfLineRenderer;
+
+	
 	public delegate void PostSpiroEvent();
 	public event PostSpiroEvent onPostSpiro;
 	
 	public void StoreData()
 	{
+		Aspect aspectLine;
+		aspectLine = gameObject.GetComponent<Aspect>();
+		
 		if (Master)
 		{
 			data.profondeur=profondeur;
@@ -78,7 +82,6 @@ public class SpiroFormule : MonoBehaviour
 			data.NombreDeTour=NombreDeTour;
 			data.NombreDeTourMaximum=NombreDeTourMaximum;
 			data.Automatique=Automatique;
-			data.widthOfLineRenderer=widthOfLineRenderer;
 			data.Echelle=Echelle;
 			data.Rotation=Rotation;
 			data.AnimRotation=AnimRotation;
@@ -106,24 +109,32 @@ public class SpiroFormule : MonoBehaviour
 				data.OndeRayon[i]=OndeRayon[i];
 				data.RotAxe[i]=RotAxe[i];
 			}
-			data.NombreCouleur=NombreCouleur;
+			
+			/////Données ASPECT
+			
+			data.NombreCouleur=aspectLine.NombreCouleur;
 			for (int i=0;i<TailleTableauCouleur;i++)
 			{
-				data.couleur[i] = couleur[i];
+				data.couleur[i] = aspectLine.couleur[i];
 			}
+			
+			data.widthOfLineRenderer=aspectLine.widthOfLineRenderer;
+
 			Debug.Log("Values copied");
 		}
 	}
 	
 	public void LoadData()
 	{
+		Aspect aspectLine;
+		aspectLine = gameObject.GetComponent<Aspect>();
+
 		profondeur=data.profondeur;
 		NombrePoints=data.NombrePoints;
 		delta=data.delta;
 		NombreDeTour=data.NombreDeTour;
 		NombreDeTourMaximum=data.NombreDeTourMaximum;
 		Automatique=data.Automatique;
-		widthOfLineRenderer=data.widthOfLineRenderer;
 		Echelle=data.Echelle;
 		Rotation=data.Rotation;
 		AnimRotation=data.AnimRotation;
@@ -151,11 +162,17 @@ public class SpiroFormule : MonoBehaviour
 			OndeRayon[i]=data.OndeRayon[i];
 			RotAxe[i]=data.RotAxe[i];
 		}
-		NombreCouleur=data.NombreCouleur;
+		
+		/////Données ASPECT
+		
+		aspectLine.NombreCouleur=data.NombreCouleur;
 		for (int i=0;i<TailleTableauCouleur;i++)
 		{
-			couleur[i] = data.couleur[i];
+			aspectLine.couleur[i] = data.couleur[i];
 		}
+		
+		aspectLine.widthOfLineRenderer=data.widthOfLineRenderer;
+
 	}
 	
 	void OnEnable()
@@ -232,20 +249,7 @@ public class SpiroFormule : MonoBehaviour
 
 	public void RecalculeGradient()
 	{		
-		gradient = new Gradient();
-		colorKey = new GradientColorKey[NombreCouleur];
-		alphaKey = new GradientAlphaKey[NombreCouleur];
-
-		for (int i=0; i<NombreCouleur; i++)
-		{
-			colorKey[i].color = couleur[i];
-			colorKey[i].time = (1.0f*i)/(1.0f*NombreCouleur);
-			alphaKey[i].alpha = 1.0f;
-			alphaKey[i].time = (1.0f*i)/(1.0f*NombreCouleur);
-        }
-		
-        gradient.SetKeys(colorKey, alphaKey);
-        gameObject.GetComponent<LineRenderer>().colorGradient=gradient;
+		gameObject.GetComponent<Aspect>().RecalculeGradient();
 	}
 	
 	public void GestionAnimation()

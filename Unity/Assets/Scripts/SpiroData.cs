@@ -27,9 +27,7 @@ public class SpiroData
 	public float delta;
 	public float NombreDeTour,NombreDeTourMaximum;
 	public bool Automatique;
-	
-	public float widthOfLineRenderer;
-	
+		
 	public float Echelle,Rotation;
 	public bool AnimRotation;
 	public float VitesseRotation,OffsetRotation;
@@ -43,7 +41,11 @@ public class SpiroData
 	public bool z=true;
 	public float profondeur_z;
 	
+	/////Données ASPECT
+	
 	public int NombreCouleur;
 	public static int TailleTableauCouleur = 8;
 	public Color[] couleur = new Color[TailleTableauCouleur];
+	
+	public float widthOfLineRenderer;
 }

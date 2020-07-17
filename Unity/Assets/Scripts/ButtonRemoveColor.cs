@@ -13,11 +13,11 @@ public class ButtonRemoveColor : MonoBehaviour
 	
 	public static void ColorRemove()
 	{
-		int NbCoul=Spirographe.SelectedLine.NombreCouleur;
+		int NbCoul=Spirographe.SelectedAspect.NombreCouleur;
 		if (NbCoul>1) 
 		{
 			NbCoul--;
-			Spirographe.SelectedLine.NombreCouleur=NbCoul;
+			Spirographe.SelectedAspect.NombreCouleur=NbCoul;
 			//Debug.Log("Calling event ColorAdd");
 			ButtonAddColor.CallColorAddEvent();
 		}

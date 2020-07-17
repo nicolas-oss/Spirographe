@@ -16,11 +16,11 @@ public class ButtonAddColor : MonoBehaviour
 	
 	public static void ColorAdd()
 	{
-		int NbCoul=Spirographe.SelectedLine.NombreCouleur;
+		int NbCoul=Spirographe.SelectedAspect.NombreCouleur;
 		if (NbCoul<SpiroFormule.TailleTableauCouleur) 
 		{
 			NbCoul++;
-			Spirographe.SelectedLine.NombreCouleur=NbCoul;
+			Spirographe.SelectedAspect.NombreCouleur=NbCoul;
 			CallColorAddEvent();
 		}
 	}
@@ -29,6 +29,6 @@ public class ButtonAddColor : MonoBehaviour
 	{
 		Debug.Log("Calling event ColorAdd");
 		if(onColorAdd!= null) onColorAdd();
-		Spirographe.SelectedLine.RecalculeGradient();
+		Spirographe.SelectedAspect.RecalculeGradient();
 	}
 }

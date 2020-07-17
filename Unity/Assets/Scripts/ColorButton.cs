@@ -11,7 +11,7 @@ public class ColorButton : MonoBehaviour
 	public GameObject ColorFieldToRefresh;
 	public int index;
 	GameObject ActiveGO;
-	SpiroFormule SelectedLine;
+	Aspect SelectedAspect;
 	bool isPicking;
 	Color newCol;
 	string PickedColorString;
@@ -54,7 +54,7 @@ public class ColorButton : MonoBehaviour
 		//Debug.Log("BeginColorPicking");
 		Spirographe.DestroyColorChangeEvent();
 		ShowPanel();
-		ColorPickerPanel.GetComponent<ColorPicker>().CurrentColor = Spirographe.SelectedLine.couleur[index];
+		ColorPickerPanel.GetComponent<ColorPicker>().CurrentColor = Spirographe.SelectedAspect.couleur[index];
 		Spirographe.onColorChange += ColorPicking;
 	}
 	
@@ -66,9 +66,9 @@ public class ColorButton : MonoBehaviour
 		ColorUtility.TryParseHtmlString(PickedColorString, out newCol);
 		SelectedLine.GetType().GetField(InputID).SetValue(SelectedLine,newCol);*/
 		CurrentColor = ColorPickerPanel.GetComponent<ColorPicker>().CurrentColor;
-		Spirographe.SelectedLine.couleur[index] = CurrentColor;
+		Spirographe.SelectedAspect.couleur[index] = CurrentColor;
 		GetComponent<Image>().color=CurrentColor;
-		Spirographe.SelectedLine.RecalculeGradient();
+		Spirographe.SelectedAspect.RecalculeGradient();
 	}
 	
 	public void EndColorPicking()
@@ -79,10 +79,10 @@ public class ColorButton : MonoBehaviour
 	public void Refresh()
 	{
 		int NbCoul;
-		SelectedLine = Spirographe.GetActiveSpiroFormule();
-		if (SelectedLine!=null) {NbCoul = SelectedLine.NombreCouleur;} else {NbCoul = 0;}
+		SelectedAspect = Spirographe.GetActiveAspect();
+		if (SelectedAspect!=null) {NbCoul = SelectedAspect.NombreCouleur;} else {NbCoul = 0;}
 		{	
-			//Debug.Log("Nombre Coul = "+NbCoul.ToString());
+			Debug.Log("Nombre Coul = "+NbCoul.ToString());
 			if (index > NbCoul-1) 
 			{
 				gameObject.GetComponent<Button>().enabled=false;
@@ -93,7 +93,7 @@ public class ColorButton : MonoBehaviour
 				//Debug.Log("Activation");
 				gameObject.GetComponent<Button>().enabled=true;
 				gameObject.GetComponent<Image>().enabled=true;
-				GetComponent<Image>().color = SelectedLine.couleur[index]; 
+				GetComponent<Image>().color = SelectedAspect.couleur[index]; 
 			}
 		}
 	}

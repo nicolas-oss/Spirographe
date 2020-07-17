@@ -20,6 +20,7 @@ public static class Spirographe
 	public static event ColorChangeEvent onColorChange;
 	
 	public static SpiroFormule SelectedLine;
+	public static Aspect SelectedAspect;
 	public static GameObject ActiveObjectInScene;
 
 	///////////////////////////////////////////Refresh Event////////////////////////////////////////////////
@@ -54,6 +55,7 @@ public static class Spirographe
 		if(onSelectionLine != null) 
 			{
 				SelectedLine = GetActiveSpiroFormule();
+				SelectedAspect = GetActiveAspect();
 				ActiveObjectInScene = GetActiveObject();
 				onSelectionLine();
 			}
@@ -86,5 +88,10 @@ public static class Spirographe
 	public static SpiroFormule GetActiveSpiroFormule()
 	{
 		return GetActiveObject().GetComponent<SpiroFormule>();
+	}
+	
+	public static Aspect GetActiveAspect()
+	{
+		return GetActiveObject().GetComponent<Aspect>();
 	}
 }

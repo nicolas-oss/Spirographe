@@ -16,6 +16,7 @@ public class InputFieldInterface : MonoBehaviour
 	public float Precision;
 	public Vector3 CurrentMousePos,MousePosInitiale,DeltaMousePos;
 	public InputField MainInputField;
+	public string dataType="SpiroFormule";
 	//public bool activation=true;
 		
 	public void Start()
@@ -79,7 +80,7 @@ public class InputFieldInterface : MonoBehaviour
 	public void RefreshContent()
 	{
 		float ValeurCourante;
-		if (Spirographe.SelectedLine==null)
+		if ((dataType="SpiroFormule") && (Spirographe.SelectedLine==null))
 		{
 			GetComponent<InputField>().interactable = false;
 		}
