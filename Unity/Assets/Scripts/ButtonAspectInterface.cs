@@ -7,23 +7,23 @@ using UnityEngine.UI;
 
 public class ButtonAspectInterface : MonoBehaviour
 {
-	void Start()
+	/*void Start()
 	{
 		Spirographe.onRefreshInputField += RefreshContent;
 		Spirographe.onRefreshInputFieldPanelDisques += RefreshContent;
 		Spirographe.onSelectionLine += RefreshContent;
-	}
+	}*/
 	
 	public void RefreshContent()
 	{
 		bool Check;
 		if (Spirographe.SelectedAspect==null)
 		{
-			GetComponent<Button>().interactable = false;
+			gameObject.GetComponent<Button>().interactable = false;
 		}
 		else
 		{
-			GetComponent<Button>().interactable = true;
+			gameObject.GetComponent<Button>().interactable = true;
 		}
 	}
 }

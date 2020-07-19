@@ -7,7 +7,7 @@ public class PanelOptionTousDisquesSmall : MonoBehaviour
 {
     public GameObject LigneSpiro,TextNumeroDisque,IFR,IFRO,IFA,IFV,IFP,IFF,ToggleActiveDisque,ToggleAnimation,PanelLignes,PanelOptionTousDisques;
 	SpiroFormule SelectedLine;
-	GameObject SpiroParametrableActive;
+	//GameObject SpiroParametrableActive;
 	
 	void Start()
 	{
@@ -38,7 +38,7 @@ public class PanelOptionTousDisquesSmall : MonoBehaviour
 	{
 		int profondeur;
 		GameObject LineCurr; //
-		SpiroParametrableActive=Spirographe.GetActiveObject();
+		//SpiroParametrableActive=Spirographe.GetActiveObject();
 		SelectedLine=Spirographe.GetActiveSpiroFormule();
 		if (SelectedLine==null) {profondeur=0;} else {profondeur = SelectedLine.profondeur;}
 		int NbLignesCrees = PanelLignes.transform.childCount;
@@ -81,11 +81,12 @@ public class PanelOptionTousDisquesSmall : MonoBehaviour
 		}
 		
 		//Gestion affichage des coches RotAxe
-		if (profondeur>0) 
+		/*if (profondeur>0) 
 		{
 			RefreshCochesActivation();
 			RefreshFacteurTransmission();
-		}
+		}*/
+		RefreshPanel();
 	}
 	
 	public void RefreshCochesActivation()
@@ -96,6 +97,7 @@ public class PanelOptionTousDisquesSmall : MonoBehaviour
 		}
 			GetBackgroundActivation(0).SetActive(false);	//on le cache
 			GetBackgroundActivation(Spirographe.SelectedLine.profondeur-1).SetActive(false);	//on le cache
+			Debug.Log("Refreshing coches activation");
 	}
 	
 	GameObject GetBackgroundActivation(int i)
@@ -162,7 +164,7 @@ public class PanelOptionTousDisquesSmall : MonoBehaviour
 			PanelLignes.transform.GetChild(i).gameObject.SetActive(true);
 		}
 		RefreshPanel();
-		PanelOptionTousDisques.GetComponent<PanelOptionTousDisques>().BuildPanel(); //refresh panel tous disques too
+		//PanelOptionTousDisques.GetComponent<PanelOptionTousDisques>().BuildPanel(); //refresh panel tous disques too
 		Spirographe.ValueChange(); //Call ValueChange Event
 	}
 	
@@ -179,24 +181,31 @@ public class PanelOptionTousDisquesSmall : MonoBehaviour
 			LastLine.SetActive(false);
 		}
 		RefreshPanel();
-		PanelOptionTousDisques.GetComponent<PanelOptionTousDisques>().BuildPanel(); //refresh panel tous disques too
+		//PanelOptionTousDisques.GetComponent<PanelOptionTousDisques>().BuildPanel(); //refresh panel tous disques too
 		Spirographe.ValueChange(); //Call ValueChange Event
 	}
 	
 	public void RefreshPanel()
 	{
 		SelectedLine=Spirographe.GetActiveSpiroFormule();
-		InputFieldPanelDisques[] ZOB;	
-        ZOB = PanelLignes.GetComponentsInChildren<InputFieldPanelDisques>(); //Get all InputFieldPanelDisques in PanelLignes
-        foreach (InputFieldPanelDisques IF in ZOB)
+		InputFieldPanelDisques[] ZOB;
+		ToggleRotAxe[] BIT;
+        ZOB = PanelLignes.GetComponentsInChildren<InputFieldPanelDisques>(); 		//Get all InputFieldPanelDisques in PanelLignes
+		foreach (InputFieldPanelDisques IF in ZOB)
 		{
             IF.gameObject.GetComponent<InputFieldPanelDisques>().RefreshContent();  //RefreshContent of all InputFieldPanelDisques in PanelLignes
+		}
+        
+		BIT = PanelLignes.GetComponentsInChildren<ToggleRotAxe>(); 					//Get all ToggleRotAxe in PanelLignes
+		foreach (ToggleRotAxe TRA in BIT)
+		{
+            TRA.gameObject.GetComponent<ToggleRotAxe>().RefreshContent();  			//RefreshContent of all ToggleRotAxe in PanelLignes
 		}
 		int profondeur = SelectedLine.profondeur;
 		int NbLignesCrees = PanelLignes.transform.childCount;
 		GameObject LineCurr=PanelLignes.transform.GetChild(0).gameObject;
-		for (int i=0;i<NbLignesCrees;i++)									 // on n'affiche que les lignes d'indice inférieur à profondeur
-		{
+		for (int i=0;i<NbLignesCrees;i++)									 		// on n'affiche que les lignes d'indice inférieur à profondeur
+		{	
 			LineCurr = PanelLignes.transform.GetChild(i).gameObject;
 			if (i<profondeur)
 			{
@@ -210,7 +219,7 @@ public class PanelOptionTousDisquesSmall : MonoBehaviour
 		
 		RefreshCochesActivation();
 		RefreshFacteurTransmission();
-		
+		PanelOptionTousDisques.GetComponent<PanelOptionTousDisques>().BuildPanel(); //refresh panel tous disques too
     }
 	
 	public void LateUpdate()

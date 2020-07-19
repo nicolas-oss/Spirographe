@@ -17,18 +17,18 @@ public class InputFieldAspect : InputFieldInterface
 		return (float)Spirographe.SelectedAspect.GetType().GetField(InputID).GetValue(Spirographe.SelectedAspect);
 	}
 
-	/*public void RefreshContent()
+	public void RefreshContent()
 	{
 		float ValeurCourante;
-		if ((dataType=="SpiroFormule") && (Spirographe.SelectedLine==null))
+		if ((Spirographe.SelectedAspect==null))
 		{
 			GetComponent<InputField>().interactable = false;
 		}
 		else
 		{
 			GetComponent<InputField>().interactable = true;
-			ValeurCourante = (float)Spirographe.SelectedLine.GetType().GetField(InputID).GetValue(Spirographe.SelectedLine); 	//on lit la valeur courante de l'inputID
+			ValeurCourante = (float)Spirographe.SelectedAspect.GetType().GetField(InputID).GetValue(Spirographe.SelectedAspect); 	//on lit la valeur courante de l'inputID
 			GetComponent<InputField>().text = ValeurCourante.ToString(); 								//on l'écrit dans le champ text de l'IF
 		}
-	}*/
+	}
 }
